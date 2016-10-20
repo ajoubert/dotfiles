@@ -17,6 +17,20 @@ super + x
 super + z
     rofi -show window -terminal urxvtc
 
+# volume control
+super + minus 
+    v-
+
+super + plus 
+    v+
+
+# brightness control
+super + ctrl + Up
+    light -s intel_backlight -A 10
+
+super + ctrl + Down
+    light -s intel_backlight -U 10
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
