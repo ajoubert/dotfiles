@@ -11,10 +11,10 @@ foreground = #a7a5a5
 spacing = 1
 lineheight = 1
 separator = |
-padding_left = 2
-padding_right = 2
-module_margin_left = 2
-module_margin_right = 2
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
 font-0 = sans:size=12
 font-1 = FontAwesome:size=12:weight=heavy
 
@@ -107,11 +107,12 @@ background = #333232
 foreground = #a7a5a5
 spacing = 1
 lineheight = 1
-separator = |
-padding_left = 2
-padding_right = 2
-module_margin_left = 2
-module_margin_right = 2
+separator = | 
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+tray-position = right
 font-0 = sans:size=12
 font-1 = FontAwesome:size=12:weight=heavy
 
