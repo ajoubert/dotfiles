@@ -26,6 +26,6 @@ bspc rule -a Screenkey manage=off
 hsetroot -center ~/.wallpaper
 
 #panel &
-lemonbuddy_wrapper main &
-lemonbuddy_wrapper secondary &
+lemonbuddy main &
+lemonbuddy secondary &
 gnucash &
