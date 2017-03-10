@@ -41,6 +41,10 @@ nm-wifi-create() {
     nmcli device wifi connect "$1" password "$( < $2)"
 }
 
+cpstat () {
+  tar c "$1" | pv | tar x -C "$2"
+}
+
 export PATH="$PATH:$HOME/bin"
 export PATH=/usr/lib/ccache/bin/:$PATH
 export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin/:$PATH
