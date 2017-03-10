@@ -1,3 +1,6 @@
+#TODO :: shortcuts to add asap --
+#
+#   termite ranger // opens file navigator
 #
 # wm independent hotkeys
 #
@@ -8,14 +11,14 @@ super + Return
 
 # program launcher
 super + space
-	rofi -show run -terminal urxvtc
-	#dmenu_run
+    rofi -show run -fullscreen -monitor -1 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 280 separator-style none -opacity 80 -a terminal urxvtc
+#   rofi -show run -terminal urxvtc
 
 super + x
-    rofi -show ssh -terminal urxvtc
+    rofi -show ssh -fullscreen -monitor -1 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 280 separator-style none -opacity 80 -a terminal urxvtc
 
 super + z
-    rofi -show window -terminal urxvtc
+    rofi -show window -fullscreen -monitor -1 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 280 separator-style none -opacity 80 -a terminal urxvtc
 
 # volume control
 super + minus 
@@ -57,7 +60,7 @@ super + y
 
 # swap the current node and the biggest node
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
@@ -147,7 +150,8 @@ super + {Left,Down,Up,Right}
 
 # focus
 ~button1
-	bspc pointer -g focus
+    bspc node -f pointed
+	#bspc pointer -g focus
 
 # start move/resize
 super + button{1-3}
@@ -156,3 +160,7 @@ super + button{1-3}
 # end move/resize
 super + @button{1-3}
 	bspc pointer -u
+
+#lock screens
+ctrl + alt + l
+   lockscreen.sh
