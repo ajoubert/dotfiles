@@ -12,9 +12,10 @@ bspc config gapless_monocle      true
 bspc config focus_by_distance    true
 bspc config history_aware_focus  true
 
-#bspc monitor -d I II III IV V VI VII VIII IX X
-bspc monitor HDMI-1 -d I II III IV V
-bspc monitor eDP-1 -d VI VII VIII IX X
+bspc monitor HDMI-1-1 -d I II III IV V
+bspc monitor eDP-1-1 -d VI VII VIII IX X
+#bspc monitor -d I II III IV V
+
 
 bspc rule -a Gimp desktop=^8 state=floating follow=on
 bspc rule -a gnucash desktop=^6
@@ -25,7 +26,7 @@ bspc rule -a Screenkey manage=off
 
 hsetroot -center ~/.wallpaper
 
-#panel &
+redshiftgui --min &
 lemonbuddy main &
+compton -bc &
 lemonbuddy secondary &
-gnucash &
