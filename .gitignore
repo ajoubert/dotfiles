@@ -1,3 +1,4 @@
 config/mopidy/mopidy.conf
 weechat/logs/
 weechat/weechat.log
+weechat/irc.conf
