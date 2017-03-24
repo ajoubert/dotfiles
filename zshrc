@@ -1,12 +1,11 @@
 alias ll="ls -lArth"
-eval $(thefuck --alias)
 
 alias sc="systemctl"
 alias ssc="sudo systemctl"
 
 source ~/.zsrc
 
-alias sautoremove="sudo pacman -R $(pacman -Qdtq)"
+alias sautoremove="sudo pacman -Rnscu  $(pacman -Qdtq)"
 
 alias v+="amixer set Master playback 5%+"
 alias v-="amixer set Master playback 5%-"
