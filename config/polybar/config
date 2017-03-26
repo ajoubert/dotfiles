@@ -1,0 +1,321 @@
+[colors]
+background = #333232
+foreground = #a7a5a5
+primary = #ffb52a
+secondary = #e60053
+
+[bar/main]
+monitor = HDMI-1-1
+top = true
+dock = false 
+width = 100%
+height = 20
+border-top-size = 4
+border-top-color = ${colors.background}
+border-bottom-size = 2
+border-bottom-color = ${colors.background}
+background = ${colors.background}
+foreground = ${colors.foreground}
+spacing = 1
+lineheight = 1
+separator = |
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+font-0 = sans:size=9
+font-1 = FontAwesome:size=8:weight=heavy
+
+modules-left = cpu ram xtitle
+modules-center = bspwm
+modules-right = wifi clock battery
+
+
+[bar/secondary]
+monitor = eDP-1-1
+top = true
+dock = true
+width = 100% 
+height = 20
+border-top-size= 4
+border-bottom-size= 2
+border-top-color= ${colors.background}
+border-bottom-color= ${colors.background}
+background = ${colors.background} 
+foreground = ${colors.foreground} 
+spacing = 1
+lineheight = 1
+separator = | 
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+font-0 = sans:size=9
+font-1 = FontAwesome:size=8:weight=heavy
+
+wm-restack= bspwm
+modules-left = mpd
+modules-center = bspwm
+tray-position = right
+tray-padding = 2
+tray-detached = true
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+#[module/bspwm]
+#type = internal/bspwm
+
+#label-focused = %index%
+#label-focused-background = ${colors.background-alt}
+#label-focused-underline= ${colors.primary}
+#label-focused-padding = 2
+
+#label-occupied = %index%
+#label-occupied-padding = 2
+
+#label-urgent = %index%!
+#label-urgent-background = ${colors.alert}
+#label-urgent-padding = 2
+
+#label-empty = %index%
+#label-empty-foreground = ${colors.foreground-alt}
+#label-empty-padding = 2
+
+[module/mpd]
+type = internal/mpd
+format-online = ♬ <label-song> <bar-progress> 
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+bar-progress-width = 30 
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+label-song-maxlen = 50 
+label-song-ellipsis = true
+
+#[module/cpu]
+#type = internal/cpu
+#interval = 2
+#format-prefix = " "
+#format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = #f90000
+#label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp5s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/xtitle]
+type = custom/script
+exec = xtitle -s
+tail = true
+format =    <label>
+
+[module/cpu]
+type = internal/cpu
+label = CPU: %percentage%%
+
+[module/ram]
+type = internal/memory
+label = RAM: %percentage_used%%
+
+[module/clock]
+type = internal/date
+date =  %d-%m-%Y %H:%M
+
+[module/wifi]
+type = internal/network
+interface = wlp5s0
+interval = 3
+ping_interval = 3
+label-connected =  %essid% [%local_ip%]
+label-disconnected =  not connected
+
+
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+label-active = 
+label-active-padding = 1
+label-active-foreground = #FFF
+#label-occupied = 
+label-occupied  = 
+label-occupied-padding = 1
+label-empty = 
+label-empty-padding = 1
+label-monocle = 
+label-monocle-foreground = #55FFFFFF
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+poll_interval = 3
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-full =   %percentage%%
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate_ms = 750
+
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
