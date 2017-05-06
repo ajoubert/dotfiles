@@ -29,6 +29,7 @@ font-1 = FontAwesome:size=8:weight=heavy
 modules-left = cpu ram xtitle
 modules-center = bspwm
 modules-right = wifi clock battery
+wm-restack= bspwm
 
 
 [bar/secondary]
