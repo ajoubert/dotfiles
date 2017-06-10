@@ -48,5 +48,6 @@ export PATH="$PATH:$HOME/bin"
 export PATH=/usr/lib/ccache/bin/:$PATH
 export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin/:$PATH
 export LANG=en_US.UTF-8
+export WINEPREFIX="/mnt/HDD/WinePrefixes/alex/"
 
 clear;
