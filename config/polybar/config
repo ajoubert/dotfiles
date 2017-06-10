@@ -26,9 +26,11 @@ module-margin-right = 2
 font-0 = sans:size=9
 font-1 = FontAwesome:size=8:weight=heavy
 
-modules-left = cpu ram xtitle
-modules-center = bspwm
-modules-right = wifi clock battery
+#modules-left = cpu ram xtitle
+#modules-center = bspwm
+modules-left = bspwm
+modules-center = xtitle
+modules-right = wifi clock
 wm-restack= bspwm
 
 
@@ -55,8 +57,10 @@ font-0 = sans:size=9
 font-1 = FontAwesome:size=8:weight=heavy
 
 wm-restack= bspwm
-modules-left = mpd
-modules-center = bspwm
+#modules-left = mpd
+modules-left = bspwm
+modules-center = mpd
+#modules-center = bspwm
 tray-position = right
 tray-padding = 2
 tray-detached = true

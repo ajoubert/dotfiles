@@ -6,6 +6,6 @@ xrandr --output HDMI-1-1 --auto --primary
 xrandr --output eDP-1-1 --auto --left-of HDMI-1-1
 xsetroot -cursor_name left_ptr
 sxhkd &
-start-pulseaudio-x11 &
+#start-pulseaudio-x11 &
 mopidy &
 exec bspwm
