@@ -10,6 +10,8 @@ call plug#begin('~/.config/vim/plugged')
 " Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/YouCompleteMe'
 Plug 'gilligan/vim-lldb'
+Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-fugitive'
 " Plug 'idanarye/vim-vebugger'
 
 " Any valid git URL is allowed
