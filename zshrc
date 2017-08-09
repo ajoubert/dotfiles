@@ -23,6 +23,8 @@ alias nm-state='nmcli device'
 alias nm-interfaces='nmcli device show'
 alias listwifi='nmcli --pretty --fields SIGNAL,BARS,SSID,RATE,SECURITY,ACTIVE device wifi list | (IFS=''; (for i in {1..5}; do read -r; printf "%s\n" "$REPLY"; done;) && cat | sort -g -k 1r) | head -n 15'
 alias nm-wifi-list-all='nmcli --pretty --fields SSID,RATE,BARS,SIGNAL,SECURITY,ACTIVE device wifi list'
+alias stopWifi="nmcli radio wifi off"
+alias startWifi="nmcli radio wifi on"
 
 nm-wifi-create() {
     if [[ -z "$2" ]]; then
@@ -49,5 +51,6 @@ export PATH=/usr/lib/ccache/bin/:$PATH
 export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin/:$PATH
 export LANG=en_US.UTF-8
 export WINEPREFIX="/mnt/HDD/WinePrefixes/alex/"
+export VIMINIT="source /home/alex/.config/vim/vimrc"
 
 clear;
