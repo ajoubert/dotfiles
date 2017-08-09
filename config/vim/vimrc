@@ -9,6 +9,4 @@ filetype plugin indent on
 map <C-n> :NERDTreeToggle<CR>
 map <F10> :tabp<CR>
 map <F11> :tabn<CR>
-" let g:ycm_global_ycm_extra_conf = "/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-" let g:ycm_server_python_interpreter = "/usr/bin/python2"
 set runtimepath^=/home/alex/.config/vim/
