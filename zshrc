@@ -4,8 +4,6 @@ alias sc="systemctl"
 alias ssc="sudo systemctl"
 alias apvlv="apvlv -c /home/alex/.config/apvlv/apvlvrc"
 
-source ~/.zsrc
-
 alias sautoremove="sudo pacman -Rnscu  $(pacman -Qdtq)"
 
 alias v+="amixer set Master playback 5%+"
