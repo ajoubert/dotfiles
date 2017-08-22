@@ -5,7 +5,10 @@ primary = #ffb52a
 secondary = #e60053
 
 [bar/main]
+#When at home
 monitor = HDMI-1-1
+#On the go
+#monitor = eDP-1-1
 top = true
 dock = true 
 width = 100%
@@ -30,7 +33,7 @@ font-1 = FontAwesome:size=8:weight=heavy
 #modules-center = bspwm
 modules-left = bspwm
 modules-center = xtitle
-modules-right = wifi clock
+modules-right = mail eth wifi clock
 wm-restack= bspwm
 
 
@@ -60,10 +63,39 @@ wm-restack= bspwm
 #modules-left = mpd
 modules-left = bspwm
 modules-center = mpd
+#modules-right = 
 #modules-center = bspwm
 tray-position = right
-tray-padding = 2
+tray-padding = 2 
+tray-margin = 20
 tray-detached = true
+
+[bar/third]
+monitor = eDP-1-1
+bottom = true 
+width = 100% 
+height = 20 
+border-top-size= 4
+border-bottom-size= 2
+border-top-color= ${colors.background}
+border-bottom-color= ${colors.background}
+background = ${colors.background} 
+foreground = ${colors.foreground} 
+spacing = 1
+lineheight = 1
+separator = | 
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+font-0 = sans:size=9
+font-1 = FontAwesome:size=8:weight=heavy
+
+wm-restack= bspwm
+modules-left = 
+modules-center = 
+modules-right = mail
+
 
 [module/xwindow]
 type = internal/xwindow
@@ -193,7 +225,8 @@ interface = wlp5s0
 interval = 3
 ping_interval = 3
 label-connected =  %essid% [%local_ip%]
-label-disconnected =  not connected
+;label-disconnected =  not connected
+label-disconnected =
 
 
 
@@ -202,12 +235,14 @@ type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+;format-connected-underline = #55aa55
+;format-connected-prefix = " "
+;format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected =  %local_ip%
 
-format-disconnected =
+
+;label-disconnected =  not connected
+label-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
@@ -311,6 +346,14 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/mail]
+type = custom/script
+interval = 10
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+exec = ~/.local/scripts/mailCount
 
 [settings]
 screenchange-reload = true
