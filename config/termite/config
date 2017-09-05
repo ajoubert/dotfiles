@@ -2,7 +2,7 @@
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
-mouse_autohide = false
+mouse_autohide = true 
 allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
@@ -28,6 +28,7 @@ cursor_shape = block
 
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
+padding = 4;
 
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
@@ -36,7 +37,8 @@ filter_unmatched_urls = true
 #cursor = #dcdccc
 foreground = #dcdccc
 foreground_bold = #ffffff
-background = #3f3f3f
+#background = #3f3f3f
+background = rgba(63, 63, 63, 0.9)
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)

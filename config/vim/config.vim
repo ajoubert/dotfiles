@@ -1,4 +1,5 @@
 let skip_defaults_vim=1
+let g:ycm_global_ycm_extra_conf = '/home/alex/.config/vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 set viminfo=""
 colorscheme monokain
 syntax on
