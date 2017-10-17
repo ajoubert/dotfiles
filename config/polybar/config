@@ -6,9 +6,9 @@ secondary = #e60053
 
 [bar/main]
 #When at home
-monitor = HDMI-1-1
+monitor = HDMI1
 #On the go
-#monitor = eDP-1-1
+#monitor = eDP1
 top = true
 dock = true 
 width = 100%
@@ -43,7 +43,7 @@ wm-restack= bspwm
 
 
 [bar/secondary]
-monitor = eDP-1-1
+monitor = eDP1
 top = true
 dock = true
 width = 100% 
