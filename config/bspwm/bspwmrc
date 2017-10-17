@@ -12,9 +12,9 @@ bspc config gapless_monocle      true
 bspc config focus_by_distance    true
 bspc config history_aware_focus  true
 
-bspc monitor HDMI-1-1 -d I II III IV V
-bspc monitor eDP-1-1 -d VI VII VIII IX X
-#bspc monitor -d I II III IV V
+bspc monitor HDMI1 -d I II III IV V
+bspc monitor eDP1 -d VI VII VIII IX X
+#bspc monitor eDP1 I II III IV V
 
 
 #bspc rule -a Gimp desktop=^8 state=floating follow=on
@@ -27,11 +27,3 @@ bspc rule -a pinentry state=floating
 bspc rule -a Pinentry state=floating
 bspc rule -a Steam state=tiled
 bspc rule -a firefox desktop=^6
-
-feh --bg-scale ~/Pictures/HDD/Backgrounds/Linux/forest.png --bg-scale ~/Pictures/HDD/Backgrounds/Linux/heart.png
-
-redshift &
-compton &
-dunst &
-polybar main &
-polybar secondary &

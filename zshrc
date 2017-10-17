@@ -5,6 +5,11 @@ alias ssc="sudo systemctl"
 alias apvlv="apvlv -c /home/alex/.config/apvlv/apvlvrc"
 
 alias sautoremove="sudo pacman -Rnscu  $(pacman -Qdtq)"
+alias backup_home="rsync -a --delete /home /mnt/usb/HOME_BACKUP"
+alias backup_pictures="rsync -a --delete /mnt/hddshared/pictures /mnt/usb/PICTURES_BACKUP"
+alias backup_documents="rsync -a --delete /mnt/hddshared/documents /mnt/usb/DOCUMENTS_BACKUP"
+alias backup_videos="rsync -a --delete /mnt/hddshared/videos /mnt/usb/VIDEOS_BACKUP"
+alias backup_all="backup_home; backup_pictures; backup_documents; backup_videos;"
 
 alias v+="amixer set Master playback 5%+"
 alias v-="amixer set Master playback 5%-"
@@ -46,7 +51,6 @@ cpstat () {
 }
 
 export PATH="$PATH:$HOME/bin"
-export PATH=/usr/lib/ccache/bin/:$PATH
 export LANG=en_US.UTF-8
 export WINEPREFIX="/mnt/HDD/WinePrefixes/alex/"
 export VIMINIT="source /home/alex/.config/vim/vimrc"
