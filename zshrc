@@ -55,4 +55,13 @@ export LANG=en_US.UTF-8
 export WINEPREFIX="/mnt/HDD/WinePrefixes/alex/"
 export VIMINIT="source /home/alex/.config/vim/vimrc"
 
+## GEM stuff
+export PATH="$PATH:/home/alex/.gem/ruby/2.4.0/bin"
+
+## NODE NPM stuff
+export PATH="$PATH:/opt/node_modules/bin"
+export MANPATH="$MANPATH:/opt/nodes_modules/share/man"
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 clear;
