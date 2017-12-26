@@ -11,19 +11,18 @@ super + shift + Return
 
 # terminal emulator with tmux
 super + Return
-    termite -e '/bin/zsh -c "tmux new-session -A -s main"' 
+    termite -e '/bin/zsh -c "tmux attach"' 
 
 
 # program launcher
 super + space
-    rofi -show run -fullscreen -monitor -1 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 280 separator-style none -opacity 80 -a terminal urxvtc
-#   rofi -show run -terminal urxvtc
+    rofi_drun
 
 super + x
-    rofi -show ssh -fullscreen -monitor -1 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 280 separator-style none -opacity 80 -a terminal urxvtc
+    rofi_ssh
 
 super + z
-    rofi -show window -fullscreen -monitor -1 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 280 separator-style none -opacity 80 -a terminal urxvtc
+    rofi_window
 
 super + p
     rofi-pass
