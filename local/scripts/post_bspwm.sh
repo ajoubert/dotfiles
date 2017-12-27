@@ -2,8 +2,8 @@
 ## Scripts launching all secondary programs when bspwm is done loading
 update-backgrounds;
 mopidy &
-polybar main &
-polybar secondary &
+polybar -r main &
+polybar -r secondary &
 redshift &
 compton &
 dunst &
