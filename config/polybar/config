@@ -6,9 +6,9 @@ secondary = #e60053
 
 [bar/main]
 #When at home
-monitor = HDMI1
+#monitor = HDMI-1-1
 #On the go
-#monitor = eDP1
+monitor = eDP-1-1
 top = true
 dock = true 
 width = 100%
@@ -38,12 +38,12 @@ font-1 = FontAwesome:size=8:weight=heavy
 #modules-center = bspwm
 modules-left = bspwm
 modules-center = xtitle
-modules-right = mail eth wifi clock
+modules-right = updates mail eth wifi clock battery
 wm-restack= bspwm
 
 
 [bar/secondary]
-monitor = eDP1
+monitor = eDP-1-1
 top = true
 dock = true
 width = 100% 
@@ -260,8 +260,8 @@ format = <label-state> <label-mode>
 label-active = 
 label-active-padding = 1
 label-active-foreground = #FFF
-#label-occupied = 
-label-occupied  = 
+label-occupied = 
+#label-empty = 
 label-occupied-padding = 1
 label-empty = 
 label-empty-padding = 1
@@ -275,7 +275,8 @@ adapter = ADP1
 poll_interval = 3
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-label-full =   %percentage%%
+#label-full =   %percentage%%
+label-full =
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -365,7 +366,7 @@ exec = ~/.local/scripts/mailCount
 type = custom/script
 interval = 10
 format = <label>
-format-prefix = " "
+format-prefix = " "
 exec = countupdates
 
 [settings]

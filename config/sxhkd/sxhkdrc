@@ -170,4 +170,5 @@ super + {Left,Down,Up,Right}
 
 #lock screens
 ctrl + alt + l
-   lockscreen
+    betterlockscreen -l dimblur
+   #lockscreen
