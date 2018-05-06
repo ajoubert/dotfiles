@@ -3,7 +3,8 @@
 update-backgrounds;
 mopidy &
 polybar -r main &
-polybar -r secondary &
+#polybar -r secondary &
 redshift &
 compton &
+#/usr/lib/xfce4/notifyd/xfce4-notifyd &
 dunst &
