@@ -1,7 +1,7 @@
 #!/bin/sh
 ## Scripts launching all secondary programs when bspwm is done loading
-update-backgrounds;
-mopidy &
+updateBackgrounds.sh;
+#mopidy &
 polybar -r main &
 #polybar -r secondary &
 redshift &
