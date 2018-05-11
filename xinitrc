@@ -48,13 +48,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-
-{
-sleep 0.2; post-bspwm
-} &
-#xrandr --setprovideroutputsource modesetting NVIDIA-0 --output HDMI-1-1 --mode 1920x1080 --primary --output eDP-1-1 --auto --left-of HDMI-1-1
-#xrandr --setprovideroutputsource modesetting NVIDIA-0 --output HDMI-1-1 --mode 1920x1080 --primary
-xrandr --setprovideroutputsource modesetting NVIDIA-0 --output eDP-1-1 --auto --primary
+# change default cursor from cross to left pointer
 xsetroot -cursor_name left_ptr
-sxhkd &
+
 exec bspwm;

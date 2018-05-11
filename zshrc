@@ -51,6 +51,7 @@ cpstat () {
 }
 
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.local/scripts"
 export LANG=en_US.UTF-8
 export WINEPREFIX="/mnt/HDD/WinePrefixes/alex/"
 export VIMINIT="source /home/alex/.config/vim/vimrc"
