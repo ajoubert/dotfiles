@@ -2,6 +2,8 @@
 
 sxhkd &
 
+xsetroot -cursor_name left_ptr &
+
 bspc config border_width         2
 bspc config window_gap          12
 bspc config top_padding         26 
@@ -26,4 +28,5 @@ bspc rule -a Pinentry state=floating
 bspc rule -a Steam state=tiled
 bspc rule -a firefox desktop=^6
 
+# Note : when loading bspwm from a display manager, make sure all scripts are available for other users
 post_bspwm &
