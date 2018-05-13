@@ -16,7 +16,7 @@ super + Return
 
 # program launcher
 super + space
-    rofi_drun
+    LANG=en_US.utf8 rofi_drun
 
 super + x
     rofi_ssh
