@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+dir="$(dirname "$0")"
+#cp "$dir/userChrome.css" "$HOME/.mozilla/firefox/${1:-niugqa34}.default/chrome/"
+#cp "$dir/userChrome.xml" "$HOME/.mozilla/firefox/${1:-niugqa34}.default/chrome/"
+#cp "$dir/userChrome.js" "$HOME/.mozilla/firefox/${1:-niugqa34}.default/chrome/"
+cp "$dir/userChrome.css" "$HOME/.mozilla/firefox/${1:-wn782f63}.default/chrome/"
+cp "$dir/userChrome.xml" "$HOME/.mozilla/firefox/${1:-wn782f63}.default/chrome/"
+cp "$dir/userChrome.js" "$HOME/.mozilla/firefox/${1:-wn782f63}.default/chrome/"
