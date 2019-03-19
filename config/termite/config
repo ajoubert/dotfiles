@@ -4,11 +4,11 @@ scroll_on_keystroke = true
 audible_bell = false
 mouse_autohide = true 
 allow_bold = true
-dynamic_title = true
+dynamic_title = false 
 urgent_on_bell = true
 clickable_url = true
 #font = Monospace 9
-font = fantasque sans mono 11
+font = fantasque sans mono 12
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
@@ -28,7 +28,7 @@ cursor_shape = block
 
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
-padding = 4;
+padding = 0;
 
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
