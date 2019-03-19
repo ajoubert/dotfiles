@@ -1,0 +1,9 @@
+alias c='cd; clear;'
+alias ll='ls -lArth;';
+alias zshconfig="vim $HOME/.zshrc"
+alias ohmyzsh="vim $HOME/.oh-my-zsh"
+alias ssc="sudo systemctl"
+
+## Quick directory change
+alias cddotfiles="cd $HOME/.dotfiles/; clear;"
+alias cdtomcat="cd /usr/share/tomcat9/"
