@@ -4,6 +4,13 @@ alias zshconfig="vim $HOME/.zshrc"
 alias ohmyzsh="vim $HOME/.oh-my-zsh"
 alias ssc="sudo systemctl"
 
+function open {
+  dolphin $1 >/dev/null &>/dev/null &;
+}
+
 ## Quick directory change
 alias cddotfiles="cd $HOME/.dotfiles/; clear;"
 alias cdtomcat="cd /usr/share/tomcat9/"
+alias cdunrealproj="cd $HOME/documents/unreal_engine/unreal_projects;"
+alias cdunreal="cd $HOME/documents/unreal_engine/;"
+alias cdunrealengine="cd $HOME/documents/unreal_engine/UnrealEngine;"
