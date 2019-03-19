@@ -1,12 +1,10 @@
-source /home/alex/.config/vim/autoload/plug.vim
+source ~/.config/vim/autoload/plug.vim
 call plug#begin('~/.config/vim/plugged')
 
 " Make sure you use single quotes
 
 " Global plugins
 Plug 'kien/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
