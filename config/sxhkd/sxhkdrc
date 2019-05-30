@@ -6,23 +6,18 @@
 #
 
 # terminal emulator
-super + shift + Return
-    termite	
-
-# terminal emulator with tmux
 super + Return
-    termite -e '/bin/zsh -c "tmux attach"' 
-
+    urxvt
 
 # program launcher
 super + space
-    LANG=en_US.utf8 rofi_drun
+    ~/.config/sxhkd/rofi_drun
 
 super + x
-    rofi_ssh
+    ~/.config/sxhkd/rofi_ssh
 
 super + z
-    rofi_window
+    ~/.config/sxhkd/rofi_window
 
 super + p
     rofi-pass
@@ -44,6 +39,10 @@ super + ctrl + Down
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+super + shift + space
+    id=$(cat /tmp/scratchid);\
+    bspc node $id --flag hidden;bspc node -f $id
 
 #
 # bspwm hotkeys
