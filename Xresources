@@ -1,0 +1,115 @@
+!!                 !!
+!! --- Colours --- !!
+!!                 !!
+
+! special
+!URxvt.foreground:   #eee4e5
+!URxvt.background:   #202020
+!URxvt.cursorColor:  #eee4e5
+
+! black
+!URxvt.color0:       #202020
+!URxvt.color8:       #42423d
+
+! red
+!URxvt.color1:       #e47ca3
+!URxvt.color9:       #ff8eb4
+
+! green
+!URxvt.color2:       #75a393
+!URxvt.color10:      #8cc2aa
+
+! yellow
+!URxvt.color3:       #e1a7b5
+!URxvt.color11:      #ffbec9
+
+! blue
+!URxvt.color4:       #acc6bc
+!URxvt.color12:      #c8e5d5
+
+! magenta
+!URxvt.color5:       #ae8497
+!URxvt.color13:      #cc9cad
+
+! cyan
+!URxvt.color6:       #9dafac
+!URxvt.color14:      #bacec6
+
+! white
+!URxvt.color7:       #787376
+!URxvt.color15:      #eee4e5
+
+!! -- Experiment -- !!
+! special
+ *.foreground:   #ABB2BF
+ *.background:   #030303
+ *.cursorColor:  #5C6370
+ *.highlightColor:#3A3F4B
+
+! black
+ *.color0:       #0e0e16
+ *.color8:       #1c1c2d
+
+! red
+ *.color1:       #e9546b
+ *.color9:       #dc6a7d
+
+! green
+ *.color2:       #c5c7bf
+ *.color10:      #c5c7bf
+
+! yellow
+ *.color3:       #d4c96c
+ *.color11:      #c7dc97
+
+! blue
+ *.color4:       #8099e2
+ *.color12:      #99bad2
+
+! magenta
+ *.color5:       #aa6ebc
+ *.color13:      #c79bd6
+
+! cyan
+ *.color6:       #80e9d4
+ *.color14:      #97f3e0
+
+! white
+ *.color7:       #8a9aa9
+ *.color15:      #c4c4c4
+
+
+!!              !!
+!! --- Font --- !!
+!!              !!
+
+URxvt.font: xft: fantasque sans mono :size=12
+
+!!            !!
+!! --- UI --- !!
+!!            !!
+
+URxvt.scrollBar: false
+URxvt.internalBorder: 0
+URxvt.lineSpace:    0
+URxvt.letterSpace: 0
+Xft.autohint:           0
+Xft.lcdfilter:          lcddefault
+Xft.hinting:            1
+Xft.hintstyle:          hintslight
+Xft.antialias:          1
+Xft.rgba: rgb
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 0
+
+!!                 !!
+!! --- Plugins --- !!
+!!                 !!
+!
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+
+! Copy/Paste configuration
+URxvt.iso14755:             false
+URxvt.clipboard.autocopy:   true
+URxvt.keysym.C-v:           perl:clipboard:paste
+URxvt.keysym.C-M-v:         perl:clipboard:paste_escaped
