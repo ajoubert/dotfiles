@@ -6,6 +6,8 @@ export SPACESHIP_VI_MODE_SHOW=false
 #export TERM=screen-256color-bce
 
 export DEFAULT_USER=sloth
+export WALLPAPER_FOLDER="$HOME/.wallpapers/static/"
+export ANIMATED_WALLPAPER_FOLDER="$HOME/.wallpapers/animated/"
 
 # User configuration
 
@@ -37,3 +39,7 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # java stuff
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+
+#vscode stuff
+export MSBuildSDKsPath=/opt/dotnet/sdk/2.2.102/Sdks
+export PATH=$MSBuildSDKsPath:$PATH
