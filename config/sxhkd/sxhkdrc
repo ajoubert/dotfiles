@@ -7,7 +7,7 @@
 
 # terminal emulator
 super + Return
-    urxvt
+    termite
 
 # program launcher
 super + space
@@ -43,6 +43,9 @@ super + Escape
 super + shift + space
     id=$(cat /tmp/scratchid);\
     bspc node $id --flag hidden;bspc node -f $id
+
+super + alt + space
+    bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
 
 #
 # bspwm hotkeys
