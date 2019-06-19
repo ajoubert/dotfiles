@@ -29,12 +29,12 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad sticky=on state=floating hidden=on
 
-## TODO: finish to setup scratchpad (see wiki)
-st -c scratchpad -e ~/bin/scratch &
-
 ## Add backgrounds
 sh ~/.local/scripts/randomBgAndVideo.sh &
 
 
 ## Add polybar
 sh ~/.config/polybar/launch.sh
+
+## Starts compton
+compton &
