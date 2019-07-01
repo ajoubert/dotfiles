@@ -1,5 +1,5 @@
 #!/bin/zsh
-DIRECTORY="~/.wallpapers"
+DIRECTORY="$HOME/.wallpapers"
 
 if [ -d "$DIRECTORY" ]; then
     feh --recursive --no-fehbg --randomize --bg-fill ~/.wallpapers;
