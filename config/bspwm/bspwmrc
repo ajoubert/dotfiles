@@ -38,3 +38,6 @@ sh ~/.config/polybar/launch.sh
 
 ## Starts compton
 compton &
+
+## Starts dunst
+dunst &
