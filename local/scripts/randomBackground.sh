@@ -1,8 +1,8 @@
 #!/bin/zsh
-DIRECTORY="$HOME/.wallpapers"
+DIRECTORY="$HOME/.wallpapers/static"
 
 if [ -d "$DIRECTORY" ]; then
-    feh --recursive --no-fehbg --randomize --bg-fill ~/.wallpapers;
+    feh --recursive --no-fehbg --randomize --bg-fill $DIRECTORY;
 else
     mkdir /tmp/wallpapers;
     file1=$(mktemp /tmp/wallpapers/wallpaper-XXX.jpg)
