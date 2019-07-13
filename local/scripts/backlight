@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# If we don't have a file, start at 1.0
+if [ ! -f "/tmp/backlight.val" ] ; then
+    BRIGHTNESS=1.0
+else
+    BRIGHTNESS=`cat /tmp/backlight.val`
+fi
+
+# If we have a running instance, let's get ready to kill it
+if [ -f "/tmp/backlight.pid" ] ; then
+    TOKILL=`cat /tmp/backlight.pid`
+fi
+
+while getopts b: option
+do
+case "${option}"
+in
+b) BRIGHTNESS=${OPTARG};;
+i) BRIGHTNESS=$(( BRIGHTNESS + 0.1 ));;
+d) BRIGHTNESS=$(( BRIGHTNESS - 0.1 ));;
+esac
+done
+
+# Let's store the brightness for later use
+echo "${BRIGHTNESS}" > /tmp/backlight.val
+
+# Let's run our instance of redshift
+redshift -b ${BRIGHTNESS} > /dev/null &> /dev/null &
+REDSHIFT_PID=$!
+
+# Now storing the new pid
+echo "${REDSHIFT_PID}" > /tmp/backlight.pid
+
+# We need to wait at least a little bit, otherwise blinking...
+sleep 0.1s
+
+if [ -z "$TOKILL" ];
+then echo "No running instance of redshift detected" 
+else
+kill "$TOKILL"
+fi 
