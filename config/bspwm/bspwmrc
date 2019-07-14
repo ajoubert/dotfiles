@@ -9,7 +9,7 @@ if [[ $(hostname) == 'me110n' ]]; then
     bspc monitor DVI-D-0 -d I II III IV V
     bspc monitor HDMI-0 -d VI VII VIII IX X
 else
-    bspc monitor -d I II III IV V VI VII VIII IX X
+    bspc monitor -d "Web" "Code" "Term" "Dev" "Random"
 fi
 
 bspc config border_width         2
@@ -20,14 +20,23 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
+bspc monitor --reset-desktops 1
+bspc monitor --add-desktops 2
+bspc monitor --remove-desktops 2
+
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Steam state=floating follow=on
 bspc rule -a Unity state=floating
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a scratchpad sticky=on state=floating hidden=on
+#bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
+#bspc rule -a scratchpad sticky=on state=floating hidden=on
+## Rules are set in a different script, used to auto-create desktops
+bspc config external_rules_command "$(which auto_create_desktops_rule)"
 
 ## Add backgrounds
 sh ~/.local/scripts/randomBgAndVideo.sh &
