@@ -1,0 +1,25 @@
+#!/bin/bash
+# note: depends on jq
+
+wid=$1
+class=$2
+instance=$3
+
+# window classes to desktop names
+declare -A matches=(
+    ["Termite"]="Term"
+)
+
+echo -e "$class" > /tmp/wid
+
+# if we have a match, create a desktop on current monitor if not existing
+if [ ${matches[$class]+exists} ]; then
+    echo "matches" > /tmp/wid
+    desktop=${matches[$class]}
+    if ! bspc query -T -m | jq -er ".desktops[] | select(.name==\"$desktop\").name" >/dev/null; then
+        bspc monitor -a $desktop
+    fi
+    #spawn on the desktop of that name on focused monitor
+    echo monitor=focused
+    echo desktop=$desktop
+fi

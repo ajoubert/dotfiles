@@ -22,12 +22,26 @@ super + z
 super + p
     rofi-pass
 
+super + {_, shift + } w
+    bspc node -{c,k};\
+    sleep 0.1;\
+    ~/.local/scripts/remove_desktops.sh
+
 # volume control
 super + minus 
     v-
 
 super + plus 
     v+
+
+# desktop control
+super + d
+    bspc monitor -a $(($(bspc query -D | wc -l)+1))
+
+# Create new desktop and moves to it
+super + n
+    bspc monitor -a $(($(bspc query -D | wc -l)+1));\
+    bspc node -d $(bspc query -D | wc -l) --follow
 
 # brightness control
 super + ctrl + Up
@@ -56,8 +70,10 @@ super + alt + Escape
 	bspc quit
 
 # close and kill
-super + {_,shift + }w
-	bspc node -{c,k}
+super + {_,shift + } w
+    bspc node -{c,k};\
+    sleep 0.1;\
+    ~/.local/scripts/remove_desktops.sh
 
 # alternate between the tiled and monocle layout
 super + m
@@ -115,7 +131,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc $(get_current_monitor_index.sh) {desktop -f,node -d} '^{1-9,10}'
 
 #
 # preselect
