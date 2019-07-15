@@ -24,8 +24,6 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
 bspc monitor --reset-desktops 1
-bspc monitor --add-desktops 2
-bspc monitor --remove-desktops 2
 
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Steam state=floating follow=on
@@ -36,14 +34,15 @@ bspc rule -a Unity state=floating
 #bspc rule -a Screenkey manage=off
 #bspc rule -a scratchpad sticky=on state=floating hidden=on
 ## Rules are set in a different script, used to auto-create desktops
-bspc config external_rules_command "$(which auto_create_desktops_rule)"
+bspc rule -a Termite follow=on
+bspc config external_rules_command ~/.local/scripts/auto_create_desktops_rules
 
 ## Add backgrounds
 sh ~/.local/scripts/randomBgAndVideo.sh &
 
 
 ## Add polybar
-sh ~/.config/polybar/launch.sh
+sh ~/.config/polybar/launch
 
 ## Starts compton
 compton &
