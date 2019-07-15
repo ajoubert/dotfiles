@@ -1,4 +1,4 @@
-if [[ $(bspc query -D -d focused.occupied | wc -l) != 0 && $(bspc query -D -m focused | wc -l) == 1 ]]; then
+if [[ $(bspc query -N -d focused.occupied | wc -l) != 0 || $(bspc query -D -m focused | wc -l) == 1 ]]; then
 ## Windows still there, or last desktop. Let's skip
 exit 1
 fi
