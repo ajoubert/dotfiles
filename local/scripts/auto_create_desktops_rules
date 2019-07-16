@@ -9,6 +9,9 @@ instance=$3
 declare -A matches=(
     ["Termite"]="Term"
     ["Thunderbird"]="Mail"
+    ["Firefox"]="Web"
+    ["Code"]="Code"
+    ["VirtualBox"]="Vms"
 )
 
 echo -e "$class" > /tmp/wid
