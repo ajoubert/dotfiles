@@ -1,0 +1,12 @@
+;==== START - theme light ====
+[colors]
+background =  ${solarized.base2}
+background-alt = ${solarized.base3}
+foreground = ${solarized.base0} 
+foreground-alt = ${solarized.base00} 
+primary = ${solarized.violet}
+secondary = ${solarized.orange}
+alert = ${solarized.red}
+
+; vim:ft=dosini
+;==== END - theme light ====

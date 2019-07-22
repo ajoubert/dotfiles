@@ -34,7 +34,7 @@ sh ~/.local/scripts/randomBgAndVideo.sh &
 
 
 ## Add polybar
-sh ~/.config/polybar/launch.sh
+sh ~/.config/polybar/bin/launch.sh
 
 ## Starts compton
 compton &

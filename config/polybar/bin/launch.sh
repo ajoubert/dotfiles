@@ -1,0 +1,1 @@
+/home/sloth/.dotfiles/config/polybar/launch.sh
