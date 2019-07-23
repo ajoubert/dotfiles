@@ -20,9 +20,7 @@ Plug 'vim-scripts/utl.vim'
 Plug 'tpope/vim-speeddating'
 
 " Context-dependent dev stuff
-Plug 'Valloric/YouCompleteMe', { 'for': ['cpp', 'c', 'go', 'sh', 'javascript', 'python', 'rust', 'java', 'js', 'typescript', 'ts', 'vue'], 'do': 'python3 install.py --all --clang-completer' }
-let g:ycm_autoclose_preview_window_after_completion = 1
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rdnetto/YCM-Generator', {  'for': ['cpp', 'c', 'go'], 'branch': 'stable'}
 Plug 'gilligan/vim-lldb', {'for': ['cpp', 'c']}
 
