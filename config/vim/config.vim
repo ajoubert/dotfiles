@@ -8,6 +8,6 @@ set viminfo=""
 colorscheme solarized
 set background=dark
 syntax on
-set tabstop=4 number relativenumber softtabstop=0 expandtab shiftwidth=4 smarttab wildmenu
+set tabstop=2 number relativenumber softtabstop=0 expandtab shiftwidth=2 smarttab wildmenu
 filetype plugin indent on
 set runtimepath^=~/.config/vim/
