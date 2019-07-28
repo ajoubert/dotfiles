@@ -5,8 +5,9 @@ autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
 let g:tmuxline_powerline_separators = 0
 let g:airline_theme = 'minimalist'
 set viminfo=""
-colorscheme atom 
+colorscheme solarized
+set background=dark
 syntax on
-set tabstop=4 number softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=2 number relativenumber softtabstop=0 expandtab shiftwidth=2 smarttab wildmenu
 filetype plugin indent on
 set runtimepath^=~/.config/vim/

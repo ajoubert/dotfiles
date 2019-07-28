@@ -2,7 +2,7 @@
 
 status=$(playerctl status 2>/dev/null)
 if [ -z "$status" ]; then
-    echo "OFF"
+    echo ""
 elif [ "$status" = "Playing" ]
 then
     echo ""

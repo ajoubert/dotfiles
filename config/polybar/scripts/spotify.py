@@ -25,6 +25,6 @@ try:
     output = artist + ': ' + song
     print(output)
 except dbus.DBusException as e:
-    print("Spotify")
+    print("")
 except Exception as e:
     logging.error(e)
