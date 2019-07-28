@@ -9,9 +9,10 @@ instance=$3
 declare -A matches=(
     ["Termite"]="Term"
     ["Thunderbird"]="Mail"
-    ["Firefox"]="Web"
+    ["Firefox", "firefoxdeveloperedition", "firefox", "Navigator"]="Web"
     ["Code"]="Code"
     ["VirtualBox"]="Vms"
+    ["Spotify"]="Media"
 )
 
 echo -e "$class" > /tmp/wid
@@ -24,6 +25,5 @@ if [ ${matches[$class]+exists} ]; then
         bspc monitor -a $desktop
     fi
     #spawn on the desktop of that name on focused monitor
-    echo monitor=focused
-    echo desktop=$desktop
+    echo monitor=focused desktop=$desktop
 fi

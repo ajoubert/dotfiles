@@ -36,12 +36,12 @@ super + plus
 
 # desktop control
 super + d
-    bspc monitor -a $(($(bspc query -D | wc -l)+1))
+    bspc monitor -a $(($(bspc query -D -m | wc -l)+1))
 
 # Create new desktop and moves to it
 super + n
-    bspc monitor -a $(($(bspc query -D | wc -l)+1));\
-    bspc node -d $(bspc query -D | wc -l) --follow
+    bspc monitor -a $(($(bspc query -D -m | wc -l)+1));\
+    bspc node -d $(bspc query -D -m | wc -l) --follow
 
 # brightness control
 super + ctrl + Up
@@ -139,7 +139,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc $(get_current_monitor_index.sh) {desktop -f,node -d} '^{1-9,10}'
+	bspc $(get_current_monitor_index.sh) {desktop -f,node -d} 'focused:^{1-9,10}'
 
 #
 # preselect
