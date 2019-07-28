@@ -1,5 +1,5 @@
 ;======== START - config.general ====
-[bar/first]
+[bar/primary]
 monitor = ${env:MONITOR:HDMI-0}
 
 width = 100%
@@ -9,9 +9,6 @@ offset-y = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-underline-size = 2
-underline-color = ${colors.grey1}
 
 spacing = 1
 padding-left = 0
@@ -65,8 +62,6 @@ cursor-scroll = ns-resize
 modules-left = bspwm 
 modules-center = playpause spotify
 modules-right = volume date 
-
-tray-position = right
 
 ####################### bspwm #######################
 [module/bspwm]
