@@ -13,9 +13,9 @@ DISPLAY1="HDMI-0"
 DISPLAYS="$(xrandr -q | grep ' connected' | grep -v ' $DISPLAY1' | cut -d ' ' -f1)"
 for display in $DISPLAYS; do
     if [[ "$display" = "$DISPLAY1" ]];
-    then [[ ! -z "$display" ]] && MONITOR_PRIMARY="$display" polybar primary &
+    then [[ ! -z "$display" ]] && MONITOR_PRIMARY="$display" polybar primary & echo -e "Launching primary on ${display}"
     else
-    [[ ! -z "$display" ]] && MONITOR_SECONDARY="$display" polybar secondary &
+    [[ ! -z "$display" ]] && MONITOR_SECONDARY="$display" polybar secondary & echo -e "Launching secondary on ${display}"
     fi
 done;
 
