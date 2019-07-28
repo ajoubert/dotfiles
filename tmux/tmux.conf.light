@@ -1,0 +1,4 @@
+#-----------
+# Theme
+#-----------
+set -g @themepack "solarized-light"

@@ -1,0 +1,12 @@
+;======== START - config.theme.dark =======
+[colors]
+background =  ${solarized.base02}
+background-alt = ${solarized.base03}
+foreground = ${solarized.base0} 
+foreground-alt = ${solarized.base00} 
+primary = ${solarized.violet}
+secondary = ${solarized.orange}
+alert = ${solarized.red}
+
+; vim:ft=dosini
+; ======= END - config.theme.dark ========

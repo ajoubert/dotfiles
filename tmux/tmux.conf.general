@@ -20,6 +20,7 @@ set-window-option -g mode-keys vi
 #------------
 #set -g pane-border-fg black
 #set -g pane-active-border-fg blue
+set -g @colors-solarized 'dark'
 
 #------------
 # tabs
@@ -47,14 +48,10 @@ set -ga terminal-overrides ',xterm*:smcup@:rmcup@'
 set -ga terminal-override ',rxvt-uni*:XT:Ms=\E]52;%p1%s;%p2%s\007'
 #set -g status-right ''
 
-#--------
-# Theme
-#--------
-set -g @themepack 'powerline/block/blue'
-
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'jimeh/tmux-themepack'
 
 # Other examples:

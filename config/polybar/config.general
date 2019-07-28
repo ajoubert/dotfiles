@@ -1,38 +1,5 @@
-####################### COLORS #######################
-[colors]
-# black = #88000000
-# black = #222
-# white = #ddd
-
-# dark = #444444
-# orange = #ffa07a
-# yellow = #fec418
-# red = #d0253d
-# dark.red = #49262B
-# green = #38fc48
-# pink = #fa00ab
-# blue = #0de0fc
-# purple = #c476f1
-
-black = #222
-white = #ffffff
-grey1 = #dddddd
-grey2 = #888888
-dark = #333333
-
-red = #d0253d
-orange  = #ff8700
-yellow = #fec418
-light.blue = #bbdded
-blue = #0088CC
-dark.blue = #00293F
-purple = #815ba4
-pink = #fa00ab
-green = #38fc48
-
-
-####################### MAIN BAR #######################
-[bar/primary]
+;======== START - config.general ====
+[bar/first]
 monitor = ${env:MONITOR:HDMI-0}
 
 width = 100%
@@ -40,8 +7,8 @@ height = 27
 offset-x = 0
 offset-y = 0
 
-background = ${colors.black}
-foreground = ${colors.grey1}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 underline-size = 2
 underline-color = ${colors.grey1}
@@ -58,7 +25,7 @@ font-2 = siji:pixelsize=10;2
 
 modules-left = bspwm 
 modules-center = playpause spotify
-modules-right = volume updates date 
+modules-right = volume date 
 
 tray-position = right
 
@@ -71,25 +38,33 @@ height = 27
 offset-x = 0
 offset-y = 0
 
-background = ${colors.black}
-foreground = ${colors.grey1}
-
-underline-size = 2
-underline-color = ${colors.grey1}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 spacing = 1
 padding-left = 0
-padding-right = 0
-module-margin-left = 0 
-module-margin-right = 0
+padding-right = 2
 
-font-0 = NotoSans Nerd Font:pixelsize=11;2
-font-1 = FontAwesome:size=10;2
-font-2 = siji:pixelsize=10;2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = ${fonts.primary} 
+font-1 = ${fonts.secondary} 
+font-2 = ${fonts.primary} 
+
+wm-restack = bspwm
+
+override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 modules-left = bspwm 
 modules-center = playpause spotify
-modules-right = volume updates date 
+modules-right = volume date 
 
 tray-position = right
 
@@ -115,7 +90,7 @@ label-empty = %icon%
 label-empty-padding = 2
 
 ## Indicates empty desktops to be closed (shouldn't happen often, unless intentional)
-label-empty-underline = ${colors.grey2}
+label-empty-underline = ${colors.secondary}
 
 ws-icon-0 = "Web;"
 ws-icon-1 = "Code;"
@@ -137,12 +112,12 @@ pin-workspaces = true
 label-mode = %mode%
 label-mode-padding = 2
 
-label-focused-background = ${colors.dark.blue}
-label-focused-foreground = ${colors.white}
-label-focused-underline= ${colors.blue}
-label-unfocused-foreground = ${colors.grey1}
-label-visible-foreground = ${colors.orange}
-label-urgent-foreground = ${colors.yellow}
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.primary}
+label-focused-underline= ${colors.primary}
+label-unfocused-foreground = ${colors.foreground-alt}
+label-visible-foreground = ${colors.primary}
+label-urgent-foreground = ${colors.alert}
 
 ####################### DATE #######################
 [module/date]
@@ -158,15 +133,10 @@ date = %a %b %d,
 ; Optional time format
 time = %H:%M
 
-; if `date-alt` or `time-alt` is defined, clicking
-; the module will toggle between formats
-# date-alt = %A, %d %B %Y
-# time-alt = %H:%M:%S
-
 label = %date% %time%
 format =  <label>   
 # format-background = #88000000
-format-foreground = ${colors.yellow}
+format-foreground = ${colors.primary}
 format-padding = 2
 
 
@@ -190,7 +160,7 @@ ramp-headphones-0 = 
 ####################### UPDATES #######################
 [module/updates]
 type = custom/script
-exec = ~/.config/polybar/updates.sh
+exec = ~/.config/polybar/scripts/updates.sh
 interval = 600
 format-prefix = " "
 click-right = pamac-updater
@@ -216,19 +186,19 @@ type = custom/script
 interval = 5
 format-prefix = "   "
 format = "<label>"
-exec = $HOME/.config/polybar/spotify.py
-format-foreground = ${colors.green}
+exec = $HOME/.config/polybar/scripts/spotify.py
+format-foreground = ${colors.foreground}
 # label =  %output:0:30:%
 click-left = playerctl play-pause
 
 [module/playpause]
 type = custom/script
-exec = $HOME/.config/polybar/spot.sh
+exec = $HOME/.config/polybar/scripts/spot.sh
 format-padding = 1
 interval = 2
 format = <label>
 click-left = playerctl play-pause
-format-foreground = ${colors.green}
+format-foreground = ${colors.foreground}
 
 ####################### SETTINGS #######################
 
@@ -244,3 +214,6 @@ screenchange-reload = true
 ;compositing-foreground = source
 ;compositing-border = over
 ;format-margin = 0
+;
+; vim:ft=dosini
+; ===== END - config.general ====

@@ -61,6 +61,14 @@ super + shift + space
 super + alt + space
     bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
 
+
+# Theme controls
+super + shift + l
+    ~/.local/scripts/switchtheme.sh light
+
+super + shift + d
+    ~/.local/scripts/switchtheme.sh dark
+
 #
 # bspwm hotkeys
 #

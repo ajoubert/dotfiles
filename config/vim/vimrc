@@ -1,3 +1,4 @@
 source ~/.config/vim/plugged.vim
 source ~/.config/vim/config.vim
+source ~/.config/vim/plugin-calendar.config.vim
 source ~/.config/vim/shortcuts.vim
