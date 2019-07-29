@@ -24,6 +24,9 @@ if [ ${matches[$class]+exists} ]; then
     if ! bspc query -T -m | jq -er ".desktops[] | select(.name==\"$desktop\").name" >/dev/null; then
         bspc monitor -a $desktop
     fi
-    #spawn on the desktop of that name on focused monitor
-    echo monitor=focused desktop=$desktop
+    # For some reason, if multiple desktops with the same name exist on different monitors,
+    # even when using focused:name, the desktop isn't chosen correctly. Only works when using the index of the chosen desktop...
+    # hence, calculating the index of the desired monitor
+    desktopIndex=$(bspc query -T -m | jq ".desktops | map(.name) | index(\"$desktop\")+1");
+    echo -e "desktop=focused:^$desktopIndex"
 fi
