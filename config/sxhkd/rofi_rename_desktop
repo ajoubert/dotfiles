@@ -1,0 +1,23 @@
+#!/bin/sh
+options=(
+  "Term"
+  "Web"
+  "Steam"
+)
+
+firstelement=("$options")
+unset 'options[0]'
+message="$firstelement"
+for i in "${options[@]}"
+do
+  message="$message\n$i";
+done
+choice=$(echo -e "$message" | rofi -dmenu \
+  -p "deskop name" \
+  -monitor -1 \
+  -location 0 \
+  -lines 10 \
+  -i)
+
+~/.local/scripts/rename_desktop.sh $choice
+
