@@ -1,9 +1,5 @@
 #!/bin/sh
-options=(
-  "Term"
-  "Web"
-  "Steam"
-)
+options=$(cat ~/.config/workspaces.json | jq --raw-output 'sort_by(.name) | .[] | .name')
 
 firstelement=("$options")
 unset 'options[0]'
