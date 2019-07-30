@@ -9,17 +9,21 @@ instance=$3
 declare -A matches=(
     ["Termite"]="Term"
     ["Thunderbird"]="Mail"
-    ["Firefox", "firefoxdeveloperedition", "firefox", "Navigator"]="Web"
+    ["firefoxdeveloperedition"]="Web"
+    ["firefox"]="Web"
     ["Code"]="Code"
-    ["VirtualBox"]="Vms"
+    ["VirtualBox"]="VirtualBox"
     ["Spotify"]="Media"
+    ["Steam"]="Steam"
 )
 
-echo -e "$class" > /tmp/wid
+#echo -e "$class" >> /tmp/wid
+#echo -e "$wid" >> /tmp/wid
+#echo -e "$instance" >> /tmp/wid
 
 # if we have a match, create a desktop on current monitor if not existing
 if [ ${matches[$class]+exists} ]; then
-    echo "matches" > /tmp/wid
+    #echo "matches" >> /tmp/wid
     desktop=${matches[$class]}
     if ! bspc query -T -m | jq -er ".desktops[] | select(.name==\"$desktop\").name" >/dev/null; then
         bspc monitor -a $desktop
