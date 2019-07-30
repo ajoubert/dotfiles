@@ -30,13 +30,6 @@ super + {_, shift + } w
     sleep 0.1;\
     ~/.local/scripts/remove_desktops.sh
 
-# volume control
-super + minus 
-    v-
-
-super + plus 
-    v+
-
 # desktop control
 super + d
     bspc monitor -a $(($(bspc query -D -m | wc -l)+1))
@@ -209,3 +202,13 @@ ctrl + alt + l
    #
 super + B
    ~/.local/scripts/randomBackground.sh
+
+XF86AudioRaiseVolume
+  amixer sset Master playback 5%+
+
+XF86AudioLowerVolume
+  amixer sset Master playback 5%-
+
+XF86AudioMute
+  amixer sset Master toggle
+
