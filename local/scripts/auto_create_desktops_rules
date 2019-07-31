@@ -32,5 +32,5 @@ if [ ${matches[$class]+exists} ]; then
     # even when using focused:name, the desktop isn't chosen correctly. Only works when using the index of the chosen desktop...
     # hence, calculating the index of the desired monitor
     desktopIndex=$(bspc query -T -m | jq ".desktops | map(.name) | index(\"$desktop\")+1");
-    echo -e "desktop=focused:^$desktopIndex"
+    echo -e "desktop=focused:^$desktopIndex follow=on"
 fi
