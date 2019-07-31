@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Yeah, really. For some reason echo -e doesn't preserve the newline......
-./generate_workspaces.js > /tmp/workspaces;
+~/.config/polybar/bin/generate_workspaces.js > /tmp/workspaces;
 
 if [ "$1" == 'light' ]
 then
