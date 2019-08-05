@@ -4,9 +4,19 @@ call plug#begin('~/.config/vim/plugged')
 " Make sure you use single quotes
 
 " Global plugins
-Plug 'kien/ctrlp.vim'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+" Modify ag's behaviour to optionally open a side window to show file content
+" and adds a little window indicating where to find the change
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \                 <bang>0)
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 let NERDTreeQuitOnOpen=1
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'flazz/vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
