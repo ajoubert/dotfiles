@@ -38,6 +38,22 @@
   {
     "name":"Media",
     "icon": ""
+  },
+  {
+    "name":"Keepass",
+    "icon": ""
+  },
+  {
+    "name":"Games",
+    "icon": ""
+  },
+  {
+    "name":"Wine",
+    "icon": ""
+  },
+  {
+    "name":"Teamspeak",
+    "icon": ""
   }
 ]
 
