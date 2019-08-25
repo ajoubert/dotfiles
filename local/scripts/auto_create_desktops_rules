@@ -13,8 +13,12 @@ declare -A matches=(
     ["firefox"]="Web"
     ["Code"]="Code"
     ["VirtualBox"]="VirtualBox"
-    ["Spotify"]="Media"
+    ["spotify"]="Media"
     ["Steam"]="Steam"
+    ["keepassxc"]="Keepass"
+    ["Lutris"]="Games"
+    ["Wine"]="Wine"
+    ["TeamSpeak 3"]="Teamspeak"
 )
 
 #echo -e "$class" >> /tmp/wid
