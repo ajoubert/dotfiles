@@ -1,5 +1,10 @@
 let skip_defaults_vim=1
+set encoding=UTF-8
 set viminfo=""
+set splitbelow
+set splitright
+set hlsearch
+set noruler
 colorscheme solarized
 syntax on
 set tabstop=2 number relativenumber softtabstop=0 expandtab shiftwidth=2 smarttab wildmenu

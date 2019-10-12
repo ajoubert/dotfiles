@@ -15,7 +15,8 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-let NERDTreeQuitOnOpen=1
+Plug 'ryanoasis/vim-devicons'
+" let NERDTreeQuitOnOpen=1
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'flazz/vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
