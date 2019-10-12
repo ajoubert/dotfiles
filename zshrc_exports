@@ -37,7 +37,13 @@ unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # java stuff
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+## Older version might be used for compatibility of some adb tools...
+[ -d "/opt/android-sdk/tools/bin" ] && export PATH="$PATH:/opt/android-sdk/tools/bin"
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+export PATH="$JAVA_HOME/bin:$PATH"
+export SDKMANAGER_OPTS=""
+export ANDROID_SDK_ROOT="/opt/android-sdk"
+export ANDROID_HOME="/opt/android-sdk"
 
 #vscode stuff
 export MSBuildSDKsPath=/opt/dotnet/sdk/2.2.102/Sdks
