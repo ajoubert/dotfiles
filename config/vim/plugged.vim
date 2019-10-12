@@ -15,8 +15,13 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
 " let NERDTreeQuitOnOpen=1
+Plug 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'flazz/vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
