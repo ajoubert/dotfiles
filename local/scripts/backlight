@@ -38,5 +38,5 @@ sleep 0.1s
 if [ -z "$TOKILL" ];
 then echo "No running instance of redshift detected" 
 else
-kill "$TOKILL"
+kill -9 "$TOKILL"
 fi 
