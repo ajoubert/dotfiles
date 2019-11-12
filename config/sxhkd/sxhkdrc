@@ -8,6 +8,8 @@
 # terminal emulator
 super + Return
     termite
+super + shift + Return
+    termite -e bash
 
 # program launcher
 super + space

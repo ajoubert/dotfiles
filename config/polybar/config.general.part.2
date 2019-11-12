@@ -26,7 +26,8 @@ interval = 10
 
 ; See "man date" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = %a %b %d, 
+; date = %a %b %d, 
+date = %d/%m 
 
 ; Optional time format
 time = %H:%M
@@ -35,7 +36,7 @@ label = %date% %time%
 format =  <label>   
 # format-background = #88000000
 format-foreground = ${colors.primary}
-format-padding = 2
+format-padding = 1
 
 
 ####################### VOLUME #######################
@@ -47,8 +48,8 @@ format-muted = <label-muted>
 label-volume = %percentage%
 label-muted =  muted
 label-muted-foreground = #aaa
-format-volume-padding = 2
-format-muted-padding = 2
+format-volume-padding = 0
+format-muted-padding = 0
 
 ramp-volume-0 = 
 ramp-volume-1 = 
