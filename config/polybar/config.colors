@@ -18,13 +18,13 @@
 
 
 [fonts]
-primary = NotoSans Nerd Font:pixelsize=11;2
+primary = Hack Nerd Font:pixelsize=11;2
 secondary = FontAwesome:size=8;2
-big = NotoSans Nerd Font:pixelsize=14;3
+big = Hack Nerd Font:pixelsize=14;3
 
-; primary = Inconsolata Nerd Font:pixelsize=10;1
-; secondary = Inconsolata Nerd Font:pixelsize=8;1
-; big = Inconsolata Nerd Font:pixelsize=14;3
+; primary = NotoSans Nerd Font:pixelsize=11;2
+; secondary = FontAwesome:size=8;2
+; big = NotoSans Nerd Font:pixelsize=14;3
 
 [solarized]
 base03 = #002b36
