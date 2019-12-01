@@ -122,8 +122,5 @@ echo "Allow creation of requests from within containers"
 iptables -I DOCKER-USER -s 192.168.0.0/255.255.0.0 -j RETURN
 iptables -I DOCKER-USER -d 192.168.0.0/255.255.0.0 -m conntrack --ctstate ESTABLISHED -j RETURN
 
+iptables-save -f /etc/iptables/iptables.rules
 
-# echo "Allow internal traffic for docker connection"
-# iptables -I DOCKER-USER -p tcp --dport 4243 -s 172.27.0.0/255.255.0.0 -m conntrack --ctstate NEW,ESTABLISHED -j RETURN
-# iptables -I DOCKER-USER -p tcp --dport 4243 -s 172.17.0.0/255.255.0.0 -m conntrack --ctstate NEW,ESTABLISHED -j RETURN
-# iptables -I DOCKER-USER -p tcp --sport 4243 -m conntrack --ctstate ESTABLISHED -j RETURN

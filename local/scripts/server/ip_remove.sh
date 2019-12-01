@@ -14,3 +14,5 @@ iptables -P FORWARD ACCEPT
 # ===== DOCKER RULES ===== #
 echo "Restarting docker process to append its iptables rules"
 systemctl restart docker
+
+iptables-save -f /etc/iptables/iptables.rules
