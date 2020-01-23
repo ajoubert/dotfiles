@@ -12,6 +12,13 @@ if [ -f "/tmp/backlight.pid" ] ; then
     TOKILL=`cat /tmp/backlight.pid`
 fi
 
+if [ -z "$TOKILL" ];
+then echo "No running instance of redshift detected" 
+else
+kill -9 "$TOKILL"
+redshift -x;
+fi 
+
 while getopts b: option
 do
 case "${option}"
@@ -31,12 +38,3 @@ REDSHIFT_PID=$!
 
 # Now storing the new pid
 echo "${REDSHIFT_PID}" > /tmp/backlight.pid
-
-# We need to wait at least a little bit, otherwise blinking...
-sleep 0.1s
-
-if [ -z "$TOKILL" ];
-then echo "No running instance of redshift detected" 
-else
-kill -9 "$TOKILL"
-fi 
