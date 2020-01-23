@@ -18,7 +18,7 @@
 
 
 [fonts]
-primary = Hack Nerd Font:pixelsize=11;2
+primary = Hack Nerd Font:pixelsize=12;2
 secondary = FontAwesome:size=8;2
 big = Hack Nerd Font:pixelsize=14;3
 

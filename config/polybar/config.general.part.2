@@ -37,6 +37,20 @@ format =  <label>
 # format-background = #88000000
 format-foreground = ${colors.primary}
 format-padding = 1
+font-size = 22
+
+[module/time]
+type = internal/date
+
+interval = 10
+
+time = %H:%M
+
+label = %time%
+format = <label>
+
+format-foreground = ${colors.primary}
+format-padding = 1
 
 
 ####################### VOLUME #######################
@@ -55,6 +69,29 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
+
+################ PULSEAUDIO VOLUME ####################
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = false
+
+interval = 5
+
+format-volume = <ramp-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted = ""
+format-volume-padding = 0
+format-muted-padding = 0
+
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
+
+click-right = pavucontrol &
 
 ####################### UPDATES #######################
 [module/updates]
