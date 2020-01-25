@@ -30,7 +30,13 @@ if [ ${matches[$class]+exists} ]; then
     #echo "matches" >> /tmp/wid
     desktop=${matches[$class]}
     if ! bspc query -T -m | jq -er ".desktops[] | select(.name==\"$desktop\").name" >/dev/null; then
+      if [ $(bspc query -N -d focused.occupied | wc -l) -eq "0" ]; then
+        echo "rename" > /tmp/output
+        # We could rename the desktop here right?
+        bspc desktop --rename "$desktop"
+      else
         bspc monitor -a $desktop
+      fi
     fi
     # For some reason, if multiple desktops with the same name exist on different monitors,
     # even when using focused:name, the desktop isn't chosen correctly. Only works when using the index of the chosen desktop...
