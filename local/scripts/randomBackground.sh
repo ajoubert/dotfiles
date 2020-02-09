@@ -1,10 +1,12 @@
 #!/bin/zsh
 DIRECTORY="$HOME/.wallpapers/static"
 
-if [ -d "$DIRECTORY" ]; then
+if [ -d "$DIRECTORY" ] && [[ ! $* == *--rand* ]]; then
     feh --recursive --no-fehbg --randomize --bg-fill $DIRECTORY;
 else
-    mkdir /tmp/wallpapers;
+    if [ ! -d /tmp/wallpapers ]; then
+      mkdir /tmp/wallpapers;
+    fi
     file1=$(mktemp /tmp/wallpapers/wallpaper-XXX.jpg)
     file2=$(mktemp /tmp/wallpapers/wallpaper-XXX.jpg)
     curl -L --output $file1 'https://unsplash.it/1920/1080/?random'
