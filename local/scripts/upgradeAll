@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Regular updates
+sudo pacman -Syu;
+ 
+# AUR updates (intentionally decoupled from pacman)
+yay -Syu;
+ 
+# NPM updates
+npm -g update;
+ 
+# VIM plugins updates
+/usr/bin/vim +PlugUpgrade +PlugUpdate +qa
+ 
+# TMUX plugins updates
+~/.tmux/plugins/tpm/bin/update_plugins all
+
+## Remote servers update
+ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
