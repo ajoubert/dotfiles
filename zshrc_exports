@@ -30,7 +30,7 @@ export VIMINIT="source $HOME/.config/vim/vimrc"
 
 # npm - node
 export NPM_PACKAGES="$HOME/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 ## unsetting manpath to inherit from it via the manpath command
 unset MANPATH
@@ -45,6 +45,9 @@ export SDKMANAGER_OPTS=""
 export ANDROID_SDK_ROOT="/opt/android-sdk"
 export ANDROID_HOME="/opt/android-sdk"
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+## Ansible stuff
+export PLAYBOOKS_HOME="$HOME/workspace/dev_ops/ansible/playbooks"
 
 #vscode stuff
 export MSBuildSDKsPath=/opt/dotnet/sdk/2.2.102/Sdks
