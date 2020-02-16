@@ -23,6 +23,7 @@ command! -bang -nargs=? -complete=dir GFiles
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 " let NERDTreeQuitOnOpen=1
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
