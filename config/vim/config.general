@@ -8,6 +8,7 @@ set noruler
 colorscheme solarized
 syntax on
 set tabstop=2 number relativenumber softtabstop=0 expandtab shiftwidth=2 smarttab wildmenu
+set nocompatible
 filetype plugin indent on
 set runtimepath^=~/.config/vim/
 " vim:ft=vim
