@@ -24,6 +24,7 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+let g:instant_markdown_autostart = 0
 " let NERDTreeQuitOnOpen=1
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
@@ -48,6 +49,8 @@ Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/utl.vim'
 let g:utl_cfg_hdl_scm_http="silent !firefox-developer-edition -remote 'ping()' && firefox-developer-edition -remote 'openURL( %u )' || firefox-developer-edition '%u#%f' &"
 Plug 'tpope/vim-speeddating'
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/.vimwiki/wiki/', 'path_html': '~/.vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Context-dependent dev stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
