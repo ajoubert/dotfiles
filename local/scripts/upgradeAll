@@ -17,3 +17,11 @@ npm -g update;
 
 ## Remote servers update
 ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
+
+## a0 upgrade
+if [ "$(ls -A /mnt/a0/boot)" ]; then
+  sudo arch-chroot /mnt/a0 pacman -Syu --noconfirm
+else
+  echo "a0 not present, skipping";
+fi
+
