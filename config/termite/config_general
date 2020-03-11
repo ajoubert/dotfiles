@@ -8,7 +8,7 @@ allow_bold = true
 dynamic_title = false 
 urgent_on_bell = true
 clickable_url = true
-font = Hack Nerd Font mono 11
+font = SF Mono Powerline 11
 scrollback_lines = 10000
 search_wrap = true
 

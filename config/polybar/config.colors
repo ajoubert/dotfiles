@@ -18,9 +18,9 @@
 
 
 [fonts]
-primary = Hack Nerd Font:pixelsize=12;2
+primary = SFMono Nerd Font:pixelsize=12;2
 secondary = FontAwesome:size=8;2
-big = Hack Nerd Font:pixelsize=14;3
+big = SFMono Nerd Font:pixelsize=14;3
 
 ; primary = NotoSans Nerd Font:pixelsize=11;2
 ; secondary = FontAwesome:size=8;2
