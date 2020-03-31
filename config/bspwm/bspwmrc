@@ -43,6 +43,11 @@ sh ~/.local/scripts/randomBgAndVideo.sh &
 ## Add polybar
 sh ~/.config/polybar/bin/launch.sh
 
+## Launch vboxclient if installed 
+if [ -x "$(command -v VBoxClient-all)" ]; then
+	VBoxClient-all &
+fi
+
 ## Starts compton
 compton &
 
