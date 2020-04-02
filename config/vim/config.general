@@ -5,6 +5,7 @@ set splitbelow
 set splitright
 set hlsearch
 set noruler
+let g:solarized_termtrans=1
 colorscheme solarized
 syntax on
 set tabstop=2 number relativenumber softtabstop=0 expandtab shiftwidth=2 smarttab wildmenu
