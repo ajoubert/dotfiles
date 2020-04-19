@@ -7,7 +7,7 @@
 
 # terminal emulator
 super + Return
-    termite -e zsh
+    termite
 super + shift + Return
     termite -e bash
 
