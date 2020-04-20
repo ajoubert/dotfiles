@@ -46,8 +46,9 @@ export PLAYBOOKS_HOME="$HOME/workspace/dev_ops/ansible/playbooks"
 export MSBuildSDKsPath=/opt/dotnet/sdk/2.2.102/Sdks
 export PATH=$MSBuildSDKsPath:$PATH
 
+## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird
-export CDPATH=\
-./:\
-$HOME
+#export CDPATH=\
+#./:\
+#$HOME
 

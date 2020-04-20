@@ -22,14 +22,14 @@ function set_bash_prompt () {
 
 function prompt_right() {
   result=""
-  result+="$GIT_REMOTE"
-  result+="$GIT_COLOR"
+  result+="$GIT_STATUS"
   result+="$GIT_BRANCH"
   echo -e $result
 }
 
 function prompt_left() {
-  echo -e "\033[0;35m\w\033[0m"
+  #echo -e "\033[0;35m\w\033[0m"
+  echo -e "${COLOR_ACCENT}\w${COLOR_NONE}"
 }
 
 # Tell bash to execute this function just before displaying its prompt.

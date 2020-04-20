@@ -555,3 +555,16 @@ export WHITE_ON_YELLOW="\[\e[43;1;37m\]"
 export WHITE_ON_MAGENTA="\[\e[45;1;37m\]"
 export WHITE_ON_RED="\[\e[41;1;37m\]"
 export COLOR_NONE="\[\e[0m\]"
+
+export THEME="dark" # exporting here for now, but gotta come from somewhere else and be controllable
+if [[ $THEME = "dark" ]]
+then
+  export COLOR_PRIMARY=$solb2
+  export COLOR_BACKGROUND=$solb02
+  export COLOR_ACCENT=$solc
+elif [[ $THEME = "light" ]]
+then
+  export COLOR_PRIMARY=$solb03
+  export COLOR_BACKGROUND=$solb3
+  export COLOR_ACCENT=$solc
+fi
