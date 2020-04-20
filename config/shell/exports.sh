@@ -1,10 +1,3 @@
-#export ZSH="/usr/share/oh-my-zsh"
-#  export SPACESHIP_PROMPT_ADD_NEWLINE="false"
-#export SPACESHIP_CHAR_PREFIX=""
-#export SPACESHIP_CHAR_SUFFIX=" "
-#export SPACESHIP_VI_MODE_SHOW=false
-
-#export DEFAULT_USER=sloth
 export WALLPAPER_FOLDER="$HOME/.wallpapers/static/"
 export ANIMATED_WALLPAPER_FOLDER="$HOME/.wallpapers/animated/"
 
@@ -52,3 +45,9 @@ export PLAYBOOKS_HOME="$HOME/workspace/dev_ops/ansible/playbooks"
 #vscode stuff
 export MSBuildSDKsPath=/opt/dotnet/sdk/2.2.102/Sdks
 export PATH=$MSBuildSDKsPath:$PATH
+
+# be sure not to remove ./ or stuff gets weird
+export CDPATH=\
+./:\
+$HOME
+
