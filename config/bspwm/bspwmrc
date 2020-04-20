@@ -49,6 +49,7 @@ if [ -x "$(command -v VBoxClient-all)" ]; then
 fi
 
 ## Starts compton
+## TODO: replace compton with picom
 compton &
 
 ## Starts dunst
