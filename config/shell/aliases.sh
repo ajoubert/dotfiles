@@ -7,7 +7,7 @@ alias ducks="du -cks * | sort -rn | head -11"
 alias firefox="firefox-developer-edition"
 
 function open {
-  dolphin $1 >/dev/null &>/dev/null &;
+  dolphin $1 >/dev/null &>/dev/null &
 }
 
 ## Quick directory change
@@ -17,6 +17,7 @@ alias cdunrealproj="cd $HOME/documents/unreal_engine/unreal_projects;"
 alias cdunreal="cd $HOME/documents/unreal_engine/;"
 alias cdunrealengine="cd $HOME/documents/unreal_engine/UnrealEngine;"
 alias getkey="keepassxc-cli clip $HOME/sync/keepass.kdbx localPwd"
+alias ls='ls -h --color=auto'
 
 ## Quickly lists installed android sdk packages installed
 alias sdkmanager_list_installed="sdkmanager --list | sed -e '/Available Packages/q'"

@@ -1,0 +1,18 @@
+$include /etc/inputrc
+## Allow case-insensitive tab completion
+set completion-ignore-case On
+
+## Allows to cycle between suggestions on tab completion
+set colored-stats on
+#set colored-completion-prefix on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set menu-complete-display-prefix on
+"\t": menu-complete
+"\e[Z": menu-complete-backward
+
+## Allow history navigation with arrow keys
+### arrow up
+"\e[A":history-search-backward
+### arrow down
+"\e[B":history-search-forward
