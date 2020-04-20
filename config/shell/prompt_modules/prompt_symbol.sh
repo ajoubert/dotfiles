@@ -2,9 +2,9 @@
 # previous command.
 function set_prompt_symbol () {
   if test $1 -eq 0 ; then
-      PROMPT_SYMBOL="\$"
+      PROMPT_SYMBOL="${base00}➜ ${COLOR_NONE}"
   else
-      PROMPT_SYMBOL="${WHITE_ON_RED}!${COLOR_NONE}"
+      PROMPT_SYMBOL="${COLOR_RED}!${COLOR_NONE}"
   fi
 }
 
