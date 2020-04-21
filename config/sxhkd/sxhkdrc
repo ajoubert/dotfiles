@@ -7,7 +7,7 @@
 
 # terminal emulator
 super + Return
-    termite
+    termite -e "$SHELL -ic 'tmux attach || tmux new'"
 super + shift + Return
     termite -e bash
 

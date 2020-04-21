@@ -17,7 +17,7 @@ function set_bash_prompt () {
   set_git
 
   # Set the bash prompt variable.
-  PS1=$(printf "%*s\r%s\n$PROMPT_SYMBOL " "$(($(tput cols)+${GIT_COMPENSATION}))" "$(prompt_right)" "$(prompt_left)")
+  PS1=$(printf "\n%*s\r%s\n$PROMPT_SYMBOL " "$(($(tput cols)+${GIT_COMPENSATION}))" "$(prompt_right)" "$(prompt_left)")
 }
 
 function prompt_right() {
