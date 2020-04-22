@@ -19,7 +19,10 @@ fi
 
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
-export VIMINIT="source $HOME/.config/vim/vimrc"
+if [[ -f "$HOME/.config/vim/vimrc" ]];
+then
+  export VIMINIT="source $HOME/.config/vim/vimrc"
+fi
 
 # npm - node
 export NPM_PACKAGES="$HOME/.npm-packages"
