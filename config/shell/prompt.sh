@@ -29,7 +29,7 @@ function prompt_right() {
 
 function prompt_left() {
   #echo -e "\033[0;35m\w\033[0m"
-  echo -e "${COLOR_ACCENT}\w${COLOR_NONE}"
+  echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\]"
 }
 
 # Tell bash to execute this function just before displaying its prompt.
