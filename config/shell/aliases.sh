@@ -17,12 +17,8 @@ alias cdunrealproj="cd $HOME/documents/unreal_engine/unreal_projects;"
 alias cdunreal="cd $HOME/documents/unreal_engine/;"
 alias cdunrealengine="cd $HOME/documents/unreal_engine/UnrealEngine;"
 alias getkey="keepassxc-cli clip $HOME/sync/keepass.kdbx localPwd"
-if [[ onlinux ]];
-then
-  alias ls='ls -h --color=auto'
-elif [[ onmac ]];
-  alias ls='ls -G'
-fi
+onlinux &&  alias ls='ls -h --color=auto'
+onmac &&  alias ls='ls -G'
 
 ## Quickly lists installed android sdk packages installed
 alias sdkmanager_list_installed="sdkmanager --list | sed -e '/Available Packages/q'"
