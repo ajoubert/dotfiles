@@ -21,6 +21,9 @@ super + x
 super + z
     ~/.config/sxhkd/rofi_window
 
+super + BackSpace
+    ~/.config/sxhkd/rofi_window
+
 super + r
     ~/.config/sxhkd/rofi_rename_desktop
 
