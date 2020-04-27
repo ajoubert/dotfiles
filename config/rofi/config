@@ -12,5 +12,10 @@ rofi.color-urgent: #002b37, #da4281, #002b37, #003642, #da4281
 ! ------------------------------------------------------------------------------
 rofi.show-icons: true
 rofi.separator-style: none
-rofi.font: MonacoB 16
+rofi.font: SF Mono Powerline 14
+rofi.icon-theme: Papirus
 
+!rofi.theme: /usr/share/rofi/themes/Arc.rasi
+rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi
+
+rofi.window-format: {c:15}    {w}    {t}
