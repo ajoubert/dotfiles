@@ -48,6 +48,11 @@ if [ -x "$(command -v VBoxClient-all)" ]; then
 	VBoxClient-all &
 fi
 
+## Starts unclutter
+if [ -x "$(command -v unclutter)" ]; then
+  unclutter -idle 2 &
+fi
+
 ## Starts compton
 ## TODO: replace compton with picom
 compton &
