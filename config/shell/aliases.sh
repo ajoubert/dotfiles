@@ -7,7 +7,7 @@ alias ducks="du -cks * | sort -rn | head -11"
 alias firefox="firefox-developer-edition"
 
 function open {
-  dolphin $1 >/dev/null &>/dev/null &
+  thunar $1 >/dev/null &>/dev/null &
 }
 
 ## Quick directory change
