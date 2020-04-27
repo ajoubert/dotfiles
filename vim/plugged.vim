@@ -33,7 +33,8 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'altercation/vim-colors-solarized'
+" Post-update, overrides the cursorColumn value
+Plug 'altercation/vim-colors-solarized', { 'do': './bin/post_plug_update.sh vim-colors-solarized' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Calendar window with events
