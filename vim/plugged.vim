@@ -1,5 +1,5 @@
-source ~/.config/vim/autoload/plug.vim
-call plug#begin('~/.config/vim/plugged')
+source $VIM_CONFIG/autoload/plug.vim
+call plug#begin("$VIM_CONFIG/plugged")
 
 " Make sure you use single quotes
 
