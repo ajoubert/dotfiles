@@ -1,15 +1,15 @@
 #TODO :: shortcuts to add asap --
 #
-#   termite ranger // opens file navigator
+#   kitty ranger // opens file navigator
 #
 # wm independent hotkeys
 #
 
 # terminal emulator
 super + Return
-    termite -e "$SHELL -ic 'tmux attach || tmux new'"
+    kitty bash -ic "tmux attach || tmux new"
 super + shift + Return
-    termite -e bash
+    kitty bash
 
 # program launcher
 super + space

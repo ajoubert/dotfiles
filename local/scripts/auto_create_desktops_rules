@@ -8,6 +8,7 @@ instance=$3
 # window classes to desktop names
 declare -A matches=(
     ["Termite"]="Term"
+    ["kitty"]="Term"
     ["Thunderbird"]="Mail"
     ["firefoxdeveloperedition"]="Web"
     ["firefox"]="Web"
