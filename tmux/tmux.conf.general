@@ -11,7 +11,7 @@ bind r source-file ~/.tmux.conf
 set-window-option -g mode-keys vi
 
  
-#set-option -g default-terminal "screen-256color"
+set-option -g default-terminal "screen-256color"
 #set-option -gw utf8 on
 #set-option -gw xterm-keys on
 
