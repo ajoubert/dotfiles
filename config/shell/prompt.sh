@@ -1,6 +1,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source $DIR/prompt_modules/prompt_symbol.sh
 source $DIR/prompt_modules/git.sh
+source $DIR/prompt_modules/kubectl.sh
 
 # Set the full bash prompt.
 function set_bash_prompt () {
@@ -14,10 +15,18 @@ function set_bash_prompt () {
   # GIT_REMOTE (status of current branch against remote)
   # GIT_COLOR (status-dependant color)
   # GIT_COMPENSATION (column-offset to align git stats on the right-end side)
-  set_git
+  set_git;
+
+  # set all KUBECTL related variables
+  # Available vars:
+  # PROMPT_KUBECTL (prompt displaying current context)
+  # COMPENSATION_KUBECTL (column-offset to align the right-end side)
+  set_kubectl;
+
+  TOTAL_COMPENSATION=$((${GIT_COMPENSATION}+${COMPENSATION_KUBECTL}))
 
   # Set the bash prompt variable.
-  PS1=$(printf "\n%*s\r%s\n$PROMPT_SYMBOL " "$(($(tput cols)+${GIT_COMPENSATION}))" "$(prompt_right)" "$(prompt_left)")
+  PS1=$(printf "\n%*s\r%s\n$PROMPT_SYMBOL " "$(($(tput cols)+${TOTAL_COMPENSATION}))" "$(prompt_right)" "$(prompt_left)")
 }
 
 function prompt_right() {
@@ -28,8 +37,8 @@ function prompt_right() {
 }
 
 function prompt_left() {
-  #echo -e "\033[0;35m\w\033[0m"
-  echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\]"
+  #echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\]"
+  echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\] ${PROMPT_KUBECTL}"
 }
 
 # Tell bash to execute this function just before displaying its prompt.
