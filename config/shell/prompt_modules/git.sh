@@ -11,6 +11,10 @@ function set_git() {
 
   reset_git_variables;
 
+  if ! [ -x "$(command -v git)" ]; then
+      return
+  fi
+
   local git_status="$(git status 2> /dev/null)"
 
   ## No need continuing if we're not in a git repo
