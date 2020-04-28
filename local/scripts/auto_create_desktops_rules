@@ -14,12 +14,14 @@ declare -A matches=(
     ["firefox"]="Web"
     ["Code"]="Code"
     ["VirtualBox"]="VirtualBox"
-    ["spotify"]="Media"
+    # Spotify requires an additional library preload, see yay -Ss spotifywm-git
+    ["Spotify"]="Spotify"
     ["Steam"]="Steam"
     ["KeePassXC"]="Keepass"
     ["Lutris"]="Games"
     ["Wine"]="Wine"
     ["TeamSpeak 3"]="Teamspeak"
+    ["Signal"]="Chat"
 )
 
 #echo -e "$class" >> /tmp/wid
