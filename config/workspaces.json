@@ -54,6 +54,14 @@
   {
     "name":"Teamspeak",
     "icon": ""
+  },
+  {
+    "name": "Chat",
+    "icon": ""
+  },
+  {
+    "name": "Spotify",
+    "icon": ""
   }
 ]
 
