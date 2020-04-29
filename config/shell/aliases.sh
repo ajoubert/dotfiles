@@ -1,10 +1,7 @@
 alias c='cd; clear;'
 alias ll='ls -lArth;';
-#alias zshconfig="vim $HOME/.zshrc"
-#alias ohmyzsh="vim $HOME/.oh-my-zsh"
-#alias ssc="sudo systemctl"
-alias ducks="du -cks * | sort -rn | head -11"
-alias firefox="firefox-developer-edition"
+alias '?'=duck
+alias '??'=google
 
 function open {
   thunar $1 >/dev/null &>/dev/null &
