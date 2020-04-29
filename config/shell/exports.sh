@@ -7,6 +7,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/bin:$PATH"
 
+export LYNX_CFG_PATH="$HOME/.config/lynx"
+export LYNX_CFG="$LYNX_CFG_PATH/lynx.cfg"
+export LYNX_LSS="$LYNX_CFG_PATH/lynx.lss"
+
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions

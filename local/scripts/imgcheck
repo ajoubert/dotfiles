@@ -1,0 +1,3 @@
+#!/bin/bash
+TARGET=$(realpath $1)
+tmux detach -E "kitty +kitten icat $TARGET; read -rsn1; tmux attach;"
