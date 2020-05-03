@@ -44,6 +44,7 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # java stuff
 ## Older version might be used for compatibility of some adb tools...
 [ -d "/opt/android-sdk/tools/bin" ] && export PATH="$PATH:/opt/android-sdk/tools/bin"
+[ -d "/opt/android-sdk/cmdline-tools/latest/bin" ] && export PATH="$PATH:/opt/android-sdk/cmdline-tools/latest/bin"
 export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 export SDKMANAGER_OPTS=""
