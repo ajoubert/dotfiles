@@ -8,11 +8,14 @@ function open {
 }
 
 ## Quick directory change
-alias cddotfiles="cd $HOME/.dotfiles/; clear;"
+alias dotfiles="cd $HOME/.dotfiles/; clear;"
 alias cdtomcat="cd /usr/share/tomcat9/"
 alias cdunrealproj="cd $HOME/documents/unreal_engine/unreal_projects;"
 alias cdunreal="cd $HOME/documents/unreal_engine/;"
 alias cdunrealengine="cd $HOME/documents/unreal_engine/UnrealEngine;"
+alias wiki="cd $HOME/.vimwiki/wiki/; clear;";
+alias workspace="cd $HOME/workspace/; clear;";
 alias getkey="keepassxc-cli clip $HOME/sync/keepass.kdbx localPwd"
 onlinux &&  alias ls='ls -h --color=auto'
 onmac &&  alias ls='ls -G'
+

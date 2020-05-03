@@ -18,6 +18,12 @@ npm -g update;
 ## Remote servers update
 ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
 
+# SDK manager update
+if [ -x "$(command -v sdkmanager)" ];
+then
+  sdkmanager --update
+fi
+
 ## a0 upgrade
 if [ "$(ls -A /mnt/a0/boot)" ]; then
   sudo arch-chroot /mnt/a0 pacman -Syu --noconfirm
