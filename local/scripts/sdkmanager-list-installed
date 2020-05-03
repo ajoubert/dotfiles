@@ -1,0 +1,7 @@
+#/bin/bash
+if [ ! -x "$(command -v sdkmanager)" ];
+then
+  echo "sdkmanager not found in PATH";
+  exit 1;
+fi
+sdkmanager --list | sed -e '/Available Packages/q' | sed -e '1d' | sed -e '$d'
