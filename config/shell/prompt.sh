@@ -1,7 +1,17 @@
+#!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source $DIR/prompt_modules/prompt_symbol.sh
 source $DIR/prompt_modules/git.sh
 source $DIR/prompt_modules/kubectl.sh
+
+USE_PREEXEC=false
+
+if [[ -f "$DIR/3rdparty/bash-preexec/bash-preexec.sh" ]];
+then
+    USE_PREEXEC=true
+    source $DIR/3rdparty/bash-preexec/bash-preexec.sh
+fi
+
 
 # Set the full bash prompt.
 function set_bash_prompt () {
@@ -41,5 +51,20 @@ function prompt_left() {
   echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\] ${PROMPT_KUBECTL}"
 }
 
-# Tell bash to execute this function just before displaying its prompt.
-PROMPT_COMMAND=set_bash_prompt
+function enable_tty() {
+  stty echo;
+}
+
+function disable_tty() {
+  stty -echo;
+}
+
+if [ $USE_PREEXEC = "true" ];
+then
+  preexec_functions+=(disable_tty)
+  precmd_functions+=(set_bash_prompt)
+  precmd_functions+=(enable_tty)
+else
+  # Tell bash to execute this function just before displaying its prompt.
+  PROMPT_COMMAND=set_bash_prompt
+fi
