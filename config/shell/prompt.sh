@@ -61,7 +61,8 @@ function disable_tty() {
 
 if [ $USE_PREEXEC = "true" ];
 then
-  preexec_functions+=(disable_tty)
+  #preexec_functions+=(disable_tty)
+  precmd_functions+=(disable_tty)
   precmd_functions+=(set_bash_prompt)
   precmd_functions+=(enable_tty)
 else
