@@ -43,6 +43,10 @@ Plug 'itchyny/calendar.vim'
 Plug 'mattn/calendar-vim'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+" For visual search/replace
+Plug 'osyo-manga/vim-over'
+cabbrev %s OverCommandLine<cr>%s
+cabbrev '<,'>s OverCommandLine<cr>'<,'>s
 
 " Org mode and its dependencies
 Plug 'jceb/vim-orgmode'
