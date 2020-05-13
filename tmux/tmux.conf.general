@@ -10,6 +10,8 @@ unbind-key r
 bind r source-file ~/.tmux.conf
 set-window-option -g mode-keys vi
 
+set -s escape-time 0
+
  
 set-option -g default-terminal "screen-256color"
 #set-option -gw utf8 on
