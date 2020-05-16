@@ -12,6 +12,8 @@ set tabstop=2 number relativenumber softtabstop=0 expandtab shiftwidth=2 smartta
 set nocompatible
 filetype plugin indent on
 set runtimepath^=$VIM_CONFIG
+set ignorecase
+set smartcase
 
-set foldmethod=market
+set foldmethod=marker
 " vim:ft=vim
