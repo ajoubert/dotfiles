@@ -17,7 +17,7 @@ cnoremap w!! w !sudo tee > /dev/null %
 " === START - extensions shortcuts ===
 
 " NERDTree
-noremap <C-N> :NERDTreeToggle<CR>
+noremap <F3> :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
 
 " Code execution
