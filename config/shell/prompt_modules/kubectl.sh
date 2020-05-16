@@ -31,8 +31,13 @@ function set_kubectl_context() {
   if [[ "$kube_context" = "minikube" ]];
   then
     ## If the current context is minikube, only display it when running
-    MINIKUBE_STATUS=$(minikube status 2>/dev/null)
-    [[ $MINIKUBE_STATUS == *"host: Nonexistent"* ]] && return
+    ## Because the check is long, only check it once then check it again once minikube is used
+    HISTORY=$(history | tail -2 | head -1 | cut -c8-999)
+    if [[ "$MINIKUBE_STATUS" == "" ]] || [[ "$HISTORY" == *"minikube"* ]];
+    then
+      MINIKUBE_STATUS=$(minikube status 2>/dev/null)
+    fi
+    [[ $MINIKUBE_STATUS != *"host: Running"* ]] && return
   fi
 
 	local kube_namespace=$(kubectl config view -minify --output 'jsonpath={..namespace}' 2>/dev/null)
