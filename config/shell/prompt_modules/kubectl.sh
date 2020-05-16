@@ -28,6 +28,13 @@ function set_kubectl_context() {
 	local kube_context=$(kubectl config current-context 2>/dev/null)
 	[[ -z $kube_context ]] && return
 
+  if [[ "$kube_context" = "minikube" ]];
+  then
+    ## If the current context is minikube, only display it when running
+    MINIKUBE_STATUS=$(minikube status 2>/dev/null)
+    [[ $MINIKUBE_STATUS == *"host: Nonexistent"* ]] && return
+  fi
+
 	local kube_namespace=$(kubectl config view -minify --output 'jsonpath={..namespace}' 2>/dev/null)
 	[[ -n $kube_namespace && "$kube_namespace" != "default" ]] && kube_context="$kube_context ($kube_namespace)"
 
