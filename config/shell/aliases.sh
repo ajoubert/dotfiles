@@ -19,3 +19,5 @@ alias getkey="keepassxc-cli clip $HOME/sync/keepass.kdbx localPwd"
 onlinux &&  alias ls='ls -h --color=auto'
 onmac &&  alias ls='ls -G'
 
+## Regular typos
+alias sl=ls
