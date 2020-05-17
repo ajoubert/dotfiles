@@ -37,8 +37,7 @@ with open(TMP_FILE, 'r+') as f:
         f.write(output)
         print(output)
     except dbus.DBusException as e:
-        print("error")
+        print("")
     except Exception as e:
         ## TODO: add debug switch logging.error(e)
-        ##logging.error(e)
         print(f.read())
