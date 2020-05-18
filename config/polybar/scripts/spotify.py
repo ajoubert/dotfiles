@@ -3,9 +3,18 @@
 import os.path
 import dbus
 import logging
+import sys
 
 trunclen = 25
 TMP_FILE='/tmp/spotify.tmp'
+
+## For some reason, catching Exception is not enough to not output to stderr in all cases...
+## Adding a custom overwrite of stderr for it
+class DevNull:
+    def write(self, msg):
+        pass
+
+sys.stderr = DevNull()
 
 if os.path.isfile(TMP_FILE) == False:
     with open(TMP_FILE, 'a+') as f:
