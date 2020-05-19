@@ -7,6 +7,7 @@
     "coc-json": ">=1.2.6",
     "coc-marketplace": ">=1.7.0",
     "coc-omnisharp": ">=0.0.26",
+    "coc-python": ">=1.2.12",
     "coc-snippets": ">=2.1.26",
     "coc-stylelint": ">=1.1.0",
     "coc-texlab": ">=2.1.0",
