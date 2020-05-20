@@ -35,3 +35,5 @@ map <leader>p :InstantMarkdownPreview<CR>
 " Copy-paste to and from clipboard
 map <leader>v :r !xclip -o -sel -c<CR>
 vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
+
+nnoremap <CR> :noh<CR><CR>
