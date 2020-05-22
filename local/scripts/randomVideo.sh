@@ -15,6 +15,6 @@ do
 done
 
 ## Load a random animated image
-file=$(find -L ~/.wallpapers | grep mp4 | shuf -n1)
+file=$(find -L ~/.wallpapers | grep -e 'mp4' -e 'webm' | shuf -n1)
 ## Display random animated image
 xwinwrap -ov -g ${WIDTH}x${HEIGHT}+${OFFSETX}+${OFFSETY} -ni -nf -- mpv -wid WID $file --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-keepaspect --no-input-default-bindings --hwdec&
