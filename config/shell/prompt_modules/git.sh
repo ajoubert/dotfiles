@@ -15,6 +15,11 @@ function set_git() {
       return
   fi
 
+  if [ "$PROMPT_IGNORE_GIT" == "True" ];
+  then
+    return
+  fi
+
   local git_status="$(git status 2> /dev/null)"
 
   ## No need continuing if we're not in a git repo
