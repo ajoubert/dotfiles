@@ -1,8 +1,3 @@
-" Remapping alt + key to be usable as shortcuts
-" Leaving as an exemple, but not doing anymore as it was causing issues with
-" escape
-" execute "set <M-f>=\ef"
-
 " Navigation shortcuts
 map <C-J> <C-W>j
 map <C-K> <C-W>k
@@ -25,9 +20,18 @@ map <leader>x :!%:p<CR>
 map <leader>g :silent !tig<CR> :redraw!<CR>
 
 " Navigation
-map <leader>f :Ag!<CR>
-map <leader>o :Files!<CR>
-map <C-O> :GFiles!<CR>
+nmap <Leader>f <Plug>RgRawSearch
+vmap <Leader>f <Plug>RgRawVisualSelection<CR>
+
+" Only use GFiles if we are currently in a git repo
+silent! !git rev-parse --is-inside-work-tree >/dev/null &>/dev/null
+if v:shell_error == 0
+  nnoremap <leader>o :GFiles --cached --others --exclude-standard<CR>
+  " Automatically filter when using visual mode
+	vnoremap <leader>o "ay:call agriculture#trim_and_escape_register_a()<CR>:GFiles '**<C-r>a**'<CR>
+else
+  nnoremap <leader>o :Files<CR>
+endif
 
 " Markdown previewer
 map <leader>p :InstantMarkdownPreview<CR>
