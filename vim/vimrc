@@ -3,3 +3,8 @@ source $VIM_CONFIG/config.vim
 source $VIM_CONFIG/plugin-calendar.config.vim
 source $VIM_CONFIG/plugin-coc.config.vim
 source $VIM_CONFIG/shortcuts.vim
+
+"TODO: properly isolate plugins"
+"if filereadable(expand("~/.vim/autoload/plug.vim"))
+"else
+"endif
