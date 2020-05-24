@@ -33,6 +33,7 @@ else
   nnoremap <leader>o :Files<CR>
 endif
 
+
 " Markdown previewer
 map <leader>p :InstantMarkdownPreview<CR>
 

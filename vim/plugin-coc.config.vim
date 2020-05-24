@@ -134,3 +134,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+nnoremap <F5> :call CocActionAsync('doHover')<cr>
+nnoremap <F7> :call CocAction('jumpReferences')<cr>
+nnoremap <F8> :CocAction<cr>

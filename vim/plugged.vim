@@ -58,6 +58,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
+" Debugger, maybe in the future?
+" Plug 'puremourning/vimspector'
 
 
 " Git
