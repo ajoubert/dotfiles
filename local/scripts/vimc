@@ -1,0 +1,13 @@
+#/bin/bash
+
+TARGET=$(which $1 2>/dev/null)
+
+if [ "${TARGET}" = "" ];
+then
+  echo "$1 not found, aborting";
+  exit 1;
+fi
+
+command -v $TARGET >/dev/null 2>&1 || { echo >&2 "${1} not found, aborting"; exit 1; }
+
+vim $TARGET
