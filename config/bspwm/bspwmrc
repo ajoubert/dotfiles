@@ -53,6 +53,9 @@ if [ -x "$(command -v unclutter)" ]; then
   unclutter -idle 2 &
 fi
 
+## Adjust keyboard input detection
+xset r rate 200 60
+
 ## Starts compton
 ## TODO: replace compton with picom
 compton &
