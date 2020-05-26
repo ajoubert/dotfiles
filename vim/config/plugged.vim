@@ -76,3 +76,7 @@ cabbrev '<,'>s OverCommandLine<cr>'<,'>s
 
 
 call plug#end()
+
+" Theme stuff, added here because it depends on vim-color-solarized plugin
+let g:solarized_termtrans=1
+colorscheme solarized
