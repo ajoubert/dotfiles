@@ -6,6 +6,9 @@ case $- in
   *) return 
 esac
 
+# Vi controls when editing a command, just press Esc
+set -o vi
+
 # SSH detection
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   SESSION_TYPE=remote/ssh
