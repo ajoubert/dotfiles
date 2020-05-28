@@ -1,3 +1,9 @@
+if $THEME == 'light'
+  set background=light
+else
+  set background=dark
+endif
+
 " I want to use vim, not vi
 set nocompatible
 " Please don't add default stuff...
@@ -87,10 +93,12 @@ set nobackup
 set laststatus=0
 
 " Download and installs the plugin manager
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+if $PLATFORM != 'mac'
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+  endif
 endif
 
 " Make Vim jump to the last position when reopening a file
@@ -106,7 +114,3 @@ set cmdheight=2
 syntax enable
 " Theme settings can be found in plugged.vim, moved there because it
 " depends on a plugin
-
-
-
-" vim:ft=vim
