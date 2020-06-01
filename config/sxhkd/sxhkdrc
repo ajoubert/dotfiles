@@ -205,8 +205,11 @@ ctrl + alt + l
     betterlockscreen -l dimblur
    #lockscreen
    #
-super + B
+super + b
    ~/.local/scripts/randomBackground.sh
+
+super + shift + b
+   ~/.local/scripts/randomBgAndVideo.sh
 
 XF86AudioRaiseVolume
   amixer sset Master playback 5%+
