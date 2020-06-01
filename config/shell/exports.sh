@@ -6,6 +6,7 @@ export ANIMATED_WALLPAPER_FOLDER="$HOME/.wallpapers/animated/"
 export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 export LYNX_CFG_PATH="$HOME/.config/lynx"
 export LYNX_CFG="$LYNX_CFG_PATH/lynx.cfg"
@@ -56,8 +57,12 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export PLAYBOOKS_HOME="$HOME/workspace/dev_ops/ansible/playbooks"
 
 #vscode stuff
-export MSBuildSDKsPath=/opt/dotnet/sdk/2.2.102/Sdks
+export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/3.*/Sdks );
 export PATH=$MSBuildSDKsPath:$PATH
+
+## Go stuff
+export GOPATH=$HOME/.local/go
+
 
 ## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird
