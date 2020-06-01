@@ -1,3 +1,4 @@
 {
-    "vetur.experimental.templateInterpolationService": false // Causes issue on templates (Vetur [2345]), can be removed once fixed
+    "vetur.experimental.templateInterpolationService": false, // Causes issue on templates (Vetur [2345]), can be removed once fixed
+    "vetur.trace.server": "verbose"
 }
