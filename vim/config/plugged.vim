@@ -60,7 +60,10 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 " Debugger, maybe in the future?
 " Plug 'puremourning/vimspector'
-
+Plug 'OmniSharp/omnisharp-vim', {'for': ['cs']}
+" let g:OmniSharp_server_path = "~/.config/coc/extensions/coc-omnisharp-data/server/"
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_highlight_types = 3
 
 " Git
 
