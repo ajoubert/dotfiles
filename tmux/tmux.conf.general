@@ -10,6 +10,37 @@ unbind-key r
 bind r source-file ~/.tmux.conf
 set-window-option -g mode-keys vi
 
+# create more intuitive split key combos (same as modern screen)
+unbind |
+bind | split-window -h
+bind '\' split-window -h
+bind 'C-\' split-window -h
+unbind -
+bind - split-window -v
+unbind _
+bind _ split-window -v
+
+# vi for copy mode
+setw -g mode-keys vi
+
+# vi for command status
+set -g status-keys vi
+
+# vi keys to resize
+bind -r C-k resize-pane -U 1
+bind -r C-j resize-pane -D 1
+bind -r C-h resize-pane -L 1
+bind -r C-l resize-pane -R 1
+
+# vi keys to navigate panes
+bind -r k select-pane -U
+bind -r j select-pane -D
+bind -r h select-pane -L
+bind -r l select-pane -R
+
+# avoid cursor movement messing with resize
+set -g repeat-time 200
+
 set -s escape-time 0
 
  
