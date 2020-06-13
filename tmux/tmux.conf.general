@@ -1,11 +1,12 @@
 # if run as "tmux attach", create a session if one does not already exist, commented out for now due to conflict with oh-my-zsh tmux plugin (redundant anyway)
 # new-session -n $HOST
 # change key binding from C-b to Emacs style C-x
-set-option -g prefix C-x
 set-option -g mouse on
 set-option -g default-shell /bin/bash
-unbind-key C-b
-bind-key C-x send-prefix
+# Let's stick to the default prefix
+# unbind-key C-b
+# bind-key C-x send-prefix
+# set-option -g prefix C-x
 unbind-key r
 bind r source-file ~/.tmux.conf
 set-window-option -g mode-keys vi
