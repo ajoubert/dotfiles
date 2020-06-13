@@ -1,0 +1,45 @@
+#!/bin/bash
+
+if [ -z ${FF_FOLDER} ]; then
+  echo "Firefox folder name isn't defined, please export it as FF_FOLDER"; 
+  echo "You can find it in $HOME/.mozilla/firefox/";
+  exit 1;
+fi
+
+DB_FILE=$HOME/.mozilla/firefox/${FF_FOLDER}/places.sqlite
+TMP_DB_FILE=/tmp/ff_places.sqlite
+TARGET_FILE=/tmp/ff_bookmarks.md
+
+QUERY_SELECT_FOLDERS="SELECT id, title FROM moz_bookmarks WHERE parent = (SELECT id FROM moz_bookmarks WHERE title = 'unfiled');"
+
+# Firefox locks the database when open, let's make a copy to start with
+cp $DB_FILE $TMP_DB_FILE;
+
+# Let's create the target file if it doesn't exist
+cat /dev/null > $TARGET_FILE;
+
+## sqlite query result storing is very flaky (new line and spaces in title and such...)
+## So we need to use this read approach instead to iterate through results
+echo $QUERY_SELECT_FOLDERS | sqlite3 $TMP_DB_FILE | while read FOLDERINFOS; do
+
+  FOLDER_ID=$(echo $FOLDERINFOS | cut -d '|' -f1)
+  FOLDER_TITLE=$(echo $FOLDERINFOS | cut -d '|' -f2)
+
+  ## Let's add the current folder as category in the result file
+  echo "# ${FOLDER_TITLE}" >> $TARGET_FILE
+
+  ## Now same thing, let's go look for the actual bookmarks
+  echo "SELECT id, title FROM moz_bookmarks WHERE parent = ${FOLDER_ID};" | sqlite3 $TMP_DB_FILE | while read CHILD; do
+    BM_ID=$(echo $CHILD | cut -d '|' -f1)
+    ## That cuts the title when it contains a "|", but that's good enough for my use-case
+    BM_TITLE=$(echo $CHILD | cut -d '|' -f2)
+    BM_URL=$(echo "SELECT url FROM moz_places, moz_bookmarks WHERE moz_bookmarks.id= '${BM_ID}' AND moz_places.id=moz_bookmarks.fk;" | sqlite3 $TMP_DB_FILE)
+
+    ## Finally, outputs the url itself
+    echo "* [${BM_TITLE}](${BM_URL})" >> $TARGET_FILE
+  done
+
+  echo -e "\n" >> $TARGET_FILE
+
+done
+vim $TARGET_FILE
