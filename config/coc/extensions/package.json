@@ -1,20 +1,20 @@
 {
   "dependencies": {
-    "coc-css": ">=1.2.3",
-    "coc-docker": ">=0.2.1",
+    "coc-css": ">=1.2.4",
+    "coc-docker": ">=0.3.0",
     "coc-eslint": ">=1.2.7",
-    "coc-go": ">=0.7.0",
+    "coc-go": ">=0.9.2",
     "coc-godot": ">=0.0.1",
     "coc-html": ">=1.2.4",
-    "coc-java": ">=1.4.10",
+    "coc-java": ">=1.4.11",
     "coc-json": ">=1.2.6",
     "coc-marketplace": ">=1.7.0",
     "coc-omnisharp": ">=0.0.26",
     "coc-python": ">=1.2.12",
-    "coc-snippets": ">=2.1.26",
+    "coc-snippets": ">=2.1.28",
     "coc-stylelint": ">=1.1.0",
     "coc-texlab": ">=2.1.0",
-    "coc-tsserver": ">=1.5.1",
-    "coc-vetur": ">=1.1.10"
+    "coc-tsserver": ">=1.5.3",
+    "coc-vetur": ">=1.1.11"
   }
 }
