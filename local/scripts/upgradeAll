@@ -24,6 +24,12 @@ then
   sdkmanager --update
 fi
 
+# PIP update
+if [ -x "$(command -v pip)" ];
+then
+  pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+fi
+
 ## a0 upgrade
 if [ "$(ls -A /mnt/a0/boot)" ]; then
   sudo arch-chroot /mnt/a0 pacman -Syu --noconfirm
