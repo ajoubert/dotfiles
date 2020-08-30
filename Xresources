@@ -1,0 +1,64 @@
+! ██╗░░██╗██████╗░███████╗███████╗░██████╗░██╗░░░██╗██████╗░░██████╗███████╗███████╗
+! ╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║░░░██║██╔══██╗██╔════╝██╔════╝██╔════╝
+! ░╚███╔╝░██████╔╝█████╗░░███████╗██║░░░██║██║░░░██║██████╔╝██║░░░░░█████╗░░███████╗
+! ░██╔██╗░██╔══██╗██╔══╝░░╚════██║██║░░░██║██║░░░██║██╔══██╗██║░░░░░██╔══╝░░╚════██║
+! ██╔╝░██╗██║░░██║███████╗███████║╚██████╔╝╚██████╔╝██║░░██║╚██████╗███████╗███████║
+! ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚══════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░╚═════╝╚══════╝╚══════╝
+!
+! -----------------------------------
+Xft.dpi: 102
+!Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+xcursor.theme: Vanilla-DMZ
+xscreensaver.fade:   false
+xscreensaver.unfade: false
+! ===== urxvt =====
+URxvt.scrollBar: off
+URxvt.font: xft:monospace:size=12
+URxvt.internalBorder:     22
+
+*fading: 35
+
+#include ".Xresources.d/active"
+
+*.background: lbackground
+*.foreground: lforeground 
+*fadeColor: lfadeColor
+
+!black
+*color0: lcolor0
+*color8: lcolor8 
+
+!red
+*color1: lcolor1
+*color9: lcolor9
+
+!green
+*color2: lcolor2
+*color10: lcolor10
+
+!yellow
+*color3: lcolor3
+*color11: lcolor11
+
+!blue
+*color4: lcolor4
+*color12: lcolor12
+
+!magenta
+*color5: lcolor5
+*color13: lcolor13
+
+!cyan
+*color6: lcolor6
+*color14: lcolor14
+
+!white
+*color7: lcolor7
+*color15: lcolor15
