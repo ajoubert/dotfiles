@@ -1,0 +1,53 @@
+#define arc0 #383c4a
+#define arc1 #9A4138
+#define arc2 #4BEC90
+#define arc3 #D8D782
+#define arc4 #5294e2
+#define arc5 #CE50DD
+#define arc6 #6BE5E7
+#define arc7 #CCCCCC
+#define arc8 #404552
+#define arc9 #E7766B
+#define arc10 #3CBF75
+#define arc11 #CFCD63
+#define arc12 #579CEF
+#define arc13 #E7766B
+#define arc14 #90FDFF
+#define arc15 #FFFFFF
+#define arc16 #D2D2D2
+
+#define lbackground arc0
+#define lforeground arc16
+#define lfadeColor arc8
+
+!black
+#define lcolor0 arc0
+#define lcolor8 arc8
+
+!red
+#define lcolor1 arc1
+#define lcolor9 arc9
+
+!green
+#define lcolor2 arc2
+#define lcolor10 arc10
+
+!yellow
+#define lcolor3 arc3
+#define lcolor11 arc11
+
+!blue
+#define lcolor4 arc4
+#define lcolor12 arc12
+
+!magenta
+#define lcolor5 arc5
+#define lcolor13 arc13
+
+!cyan
+#define lcolor6 arc6
+#define lcolor14 arc14
+
+!white
+#define lcolor7 arc7
+#define lcolor15 arc15
