@@ -9,6 +9,10 @@ local notifications = require("notifications")
 
 local apps = {}
 
+apps.terminal = function()
+  awful.spawn(user.terminal, { switchtotag = true })
+end 
+
 apps.browser = function ()
     awful.spawn(user.browser, { switchtotag = true })
 end
@@ -23,10 +27,10 @@ apps.discord = function ()
     -- >> Ubuntu / Debian
     -- helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium-browser --app=\"https://discordapp.com/channels/@me\"")
     -- >> Arch
-    helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium --app=\"https://discordapp.com/channels/@me\"")
+    -- helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium --app=\"https://discordapp.com/channels/@me\"")
 
     -- Run or raise Discord app
-    -- helpers.run_or_raise({class = 'discord'}, false, "discord")
+    helpers.run_or_raise({class = 'discord'}, false, "discord")
 end
 apps.weechat = function ()
     helpers.run_or_raise({instance = 'weechat'}, true, user.terminal.." --class weechat -e weechat")

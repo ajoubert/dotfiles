@@ -38,6 +38,7 @@ icons.text.by_class = {
     ['TelegramDesktop'] = { symbol = "", color = x.color4 },
     ['Firefox'] = { symbol = "", color = x.color3 },
     ['firefox'] = { symbol = "", color = x.color3 },
+    ['firefoxdeveloperedition'] = { symbol = "", color = x.color3 },
     ['Nightly'] = { symbol = "", color = x.color4 },
     ['Chromium'] = { symbol = "", color = x.color4 },
     ['Chromium-browser'] = { symbol = "", color = x.color4 },
