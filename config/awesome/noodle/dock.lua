@@ -52,18 +52,16 @@ local dock_recently_focused = {}
 -- to get rid of this redundancy
 ----------------------------------------------------------------------------
 local dock_pinned_classes = {
-    "firefox",
-    "TelegramDesktop",
-    "editor",
-    "email"
+    "kitty",
+    "firefoxdeveloperedition",
+    "discord"
 }
 -- `dock_pinned_launchers` determines the function that should run when
 -- clicking the dock item of a class when there is no such window open.
 local dock_pinned_launchers = {
-    ["firefox"] = apps.browser,
-    ["TelegramDesktop"] = apps.telegram,
-    ["editor"] = apps.editor,
-    ["email"] = apps.mail
+    ["kitty"] = apps.terminal,
+    ["firefoxdeveloperedition"] = apps.browser,
+    ["discord"] = apps.discord
 }
 
 -- >> Helper functions
