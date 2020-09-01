@@ -1125,6 +1125,7 @@ awesome.connect_signal(
     function(args)
         awful.util.spawn('bash -c "~/.local/scripts/randomBgAndVideo.sh"')
         awful.util.spawn('bash -c "~/.local/scripts/backlight -b 0.9"')
+        awful.util.spawn('bash -c "xset r rate 200 60')
     end
 )
 
