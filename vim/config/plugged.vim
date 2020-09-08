@@ -48,22 +48,12 @@ let g:vimwiki_list = [{'path': '~/.vimwiki/wiki/', 'path_html': '~/.vimwiki/html
 " Development plugins
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'rdnetto/YCM-Generator', {  'for': ['cpp', 'c', 'go'], 'branch': 'stable'}
-Plug 'gilligan/vim-lldb', {'for': ['cpp', 'c']}
-Plug 'honza/vim-snippets' 
-Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
-" Debugger, maybe in the future?
-" Plug 'puremourning/vimspector'
-Plug 'OmniSharp/omnisharp-vim', {'for': ['cs']}
-" let g:OmniSharp_server_path = "~/.config/coc/extensions/coc-omnisharp-data/server/"
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_highlight_types = 3
 
 " Git
 
