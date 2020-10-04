@@ -524,20 +524,20 @@ keys.globalkeys = gears.table.join(
                                      end,
         {description = "pomodoro", group = "launcher"}),
     -- Spawn file manager
-    awful.key({ superkey }, "F2", apps.file_manager,
-        {description = "file manager", group = "launcher"}),
+    --awful.key({ superkey }, "F2", apps.file_manager,
+        --{description = "file manager", group = "launcher"}),
     -- Spawn music client
-    awful.key({ superkey }, "F3", apps.music,
-        {description = "music client", group = "launcher"}),
+    --awful.key({ superkey }, "F3", apps.music,
+        --{description = "music client", group = "launcher"}),
     -- Spawn cava in a terminal
-    awful.key({ superkey }, "F4", function() awful.spawn("visualizer") end,
-        {description = "cava", group = "launcher"}),
+    --awful.key({ superkey }, "F4", function() awful.spawn("visualizer") end,
+        --{description = "cava", group = "launcher"}),
     -- Spawn ncmpcpp in a terminal, with a special visualizer config
-    awful.key({ superkey, shiftkey }, "F4", function() awful.spawn(user.terminal .. " -e 'ncmpcpp -c ~/.config/ncmpcpp/config_visualizer -s visualizer'") end,
-        {description = "ncmpcpp", group = "launcher"}),
+    --awful.key({ superkey, shiftkey }, "F4", function() awful.spawn(user.terminal .. " -e 'ncmpcpp -c ~/.config/ncmpcpp/config_visualizer -s visualizer'") end,
+        --{description = "ncmpcpp", group = "launcher"}),
     -- Network dialog: nmapplet rofi frontend
-    awful.key({ superkey }, "F11", function() awful.spawn("networks-rofi") end,
-        {description = "spawn network dialog", group = "launcher"}),
+    --awful.key({ superkey }, "F11", function() awful.spawn("networks-rofi") end,
+        --{description = "spawn network dialog", group = "launcher"}),
     -- Toggle sidebar
     awful.key({ superkey }, "grave", function() sidebar_toggle() end,
         {description = "show or hide sidebar", group = "awesome"}),
@@ -545,8 +545,8 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "b", function() wibars_toggle() end,
         {description = "show or hide wibar(s)", group = "awesome"}),
     -- Emacs (O for org mode)
-    awful.key({ superkey }, "o", apps.org,
-        {description = "emacs", group = "launcher"}),
+    --awful.key({ superkey }, "o", apps.org,
+        --{description = "emacs", group = "launcher"}),
     -- Markdown input scratchpad (I for input)
     -- For quickly typing markdown comments and pasting them in
     -- the browser
