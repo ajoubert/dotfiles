@@ -21,6 +21,19 @@ echo
 echo $password | keepassxc-cli export -f csv -q $1 > /tmp/keepass.csv
 echo "Passwords extracted, initializing database"
 
-pass init "$(cat ~/.local/scripts/private/passwords_key)" 
+LOCALPWD_NOTES=$(echo $password | keepassxc-cli show ~/sync/keepass.kdbx localPwd | grep Notes)
+LOCALPWD_KEY=${LOCALPWD_NOTES:7:50}
+
+echo -n "Found key to be ${LOCALPWD_KEY}"
+echo
+read -p "Should we continue with that key? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo "Okay, let's not do it then";
+  rm /tmp/keepass.csv;
+  exit 1
+fi
+
+pass init "$LOCALPWD_KEY" 
 python2 ~/.local/scripts/csv2pass.py -i /tmp/keepass.csv -r keepPass/;
 rm /tmp/keepass.csv;
