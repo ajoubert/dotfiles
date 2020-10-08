@@ -28,6 +28,8 @@ fi
 if [ -x "$(command -v pip)" ];
 then
   pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install --use-feature=2020-resolver -U
+  ## Temporary : necessary to keep this one downgraded because of gsdrive
+  pip install --upgrade oauth2client==3
 fi
 
 ## a0 upgrade
