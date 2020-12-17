@@ -141,10 +141,6 @@ user = {
 }
 -- ===================================================================
 
-
--- Jit
---pcall(function() jit.on() end)
-
 -- Initialization
 -- ===================================================================
 -- Theme handling library
@@ -1125,6 +1121,7 @@ awesome.connect_signal(
     function(args)
         awful.util.spawn('bash -c "~/.local/scripts/randomBgAndVideo.sh"')
         awful.util.spawn('bash -c "~/.local/scripts/backlight -b 0.9"')
+        awful.util.spawn('bash -c "unclutter -idle 2')
         awful.util.spawn('bash -c "xset r rate 200 60')
     end
 )
@@ -1133,9 +1130,6 @@ awesome.connect_signal(
 -- Garbage collection
 -- Enable for lower memory consumption
 -- ===================================================================
-
--- collectgarbage("setpause", 160)
--- collectgarbage("setstepmul", 400)
 
 collectgarbage("setpause", 110)
 collectgarbage("setstepmul", 1000)

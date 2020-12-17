@@ -242,7 +242,7 @@ local function generate_prompt_icon(icon, color)
 end
 
 function sidebar_activate_prompt(action)
-    sidebar.visible = true
+    sidebar_show()
     search_icon.visible = false
     local prompt
     if action == "run" then
@@ -385,13 +385,13 @@ sidebar.opacity = beautiful.sidebar_opacity or 1
 sidebar.height = screen.primary.geometry.height
 sidebar.width = beautiful.sidebar_width or dpi(300)
 sidebar.y = beautiful.sidebar_y or 0
-local radius = beautiful.sidebar_border_radius or 0
+--local radius = beautiful.sidebar_border_radius or 0
+local radius = 0
 if beautiful.sidebar_position == "right" then
     awful.placement.top_right(sidebar)
 else
     awful.placement.top_left(sidebar)
 end
-awful.placement.maximize_vertically(sidebar, { honor_workarea = true, margins = { top = beautiful.useless_gap * 2 } })
 
 sidebar:buttons(gears.table.join(
     -- Middle click - Hide sidebar
@@ -401,6 +401,9 @@ sidebar:buttons(gears.table.join(
 ))
 
 sidebar_show = function()
+    sidebar.screen = awful.screen.focused()
+    --awful.placement.maximize_vertically(sidebar, { honor_workarea = true, margins = { top = beautiful.useless_gap * 2 } })
+    awful.placement.maximize_vertically(sidebar, { honor_workarea = false })
     sidebar.visible = true
 end
 
@@ -415,7 +418,7 @@ sidebar_toggle = function()
     if sidebar.visible then
         sidebar_hide()
     else
-        sidebar.visible = true
+        sidebar_show();
     end
 end
 
@@ -510,7 +513,8 @@ sidebar:setup {
                 helpers.vertical_pad(dpi(25)),
                 layout = wibox.layout.fixed.vertical
             },
-            shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+            --shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+            shape = helpers.prrect(0, false, true, false, false),
             bg = x.color0.."66",
             widget = wibox.container.background
         },
@@ -542,7 +546,8 @@ sidebar:setup {
         },
         layout = wibox.layout.align.vertical,
     },
-    shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+    --shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+    shape = helpers.prrect(0, false, true, false, false),
     bg = beautiful.sidebar_bg or beautiful.wibar_bg or "#111111",
     widget = wibox.container.background
 }
