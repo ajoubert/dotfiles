@@ -63,6 +63,8 @@ export PATH=$MSBuildSDKsPath:$PATH
 ## Go stuff
 export GOPATH=$HOME/.local/go
 
+## Rust / cargo
+[ -d "$HOME/.cargo/bin" ] && export PATH="$PATH:$HOME/.cargo/bin"
 
 ## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird
