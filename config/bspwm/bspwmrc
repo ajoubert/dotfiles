@@ -6,8 +6,8 @@ kill -9 $(ps aux | grep bspc | sed 's/\s\+/ /g' | cut -d' ' -f2 | xargs)
 sxhkd &>> /tmp/sxhkd.log &
 
 if [[ $(hostname) == 'me110n' ]]; then
-    # bspc monitor DVI-D-0 -d 1  ## now a single monitor setup
-    bspc monitor HDMI-0 -d 1 
+    bspc monitor HDMI-0 -d I II III IV V
+    bspc monitor DVI-D-0 -d V VI VII
 else
     bspc monitor -d "Web" "Code" "Term" "Dev" "Random"
 fi
