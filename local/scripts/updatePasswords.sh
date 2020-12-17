@@ -2,13 +2,13 @@
 
 # Start to export the database
 FILE=$1
-if [ ! -n "$1" ]; then
+if [ ! -n "$FILE" ]; then
   echo "File name missing..."
   echo "Usage: updatePassword [file]"
   exit 1
 fi
 
-if [ ! -f $1 ]; then
+if [ ! -f $FILE ]; then
   echo "Keepass file not found..."
   exit 1
 fi
@@ -18,10 +18,10 @@ read -s password
 echo
 
 # Extracting passwords in temporary file
-echo $password | keepassxc-cli export -f csv -q $1 > /tmp/keepass.csv
+echo $password | keepassxc-cli export -f csv -q $FILE > /tmp/keepass.csv
 echo "Passwords extracted, initializing database"
 
-LOCALPWD_NOTES=$(echo $password | keepassxc-cli show ~/sync/keepass.kdbx localPwd | grep Notes)
+LOCALPWD_NOTES=$(echo $password | keepassxc-cli show $FILE localPwd | grep Notes)
 LOCALPWD_KEY=${LOCALPWD_NOTES:7:50}
 
 echo -n "Found key to be ${LOCALPWD_KEY}"
