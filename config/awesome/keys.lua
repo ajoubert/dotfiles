@@ -103,6 +103,19 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "focus right", group = "client"}),
 
+    -- Change screen focus
+    awful.key({ superkey }, "[",
+        function()
+            awful.screen.focus_bydirection("left")
+        end,
+        {description = "Focus screen on the left", group = "client"}),
+
+    awful.key({ superkey }, "]",
+        function()
+            awful.screen.focus_bydirection("right")
+        end,
+        {description = "Focus screen on the right", group = "client"}),
+
     -- Focus client by direction (arrow keys)
     awful.key({ superkey }, "Down",
         function()
@@ -169,6 +182,7 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "kill all visible clients for the current tag", group = "gaps"}
     ),
+
 
     -- Resize focused client or layout factor
     awful.key({ superkey, ctrlkey }, "Down", function (c)
@@ -767,13 +781,12 @@ for i = 1, ntags do
         awful.key({ superkey }, "#" .. i + 9,
             function ()
                 -- Tag back and forth
-                helpers.tag_back_and_forth(i)
-
+                --helpers.tag_back_and_forth(i)
                 -- Simple tag view
-                -- local tag = mouse.screen.tags[i]
-                -- if tag then
-                -- tag:view_only()
-                -- end
+                local tag = mouse.screen.tags[i]
+                if tag then
+                    tag:view_only()
+                end
             end,
             {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
@@ -888,28 +901,23 @@ keys.tasklist_buttons = gears.table.join(
 
 -- Mouse buttons on a tag of the taglist widget
 keys.taglist_buttons = gears.table.join(
-    awful.button({ }, 1, function(t)
-        -- t:view_only()
-        helpers.tag_back_and_forth(t.index)
-    end),
-    awful.button({ modkey }, 1, function(t)
-        if client.focus then
-            client.focus:move_to_tag(t)
-        end
-    end),
-    -- awful.button({ }, 3, awful.tag.viewtoggle),
-    awful.button({ }, 3, function(t)
-        if client.focus then
-            client.focus:move_to_tag(t)
-        end
-    end),
-    awful.button({ modkey }, 3, function(t)
-        if client.focus then
-            client.focus:toggle_tag(t)
-        end
-    end),
-    awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
-    awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end)
+     awful.button({ }, 1, function(t)
+         t:view_only()
+         -- helpers.tag_back_and_forth(t.index)
+     end),
+     -- awful.button({ }, 3, awful.tag.viewtoggle),
+     awful.button({ }, 3, function(t)
+         if client.focus then
+             client.focus:move_to_tag(t)
+         end
+     end),
+     awful.button({ modkey }, 3, function(t)
+         if client.focus then
+             client.focus:toggle_tag(t)
+         end
+     end),
+     awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
+     awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end)
 )
 
 
