@@ -16,7 +16,9 @@ npm -g update;
 ~/.tmux/plugins/tpm/bin/update_plugins all
 
 ## Remote servers update
+ansible-playbook $PLAYBOOKS_HOME/ovh/activate_forwarding.yml
 ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
+ansible-playbook $PLAYBOOKS_HOME/ovh/deactivate_forwarding.yml
 
 # SDK manager update
 if [ -x "$(command -v sdkmanager)" ];
