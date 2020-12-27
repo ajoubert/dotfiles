@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 DIRECTORY="$HOME/.wallpapers/static"
 
 if [ -d "$DIRECTORY" ] && [[ ! $* == *--rand* ]]; then
