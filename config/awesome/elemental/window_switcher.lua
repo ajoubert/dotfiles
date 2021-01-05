@@ -156,7 +156,7 @@ window_switcher_hide = function()
     window_switcher_minimized_clients = {}
 
     -- Resume recording focus history
-    awful.client.focus.history.enable_tracking()
+    -- awful.client.focus.history.enable_tracking()
     -- Stop and hide window_switcher
     awful.keygrabber.stop(window_switcher_grabber)
     s.window_switcher.visible = false
