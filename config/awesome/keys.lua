@@ -812,6 +812,31 @@ for i = 1, ntags do
             end,
             {description = "move focused client to tag #"..i, group = "tag"}),
 
+        -- Move client to screen.
+        awful.key({ superkey, shiftkey }, "[",
+                  function ()
+                      local c = client.focus;
+                      if c then
+                          local geo = c.screen.geometry
+                          if geo.x > 0 then
+                              c:move_to_screen(c.screen.index-1)
+                          end
+                      end
+                  end,
+                  {description = "move to screen on left", group = "screen"}),
+        awful.key({ superkey, shiftkey }, "]",
+                  function ()
+                      local c = client.focus;
+                      if c then
+                          local geo = c.screen.geometry
+                          local width = root:size(1)
+                          if geo.x + geo.width < width then
+                              c:move_to_screen()
+                          end
+                      end
+                  end,
+                  {description = "move to screen on right", group = "screen"}),
+
         -- Move all visible clients to tag and focus that tag
         awful.key({ superkey, altkey }, "#" .. i + 9,
             function ()
