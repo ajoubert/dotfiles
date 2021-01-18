@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Regular updates
-sudo pacman -Syu;
+## Temporarly ignore libvirt while ongoing issue
+sudo pacman -Syu --ignore libvirt;
  
 # AUR updates (intentionally decoupled from pacman)
-yay -Syu;
+yay -Syu --ignore libvirt;
  
 # NPM updates
 npm -g update;

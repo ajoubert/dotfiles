@@ -435,6 +435,13 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "(un)mute microphone", group = "volume"}),
 
+    -- Control vm 
+    awful.key( { superkey, shiftkey }, "d",
+        function()
+            awful.spawn.with_shell("/home/sloth/.VFIOinput/input_attach.sh > /tmp/foo.txt &>/tmp/foo.txt")
+        end,
+        {description = "attach input to vm", group = "volume"}),
+
     -- Microphone overlay
     awful.key( { superkey, shiftkey }, "v",
         function()

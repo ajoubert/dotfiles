@@ -66,6 +66,9 @@ export GOPATH=$HOME/.local/go
 ## Rust / cargo
 [ -d "$HOME/.cargo/bin" ] && export PATH="$PATH:$HOME/.cargo/bin"
 
+# Libvirt stuff, make sure to add your user to the libvirt group
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 ## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird
 #export CDPATH=\
