@@ -50,6 +50,7 @@ export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 export SDKMANAGER_OPTS=""
 export ANDROID_SDK_ROOT="/opt/android-sdk"
+export ANDROID_SDK="/opt/android-sdk"
 export ANDROID_HOME="/opt/android-sdk"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -68,6 +69,10 @@ export GOPATH=$HOME/.local/go
 
 # Libvirt stuff, make sure to add your user to the libvirt group
 export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# User dirs stuff
+export XDG_VIDEOS_DIR="$HOME/videos"
+export XDG_MUSIC_DIR="$HOME/music"
 
 ## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird

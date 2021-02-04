@@ -267,7 +267,7 @@ awful.layout.layouts = {
 -- ===================================================================
 local function set_wallpaper(s)
     -- Wallpaper
-    if beautiful.wallpaper then
+    --if beautiful.wallpaper then
         -- local wallpaper = beautiful.wallpaper
         -- -- If wallpaper is a function, call it with the screen
         -- if type(wallpaper) == "function" then
@@ -282,8 +282,8 @@ local function set_wallpaper(s)
         --awful.spawn.with_shell("feh --bg-fill " .. wallpaper)
 
         -- >> Method 3: Set last wallpaper with feh
-        awful.spawn.with_shell(os.getenv("HOME") .. "/.fehbg")
-    end
+        -- awful.spawn.with_shell(os.getenv("HOME") .. "/.fehbg")
+    --end
 end
 
 -- Set wallpaper
