@@ -67,6 +67,9 @@ export GOPATH=$HOME/.local/go
 ## Rust / cargo
 [ -d "$HOME/.cargo/bin" ] && export PATH="$PATH:$HOME/.cargo/bin"
 
+## Emacs
+[ -d "$HOME/.emacs.d/bin" ] && export PATH="$PATH:$HOME/.emacs.d/bin"
+
 # Libvirt stuff, make sure to add your user to the libvirt group
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 

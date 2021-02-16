@@ -47,8 +47,12 @@ function prompt_right() {
 }
 
 function prompt_left() {
-  #echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\]"
-  echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\] ${PROMPT_KUBECTL}"
+  if [ "${SKIP_HOSTNAME}" = "true" ];
+  then
+    echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\] ${PROMPT_KUBECTL}"
+  else
+    echo -e "\[${COLOR_ACCENT}\]${HOSTNAME}:\w\[${COLOR_NONE}\] ${PROMPT_KUBECTL}"
+  fi
 }
 
 function enable_tty() {
