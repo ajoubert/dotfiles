@@ -19,15 +19,22 @@ kill -9 "$TOKILL"
 redshift -x;
 fi 
 
-while getopts b: option
+while getopts "b:id" option
 do
 case "${option}"
 in
 b) BRIGHTNESS=${OPTARG};;
-i) BRIGHTNESS=$(( BRIGHTNESS + 0.1 ));;
-d) BRIGHTNESS=$(( BRIGHTNESS - 0.1 ));;
+i) BRIGHTNESS=$(echo "${BRIGHTNESS} + 0.1" | bc -l);;
+d) BRIGHTNESS=$(echo "${BRIGHTNESS} - 0.1" | bc -l);;
 esac
 done
+
+if [ "${BRIGHTNESS}" = "0" ]; then
+    BRIGHTNESS=0.1;
+fi
+if [ "${BRIGHTNESS}" = "1.1" ]; then
+    BRIGHTNESS=1;
+fi
 
 # Let's store the brightness for later use
 echo "${BRIGHTNESS}" > /tmp/backlight.val
