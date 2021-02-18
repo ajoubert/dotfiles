@@ -240,3 +240,10 @@ function tray_toggle()
     local s = awful.screen.focused()
     s.traybox.visible = not s.traybox.visible
 end
+
+function tray_toggle_test()
+    return function()
+        local s = awful.screen.focused()
+        s.traybox.visible = not s.traybox.visible
+    end
+end
