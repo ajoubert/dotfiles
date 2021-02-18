@@ -1,8 +1,12 @@
-source $VIM_CONFIG/config/config.vim
-source $VIM_CONFIG/config/shortcuts_noplugin.vim
+if "" == $VIM_CONFIG
+  echom "$VIM_CONFIG variable is not set, skipping sourcing"
+else
+  source $VIM_CONFIG/config/config.vim
+  source $VIM_CONFIG/config/shortcuts_noplugin.vim
 
-if filereadable(expand("~/.vim/autoload/plug.vim"))
-  source $VIM_CONFIG/config/plugged.vim
-  source $VIM_CONFIG/config/shortcuts_plugin.vim
-  source $VIM_CONFIG/config/coc-config.vim
+  if filereadable(expand("~/.vim/autoload/plug.vim"))
+    source $VIM_CONFIG/config/plugged.vim
+    source $VIM_CONFIG/config/shortcuts_plugin.vim
+    source $VIM_CONFIG/config/coc-config.vim
+  endif
 endif
