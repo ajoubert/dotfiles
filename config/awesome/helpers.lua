@@ -245,16 +245,6 @@ function helpers.round(number, decimals)
     return math.floor(number * power) / power
 end
 
-function helpers.volume_control(step)
-    local cmd
-    if step == 0 then
-        cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    else
-        sign = step > 0 and "+" or ""
-        cmd = "pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ "..sign..tostring(step).."%"
-    end
-    awful.spawn.with_shell(cmd)
-end
 
 function helpers.send_key(c, key)
     awful.spawn.with_shell("xdotool key --window "..tostring(c.window).." "..key)
@@ -443,4 +433,246 @@ function helpers.this_dir()
    return str:match("(.*/)")
 end
 
+
+-- START - custom
+
+function helpers.volume_control(step)
+    return function()
+        local cmd
+        if step == 0 then
+            cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        else
+            sign = step > 0 and "+" or ""
+            cmd = "pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ "..sign..tostring(step).."%"
+        end
+        awful.spawn.with_shell(cmd)
+    end
+end
+
+function helpers.focus_direction(direction)
+    return function()
+        awful.client.focus.bydirection(direction)
+    end
+end
+
+function helpers.focus_screen_by_direction(direction)
+    return function()
+        awful.screen.focus_bydirection(direction)
+    end
+end
+
+function helpers.show_window_switcher()
+    window_switcher_show(awful.screen.focused())
+end
+
+function helpers.increase_gaps()
+    awful.tag.incgap(5, nil)
+end
+
+function helpers.decrease_gaps()
+    awful.tag.incgap(-5, nil)
+end
+
+function helpers.jump_urgent()
+    uc = awful.client.urgent.get()
+    -- If there is no urgent client, go back to last tag
+    if uc == nil then
+        awful.tag.history.restore()
+    else
+        awful.client.urgent.jumpto()
+    end
+end
+
+function helpers.spawn(to_spawn)
+    return function()
+        awful.spawn(to_spawn)
+    end
+end
+
+function helpers.spawn_with_shell(to_spawn)
+    return function()
+        awful.spawn_with_shell(to_spawn)
+    end
+end
+
+function helpers.show_exit_screens()
+    exit_screen_show()
+end
+
+function helpers.restore_minimized()
+    local c = awful.client.restore()
+    -- Focus restored client
+    if c then
+        client.focus = c
+    end
+end
+
+function helpers.show_rofi()
+    awful.spawn.with_shell("rofi -matching fuzzy -show combi")
+end
+
+function helpers.dismiss_all_notifs()
+    awesome.emit_signal("elemental::dismiss")
+    naughty.destroy_all_notifications()
+end
+
+function helpers.set_tiled_layout()
+    awful.layout.set(awful.layout.suit.tile)
+    helpers.single_double_tap(
+        nil,
+        function()
+            local clients = awful.screen.focused().clients
+            for _, c in pairs(clients) do
+                c.floating = false
+            end
+        end)
+end
+
+function helpers.set_floating_layout()
+    awful.layout.set(awful.layout.suit.floating)
+end
+
+function helpers.center_with_doubletap(c)
+    helpers.single_double_tap(
+        awful.placement.centered(c, {honor_workarea = true, honor_padding = true}),
+        function ()
+            helpers.float_and_resize(c, screen_width * 0.65, screen_height * 0.9)
+        end
+    )
+end
+
+function helpers.toggle_fullscreen(c)
+    c.fullscreen = not c.fullscreen
+    c:raise()
+end
+
+function helpers.toggle_floating_layout(c)
+    local layout_is_floating = (awful.layout.get(mouse.screen) == awful.layout.suit.floating)
+    if not layout_is_floating then
+        awful.client.floating.toggle()
+    end
+end
+
+function helpers.maximize_vertically(c)
+    c.maximized_vertical = not c.maximized_vertical
+    c:raise()
+end
+
+function helpers.maximize_horizontally(c)
+    c.maximized_horizontal = not c.maximized_horizontal
+    c:raise()
+end
+
+function helpers.switch_tag(index)
+    return function()
+        local tag = mouse.screen.tags[index]
+        if tag then
+            tag:view_only()
+        end
+    end
+end
+
+function helpers.toggle_tag(index)
+    return function()
+        local screen = awful.screen.focused()
+        local tag = screen.tags[index]
+        if tag then
+            awful.tag.viewtoggle(tag)
+        end
+    end
+end
+
+function helpers.move_to_tag(index)
+    return function()
+        if client.focus then
+            local tag = client.focus.screen.tags[index]
+            if tag then
+                client.focus:move_to_tag(tag)
+            end
+        end
+    end
+end
+
+function helpers.move_to_left_screen()
+    local c = client.focus;
+    if c then
+        local geo = c.screen.geometry
+        if geo.x > 0 then
+            c:move_to_screen(c.screen.index-1)
+        end
+    end
+end
+
+function helpers.move_to_right_screen()
+    local c = client.focus;
+    if c then
+        local geo = c.screen.geometry
+        local width = root:size(1)
+        if geo.x + geo.width < width then
+            c:move_to_screen()
+        end
+    end
+end
+
+function helpers.toggle_tag_on_client(index)
+    return function()
+        if client.focus then
+            local tag = client.focus.screen.tags[index]
+            if tag then
+                client.focus:toggle_tag(tag)
+            end
+        end
+    end 
+end
+
+function helpers.focus_or_minimize(c)
+    if c == client.focus then
+        c.minimized = true
+    else
+        -- Without this, the following
+        -- :isvisible() makes no sense
+        c.minimized = false
+        if not c:isvisible() and c.first_tag then
+            c.first_tag:view_only()
+        end
+        -- This will also un-minimize
+        -- the client, if needed
+        client.focus = c
+    end
+end
+
+function helpers.move_if_focused(index)
+    if client.focus then
+     client.focus:move_to_tag(t)
+    end
+end
+
+function helpers.toggle_if_focused(index)
+    if client.focus then
+        client.focus:toggle_tag(t)
+    end
+end
+
+function helpers.move_under_pointer()
+    local c = mouse.object_under_pointer()
+    client.focus = c
+    awful.mouse.client.move(c)
+end
+
+function helpers.close_under_pointer()
+    local c = mouse.object_under_pointer()
+    c:kill()
+end
+
+function helpers.resize_under_pointer()
+    local c = mouse.object_under_pointer()
+    client.focus = c
+    awful.mouse.client.resize(c)
+end
+
+function helpers.toggle_floating_under_pointer()
+    local c = mouse.object_under_pointer()
+    client.focus = c
+    c.floating = not c.floating
+end
 return helpers
