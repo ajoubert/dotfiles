@@ -643,13 +643,13 @@ end
 
 function helpers.move_if_focused(index)
     if client.focus then
-     client.focus:move_to_tag(t)
+     client.focus:move_to_tag(index)
     end
 end
 
 function helpers.toggle_if_focused(index)
     if client.focus then
-        client.focus:toggle_tag(t)
+        client.focus:toggle_tag(index)
     end
 end
 
