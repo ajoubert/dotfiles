@@ -8,6 +8,9 @@ yay -Syu;
  
 # NPM updates
 npm -g update;
+
+# GO packages
+go get -u all
  
 # VIM plugins updates
 /usr/bin/vim +PlugUpgrade +PlugUpdate +qa
