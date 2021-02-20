@@ -78,7 +78,7 @@ keys.globalkeys = gears.table.join(
     awful.key({}, "XF86AudioRaiseVolume", helpers.volume_control(5), {description = "raise volume", group = "volume"}),
 
     -- Control virtual machine 
-    awful.key({ superkey, shiftkey }, "d", helpers.spawn_with_shell("/home/sloth/.VFIOinput/input_attach.sh"), {description = "attach input to vm", group = "volume"}),
+    awful.key({ superkey, shiftkey }, "d", helpers.spawn("/home/sloth/.VFIOinput/input_attach.sh"), {description = "attach input to vm", group = "volume"}),
 
     -- FIXME -- Screenshots
     awful.key({}, "Print", apps.screenshot("full"), {description = "Take full screenshot", group = "screenshots"}),
@@ -106,7 +106,7 @@ keys.globalkeys = gears.table.join(
     -- Toggle wibar(s)
     awful.key({ superkey }, "b", function() wibars_toggle() end, {description = "show or hide wibar(s)", group = "awesome"}),
 
-    awful.key({ superkey }, "p", helpers.spawn_with_shell("rofi-pass"), {description = "rofi pass", group = "launcher"})
+    awful.key({ superkey }, "p", helpers.spawn("rofi-pass"), {description = "rofi pass", group = "launcher"})
 )
 
 keys.clientkeys = gears.table.join(
