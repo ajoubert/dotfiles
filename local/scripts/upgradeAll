@@ -11,6 +11,9 @@ npm -g update;
 
 # GO packages
 go get -u all
+
+# Ruby packages
+gem update
  
 # VIM plugins updates
 /usr/bin/vim +PlugUpgrade +PlugUpdate +qa
