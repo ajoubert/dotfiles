@@ -16,6 +16,7 @@ unbind |
 bind | split-window -h
 bind '\' split-window -h
 bind 'C-\' split-window -h
+bind ' ' set-option status
 unbind -
 bind - split-window -v
 unbind _
