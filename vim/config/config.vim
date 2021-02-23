@@ -114,3 +114,13 @@ set cmdheight=2
 syntax enable
 " Theme settings can be found in plugged.vim, moved there because it
 " depends on a plugin
+
+" Toggle tmux bar when entering vim
+if has_key(environ(), 'TMUX')
+  augroup tmux_something
+    autocmd VimResume  * call system('tmux set status off')
+    autocmd VimEnter   * call system('tmux set status off')
+    autocmd VimLeave   * call system('tmux set status on')
+    autocmd VimSuspend * call system('tmux set status on')
+  augroup END
+endif

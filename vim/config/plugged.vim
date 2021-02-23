@@ -2,17 +2,12 @@ source $VIM_CONFIG/autoload/plug.vim
 call plug#begin("$VIM_CONFIG/plugged")
 
 " Theme / colors
-
-Plug 'altercation/vim-colors-solarized', { 'do': './bin/post_plug_update.sh vim-colors-solarized' }
+Plug 'rafi/awesome-vim-colorschemes'
 
 " Fuzzy search 
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jesseleite/vim-agriculture'
-nmap <Leader>f <Plug>RgRawSearch
-vmap <Leader>f <Plug>RgRawVisualSelection
-
 
 " fzf config
 let g:fzf_action = {
@@ -24,21 +19,12 @@ let g:fzf_layout = { 'window': 'enew' }
 
 
 " NerdTree and extensions 
-
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
-" Org mode and its dependencies
-
-Plug 'jceb/vim-orgmode'
-Plug 'vim-scripts/utl.vim'
-let g:utl_cfg_hdl_scm_http="silent !firefox-developer-edition -remote 'ping()' && firefox-developer-edition -remote 'openURL( %u )' || firefox-developer-edition '%u#%f' &"
-
-
 " Markdown and note taking
-
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 let g:instant_markdown_autostart = 0
 Plug 'vimwiki/vimwiki'
@@ -46,30 +32,31 @@ let g:vimwiki_list = [{'path': '~/.vimwiki/wiki/', 'path_html': '~/.vimwiki/html
 
 
 " Development plugins
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
+let g:NERDCreateDefaultMappings=0
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
 " Git
-
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+let g:gitgutter_map_keys = 0
 
 
 " For visual search/replace
-
 Plug 'osyo-manga/vim-over'
 cabbrev %s OverCommandLine<cr>%s
 cabbrev '<,'>s OverCommandLine<cr>'<,'>s
 
+" For better leaderkey integration
+Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
 " Theme stuff, added here because it depends on vim-color-solarized plugin
 let g:solarized_termtrans=1
-colorscheme solarized
+colorscheme solarized8
