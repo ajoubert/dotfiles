@@ -7,6 +7,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] && export PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
 
 export LYNX_CFG_PATH="$HOME/.config/lynx"
 export LYNX_CFG="$LYNX_CFG_PATH/lynx.cfg"
@@ -63,6 +64,7 @@ export PATH=$MSBuildSDKsPath:$PATH
 
 ## Go stuff
 export GOPATH=$HOME/.local/go
+[ -d "$HOME/.local/go/bin" ] && export PATH="$PATH:$HOME/.local/go/bin"
 
 ## Rust / cargo
 [ -d "$HOME/.cargo/bin" ] && export PATH="$PATH:$HOME/.cargo/bin"
