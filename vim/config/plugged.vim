@@ -19,7 +19,7 @@ let g:fzf_layout = { 'window': 'enew' }
 
 
 " NerdTree and extensions 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 

@@ -2,23 +2,51 @@
 let g:leader_map = {}
 let g:space_map= {}
 
-" Navigation shortcuts
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+" === Help ===
+let g:leader_map['h'] = {
+      \ 'name' : '+help'          ,
+      \ 'k' : 'show-keybindings'  ,
+      \ 'm' : 'show-map'          ,
+      \ 'R' : 'refresh-vimrc'     ,
+      \ }
+noremap <leader>hk :help index<CR>
+noremap <leader>hm :map<CR>
+noremap <leader>hR :source ~/.vim/vimrc<CR>
 
-" Allow to save with sudo even after having opened the file
+" === Buffers ===
+let g:leader_map['b'] = {
+      \ 'name' : '+buffer'       ,
+      \ '1' :  'buffer-1'        ,
+      \ '2' :  'buffer-2'        ,
+      \ '3' :  'buffer-3'        ,
+      \ '4' :  'buffer-4'        ,
+      \ '5' :  'buffer-5'        ,
+      \ '6' :  'buffer-6'        ,
+      \ '7' :  'buffer-7'        ,
+      \ '8' :  'buffer-8'        ,
+      \ '9' :  'buffer-9'        ,
+      \ 'd' :  'delete-buffer'   ,
+      \ 'k' :  'kill-buffer'     ,
+      \ }
+noremap <leader>b1 :b1<CR>
+noremap <leader>b2 :b2<CR>
+noremap <leader>b3 :b3<CR>
+noremap <leader>b4 :b4<CR>
+noremap <leader>b5 :b5<CR>
+noremap <leader>b6 :b6<CR>
+noremap <leader>b7 :b7<CR>
+noremap <leader>b8 :b8<CR>
+noremap <leader>b9 :b9<CR>
+noremap <leader>bd :bd<CR>
+noremap <leader>bk :bw<CR>
+
+" === Allow to save with sudo even after having opened the file ===
 cnoremap w!! w !sudo tee > /dev/null %
 
-" Copy-paste to and from clipboard
-let g:leader_map.t = {
-  \   'name': '+text',
-  \   'v': 'Paste from clipboard',
-  \ }
 
+" === Windows ===
 let g:leader_map['w'] = {
-      \ 'name' : '+windows/wiki'                  ,
+      \ 'name' : '+windows'                       ,
       \ 'd' :  'delete-window'                    ,
       \ '-' :  'split-window-below'               ,
       \ '|' :  'split-window-right'               ,
@@ -27,23 +55,24 @@ let g:leader_map['w'] = {
       \ 'j' :  'window-below'                     ,
       \ 'l' :  'window-right'                     ,
       \ 'k' :  'window-up'                        ,
-      \ '?' :  'fzf-window'                       ,
-      \ 'w' :  'open-wiki'                        ,
-      \ 't' :  'open-wiki-in-tab'                 ,
-      \ 'i' :  'open-diary'                       ,
-      \ 's' :  'select-wiki-by-number'            ,
       \ }
 
 noremap <leader>wd :bd<CR>
 noremap <leader>w- :split<CR>
 noremap <leader>w\| :vsplit<CR>
 noremap <leader>wo :on<CR>
-noremap <leader>w? :Windows<CR>
 noremap <leader>wh <C-W>h
 noremap <leader>wj <C-W>j
 noremap <leader>wk <C-W>k
 noremap <leader>wl <C-W>l
 
+" Navigation shortcuts
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+
+" === Tabs ===
 let g:leader_map[' '] = {
       \ 'name': '+tab'  ,
       \ '1': 'tab-1'    ,
@@ -56,6 +85,7 @@ let g:leader_map[' '] = {
       \ '8': 'tab-8'    ,
       \ '9': 'tab-9'    ,
       \ 'c': 'close-current-tab',
+      \ 'n': 'new-tab',
       \ }
 map <leader><space>1 :tabn 1<CR>
 map <leader><space>2 :tabn 2<CR>
@@ -67,9 +97,15 @@ map <leader><space>7 :tabn 7<CR>
 map <leader><space>8 :tabn 8<CR>
 map <leader><space>9 :tabn 9<CR>
 map <leader><space>c :tabclose<CR>
+map <leader><space>n :tabnew<CR>
 
+" === Copy and paste ===
+let g:leader_map.t = {
+      \   'name': '+text',
+      \   'v': 'Paste from clipboard',
+      \ }
+"map <leader>tv :r !xclip -o -sel -c<CR>
+"vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
 
-map <leader>tv :r !xclip -o -sel -c<CR>
-vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
-
+" Stop highlighting search
 nnoremap <CR> :noh<CR><CR>
