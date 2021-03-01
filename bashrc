@@ -20,3 +20,4 @@ fi
 ## IMPORTANT: must be the last config file to load because of preexec
 source $SHELLCONFIG/prompt.sh
 
+if [ -z ${SHELL_INIT_CMD+x} ]; then : ; else $SHELL_INIT_CMD; fi
