@@ -10,9 +10,11 @@ yay -Syu;
 npm -g update;
 
 # GO packages
-go get -u all
+## Removed due to the change of behaviour with go modules (see [27643](https://github.com/golang/go/issues/27643))
+## TODO: investigate another way to manage go global tooling
 
 # Ruby packages
+#TODO: when ruby is upgraded to 3.0.0, run `gem install net-pop`
 gem update
  
 # VIM plugins updates
