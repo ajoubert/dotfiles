@@ -1,2 +1,2 @@
 " Markdown previewer
-nnoremap <buffer> <localleader>p :InstantMarkdownPreview<CR>
+nnoremap <buffer> <localleader>P :InstantMarkdownPreview<CR>

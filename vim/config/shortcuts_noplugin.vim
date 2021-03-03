@@ -99,13 +99,5 @@ map <leader><space>9 :tabn 9<CR>
 map <leader><space>c :tabclose<CR>
 map <leader><space>n :tabnew<CR>
 
-" === Copy and paste ===
-let g:leader_map.t = {
-      \   'name': '+text',
-      \   'v': 'Paste from clipboard',
-      \ }
-"map <leader>tv :r !xclip -o -sel -c<CR>
-"vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
-
 " Stop highlighting search
 nnoremap <CR> :noh<CR><CR>
