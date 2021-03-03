@@ -1,4 +1,5 @@
-alias c='cd; clear;'
+if [ -z ${SHELL_INIT_CMD+x} ]; then C_CMD="cd; clear;"; else C_CMD="cd; clear; $SHELL_INIT_CMD;"; fi
+alias c="$C_CMD"
 alias ll='ls -lArth;';
 alias '?'=duck
 alias '??'=google
