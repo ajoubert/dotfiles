@@ -15,5 +15,5 @@ sudo umount /mnt/secret
 sudo cryptsetup close iprt
 
 ## Send it over to gdrive
-cd ~/workspace/web/gdrive;
-node ~/workspace/web/gdrive/index.js -f ~/documents/iprt/iprt.img -n iprt.img -d;
+cd ~/workspace/gdrive;
+node ~/workspace/gdrive/index.js -f ~/documents/iprt/iprt.img -n iprt.img -d;
