@@ -56,7 +56,7 @@ export ANDROID_HOME="/opt/android-sdk"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Ansible stuff
-export PLAYBOOKS_HOME="$HOME/workspace/dev_ops/ansible/playbooks"
+export PLAYBOOKS_HOME="$HOME/workspace/ansible/playbooks"
 
 #vscode stuff
 export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/3.*/Sdks );
