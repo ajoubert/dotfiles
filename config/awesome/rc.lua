@@ -514,16 +514,14 @@ awful.rules.rules = {
                 "qutebrowser",
                 "Sublime_text",
                 "Subl3",
-                --"discord",
-                --"TelegramDesktop",
                 "firefox",
                 "Nightly",
                 "Steam",
                 "Lutris",
                 "Chromium",
                 "^editor$",
-                "markdown_input"
-                -- "Thunderbird",
+                "markdown_input",
+                "spotify"
             },
             type = {
               "splash"
