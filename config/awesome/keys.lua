@@ -71,6 +71,8 @@ keys.globalkeys = gears.table.join(
     -- Brightness
     awful.key({}, "XF86MonBrightnessDown", helpers.spawn_with_shell("backlight -d"), {description = "decrease brightness", group = "brightness"}),
     awful.key({}, "XF86MonBrightnessUp", helpers.spawn_with_shell("backlight -i"), {description = "increase brightness", group = "brightness"}),
+    awful.key({ superkey }, "F11", helpers.spawn('bash -c "$HOME/.local/scripts/backlight -d"'), {description = "descrease brightness", group = "brightness"}),
+    awful.key({ superkey }, "F12", helpers.spawn('bash -c "$HOME/.local/scripts/backlight -i"'), {description = "increase brightness", group = "brightness"}),
 
     -- Volume Control with volume keys
     awful.key({}, "XF86AudioMute", helpers.volume_control(0), {description = "(un)mute volume", group = "volume"}),
