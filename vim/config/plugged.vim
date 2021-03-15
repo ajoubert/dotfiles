@@ -40,6 +40,7 @@ let g:NERDCreateDefaultMappings=0
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
+let g:NERDTreeIgnore=['^node_modules$']
 
 " Debugger
 Plug 'puremourning/vimspector'
