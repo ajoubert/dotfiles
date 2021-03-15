@@ -24,5 +24,8 @@ if [ "${BRIGHTNESS}" = "1.1" ]; then
     BRIGHTNESS=1;
 fi
 
+# Let's store the brightness for later use
+echo "${BRIGHTNESS}" > /tmp/backlight.val
+
 # Let's run our instance of redshift
 redshift -P -o -b ${BRIGHTNESS} > /dev/null &> /dev/null &
