@@ -7,18 +7,6 @@ else
     BRIGHTNESS=`cat /tmp/backlight.val`
 fi
 
-# If we have a running instance, let's get ready to kill it
-if [ -f "/tmp/backlight.pid" ] ; then
-    TOKILL=`cat /tmp/backlight.pid`
-fi
-
-if [ -z "$TOKILL" ];
-then echo "No running instance of redshift detected" 
-else
-kill -9 "$TOKILL"
-redshift -x;
-fi 
-
 while getopts "b:id" option
 do
 case "${option}"
@@ -36,12 +24,5 @@ if [ "${BRIGHTNESS}" = "1.1" ]; then
     BRIGHTNESS=1;
 fi
 
-# Let's store the brightness for later use
-echo "${BRIGHTNESS}" > /tmp/backlight.val
-
 # Let's run our instance of redshift
-redshift -b ${BRIGHTNESS} > /dev/null &> /dev/null &
-REDSHIFT_PID=$!
-
-# Now storing the new pid
-echo "${REDSHIFT_PID}" > /tmp/backlight.pid
+redshift -P -o -b ${BRIGHTNESS} > /dev/null &> /dev/null &
