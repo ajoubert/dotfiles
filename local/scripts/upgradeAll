@@ -23,11 +23,10 @@ gem update
 # TMUX plugins updates
 ~/.tmux/plugins/tpm/bin/update_plugins all
 
-## TODO: temporary disabling remote update while fixing server due to OVH database going down
 ## Remote servers update
-# ansible-playbook $PLAYBOOKS_HOME/ovh/activate_forwarding.yml
-# ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
-# ansible-playbook $PLAYBOOKS_HOME/ovh/deactivate_forwarding.yml
+ansible-playbook $PLAYBOOKS_HOME/ovh/activate_forwarding.yml
+ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
+ansible-playbook $PLAYBOOKS_HOME/ovh/deactivate_forwarding.yml
 
 # SDK manager update
 if [ -x "$(command -v sdkmanager)" ];
