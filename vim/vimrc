@@ -4,6 +4,7 @@ else
   source $VIM_CONFIG/config/config.vim
   source $VIM_CONFIG/config/shortcuts_noplugin.vim
   source $VIM_CONFIG/config/startup.vim
+  source $VIM_CONFIG/config/pain.vim
 
   if filereadable(expand("~/.vim/autoload/plug.vim"))
     source $VIM_CONFIG/config/plugged.vim
