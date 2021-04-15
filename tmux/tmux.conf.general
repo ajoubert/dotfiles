@@ -13,12 +13,13 @@ set-window-option -g mode-keys vi
 
 # create more intuitive split key combos (same as modern screen)
 unbind |
-bind | split-window -h
+bind c new-window      -c "#{pane_current_path}"
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 bind '\' split-window -h
 bind 'C-\' split-window -h
 bind ' ' set-option status
 unbind -
-bind - split-window -v
 unbind _
 bind _ split-window -v
 
