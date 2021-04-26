@@ -23,10 +23,16 @@ gem update
 # TMUX plugins updates
 ~/.tmux/plugins/tpm/bin/update_plugins all
 
+## Gnucash quotes
+if [ -f "$GNUCASH_FILE" ]; then
+  gnucash-cli --quotes get $GNUCASH_FILE
+fi
+
+
 ## Remote servers update
-ansible-playbook $PLAYBOOKS_HOME/ovh/activate_forwarding.yml
+ansible-playbook $PLAYBOOKS_HOME/ovh/serv-0/activate_forwarding.yml
 ansible-playbook $PLAYBOOKS_HOME/upgrade_all.yml
-ansible-playbook $PLAYBOOKS_HOME/ovh/deactivate_forwarding.yml
+ansible-playbook $PLAYBOOKS_HOME/ovh/serv-0/deactivate_forwarding.yml
 
 # SDK manager update
 if [ -x "$(command -v sdkmanager)" ];
