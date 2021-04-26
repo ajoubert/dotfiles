@@ -13,6 +13,13 @@ else
     popd;
 fi
 
+if [ -f "$IMG_FILE" ]; then
+    echo "Mounting file and updating content";
+else
+    echo "iprt.img still not found, aborting";
+    exit 1;
+fi
+
 ## Now let's open that file
 sudo cryptsetup open $HOME/documents/iprt.img iprt
 sudo mount /dev/mapper/iprt /mnt/secret
@@ -22,6 +29,7 @@ gpg -a --export-filter drop-subkey='expired -t' --export >/mnt/secret/data/mypub
 gpg -a --export-filter drop-subkey='expired -t' --export-secret-keys >/mnt/secret/data/myprivatekeys.asc
 gpg --export-ownertrust >/mnt/secret/data/otrust.txt
 sudo cp ~/documents/iprt/* /mnt/secret/data/
+sudo cp /mnt/hdd/syncthings/accounting/accounting.gnucash /mnt/secret/data/
 
 ## Close the file system
 sudo umount /mnt/secret
