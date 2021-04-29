@@ -1,6 +1,10 @@
 export WALLPAPER_FOLDER="$HOME/.wallpapers/static/"
 export ANIMATED_WALLPAPER_FOLDER="$HOME/.wallpapers/animated/"
 
+# SSH agent config, then provides variables
+SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+command -v ssh-agent >/dev/null && eval $(ssh-agent)
+
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
