@@ -3,7 +3,7 @@ function reset_kubectl_variable() {
   COMPENSATION_KUBECTL=0
 }
 
-KUBECTL_SYMBOL="☸️ "
+KUBECTL_SYMBOL=" ☸️"
 
 function set_kubectl() {
 	reset_kubectl_variable;
@@ -20,7 +20,7 @@ function set_kubectl() {
     return
   fi
 
-	PROMPT_KUBECTL="at \[${COLOR_BLUE}\]${KUBECTL_SYMBOL}${KUBECTL_CONTEXT}\[${COLOR_WHITE}\]"
+	PROMPT_KUBECTL=" at \[${COLOR_BLUE}\]${KUBECTL_CONTEXT}${KUBECTL_SYMBOL}\[${COLOR_WHITE}\]"
 }
 
 function set_kubectl_context() {
