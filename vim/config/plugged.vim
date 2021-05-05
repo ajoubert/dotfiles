@@ -17,6 +17,8 @@ let g:fzf_action = {
 let g:fzf_layout = { 'window': 'enew' }
 " let g:fzf_preview_window = 'right:60%'
 
+" Undo tree
+Plug 'mbbill/undotree'
 
 " NerdTree and extensions 
 Plug 'scrooloose/nerdtree'

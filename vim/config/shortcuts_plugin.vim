@@ -38,6 +38,7 @@ noremap <leader>gt :silent !tig<CR> :redraw!<CR>
 let g:leader_map.c = {
   \   'name': '+code',
   \   't': 'toggle-comment',
+  \   'u': 'toggle-undo-tree',
   \   'x': 'execute',
   \   'd': {
   \     'name': '+debug',
@@ -53,6 +54,7 @@ let g:leader_map.c = {
   \ }
 noremap <leader>cx :!%:p<CR>
 map <leader>ct <Plug>NERDCommenterToggle
+map <leader>cu :UndotreeToggle<CR>
 map <leader>cdc :call vimspector#Continue()<CR>
 map <leader>cdx :call vimspector#Stop()<CR>
 map <leader>cdX :call vimspector#Reset()<CR>
