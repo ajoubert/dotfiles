@@ -8,7 +8,7 @@ KUBECTL_SYMBOL=" ☸️"
 function set_kubectl() {
 	reset_kubectl_variable;
 
-  if ! [ -x "$(command -v kubectl)" ];
+  if ! [ -x "$(type -P kubectl)" ];
   then
       return
   fi
@@ -25,7 +25,7 @@ function set_kubectl() {
 
 function set_kubectl_context() {
 	KUBECTL_CONTEXT=""
-	local kube_context=$(kubectl config current-context 2>/dev/null)
+	local kube_context=$(\kubectl config current-context 2>/dev/null)
 	[[ -z $kube_context ]] && return
 
   if [[ "$kube_context" = "minikube" ]];
@@ -40,7 +40,7 @@ function set_kubectl_context() {
     [[ $MINIKUBE_STATUS != *"host: Running"* ]] && return
   fi
 
-	local kube_namespace=$(kubectl config view -minify --output 'jsonpath={..namespace}' 2>/dev/null)
+	local kube_namespace=$(\kubectl config view -minify --output 'jsonpath={..namespace}' 2>/dev/null)
 	[[ -n $kube_namespace && "$kube_namespace" != "default" ]] && kube_context="$kube_context ($kube_namespace)"
 
   if [ "${#kube_context}" -gt "25" ];
