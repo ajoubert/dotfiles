@@ -83,6 +83,16 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 export XDG_VIDEOS_DIR="$HOME/videos"
 export XDG_MUSIC_DIR="$HOME/music"
 
+## Kubectl-kubecolor config
+# Backup original "kubectl" command path. Supports subsequent imports of the file.
+export KUBECTL_ORIG_PATH="${KUBECTL_ORIG_PATH:-"$(which kubectl)"}"
+# Alias the real "kubectl" as "kubectll"
+alias kubectll="${KUBECTL_ORIG_PATH}"
+# Alias kubectl to use colors by default
+alias kubectl="kubecolor"
+# Enable the autocompletion for the alias too (see auto-complete install above)
+complete -o default -F __start_kubectl kubecolor
+
 ## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird
 #export CDPATH=\
