@@ -76,6 +76,8 @@ keys.globalkeys = gears.table.join(
 
     -- Volume Control with volume keys
     awful.key({}, "XF86AudioMute", helpers.volume_control(0), {description = "(un)mute volume", group = "volume"}),
+    awful.key({ superkey }, "XF86AudioMute", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh'), {description = "Toggle bluetooth device", group = "volume"}),
+    awful.key({ superkey }, "Print", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh'), {description = "Toggle bluetooth device", group = "volume"}),
     awful.key({}, "XF86AudioLowerVolume", helpers.volume_control(-5), {description = "lower volume", group = "volume"}),
     awful.key({}, "XF86AudioRaiseVolume", helpers.volume_control(5), {description = "raise volume", group = "volume"}),
 
