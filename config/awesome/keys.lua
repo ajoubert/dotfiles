@@ -80,6 +80,10 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "Print", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh'), {description = "Toggle bluetooth device", group = "volume"}),
     awful.key({}, "XF86AudioLowerVolume", helpers.volume_control(-5), {description = "lower volume", group = "volume"}),
     awful.key({}, "XF86AudioRaiseVolume", helpers.volume_control(5), {description = "raise volume", group = "volume"}),
+    awful.key({}, "XF86AudioPlay", helpers.spawn('bash -c $HOME/.local/scripts/mpc_play.sh'), {description = "Mpc play", group = "volume"}),
+    awful.key({}, "XF86AudioPause", helpers.spawn('bash -c $HOME/.local/scripts/mpc_pause.sh'), {description = "Mpc pause", group = "volume"}),
+    awful.key({}, "XF86AudioNext", helpers.spawn('bash -c $HOME/.local/scripts/mpc_next.sh'), {description = "Mpc next", group = "volume"}),
+    awful.key({}, "XF86AudioPrev", helpers.spawn('bash -c $HOME/.local/scripts/mpc_prev.sh'), {description = "Mpc prev", group = "volume"}),
 
     -- Control virtual machine 
     awful.key({ superkey, shiftkey }, "d", helpers.spawn("/home/sloth/.VFIOinput/input_attach.sh"), {description = "attach input to vm", group = "volume"}),
