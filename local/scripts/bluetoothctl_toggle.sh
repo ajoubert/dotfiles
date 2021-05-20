@@ -13,10 +13,12 @@ fi
 
 if bluetoothctl info "$device" | grep 'Connected: yes' -q; then
     notify-send -t 1000 'Disconnecting' 'Disconnecting from device.' --icon=dialog-information
+    bluetoothctl power off;
     bluetoothctl disconnect "$device"
     notify-send -t 1000 'Disconnected' 'Successfully disconnected' --icon=dialog-information
 else
     notify-send -t 1000 'Connecting' 'Connecting to device.' --icon=dialog-information
+    bluetoothctl power on;
     bluetoothctl connect "$device"
     notify-send -t 1000 'Connecting' 'Successfully connected' --icon=dialog-information
 fi
