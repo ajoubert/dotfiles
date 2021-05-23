@@ -1,0 +1,27 @@
+diff --git a/init.lua b/init.lua
+index 6fc87f6..d80c37b 100644
+--- a/init.lua
++++ b/init.lua
+@@ -124,6 +124,8 @@ function sharedtags.movetag(tag, screen)
+         -- selected tag is the one that was moved away.
+         if oldscreen then
+             local oldsel = oldscreen.selected_tag
++            local newsel = screen.selected_tag
++
+             tag.screen = screen
+ 
+             if oldsel == tag then
+@@ -134,9 +136,13 @@ function sharedtags.movetag(tag, screen)
+                     local newtag = awful.tag.find_fallback(oldscreen)
+                     if newtag then
+                         newtag:view_only()
++                    else
++                        newsel.screen = oldscreen
++                        newsel:view_only()
+                     end
+                 end
+             end
++
+         end
+ 
+         -- Also sort the tag in the taglist, by reapplying the index. This is just a nicety.

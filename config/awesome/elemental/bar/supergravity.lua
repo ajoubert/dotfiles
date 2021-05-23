@@ -4,8 +4,8 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 local helpers = require("helpers")
-local keys = require("keys")
-local t = require("tags")
+local keys = require("config/keys")
+local t = require("config/tags")
 
 local dock_autohide_delay = 0.5 -- seconds
 
@@ -58,8 +58,8 @@ local tag_colors_occupied = {
 }
 
 -- Helper function that updates a taglist item
-local update_taglist = function (item, tag, index)
-    if tag.selected then
+local update_taglist = function (item, tag, index, screen)
+    if (tag.selected and tag.screen == screen) then
         item.bg = tag_colors_focused[index]
     elseif tag.urgent then
         item.bg = tag_colors_urgent[index]
@@ -74,6 +74,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a taglist for every screen
     s.mytaglist = awful.widget.taglist {
         screen  = s,
+        source = t.getTags,
         filter  = awful.widget.taglist.filter.all,
         buttons = keys.taglist_buttons,
         layout = {
@@ -88,10 +89,10 @@ awful.screen.connect_for_each_screen(function(s)
         widget_template = {
             widget = wibox.container.background,
             create_callback = function(self, tag, index, _)
-                update_taglist(self, tag, index)
+                update_taglist(self, tag, index, s)
             end,
             update_callback = function(self, tag, index, _)
-                update_taglist(self, tag, index)
+                update_taglist(self, tag, index, s)
             end,
         }
     }
@@ -111,7 +112,7 @@ awful.screen.connect_for_each_screen(function(s)
     })
 
     s.taglist_box:setup {
-        kidget = s.mytaglist,
+        widget = s.mytaglist,
     }
 
     -- Create the dock wibox

@@ -2,7 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local apps = require("apps")
+local apps = require("config/apps")
 
 local helpers = require("helpers")
 
@@ -92,23 +92,23 @@ ram:buttons(
 local brightness_bar = require("noodle.brightness_bar")
 local brightness = format_progress_bar(brightness_bar)
 
-brightness:buttons(
-    gears.table.join(
-        -- Left click - Toggle redshift
-        awful.button({ }, 1, apps.night_mode),
-        -- Right click - Reset brightness (Set to max)
-        awful.button({ }, 3, function ()
-            awful.spawn.with_shell("light -S 100")
-        end),
-        -- Scroll up - Increase brightness
-        awful.button({ }, 4, function ()
-            awful.spawn.with_shell("light -A 10")
-        end),
-        -- Scroll down - Decrease brightness
-        awful.button({ }, 5, function ()
-            awful.spawn.with_shell("light -U 10")
-        end)
-))
+--brightness:buttons(
+--    gears.table.join(
+--        -- Left click - Toggle redshift
+--        awful.button({ }, 1, apps.night_mode),
+--        -- Right click - Reset brightness (Set to max)
+--        awful.button({ }, 3, function ()
+--            awful.spawn.with_shell("light -S 100")
+--        end),
+--        -- Scroll up - Increase brightness
+--        awful.button({ }, 4, function ()
+--            awful.spawn.with_shell("light -A 10")
+--        end),
+--        -- Scroll down - Decrease brightness
+--        awful.button({ }, 5, function ()
+--            awful.spawn.with_shell("light -U 10")
+--        end)
+--))
 
 local hours = wibox.widget.textclock("%H")
 local minutes = wibox.widget.textclock("%M")
