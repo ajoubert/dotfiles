@@ -1,0 +1,3 @@
+[submodule "config/awesome/third-party/sharedtags"]
+	path = config/awesome/third-party/sharedtags
+	url = https://github.com/Drauthius/awesome-sharedtags.git

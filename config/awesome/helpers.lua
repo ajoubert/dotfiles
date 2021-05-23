@@ -10,6 +10,7 @@ local wibox = require("wibox")
 local icons = require("icons")
 local notifications = require("notifications")
 local naughty = require("naughty")
+local t = require("config/tags")
 
 local helpers = {}
 
@@ -565,9 +566,10 @@ end
 
 function helpers.switch_tag(index)
     return function()
-        local tag = mouse.screen.tags[index]
+        local screen = awful.screen.focused()
+        local tag = t.tags[index]
         if tag then
-            tag:view_only()
+            t.sharedtags.viewonly(tag, screen)
         end
     end
 end
@@ -575,9 +577,9 @@ end
 function helpers.toggle_tag(index)
     return function()
         local screen = awful.screen.focused()
-        local tag = screen.tags[index]
+        local tag = t.tags[index]
         if tag then
-            awful.tag.viewtoggle(tag)
+            t.sharedtags.viewtoggle(tag, screen)
         end
     end
 end
@@ -585,7 +587,7 @@ end
 function helpers.move_to_tag(index)
     return function()
         if client.focus then
-            local tag = client.focus.screen.tags[index]
+            local tag = t.tags[index]
             if tag then
                 client.focus:move_to_tag(tag)
             end
@@ -675,4 +677,10 @@ function helpers.toggle_floating_under_pointer()
     client.focus = c
     c.floating = not c.floating
 end
+
+function helpers.tag_click(tag)
+		local screen = awful.screen.focused()
+		t.sharedtags.viewonly(tag, screen)
+end
+
 return helpers

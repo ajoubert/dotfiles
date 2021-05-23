@@ -2,7 +2,7 @@ local awful = require("awful")
 local naughty = require("naughty")
 local gears = require("gears")
 local beautiful = require("beautiful")
-local apps = require("apps")
+local apps = require("config/apps")
 local decorations = require("decorations")
 local helpers = require("helpers")
 
@@ -27,15 +27,9 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "h", helpers.focus_direction("left"), {description = "focus left", group = "client"}),
     awful.key({ superkey }, "l", helpers.focus_direction("right"), {description = "focus right", group = "client"}),
 
-    -- Focus client by direction (arrow keys)
-    awful.key({ superkey }, "down", helpers.focus_direction("down"), {description = "focus down", group = "client"}),
-    awful.key({ superkey }, "up", helpers.focus_direction("up"), {description = "focus up", group = "client"}),
-    awful.key({ superkey }, "left", helpers.focus_direction("left"), {description = "focus left", group = "client"}),
-    awful.key({ superkey }, "right", helpers.focus_direction("right"), {description = "focus right", group = "client"}),
-
     -- Change screen focus
-    awful.key({ superkey }, "[", helpers.focus_screen_by_direction("left"), {description = "Focus screen on the left", group = "client"}),
-    awful.key({ superkey }, "]", helpers.focus_screen_by_direction("right"), {description = "Focus screen on the right", group = "client"}),
+    awful.key({ superkey }, "[", helpers.focus_screen_by_direction("left"), {description = "focus screen on the left", group = "client"}),
+    awful.key({ superkey }, "]", helpers.focus_screen_by_direction("right"), {description = "focus screen on the right", group = "client"}),
 
 
     -- Window switcher
@@ -199,7 +193,7 @@ keys.tasklist_buttons = gears.table.join(
 
 -- Mouse buttons on a tag of the taglist widget
 keys.taglist_buttons = gears.table.join(
-     awful.button({}, 1, function(t) t:view_only() end),
+     awful.button({}, 1, helpers.tag_click),
      awful.button({}, 3, helpers.move_if_focused),
      awful.button({ superkey }, 3, helpers.toggle_if_focused),
      awful.button({}, 4, function(t) awful.tag.viewprev(t.screen) end),
