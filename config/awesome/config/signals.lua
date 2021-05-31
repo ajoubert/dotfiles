@@ -127,5 +127,8 @@ awesome.connect_signal('startup',
         awful.spawn('bash -c "~/.local/scripts/backlight -b 0.9"')
         awful.spawn('bash -c "unclutter -idle 2"')
         awful.spawn('bash -c "xset r rate 200 60"')
+        awful.spawn('bash -c "xset s off"')
+        awful.spawn('bash -c "xset -dpms"')
+        awful.spawn('bash -c "xset s noblank"')
     end
 )
