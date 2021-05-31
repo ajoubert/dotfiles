@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COVER="/tmp/album_cover.png"
+COVER="/tmp/album_cover.jpg"
 COVER_SIZE="400"
 MUSIC_DIR="/mnt/hdd/data/music/"
 
