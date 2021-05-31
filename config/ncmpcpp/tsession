@@ -14,7 +14,7 @@ send-keys "~/.config/ncmpcpp/cover.sh " C-m
 #catalog pane; run instance of ncmpcpp
 split-window -v
 select-pane -t 1
-send-keys "ncmpcpp --config='~/.ncmpcpp/catalog.conf'" C-m
+send-keys "ncmpcpp" C-m
 send-keys 1
 
 #visualizer pane; run instance of ncmpcpp in visualizer mode
