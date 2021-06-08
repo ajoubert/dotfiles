@@ -124,7 +124,8 @@ awful.screen.connect_for_each_screen(function(s)
         ontop = true,
         type = "dock",
         placement = dock_placement,
-        widget = dock
+        widget = dock,
+        screen = s
     })
     dock_placement(s.dock)
 
