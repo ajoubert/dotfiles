@@ -570,6 +570,8 @@ function helpers.switch_tag(index)
         local tag = t.tags[index]
         if tag then
             t.sharedtags.viewonly(tag, screen)
+            -- Yeah, arrays start at 1
+            client.focus = awful.screen.focused().clients[1]
         end
     end
 end
@@ -601,6 +603,7 @@ function helpers.move_to_left_screen()
         local geo = c.screen.geometry
         if geo.x > 0 then
             c:move_to_screen(c.screen.index-1)
+            client.focus = c;
         end
     end
 end
@@ -612,6 +615,7 @@ function helpers.move_to_right_screen()
         local width = root:size(1)
         if geo.x + geo.width < width then
             c:move_to_screen()
+            client.focus = c;
         end
     end
 end
@@ -681,6 +685,8 @@ end
 function helpers.tag_click(tag)
 		local screen = awful.screen.focused()
 		t.sharedtags.viewonly(tag, screen)
+    -- Yeah, arrays start at 1
+    client.focus = awful.screen.focused().clients[1]
 end
 
 return helpers

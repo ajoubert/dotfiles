@@ -9,6 +9,17 @@ awful.titlebar.enable_tooltip = false
 
 local decorations = {}
 
+function decorations.enable_active_window()
+    client.connect_signal("focus", function(c)
+        c.border_color = x.color12
+        c.border_width = 3 
+    end)
+    client.connect_signal("unfocus", function(c)
+        c.border_color = x.color0
+        c.border_width = 3 
+    end)
+end
+
 -- >> Default decoration management functions
 -- They make sure not to affect custom decorations added on the same position
 -- as the default titlebar
