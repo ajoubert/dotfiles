@@ -452,7 +452,20 @@ end
 
 function helpers.focus_direction(direction)
     return function()
+        local focused_before = client.focus
+
+        if not focused_before then
+            client.focus = awful.screen.focused().clients[1]
+            return
+        end
+
         awful.client.focus.bydirection(direction)
+
+        local focused_after = client.focus
+
+        if (focused_before.window == focused_after.window) then
+            helpers.focus_screen_by_direction(direction)()
+        end
     end
 end
 
@@ -592,6 +605,7 @@ function helpers.move_to_tag(index)
             local tag = t.tags[index]
             if tag then
                 client.focus:move_to_tag(tag)
+                client.focus = awful.screen.focused().clients[1]
             end
         end
     end
