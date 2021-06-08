@@ -14,6 +14,11 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg -L --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 let g:fzf_layout = { 'window': 'enew' }
 " let g:fzf_preview_window = 'right:60%'
 
