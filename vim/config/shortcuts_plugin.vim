@@ -95,7 +95,8 @@ let g:leader_map.p = {
   \   'o': 'open-file',
   \   't': 'nerdtree-toggle',
   \ }
-nmap <Leader>pf <Plug>RgRawSearch
+" nmap <Leader>pf <Plug>RgRawSearch
+nmap <Leader>pf :Rg 
 nmap <Leader>pF :NERDTreeFind<CR>
 noremap <leader>pt :NERDTreeToggle<CR>
 vmap <Leader>pf <Plug>RgRawVisualSelection<CR>
