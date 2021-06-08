@@ -456,6 +456,9 @@ function helpers.focus_direction(direction)
 
         if not focused_before then
             client.focus = awful.screen.focused().clients[1]
+            if not client.focus then
+                helpers.focus_screen_by_direction(direction)()
+            end
             return
         end
 
