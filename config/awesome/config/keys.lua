@@ -129,7 +129,7 @@ keys.clientkeys = gears.table.join(
     awful.key({ superkey }, "f", helpers.toggle_fullscreen, {description = "toggle fullscreen", group = "client"}),
 
     -- Close client
-    awful.key({ superkey }, "w", function(c) c:kill() end, {description = "close", group = "client"}),
+    awful.key({ superkey }, "w", function(c) c:kill(); awful.client.focus.bydirection("left") end, {description = "close", group = "client"}),
 
     -- Toggle floating
     awful.key({ superkey, ctrlkey }, "space", helpers.toggle_floating_layout, {description = "toggle floating", group = "client"}),
