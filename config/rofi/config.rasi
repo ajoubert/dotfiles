@@ -1,9 +1,17 @@
 configuration {
-  modi: "window,drun,ssh,combi";
+  modi: "combi,ssh";
+	combi-modi: "window,drun,ssh";
+	display-window: " ";
+	display-drun: " ";
+	display-ssh: " ";
 	font: "SF Mono Powerline 14";
 	show-icons: true;
 	icon-theme: "Papirus";
+	kb-accept-entry: "Shift+Return";
+	kb-accept-alt: "Return";
+	run-shell-command: "{cmd}";
 	separator-style: "none";
+	window-command: "/bin/bash -c -i '$HOME/.local/scripts/rofi-target-window.sh {window}'";
 	window-format: "{c:15}    {w}    {t}";
 	theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
 	color-normal: "#002b37, #819396, #002b37, #003642, #819396";
@@ -11,3 +19,5 @@ configuration {
 	color-active: "#002b37, #008ed4, #002b37, #003642, #008ed4";
 	color-window: "#002b37, #002b37, #003642";
 }
+
+// combi-hide-mode-prefix: true
