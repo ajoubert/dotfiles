@@ -9,6 +9,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jesseleite/vim-agriculture'
 
+" Symlinks
+Plug 'aymericbeaumet/vim-symlink'
+
 " fzf config
 let g:fzf_action = {
   \ 'ctrl-s': 'split',
