@@ -3,8 +3,8 @@
 
 function set_prompt_symbol () {
   if test $1 -eq 0 ; then
-      PROMPT_SYMBOL="\[${base00}\]➜\[${COLOR_WHITE}\] "
+      PROMPT_SYMBOL="\[${base00}\]➜\[${COLOR_NONE}\] "
   else
-      PROMPT_SYMBOL="\[${COLOR_RED}\]➜\[${COLOR_WHITE}\] "
+      PROMPT_SYMBOL="\[${COLOR_RED}\]➜\[${COLOR_NONE}\] "
   fi
 }
