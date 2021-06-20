@@ -154,6 +154,7 @@ awful.rules.rules = {
                 "^editor$",
                 "markdown_input",
                 "kitty",
+                "Alacritty",
                 "discord"
             },
             class = {
@@ -225,6 +226,7 @@ awful.rules.rules = {
                 "Termite",
                 "mpvtube",
                 "kitty",
+                "Alacritty",
                 "st-256color",
                 "st",
                 "URxvt",

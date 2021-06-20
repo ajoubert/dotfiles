@@ -1,8 +1,8 @@
 user = {
     -- >> Default applications <<
     -- Check apps.lua for more
-    terminal = "kitty -1",
-    floating_terminal = "kitty -1",
+    terminal = "alacritty",
+    floating_terminal = "alacritty",
     browser = "firefox-developer-edition",
     -- file_manager = "kitty -1 --class files -e ranger",
     file_manager = "thunar",
