@@ -28,6 +28,7 @@ setw -g mode-keys vi
 
 # vi for command status
 set -g status-keys vi
+set -g status off
 
 # vi keys to resize
 bind -r C-k resize-pane -U 1
