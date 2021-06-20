@@ -27,3 +27,7 @@ onmac &&  alias ls='ls -G'
 
 ## Regular typos
 alias sl=ls
+
+if type "nvim" > /dev/null; then
+  alias vim="nvim"
+fi
