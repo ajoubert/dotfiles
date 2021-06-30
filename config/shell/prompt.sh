@@ -4,6 +4,7 @@ source $DIR/prompt_modules/prompt_symbol.sh
 source $DIR/prompt_modules/git.sh
 source $DIR/prompt_modules/kubectl.sh
 source $DIR/prompt_modules/docker_context.sh
+source $DIR/prompt_modules/conda.sh
 
 USE_PREEXEC=false
 
@@ -40,7 +41,13 @@ function set_bash_prompt () {
   # COMPENSATION_KUBECTL (column-offset to align the right-end side)
   set_dockercontext;
 
-  TOTAL_COMPENSATION=$((${GIT_COMPENSATION}+${COMPENSATION_KUBECTL}+${COMPENSATION_DOCKERCONTEXT}))
+  # set all CONDA related variables
+  # Available vars:
+  # PROMPT_CONDA (prompt displaying current context)
+  # COMPENSATION_CONDA (column-offset to align the right-end side)
+  set_conda;
+
+  TOTAL_COMPENSATION=$((${GIT_COMPENSATION}+${COMPENSATION_KUBECTL}+${COMPENSATION_DOCKERCONTEXT}+${COMPENSATION_CONDA}))
 
   # Set the bash prompt variable.
   PS1=$(printf "\n%*s\r%s\n$PROMPT_SYMBOL " "$(($(tput cols)+${TOTAL_COMPENSATION}))" "$(prompt_right)" "$(prompt_left)")
@@ -56,9 +63,9 @@ function prompt_right() {
 function prompt_left() {
   if [ "${SKIP_HOSTNAME}" = "true" ];
   then
-    echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\]${PROMPT_DOCKERCONTEXT}${PROMPT_KUBECTL}"
+    echo -e "\[${COLOR_ACCENT}\]\w\[${COLOR_NONE}\]${PROMPT_CONDA}${PROMPT_DOCKERCONTEXT}${PROMPT_KUBECTL}"
   else
-    echo -e "\[${COLOR_ACCENT}\]${HOSTNAME}:\w\[${COLOR_NONE}\]${PROMPT_DOCKERCONTEXT}${PROMPT_KUBECTL}"
+    echo -e "\[${COLOR_ACCENT}\]${HOSTNAME}:\w\[${COLOR_NONE}\]${PROMPT_CONDA}${PROMPT_DOCKERCONTEXT}${PROMPT_KUBECTL}"
   fi
 }
 
