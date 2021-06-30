@@ -20,7 +20,7 @@ function set_kubectl() {
     return
   fi
 
-	PROMPT_KUBECTL=" at \[${COLOR_BLUE}\]${KUBECTL_CONTEXT}${KUBECTL_SYMBOL}\[${COLOR_WHITE}\]"
+	PROMPT_KUBECTL=" at \[${COLOR_BLUE}\]${KUBECTL_CONTEXT}${KUBECTL_SYMBOL}\[${COLOR_NONE}\]"
 }
 
 function set_kubectl_context() {
