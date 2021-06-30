@@ -4,7 +4,7 @@ function reset_dockercontext_variable() {
 }
 
 #DOCKERCONTEXT_SYMBOL=" "
-DOCKERCONTEXT_SYBOL=" 🐳"
+DOCKERCONTEXT_SYMBOL=" 🐳"
 
 function set_dockercontext() {
 	reset_dockercontext_variable;
@@ -21,13 +21,10 @@ function set_dockercontext() {
     return
   fi
 
-	PROMPT_DOCKERCONTEXT=" on \[${LIGHT_CYAN}\]${DOCKERCONTEXT_CONTEXT}${DOCKERCONTEXT_SYMBOL}\[${COLOR_WHITE}\]"
+	PROMPT_DOCKERCONTEXT=" on \[${LIGHT_CYAN}\]${DOCKERCONTEXT_CONTEXT}${DOCKERCONTEXT_SYMBOL}\[${COLOR_NONE}\]"
 }
 
 function set_dockercontext_context() {
-	DOCKERCONTEXT_CONTEXT=""
-
-  local docker_remote_context
 
   # Docker has three different ways to work on remote Docker hosts:
   #  1. docker-machine
@@ -39,16 +36,21 @@ function set_dockercontext_context() {
     # Remove protocol (tcp://) and port number from displayed Docker host
     docker_remote_context="$(basename $DOCKER_HOST | cut -d':' -f1)"
   else
+
     # Docker contexts can be set using either the DOCKER_CONTEXT environment variable
     # or the `docker context use` command. `docker context ls` will show the selected
     # context in both cases. But we are not interested in the local "default" context.
-    docker_remote_context=$(docker context ls --format '{{if .Current}}{{if ne .Name "default"}}{{.Name}}{{end}}{{end}}' 2>/dev/null)
-    [[ $? -ne 0 ]] && return
 
-    docker_remote_context=$(echo $docker_remote_context | tr -d '\n')
+    ## Because the check is long, only check it once then check it again once docker context is used
+    HISTORY=$(history | tail -2 | head -1 | cut -c8-999)
+    if [[ "$DOCKERCONTEXT_CONTEXT" == "" ]] || [[ "$HISTORY" == *"docker context use"* ]];
+    then
+      DOCKERCONTEXT_CONTEXT=""
+      docker_remote_context=$(docker context ls --format '{{if .Current}}{{if ne .Name "default"}}{{.Name}}{{end}}{{end}}' 2>/dev/null)
+      [[ $? -ne 0 ]] && return
+      docker_remote_context=$(echo $docker_remote_context | tr -d '\n')
+    fi
   fi
-
-  [[ -z $docker_remote_context ]] && return
 
 	DOCKERCONTEXT_CONTEXT=$docker_remote_context
 }
