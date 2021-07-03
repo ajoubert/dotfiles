@@ -8,7 +8,10 @@ else
 
   if filereadable(expand("~/.vim/autoload/plug.vim"))
     source $VIM_CONFIG/config/plugged.vim
+    if has('nvim')
+      source $VIM_CONFIG/config/shortcuts_plugin_neovim.vim
+      luafile $VIM_CONFIG/lua/nvim-lsp.lua
+    endif
     source $VIM_CONFIG/config/shortcuts_plugin.vim
-    source $VIM_CONFIG/config/coc-config.vim
   endif
 endif

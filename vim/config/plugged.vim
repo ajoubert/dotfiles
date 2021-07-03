@@ -1,5 +1,11 @@
 source $VIM_CONFIG/autoload/plug.vim
-call plug#begin("$VIM_CONFIG/plugged")
+
+" Some plugins are neovim-only
+if has('nvim')
+  call plug#begin("$VIM_CONFIG/plugged_nvim")
+else
+  call plug#begin("$VIM_CONFIG/plugged_vim")
+end
 
 " Theme / colors
 Plug 'rafi/awesome-vim-colorschemes'
@@ -32,19 +38,6 @@ Plug 'mbbill/undotree'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-
-" Markdown and note taking
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-let g:instant_markdown_autostart = 0
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/.vimwiki/wiki/', 'path_html': '~/.vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
-
-
-" Development plugins
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
 let g:NERDCreateDefaultMappings=0
 let g:NERDCompactSexyComs = 1
@@ -69,24 +62,48 @@ endfunction
 " Highlight currently open buffer in NERDTree
 autocmd BufRead * call SyncTree()
 
-" Debugger
-Plug 'puremourning/vimspector'
 
-" Snippets / boilerplate code
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-Plug 'honza/vim-snippets'
+" Markdown and note taking
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+let g:instant_markdown_autostart = 0
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/.vimwiki/wiki/', 'path_html': '~/.vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
 
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_map_keys = 0
+if has('nvim')
+  " Development plugins
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'scrooloose/nerdcommenter'
 
+  " Kept desipte native lsp, as source decompression isn't implemented yet
+  " for GoToDefinition...
+  Plug 'OmniSharp/omnisharp-vim'
+  let g:OmniSharp_server_use_mono = 1
+  let g:OmniSharp_popup = 0
+  let g:OmniSharp_highlighting = 0
+  let g:OmniSharp_diagnostic_listen = 0
+
+  " Debugger
+  Plug 'puremourning/vimspector'
+
+  " Snippets / boilerplate code
+  Plug 'SirVer/ultisnips'
+  let g:UltiSnipsExpandTrigger="<c-j>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  Plug 'honza/vim-snippets'
+
+  " If you want :UltiSnipsEdit to split your window.
+  " let g:UltiSnipsEditSplit="vertical"
+
+  " Git
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  let g:gitgutter_map_keys = 0
+end
 
 " For visual search/replace
 Plug 'osyo-manga/vim-over'
