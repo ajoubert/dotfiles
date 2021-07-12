@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 dir="$(dirname "$0")"
-#cp "$dir/userChrome.css" "$HOME/.mozilla/firefox/${1:-niugqa34}.default/chrome/"
-#cp "$dir/userChrome.xml" "$HOME/.mozilla/firefox/${1:-niugqa34}.default/chrome/"
-#cp "$dir/userChrome.js" "$HOME/.mozilla/firefox/${1:-niugqa34}.default/chrome/"
-cp "$dir/userChrome.css" "$HOME/.mozilla/firefox/${1:-26jnzftm}.default/chrome/"
-cp "$dir/userChrome.xml" "$HOME/.mozilla/firefox/${1:-26jnzftm}.default/chrome/"
-cp "$dir/userChrome.js" "$HOME/.mozilla/firefox/${1:-26jnzftm}.default/chrome/"
+## TODO: find how to actually execute this
+## ln -s ~/.dotfiles/config/firefox/browser ~/.mozilla/firefox/<whatever>-default/chrome
+## Afterwards, copy ~/.dotfiles/config/firefox/extensions/treestyletab.css in the treestyletab extension configuration 
