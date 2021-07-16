@@ -165,8 +165,11 @@ tab-item:not(pinned) tab-closebox {
 
 :root.left tab-item{
     padding-left: 0px;
-		padding-top: 10px;
-		padding-bottom: 10px;
+}
+
+:root.left tab-item tab-item-substance {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 :root.left tab-item tab-favicon {
