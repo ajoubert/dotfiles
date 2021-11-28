@@ -13,11 +13,12 @@ configuration {
 	separator-style: "none";
 	window-command: "/bin/bash -c -i '$HOME/.local/scripts/rofi-target-window.sh {window}'";
 	window-format: "{c:15}    {w}    {t}";
-	theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
 	color-normal: "#002b37, #819396, #002b37, #003642, #819396";
 	color-urgent: "#002b37, #da4281, #002b37, #003642, #da4281";
 	color-active: "#002b37, #008ed4, #002b37, #003642, #008ed4";
 	color-window: "#002b37, #002b37, #003642";
 }
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 
 // combi-hide-mode-prefix: true
