@@ -1,23 +1,3 @@
-require'lspinstall'.setup() -- important
-
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  if server == "lua" then
-    require'lspconfig'[server].setup {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          }
-        }
-      }
-    }
-  else
-    require'lspconfig'[server].setup{}
-  end
-end
-
-
 vim.o.completeopt = "menuone,noselect"
 
 require'compe'.setup {

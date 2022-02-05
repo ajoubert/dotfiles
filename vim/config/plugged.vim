@@ -8,7 +8,9 @@ else
 end
 
 " Theme / colors
+Plug 'arcticicestudio/nord-vim'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Fuzzy search 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -117,4 +119,6 @@ call plug#end()
 
 " Theme stuff, added here because it depends on vim-color-solarized plugin
 let g:solarized_termtrans=1
-colorscheme solarized8
+" colorscheme solarized8
+colorscheme nord
+" colorscheme dracula

@@ -10,4 +10,4 @@ fi
 
 command -v $TARGET >/dev/null 2>&1 || { echo >&2 "${1} not found, aborting"; exit 1; }
 
-vim $TARGET
+$EDITOR $TARGET

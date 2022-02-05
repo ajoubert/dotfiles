@@ -54,7 +54,7 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "Escape", helpers.show_exit_screens, {description = "quit awesome", group = "awesome"}),
     awful.key({}, "XF86PowerOff", helpers.show_exit_screens, {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ superkey, shiftkey }, "n", helpers.restore_minimized, {description = "restore minimized", group = "client"}),
+    --awful.key({ superkey, shiftkey }, "n", helpers.restore_minimized, {description = "restore minimized", group = "client"}),
 
     -- Run program (d for dmenu ;)
     awful.key({ superkey }, " ", helpers.show_rofi, {description = "rofi launcher", group = "launcher"}),
@@ -141,7 +141,7 @@ keys.clientkeys = gears.table.join(
     awful.key({ superkey, ctrlkey }, "p", function(c) c.sticky = not c.sticky end, {description = "toggle sticky", group = "client"}),
 
     -- Minimize
-    awful.key({ superkey }, "n", function (c) c.minimized = true end, {description = "minimize", group = "client"}),
+    --awful.key({ superkey }, "n", function (c) c.minimized = true end, {description = "minimize", group = "client"}),
 
     -- Maximize
     awful.key({ superkey }, "m", function (c) c.maximized = not c.maximized end, {description = "(un)maximize", group = "client"}),

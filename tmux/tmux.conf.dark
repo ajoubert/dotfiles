@@ -1,4 +1,5 @@
 #-----------
 # Theme
 #-----------
-set -g @themepack "solarized-dark" 
+#set -g @themepack "solarized-dark" 
+set -g @plugin 'dracula/tmux'

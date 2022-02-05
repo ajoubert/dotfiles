@@ -28,8 +28,8 @@ sudo mount /dev/mapper/iprt /mnt/secret
 gpg -a --export-filter drop-subkey='expired -t' --export >/mnt/secret/data/mypubkeys.asc
 gpg -a --export-filter drop-subkey='expired -t' --export-secret-keys >/mnt/secret/data/myprivatekeys.asc
 gpg --export-ownertrust >/mnt/secret/data/otrust.txt
-sudo cp ~/documents/iprt/* /mnt/secret/data/
 sudo cp /mnt/hdd/syncthings/accounting/accounting.gnucash /mnt/secret/data/
+sudo cp /mnt/hdd/syncthings/azus-documents/keepass.kdbx /mnt/secret/data/
 
 ## Close the file system
 sudo umount /mnt/secret

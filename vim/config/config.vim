@@ -143,3 +143,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 
 " Give alterative command for terminal requiring TTY
 command -nargs=* T :!tmux_process_exec.sh <args>
+
+" Makes use of system clipboard
+set clipboard+=unnamedplus
