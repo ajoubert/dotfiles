@@ -109,7 +109,6 @@ endif
 " Give more space for displaying messages.
 set cmdheight=2
 
-
 " syntax coloring is always nice
 syntax enable
 " Theme settings can be found in plugged.vim, moved there because it
@@ -124,22 +123,6 @@ if has_key(environ(), 'TMUX')
 "    autocmd VimSuspend * call system('tmux set status on')
   augroup END
 endif
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * silent NERDTreeMirror
-
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
-
-" Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
 " Give alterative command for terminal requiring TTY
 command -nargs=* T :!tmux_process_exec.sh <args>

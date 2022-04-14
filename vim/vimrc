@@ -1,17 +1,23 @@
 if "" == $VIM_CONFIG
   echom "$VIM_CONFIG variable is not set, skipping sourcing"
-else
-  source $VIM_CONFIG/config/config.vim
-  source $VIM_CONFIG/config/shortcuts_noplugin.vim
-  source $VIM_CONFIG/config/startup.vim
-  source $VIM_CONFIG/config/pain.vim
-
-  if filereadable(expand("~/.vim/autoload/plug.vim"))
-    source $VIM_CONFIG/config/plugged.vim
-    if has('nvim')
-      source $VIM_CONFIG/config/shortcuts_plugin_neovim.vim
-      luafile $VIM_CONFIG/lua/nvim-lsp.lua
-    endif
-    source $VIM_CONFIG/config/shortcuts_plugin.vim
-  endif
+  finish
 endif
+source $VIM_CONFIG/config/shared/config.vim
+source $VIM_CONFIG/config/shared/shortcuts_noplugin.vim
+source $VIM_CONFIG/config/shared/startup.vim
+source $VIM_CONFIG/config/shared/pain.vim
+
+if !filereadable(expand("~/.vim/autoload/plug.vim")) 
+  finish 
+endif
+
+
+if has('nvim')
+  source $VIM_CONFIG/config/neovim/plugged.vim
+  source $VIM_CONFIG/config/neovim/shortcuts.vim
+  luafile $VIM_CONFIG/lua/nvim-lsp.lua
+else
+  source $VIM_CONFIG/config/vim/plugged.vim
+  source $VIM_CONFIG/config/vim/shortcuts.vim
+endif
+
