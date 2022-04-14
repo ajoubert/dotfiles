@@ -14,11 +14,10 @@ npm -g update;
 ## TODO: investigate another way to manage go global tooling
 
 # Ruby packages
-#TODO: when ruby is upgraded to 3.0.0, run `gem install net-pop`
 gem update
  
 # VIM plugins updates
-/usr/bin/vim +PlugUpgrade +PlugUpdate +qa
+/usr/bin/nvim +PlugUpgrade +PlugUpdate +qa
  
 # TMUX plugins updates
 ~/.tmux/plugins/tpm/bin/update_plugins all
@@ -41,10 +40,10 @@ then
 fi
 
 # PIP update
-if [ -x "$(command -v pip)" ];
-then
-  pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
-fi
+## if [ -x "$(command -v pip)" ];
+## then
+##   pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+## fi
 
 ## a0 upgrade
 if [ "$(ls -A /mnt/a0/boot)" ]; then
