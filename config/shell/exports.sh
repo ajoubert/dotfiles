@@ -24,7 +24,7 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   # same for now
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # ssh
@@ -85,13 +85,13 @@ export XDG_MUSIC_DIR="$HOME/music"
 
 ## Kubectl-kubecolor config
 # Backup original "kubectl" command path. Supports subsequent imports of the file.
-export KUBECTL_ORIG_PATH="${KUBECTL_ORIG_PATH:-"$(which kubectl)"}"
+# export KUBECTL_ORIG_PATH="${KUBECTL_ORIG_PATH:-"$(which kubectl)"}"
 # Alias the real "kubectl" as "kubectll"
-alias kubectll="${KUBECTL_ORIG_PATH}"
+# alias kubectll="${KUBECTL_ORIG_PATH}"
 # Alias kubectl to use colors by default
-alias kubectl="kubecolor"
+# alias kubectl="kubecolor"
 # Enable the autocompletion for the alias too (see auto-complete install above)
-complete -o default -F __start_kubectl kubecolor
+# complete -o default -F __start_kubectl kubecolor
 
 ## Disabled for now, not really useful...
 # be sure not to remove ./ or stuff gets weird
