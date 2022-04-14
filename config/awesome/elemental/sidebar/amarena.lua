@@ -477,47 +477,47 @@ sidebar:setup {
             },
             layout = wibox.layout.fixed.vertical
         },
-        { ----------- MIDDLE GROUP -----------
-            {
-                helpers.vertical_pad(dpi(30)),
-                weather,
-                helpers.vertical_pad(dpi(30)),
-                -- {
-                --     {
-                --         mpd_buttons,
-                --         mpd_song,
-                --         spacing = dpi(5),
-                --         layout = wibox.layout.fixed.vertical
-                --     },
-                --     top = dpi(40),
-                --     bottom = dpi(60),
-                --     left = dpi(20),
-                --     right = dpi(20),
-                --     widget = wibox.container.margin
-                -- },
-                {
-                    nil,
-                    {
-                        volume,
-                        cpu,
-                        temperature,
-                        ram,
-                        brightness,
-                        spacing = dpi(5),
-                        -- layout = wibox.layout.fixed.vertical
-                        layout = wibox.layout.fixed.horizontal
-                    },
-                    expand = "none",
-                    layout = wibox.layout.align.horizontal
-                },
-                helpers.vertical_pad(dpi(25)),
-                layout = wibox.layout.fixed.vertical
-            },
-            --shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
-            shape = helpers.prrect(0, false, true, false, false),
-            bg = x.color0.."66",
-            widget = wibox.container.background
-        },
+       -- { ----------- MIDDLE GROUP -----------
+       --     {
+       --         helpers.vertical_pad(dpi(30)),
+       --         weather,
+       --         helpers.vertical_pad(dpi(30)),
+       --         -- {
+       --         --     {
+       --         --         mpd_buttons,
+       --         --         mpd_song,
+       --         --         spacing = dpi(5),
+       --         --         layout = wibox.layout.fixed.vertical
+       --         --     },
+       --         --     top = dpi(40),
+       --         --     bottom = dpi(60),
+       --         --     left = dpi(20),
+       --         --     right = dpi(20),
+       --         --     widget = wibox.container.margin
+       --         -- },
+       --         {
+       --             nil,
+       --             {
+       --                 volume,
+       --                 cpu,
+       --                 temperature,
+       --                 ram,
+       --                 brightness,
+       --                 spacing = dpi(5),
+       --                 -- layout = wibox.layout.fixed.vertical
+       --                 layout = wibox.layout.fixed.horizontal
+       --             },
+       --             expand = "none",
+       --             layout = wibox.layout.align.horizontal
+       --         },
+       --         helpers.vertical_pad(dpi(25)),
+       --         layout = wibox.layout.fixed.vertical
+       --     },
+       --     --shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+       --     shape = helpers.prrect(0, false, true, false, false),
+       --     bg = x.color0.."66",
+       --     widget = wibox.container.background
+       -- },
         { ----------- BOTTOM GROUP -----------
             {
                 {
