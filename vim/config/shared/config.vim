@@ -9,6 +9,9 @@ set nocompatible
 " Please don't add default stuff...
 let skip_defaults_vim=1
 
+" I don't care about net history
+let g:netrw_dirhistmax=0
+
 set encoding=UTF-8
 
 filetype plugin indent on

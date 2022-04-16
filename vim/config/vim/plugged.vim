@@ -1,6 +1,6 @@
 source $VIM_CONFIG/autoload/plug.vim
 
-call plug#begin("$VIM_CONFIG/plugged/vim")
+call plug#begin("$VIM_CONFIG/.plugged/vim")
 
 " Theme / colors
 Plug 'arcticicestudio/nord-vim'

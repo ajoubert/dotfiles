@@ -1,7 +1,7 @@
 source $VIM_CONFIG/autoload/plug.vim
 
 " Some plugins are neovim-only
-call plug#begin("$VIM_CONFIG/plugged/neovim")
+call plug#begin("$VIM_CONFIG/.plugged/neovim")
 
 " Theme / colors
 Plug 'arcticicestudio/nord-vim'
@@ -85,18 +85,18 @@ let g:vimwiki_list = [{'path': '~/.vimwiki/wiki/', 'path_html': '~/.vimwiki/html
 
 " Development plugins
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-compe'
-Plug 'kabouzeid/nvim-lspinstall'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 
-" Kept desipte native lsp, as source decompression isn't implemented yet
-" for GoToDefinition...
-Plug 'OmniSharp/omnisharp-vim'
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_popup = 0
-let g:OmniSharp_highlighting = 0
-let g:OmniSharp_diagnostic_listen = 0
+" " Kept desipte native lsp, as source decompression isn't implemented yet
+" " for GoToDefinition...
+" Plug 'OmniSharp/omnisharp-vim'
+" let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_popup = 0
+" let g:OmniSharp_highlighting = 0
+" let g:OmniSharp_diagnostic_listen = 0
 
 " Debugger
 Plug 'puremourning/vimspector'
@@ -106,6 +106,7 @@ Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories = ['~/.vim/ultisnips']
 Plug 'honza/vim-snippets'
 
 " If you want :UltiSnipsEdit to split your window.
