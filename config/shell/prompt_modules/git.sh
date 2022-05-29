@@ -20,7 +20,7 @@ function set_git() {
     return
   fi
 
-  local git_status="$(git status 2> /dev/null)"
+  local git_status="$(timeout 0.1s bash -c 'git status 2> /dev/null')"
 
   ## No need continuing if we're not in a git repo
   [[ $git_status = "" ]] && return 0;
