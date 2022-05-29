@@ -42,9 +42,9 @@ nnoremap <silent> <leader> :WhichKey '\'<CR>
 vnoremap <silent> <leader> :WhichKeyVisual '\'<CR>
 nnoremap <silent> <Space> :WhichKey '<Space>'<CR>
 vnoremap <silent> <Space> :WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> g :WhichKey 'g'<CR>
+vnoremap <silent> g :WhichKeyVisual 'g'<CR>
 
-call which_key#register('\', "g:leader_map")
-call which_key#register(' ', "g:space_map")
 
 " Git - fugitive
 let g:leader_map.g = {
@@ -64,12 +64,25 @@ noremap <leader>gl :Commits<CR>
 noremap <leader>gg :GitGutterToggle<CR>
 noremap <leader>gt :silent !tig<CR> :redraw!<CR>
 
+" LSP navigation 
+let g:g_map = {
+  \   'd': 'go-to-definition',
+  \   'D': 'go-to-declaration',
+  \   'i': 'go-to-implementation',
+  \   'r': 'go-to-references',
+  \ }
+noremap gd :lua vim.lsp.buf.definition()<CR>
+noremap gD :lua vim.lsp.buf.declaration()<CR>
+noremap gi :lua vim.lsp.buf.implementation()<CR>
+noremap gr :lua vim.lsp.buf.references()<CR>
+
 " Code
 let g:leader_map.c = {
   \   'name': '+code',
   \   't': 'toggle-comment',
   \   'u': 'toggle-undo-tree',
   \   'x': 'execute',
+  \   'r': 'rename',
   \   'd': {
   \     'name': '+debug',
   \     'c': 'continue/start-debugger',
@@ -85,6 +98,7 @@ let g:leader_map.c = {
 noremap <leader>cx :!%:p<CR>
 map <leader>ct <Plug>NERDCommenterToggle
 map <leader>cu :UndotreeToggle<CR>
+map <leader>cr :lua vim.lsp.buf.rename()<CR>
 map <leader>cdc :call vimspector#Continue()<CR>
 map <leader>cdx :call vimspector#Stop()<CR>
 map <leader>cdX :call vimspector#Reset()<CR>
@@ -122,3 +136,7 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+call which_key#register('\', "g:leader_map")
+call which_key#register(' ', "g:space_map")
+call which_key#register('g', "g:g_map")

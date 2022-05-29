@@ -1,6 +1,7 @@
 " Creating empty prefix dictionary
 let g:leader_map = {}
-let g:space_map= {}
+let g:space_map = {}
+let g:g_map = {}
 
 " === Help ===
 let g:leader_map['h'] = {
