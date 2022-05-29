@@ -24,18 +24,20 @@ let g:leader_map.p = {
   \   'name': '+project',
   \   'f': 'search-in-project',
   \   'F': 'nerdtree-find-buffer',
+  \   'r': 'find-references',
   \   'g': 'open-versioned-file',
   \   'o': 'open-file',
   \   't': 'nerdtree-toggle',
   \ }
 " nmap <Leader>pf <Plug>RgRawSearch
-nmap <Leader>pf :Rg 
+nmap <Leader>pf :Telescope live_grep<CR>
 nmap <Leader>pF :NERDTreeFind<CR>
+nmap <Leader>pr :Telescope lsp_references<CR>
 noremap <leader>pt :NERDTreeToggle<CR>
 vmap <Leader>pf <Plug>RgRawVisualSelection<CR>
 nnoremap <leader>pg :GFiles --cached --others --exclude-standard<CR>
 vnoremap <leader>pg "ay:call agriculture#trim_and_escape_register_a()<CR>:GFiles '**<C-r>a**'<CR>
-nnoremap <leader>po :Files<CR>
+nnoremap <leader>po :Telescope find_files<CR>
 
 " Automatically show suggestions after a delay
 nnoremap <silent> <leader> :WhichKey '\'<CR>
