@@ -1,6 +1,7 @@
 vim.o.completeopt = "menuone,noselect"
 
 local lsp_installer = require("nvim-lsp-installer")
+local nvim_lsp = require'lspconfig'
 
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
@@ -11,6 +12,13 @@ lsp_installer.on_server_ready(function(server)
     -- if server.name == "tsserver" then
     --     opts.root_dir = function() ... end
     -- end
+    if server.name == "sumneko_lua" then
+      opts.settings = {
+        Lua = {
+          diagnostics = { globals = {'vim'} }
+        }
+      }
+    end
 
     -- This setup() function will take the provided server configuration and decorate it with the necessary properties
     -- before passing it onwards to lspconfig.
@@ -28,13 +36,11 @@ lsp_installer.settings({
     }
 })
 
-local nvim_lsp = require'lspconfig'
-
 local pid = vim.fn.getpid()
 -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
 local omnisharp_bin = "/home/sloth/.local/share/nvim/lsp_servers_manual/omnisharp/run"
 
-require'lspconfig'.omnisharp.setup{
+nvim_lsp.omnisharp.setup{
     cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
     root_dir = nvim_lsp.util.root_pattern("*.csproj","*.sln");
     ...
