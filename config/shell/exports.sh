@@ -62,8 +62,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ## Ansible stuff
 export PLAYBOOKS_HOME="$HOME/.ansible/inventory/playbooks"
 
+## To enable when working on unity, and disable when building unreal engine
 #vscode stuff
-export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/5.*/Sdks );
+export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/6.*/Sdks );
 export PATH=$MSBuildSDKsPath:$PATH
 
 ## Go stuff
