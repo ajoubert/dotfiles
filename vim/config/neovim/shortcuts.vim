@@ -4,6 +4,9 @@ call extend(leader_map['b'], {
   \ })
 noremap <leader>bl :Buffers<CR>
 
+let g:leader_map['e'] = 'open terminal'
+nnoremap <leader>e :te<CR> 
+
 " Windows and wiki
 call extend(leader_map['w'], {
       \ 'name': '+window/wiki'                    ,
