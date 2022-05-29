@@ -108,7 +108,9 @@ keys.globalkeys = gears.table.join(
     -- Toggle wibar(s)
     awful.key({ superkey }, "b", function() wibars_toggle() end, {description = "show or hide wibar(s)", group = "awesome"}),
 
-    awful.key({ superkey }, "p", helpers.spawn("rofi-pass"), {description = "rofi pass", group = "launcher"})
+    awful.key({ superkey }, "p", helpers.spawn("rofi-pass"), {description = "rofi pass", group = "launcher"}),
+
+    awful.key({ superkey, shiftkey }, "p", helpers.spawn('bash -c $HOME/.local/scripts/openphone.sh'), {description = "show android phone", group = "launcher"})
 )
 
 keys.clientkeys = gears.table.join(
