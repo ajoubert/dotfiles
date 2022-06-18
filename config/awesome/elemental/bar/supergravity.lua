@@ -239,14 +239,10 @@ function wibars_toggle()
     local s = awful.screen.focused()
     s.dock.visible = not s.dock.visible
 end
-function tray_toggle()
-    local s = awful.screen.focused()
-    s.traybox.visible = not s.traybox.visible
-end
 
-function tray_toggle_test()
-    return function()
-        local s = awful.screen.focused()
-        s.traybox.visible = not s.traybox.visible
-    end
+function Tray_toggle()
+    local s = awful.screen.focused()
+    local traywidget = wibox.widget.systray();
+    traywidget.set_screen(s);
+    s.traybox.visible = not s.traybox.visible
 end
