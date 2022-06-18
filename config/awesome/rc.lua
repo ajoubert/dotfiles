@@ -13,10 +13,7 @@
 -- ===================================================================
 -- Load AwesomeWM libraries
 -- ===================================================================
-local beautiful = require("beautiful") -- Theme handling library
 local naughty = require("naughty") -- Notification libary
-local gears = require("gears") -- Utility library
-local awful = require("awful") -- UI utility library
 
 -- ===================================================================
 -- Initialization - Get configuration variables and load custom libs
@@ -46,21 +43,8 @@ require("config/rules")
 require("config/signals")
 require("evil") -- >> daemons, dependency of most widgets with external infos. Needs to be initialized last
 
--- Autorun
---autorun = false
---awesome.connect_signal(
---    'startup',
---    function(args)
---        --awful.spawn('bash -c "~/.local/scripts/randomBgAndVideo.sh"')
---        --awful.spawn('bash -c "~/.local/scripts/backlight -b 0.9"')
---        --awful.spawn('bash -c "unclutter -idle 2')
---        --awful.spawn('bash -c "xset r rate 200 60')
---    end
---)
-
-
 -- Garbage collection
--- Enable for lower memory consumption
+-- Enabled for lower memory consumption
 -- ===================================================================
 
 collectgarbage("setpause", 110)

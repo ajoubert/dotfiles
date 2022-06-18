@@ -8,7 +8,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local wibox = require("wibox")
 local icons = require("icons")
-local notifications = require("notifications")
 local naughty = require("naughty")
 local t = require("config/tags")
 
@@ -163,7 +162,7 @@ end
 -- message at tag 2 and coming back to your work at tag 1 with the same
 -- keypress.
 function helpers.tag_back_and_forth(tag_index)
-    local s = mouse.screen
+    local s = mouse.screen;
     local tag = s.tags[tag_index]
     if tag then
         if tag == s.selected_tag then
@@ -491,7 +490,7 @@ function helpers.decrease_gaps()
 end
 
 function helpers.jump_urgent()
-    uc = awful.client.urgent.get()
+    local uc = awful.client.urgent.get()
     -- If there is no urgent client, go back to last tag
     if uc == nil then
         awful.tag.history.restore()
@@ -604,35 +603,42 @@ end
 
 function helpers.move_to_tag(index)
     return function()
-        if client.focus then
+        local c = client.focus;
+        if c then
             local tag = t.tags[index]
             if tag then
-                client.focus:move_to_tag(tag)
-                client.focus = awful.screen.focused().clients[1]
+                c:move_to_tag(tag)
+                if(awful.screen.focused().clients) then
+                    client.focus = awful.screen.focused().clients[1]
+                else
+                end
             end
         end
     end
 end
 
-function helpers.move_to_left_screen()
-    local c = client.focus;
-    if c then
-        local geo = c.screen.geometry
-        if geo.x > 0 then
-            c:move_to_screen(c.screen.index-1)
-            client.focus = c;
-        end
+function helpers.show_focus()
+    --naughty.notify({text = tostring(awful.screen.focused().index)});
+    local clients = awful.screen.focused().clients;
+    for _, c in pairs(clients) do
+        local text = tostring(awful.client.idx(c).idx) .. " " .. c.name;
+        naughty.notify({text = text});
     end
 end
 
-function helpers.move_to_right_screen()
+function helpers.move_to_screen(direction)
     local c = client.focus;
-    if c then
-        local geo = c.screen.geometry
-        local width = root:size(1)
-        if geo.x + geo.width < width then
-            c:move_to_screen()
-            client.focus = c;
+    local initialScreen = awful.screen.focused();
+    local newScreen = initialScreen:get_next_in_direction(direction);
+    if c and initialScreen and newScreen then
+        c:move_to_screen(newScreen);
+        -- Weirdly enough, the new screen cannot be focused (or rather, the
+        -- screen gets focused, but the client doesn't, resulting in
+        -- a weird experience
+        awful.screen.focus(initialScreen);
+        if(not next(initialScreen.clients)) then
+            awful.screen.focus(newScreen);
+            awful.client.focus.byidx(1);
         end
     end
 end
@@ -645,7 +651,7 @@ function helpers.toggle_tag_on_client(index)
                 client.focus:toggle_tag(tag)
             end
         end
-    end 
+    end
 end
 
 function helpers.focus_or_minimize(c)

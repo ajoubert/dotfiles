@@ -1,7 +1,6 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
 local sharedtags = require('third-party/sharedtags')
-local gears = require('gears')
 
 local t = {}
 local l = awful.layout.suit -- Alias to save time :)
