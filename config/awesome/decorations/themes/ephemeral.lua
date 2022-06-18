@@ -14,9 +14,9 @@ local decorations = require("decorations")
 decorations.enable_active_window()
 
 -- Button configuration
-local gen_button_size = dpi(8)
-local gen_button_margin = dpi(8)
-local gen_button_color_unfocused = x.color8
+local gen_button_size = Dpi(8)
+local gen_button_margin = Dpi(8)
+local gen_button_color_unfocused = X.color8
 local gen_button_shape = gears.shape.circle
 
 -- Add a titlebar
@@ -36,9 +36,9 @@ client.connect_signal("request::titlebars", function(c)
             -- awful.titlebar.widget.closebutton(c),
 
             -- Generated buttons
-            decorations.button(c, gen_button_shape, x.color3, gen_button_color_unfocused, x.color11, gen_button_size, gen_button_margin, "minimize"),
-            decorations.button(c, gen_button_shape, x.color2, gen_button_color_unfocused, x.color10, gen_button_size, gen_button_margin, "maximize"),
-            decorations.button(c, gen_button_shape, x.color1, gen_button_color_unfocused, x.color9, gen_button_size, gen_button_margin, "close"),
+            decorations.button(c, gen_button_shape, X.color3, gen_button_color_unfocused, X.color11, gen_button_size, gen_button_margin, "minimize"),
+            decorations.button(c, gen_button_shape, X.color2, gen_button_color_unfocused, X.color10, gen_button_size, gen_button_margin, "maximize"),
+            decorations.button(c, gen_button_shape, X.color1, gen_button_color_unfocused, X.color9, gen_button_size, gen_button_margin, "close"),
             -- decorations.text_button(c, "", "Material Icons 9", x.color1, gen_button_color_unfocused, x.color9, gen_button_size, gen_button_margin, "close"),
 
             -- Create some extra padding at the edge

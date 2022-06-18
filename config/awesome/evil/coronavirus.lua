@@ -9,7 +9,7 @@ local helpers = require("helpers")
 local naughty = require("naughty")
 
 local update_interval = 60 * 60 * 12 -- 12 hours
-local country = user.coronavirus_country or "netherlands"
+local country = User.coronavirus_country or "netherlands"
 local temp_file = "/tmp/awesomewm-evil-coronavirus-"..country
 
 local coronavirus_script = [[

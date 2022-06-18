@@ -9,8 +9,8 @@ local helpers = require("helpers")
 -- Helper function that changes the appearance of progress bars and their icons
 local function format_progress_bar(bar)
     -- Since we will rotate the bars 90 degrees, width and height are reversed
-    bar.forced_width = dpi(70)
-    bar.forced_height = dpi(30)
+    bar.forced_width = Dpi(70)
+    bar.forced_height = Dpi(30)
     bar.shape = gears.shape.rounded_bar
     bar.bar_shape = gears.shape.rectangle
     local w = wibox.widget{
@@ -49,13 +49,13 @@ local weather = wibox.widget{
         {
             weather_widget_icon,
             weather_widget_temperature,
-            spacing = dpi(5),
+            spacing = Dpi(5),
             layout = wibox.layout.fixed.horizontal
         },
         expand = "none",
         layout = wibox.layout.align.horizontal
     },
-    spacing = dpi(5),
+    spacing = Dpi(5),
     layout = wibox.layout.fixed.vertical
     -- nil,
     -- weather_widget,
@@ -116,9 +116,9 @@ local minutes = wibox.widget.textclock("%M")
 local make_little_dot = function (color)
     return wibox.widget{
         bg = color,
-        forced_width = dpi(10),
-        forced_height = dpi(10),
-        shape = helpers.rrect(dpi(2)),
+        forced_width = Dpi(10),
+        forced_height = Dpi(10),
+        shape = helpers.rrect(Dpi(2)),
         widget = wibox.container.background
     }
 end
@@ -133,10 +133,10 @@ local time = {
     {
         nil,
         {
-            make_little_dot(x.color1),
-            make_little_dot(x.color4),
-            make_little_dot(x.color5),
-            spacing = dpi(10),
+            make_little_dot(X.color1),
+            make_little_dot(X.color4),
+            make_little_dot(X.color5),
+            spacing = Dpi(10),
             widget = wibox.layout.fixed.vertical
         },
         expand = "none",
@@ -148,7 +148,7 @@ local time = {
         valign = "top",
         widget = minutes
     },
-    spacing = dpi(20),
+    spacing = Dpi(20),
     layout = wibox.layout.fixed.horizontal
 }
 
@@ -172,8 +172,8 @@ mpd_artist.font = "sans medium 10"
 
 -- Set forced height in order to limit the widgets to one line.
 -- Might need to be adjusted depending on the font.
-mpd_title.forced_height = dpi(22)
-mpd_artist.forced_height = dpi(16)
+mpd_title.forced_height = Dpi(22)
+mpd_artist.forced_height = Dpi(16)
 
 mpd_song:buttons(gears.table.join(
     awful.button({ }, 1, function ()
@@ -196,7 +196,7 @@ local search_icon = wibox.widget {
 }
 
 local reset_search_icon = function ()
-    search_icon.markup = helpers.colorize_text("", x.color3)
+    search_icon.markup = helpers.colorize_text("", X.color3)
 end
 reset_search_icon()
 
@@ -210,7 +210,7 @@ local search_text = wibox.widget {
 
 local search_bar = wibox.widget {
     shape = gears.shape.rounded_bar,
-    bg = x.color0,
+    bg = X.color0,
     widget = wibox.container.background()
 }
 
@@ -221,18 +221,18 @@ local search = wibox.widget{
             search_icon,
             {
                 search_text,
-                bottom = dpi(2),
+                bottom = Dpi(2),
                 widget = wibox.container.margin
             },
             layout = wibox.layout.fixed.horizontal
         },
-        left = dpi(15),
+        left = Dpi(15),
         widget = wibox.container.margin
     },
-    forced_height = dpi(35),
-    forced_width = dpi(200),
+    forced_height = Dpi(35),
+    forced_width = Dpi(200),
     shape = gears.shape.rounded_bar,
-    bg = x.color0,
+    bg = X.color0,
     widget = wibox.container.background()
     -- layout = wibox.layout.stack
 }
@@ -246,9 +246,9 @@ function sidebar_activate_prompt(action)
     search_icon.visible = false
     local prompt
     if action == "run" then
-        prompt = generate_prompt_icon("", x.color2)
+        prompt = generate_prompt_icon("", X.color2)
     elseif action == "web_search" then
-        prompt = generate_prompt_icon("", x.color4)
+        prompt = generate_prompt_icon("", X.color4)
     end
     helpers.prompt(action, search_text, prompt, function()
         search_icon.visible = true
@@ -383,7 +383,7 @@ sidebar.bg = "#00000000" -- For anti aliasing
 sidebar.fg = beautiful.sidebar_fg or beautiful.wibar_fg or "#FFFFFF"
 sidebar.opacity = beautiful.sidebar_opacity or 1
 sidebar.height = screen.primary.geometry.height
-sidebar.width = beautiful.sidebar_width or dpi(300)
+sidebar.width = beautiful.sidebar_width or Dpi(300)
 sidebar.y = beautiful.sidebar_y or 0
 --local radius = beautiful.sidebar_border_radius or 0
 local radius = 0
@@ -423,13 +423,13 @@ sidebar_toggle = function()
 end
 
 -- Hide sidebar when mouse leaves
-if user.sidebar.hide_on_mouse_leave then
+if User.sidebar.hide_on_mouse_leave then
     sidebar:connect_signal("mouse::leave", function ()
         sidebar_hide()
     end)
 end
 -- Activate sidebar by moving the mouse at the edge of the screen
-if user.sidebar.show_on_mouse_screen_edge then
+if User.sidebar.show_on_mouse_screen_edge then
     local sidebar_activator = wibox({y = sidebar.y, width = 1, visible = true, ontop = false, opacity = 0, below = true, screen = screen.primary})
     sidebar_activator.height = sidebar.height
     sidebar_activator:connect_signal("mouse::enter", function ()
@@ -459,20 +459,20 @@ sidebar:setup {
     {
         { ----------- TOP GROUP -----------
             {
-                helpers.vertical_pad(dpi(30)),
+                helpers.vertical_pad(Dpi(30)),
                 {
                     nil,
                     {
                         time,
-                        spacing = dpi(12),
+                        spacing = Dpi(12),
                         layout = wibox.layout.fixed.horizontal
                     },
                     expand = "none",
                     layout = wibox.layout.align.horizontal
                 },
-                helpers.vertical_pad(dpi(20)),
+                helpers.vertical_pad(Dpi(20)),
                 day_of_the_week,
-                helpers.vertical_pad(dpi(30)),
+                helpers.vertical_pad(Dpi(30)),
                 layout = wibox.layout.fixed.vertical
             },
             layout = wibox.layout.fixed.vertical
@@ -527,7 +527,7 @@ sidebar:setup {
                         expand = "none",
                         layout = wibox.layout.align.horizontal,
                     },
-                    helpers.vertical_pad(dpi(30)),
+                    helpers.vertical_pad(Dpi(30)),
                     {
                         nil,
                         search,
@@ -536,12 +536,12 @@ sidebar:setup {
                     },
                     layout = wibox.layout.fixed.vertical
                 },
-                left = dpi(20),
-                right = dpi(20),
-                bottom = dpi(30),
+                left = Dpi(20),
+                right = Dpi(20),
+                bottom = Dpi(30),
                 widget = wibox.container.margin
             },
-            bg = x.color0.."66",
+            bg = X.color0.."66",
             widget = wibox.container.background
         },
         layout = wibox.layout.align.vertical,

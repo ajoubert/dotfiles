@@ -5,13 +5,13 @@ local beautiful = require("beautiful")
 
 local helpers = require("helpers")
 
-local stroke = x.background
+local stroke = X.background
 -- local stroke = "#000000"
 local transparent = "#00000000"
-local happy_color = x.color2
-local sad_color = x.color1
-local ok_color = x.color3
-local charging_color = x.color6
+local happy_color = X.color2
+local sad_color = X.color1
+local ok_color = X.color3
+local charging_color = X.color6
 
 -- Not great not terrible
 local ok_threshold = 45
@@ -25,8 +25,8 @@ end
 local battery_bar = wibox.widget{
     max_value     = 100,
     value         = 50,
-    forced_height = dpi(50),
-    forced_width  = dpi(100),
+    forced_height = Dpi(50),
+    forced_width  = Dpi(100),
     bar_shape     = gears.shape.rectangle,
     color         = happy_color,
     background_color = happy_color.."55",
@@ -40,8 +40,8 @@ local charging_icon = wibox.widget {
     widget = wibox.widget.textbox()
 }
 
-local eye_size = dpi(5)
-local mouth_size = dpi(10)
+local eye_size = Dpi(5)
+local mouth_size = Dpi(10)
 
 local mouth_shape = function()
     return function(cr, width, height)
@@ -64,7 +64,7 @@ local frown = wibox.widget {
         direction = "south",
         widget = wibox.container.rotate()
     },
-    top = dpi(8),
+    top = Dpi(8),
     widget = wibox.container.margin()
 }
 
@@ -77,11 +77,11 @@ local smile = wibox.widget {
 local ok = wibox.widget {
     {
         bg = stroke,
-        shape = helpers.rrect(dpi(2)),
+        shape = helpers.rrect(Dpi(2)),
         widget = wibox.container.background
     },
-    top = dpi(5),
-    bottom = dpi(1),
+    top = Dpi(5),
+    bottom = Dpi(1),
     widget = wibox.container.margin()
 }
 
@@ -106,16 +106,16 @@ local face = wibox.widget {
     eye,
     mouth,
     eye,
-    spacing = dpi(4),
+    spacing = Dpi(4),
     layout = wibox.layout.fixed.horizontal
 }
 
 local cute_battery_face = wibox.widget {
     {
         battery_bar,
-        shape = helpers.rrect(dpi(16)),
+        shape = helpers.rrect(Dpi(16)),
         border_color = stroke,
-        border_width = dpi(4),
+        border_width = Dpi(4),
         widget = wibox.container.background
     },
     {
@@ -131,7 +131,7 @@ local cute_battery_face = wibox.widget {
     },
     {
         charging_icon,
-        right = dpi(12),
+        right = Dpi(12),
         widget = wibox.container.margin()
     },
     top_only = false,
@@ -148,7 +148,7 @@ awesome.connect_signal("evil::battery", function(value)
     if charging_icon.visible then
         color = charging_color
         mouth:set(1, smile)
-    elseif value <= user.battery_threshold_low then
+    elseif value <= User.battery_threshold_low then
         color = sad_color
         mouth:set(1, frown)
     elseif value <= ok_threshold then
@@ -168,7 +168,7 @@ awesome.connect_signal("evil::charger", function(plugged)
         charging_icon.visible = true
         color = charging_color
         mouth:set(1, smile)
-    elseif last_value <= user.battery_threshold_low then
+    elseif last_value <= User.battery_threshold_low then
         charging_icon.visible = false
         color = sad_color
         mouth:set(1, frown)

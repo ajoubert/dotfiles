@@ -14,7 +14,7 @@ naughty.connect_signal("request::display", function(n)
     local actions = wibox.widget {
         notification = n,
         base_layout = wibox.widget {
-            spacing = dpi(5),
+            spacing = Dpi(5),
             layout = wibox.layout.flex.horizontal
         },
         widget_template = {
@@ -22,7 +22,7 @@ naughty.connect_signal("request::display", function(n)
                 {
                     {
                         font = "monospace 11 bold",
-                        markup = helpers.colorize_text(" ", x.color4),
+                        markup = helpers.colorize_text(" ", X.color4),
                         widget = wibox.widget.textbox
                     },
                     {
@@ -30,13 +30,13 @@ naughty.connect_signal("request::display", function(n)
                         font = beautiful.notification_font,
                         widget = wibox.widget.textbox
                     },
-                    forced_height = dpi(35),
+                    forced_height = Dpi(35),
                     layout = wibox.layout.fixed.horizontal
                 },
                 widget = wibox.container.place
             },
             strategy = "min",
-            width = dpi(60),
+            width = Dpi(60),
             widget = wibox.container.constraint,
         },
         style = {
@@ -84,7 +84,7 @@ naughty.connect_signal("request::display", function(n)
                             layout = wibox.layout.align.horizontal
                         },
                         {
-                            helpers.vertical_pad(dpi(10)),
+                            helpers.vertical_pad(Dpi(10)),
                             {
                                 nil,
                                 actions,
@@ -100,12 +100,12 @@ naughty.connect_signal("request::display", function(n)
                     widget = wibox.container.margin,
                 },
                 strategy = "min",
-                width = beautiful.notification_min_width or dpi(150),
+                width = beautiful.notification_min_width or Dpi(150),
                 widget = wibox.container.constraint,
             },
             strategy = "max",
-            width = beautiful.notification_max_width or dpi(300),
-            height = beautiful.notification_max_height or dpi(150),
+            width = beautiful.notification_max_width or Dpi(300),
+            height = beautiful.notification_max_height or Dpi(150),
             widget = wibox.container.constraint,
         }
     }

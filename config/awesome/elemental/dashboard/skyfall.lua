@@ -10,8 +10,8 @@ local icons = require("icons")
 local keygrabber = require("awful.keygrabber")
 
 -- Appearance
-local box_radius = beautiful.dashboard_box_border_radius or dpi(12)
-local box_gap = dpi(6)
+local box_radius = beautiful.dashboard_box_border_radius or Dpi(12)
+local box_gap = Dpi(6)
 
 -- Get screen geometry
 local screen_width = awful.screen.focused().geometry.width
@@ -91,10 +91,10 @@ end
 -- User widget
 local user_picture_container = wibox.container.background()
 user_picture_container.shape = gears.shape.circle
-user_picture_container.forced_height = dpi(140)
-user_picture_container.forced_width = dpi(140)
+user_picture_container.forced_height = Dpi(140)
+user_picture_container.forced_width = Dpi(140)
 local user_picture = wibox.widget {
-    wibox.widget.imagebox(user.profile_picture),
+    wibox.widget.imagebox(User.profile_picture),
     widget = user_picture_container
 }
 local username = os.getenv("USER")
@@ -110,7 +110,7 @@ local host_text = wibox.widget.textbox()
 awful.spawn.easy_async_with_shell("hostname", function(out)
     -- Remove trailing whitespaces
     out = out:gsub('^%s*(.-)%s*$', '%1')
-    host_text.markup = helpers.colorize_text("@"..out, x.color8)
+    host_text.markup = helpers.colorize_text("@"..out, X.color8)
 end)
 -- host_text.markup = "<span foreground='" .. x.color8 .."'>" .. minutes.text .. "</span>"
 host_text.font = "sans italic 18"
@@ -118,12 +118,12 @@ host_text.align = "center"
 host_text.valign = "center"
 local user_widget = wibox.widget {
     user_picture,
-    helpers.vertical_pad(dpi(30)),
+    helpers.vertical_pad(Dpi(30)),
     user_text,
     host_text,
     layout = wibox.layout.fixed.vertical
 }
-local user_box = create_boxed_widget(user_widget, dpi(300), dpi(340), x.background)
+local user_box = create_boxed_widget(user_widget, Dpi(300), Dpi(340), X.background)
 
 -- Calendar
 local calendar = require("noodle.calendar")
@@ -134,7 +134,7 @@ dashboard:connect_signal("property::visible", function ()
     end
 end)
 
-local calendar_box = create_boxed_widget(calendar, dpi(300), dpi(400), x.background)
+local calendar_box = create_boxed_widget(calendar, Dpi(300), Dpi(400), X.background)
 -- local calendar_box = create_boxed_widget(calendar, 380, 540, x.color0)
 
 -- Time widget
@@ -142,7 +142,7 @@ local hours = wibox.widget.textclock("%H  ")
 hours.font = "sans bold 30"
 hours.align = "center"
 hours.valign = "center"
-local minutes = wibox.widget.textclock("<span foreground='" .. x.color14 .."'>  %M</span>")
+local minutes = wibox.widget.textclock("<span foreground='" .. X.color14 .."'>  %M</span>")
 minutes.font = "sans 30"
 minutes.align = "center"
 minutes.valign = "center"
@@ -153,20 +153,20 @@ local time = wibox.widget {
     minutes,
     layout = wibox.layout.fixed.vertical
 }
-local time_box = create_boxed_widget(time, dpi(150), dpi(150), x.background)
+local time_box = create_boxed_widget(time, Dpi(150), Dpi(150), X.background)
 
 -- Date
 local day_of_the_week = wibox.widget.textclock("%A")
 day_of_the_week.font = "sans italic 20"
-day_of_the_week.fg = x.color0
+day_of_the_week.fg = X.color0
 day_of_the_week.align = "center"
 day_of_the_week.valign = "center"
 day_of_the_week.align = "center"
 day_of_the_week.valign = "center"
 
-local day_of_the_month = wibox.widget.textclock("<span foreground='" .. x.color1 .."'>%d</span>")
+local day_of_the_month = wibox.widget.textclock("<span foreground='" .. X.color1 .."'>%d</span>")
 day_of_the_month.font = "sans bold 30"
-day_of_the_month.fg = x.color0
+day_of_the_month.fg = X.color0
 day_of_the_month.align = "center"
 day_of_the_month.valign = "center"
 
@@ -175,12 +175,12 @@ local date = wibox.widget {
     day_of_the_month,
     layout = wibox.layout.align.vertical
 }
-local date_box = create_boxed_widget(date, dpi(150), dpi(150), x.background)
+local date_box = create_boxed_widget(date, Dpi(150), Dpi(150), X.background)
 
 -- File system bookmarks
 local function create_bookmark(name, path)
-    local original_color = x.color1
-    local hover_color = x.color9
+    local original_color = X.color1
+    local hover_color = X.color9
 
     local bookmark = wibox.widget.textbox()
     bookmark.font = "sans bold 16"
@@ -192,11 +192,11 @@ local function create_bookmark(name, path)
     -- Buttons
     bookmark:buttons(gears.table.join(
         awful.button({ }, 1, function ()
-            awful.spawn.with_shell(user.file_manager.." "..path)
+            awful.spawn.with_shell(User.file_manager.." "..path)
             dashboard_hide()
         end),
         awful.button({ }, 3, function ()
-            awful.spawn.with_shell(user.terminal.." -e 'ranger' "..path)
+            awful.spawn.with_shell(User.terminal.." -e 'ranger' "..path)
             dashboard_hide()
         end)
     ))
@@ -216,20 +216,20 @@ end
 
 local bookmarks = wibox.widget {
     create_bookmark("HOME", os.getenv("HOME")),
-    create_bookmark("DOWNLOADS", user.dirs.downloads),
-    create_bookmark("MUSIC", user.dirs.music),
-    create_bookmark("PICTURES", user.dirs.pictures),
-    create_bookmark("WALLPAPERS", user.dirs.wallpapers),
-    spacing = dpi(10),
+    create_bookmark("DOWNLOADS", User.dirs.downloads),
+    create_bookmark("MUSIC", User.dirs.music),
+    create_bookmark("PICTURES", User.dirs.pictures),
+    create_bookmark("WALLPAPERS", User.dirs.wallpapers),
+    spacing = Dpi(10),
     layout = wibox.layout.fixed.vertical
 }
 
-local bookmarks_box = create_boxed_widget(bookmarks, dpi(200), dpi(300), x.background)
+local bookmarks_box = create_boxed_widget(bookmarks, Dpi(200), Dpi(300), X.background)
 
 -- URLs
 local function create_url(name, path)
-    local original_color = x.color4
-    local hover_color = x.color12
+    local original_color = X.color4
+    local hover_color = X.color12
 
     local url = wibox.widget.textbox()
     url.font = "sans bold 16"
@@ -242,11 +242,11 @@ local function create_url(name, path)
     url:buttons(
         gears.table.join(
             awful.button({ }, 1, function ()
-                awful.spawn(user.browser.." "..path)
+                awful.spawn(User.browser.." "..path)
                 dashboard_hide()
             end),
             awful.button({ }, 3, function ()
-                awful.spawn(user.browser.." -new-window "..path)
+                awful.spawn(User.browser.." -new-window "..path)
                 dashboard_hide()
             end)
     ))
@@ -268,11 +268,11 @@ local urls = wibox.widget {
     create_url("4CHAN", "4chan.org"),
     create_url("REDDIT", "reddit.com"),
     create_url("GITHUB", "github.com/elenapan"),
-    spacing = dpi(10),
+    spacing = Dpi(10),
     layout = wibox.layout.fixed.vertical
 }
 
-local urls_box = create_boxed_widget(urls, dpi(200), dpi(180), x.background)
+local urls_box = create_boxed_widget(urls, Dpi(200), Dpi(180), X.background)
 
 -- Fortune
 local fortune_command = "fortune -n 140 -s"
@@ -302,7 +302,7 @@ local fortune_widget = wibox.widget {
 }
 
 
-local fortune_box = create_boxed_widget(fortune_widget, dpi(300), dpi(140), x.background)
+local fortune_box = create_boxed_widget(fortune_widget, Dpi(300), Dpi(140), X.background)
 fortune_box:buttons(gears.table.join(
     -- Left click - New fortune
     awful.button({ }, 1, function ()
@@ -315,7 +315,7 @@ fortune_box:buttons(gears.table.join(
 ))
 helpers.add_hover_cursor(fortune_box, "hand1")
 
-local icon_size = dpi(40)
+local icon_size = Dpi(40)
 
 local brightness_icon = wibox.widget.imagebox(icons.image.redshift)
 brightness_icon.resize = true
@@ -326,12 +326,12 @@ brightness_icon.forced_height = icon_size
 local brightness_bar = wibox.widget{
   max_value     = 100,
   value         = 50,
-  forced_height = dpi(10),
+  forced_height = Dpi(10),
   margins       = {
-    top = dpi(8),
-    bottom = dpi(8),
+    top = Dpi(8),
+    bottom = Dpi(8),
   },
-  forced_width  = dpi(210),
+  forced_width  = Dpi(210),
   shape         = gears.shape.rounded_bar,
   bar_shape     = gears.shape.rounded_bar,
   color         = beautiful.brightness_bar_active_color or "#5AA3CC",
@@ -348,11 +348,11 @@ end)
 local brightness = wibox.widget {
     brightness_icon,
     brightness_bar,
-    spacing = dpi(5),
+    spacing = Dpi(5),
     layout = wibox.layout.fixed.horizontal
 }
 
-local brightness_box = create_boxed_widget(brightness, dpi(300), dpi(80), x.background)
+local brightness_box = create_boxed_widget(brightness, Dpi(300), Dpi(80), X.background)
 
 brightness_box:buttons(
     gears.table.join(
@@ -388,7 +388,7 @@ local function update_notification_state_icon()
     end
 end
 update_notification_state_icon()
-local notification_state_box = create_boxed_widget(notification_state, dpi(150), dpi(78), x.background)
+local notification_state_box = create_boxed_widget(notification_state, Dpi(150), Dpi(78), X.background)
 notification_state_box:buttons(gears.table.join(
     -- Left click - Toggle notification state
     awful.button({ }, 1, function ()
@@ -405,7 +405,7 @@ screenshot.forced_width = icon_size
 screenshot.forced_height = icon_size
 -- local screenshot = wibox.widget.textbox("")
 -- screenshot.font = "Material Design Icons 30"
-local screenshot_box = create_boxed_widget(screenshot, dpi(150), dpi(78), x.background)
+local screenshot_box = create_boxed_widget(screenshot, Dpi(150), Dpi(78), X.background)
 screenshot_box:buttons(gears.table.join(
     -- Left click - Take screenshot
     awful.button({ }, 1, function ()

@@ -8,7 +8,7 @@ local icons = require("icons")
 local helpers = require("helpers")
 
 -- Appearance
-local icon_size = beautiful.exit_screen_icon_size or dpi(140)
+local icon_size = beautiful.exit_screen_icon_size or Dpi(140)
 local text_font = beautiful.exit_screen_font or "sans 14"
 
 -- Commands

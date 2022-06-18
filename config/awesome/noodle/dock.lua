@@ -12,12 +12,12 @@ local class_icons = icons.text.by_class
 
 -- TODO: These variables (and more) should ideally be retrieved through `beautiful`
 local item_font = "icomoon 15"
-local item_bg = x.background
-local item_size = dpi(50)
+local item_bg = X.background
+local item_size = Dpi(50)
 local item_shape = helpers.squircle(1.7, 0)
-local item_margin = dpi(8) -- For spacing between items
-local indicator_spacing = dpi(8)
-local indicator_height = dpi(7)
+local item_margin = Dpi(8) -- For spacing between items
+local indicator_spacing = Dpi(8)
+local indicator_height = Dpi(7)
 -- Custom arc shape
 local function draw_indicator_shape_unfocused(cr)
     cr:arc(item_size / 2, indicator_height, indicator_height, 0, 2 * math.pi)
@@ -159,7 +159,7 @@ local function generate_dock_icon(c, bg, fg, symbol)
                     {
                         id = "indicator_focused",
                         bg = fg,
-                        shape = helpers.prrect(dpi(60), true, true, false, false),
+                        shape = helpers.prrect(Dpi(60), true, true, false, false),
                         visible = is_focused and true or false,
                         widget = wibox.container.background
                     },

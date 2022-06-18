@@ -61,6 +61,7 @@ awful.rules.rules = {
             class = {
                 "firefox",
                 "Chromium",
+                "Signal",
             },
             type = {
               "splash"

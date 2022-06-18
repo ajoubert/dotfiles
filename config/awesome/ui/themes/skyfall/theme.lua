@@ -26,17 +26,17 @@ theme.font          = "monospace 11"
 -- This is how to get other .Xresources values (beyond colors 0-15, or custom variables)
 -- local cool_color = awesome.xrdb_get_value("", "color16")
 
-theme.bg_dark       = x.background
-theme.bg_normal     = x.color0
-theme.bg_focus      = x.color8
-theme.bg_urgent     = x.color8
-theme.bg_minimize   = x.color8
-theme.bg_systray    = x.background
+theme.bg_dark       = X.background
+theme.bg_normal     = X.color0
+theme.bg_focus      = X.color8
+theme.bg_urgent     = X.color8
+theme.bg_minimize   = X.color8
+theme.bg_systray    = X.background
 
-theme.fg_normal     = x.color8
-theme.fg_focus      = x.color4
-theme.fg_urgent     = x.color3
-theme.fg_minimize   = x.color8
+theme.fg_normal     = X.color8
+theme.fg_focus      = X.color4
+theme.fg_urgent     = X.color3
+theme.fg_minimize   = X.color8
 
 -- Gaps
 theme.useless_gap   = dpi(3)
@@ -46,9 +46,9 @@ theme.screen_margin = dpi(3)
 
 -- Borders
 theme.border_width  = dpi(0)
-theme.border_color = x.color0
-theme.border_normal = x.color0
-theme.border_focus  = x.color0
+theme.border_color = X.color0
+theme.border_normal = X.color0
+theme.border_focus  = X.color0
 -- Rounded corners
 theme.border_radius = dpi(6)
 
@@ -62,11 +62,11 @@ theme.titlebar_font = "sans bold 9"
 theme.titlebar_title_align = "center"
 -- Titlebar position: top, bottom, left, right
 theme.titlebar_position = "top"
-theme.titlebar_bg = x.color0
+theme.titlebar_bg = X.color0
 -- theme.titlebar_bg_focus = x.color5
 -- theme.titlebar_bg_normal = x.color13
-theme.titlebar_fg_focus = x.color7
-theme.titlebar_fg_normal = x.color8
+theme.titlebar_fg_focus = X.color7
+theme.titlebar_fg_normal = X.color8
 --theme.titlebar_fg = x.color7
 
 -- Notifications
@@ -75,11 +75,11 @@ theme.titlebar_fg_normal = x.color8
 theme.notification_position = "top_right" -- BUG: some notifications appear at top_right regardless
 theme.notification_border_width = dpi(0)
 theme.notification_border_radius = theme.border_radius
-theme.notification_border_color = x.color10
-theme.notification_bg = x.color0
-theme.notification_fg = x.color7
-theme.notification_crit_bg = x.color3
-theme.notification_crit_fg = x.color0
+theme.notification_border_color = X.color10
+theme.notification_bg = X.color0
+theme.notification_fg = X.color7
+theme.notification_crit_bg = X.color3
+theme.notification_crit_fg = X.color0
 theme.notification_icon_size = dpi(60)
 -- theme.notification_height = dpi(80)
 -- theme.notification_width = dpi(300)
@@ -118,20 +118,20 @@ theme.separator_text = "|"
 --theme.separator_text = " :: "
 --theme.separator_text = " • "
 -- theme.separator_text = " •• "
-theme.separator_fg = x.color8
+theme.separator_fg = X.color8
 
 -- Wibar(s)
 theme.wibar_position = "bottom"
 theme.wibar_ontop = false
 theme.wibar_height = dpi(35)
-theme.wibar_fg = x.color7
-theme.wibar_bg = x.color0
+theme.wibar_fg = X.color7
+theme.wibar_bg = X.color0
 --theme.wibar_opacity = 0.7
-theme.wibar_border_color = x.color0
+theme.wibar_border_color = X.color0
 theme.wibar_border_width = dpi(0)
 theme.wibar_border_radius = dpi(0)
 
-theme.prefix_fg = x.color8
+theme.prefix_fg = X.color8
 
  --There are other variable sets
  --overriding the default one when
@@ -149,21 +149,21 @@ theme.prefix_fg = x.color8
  --Tasklist
 theme.tasklist_disable_icon = true
 theme.tasklist_plain_task_name = true
-theme.tasklist_bg_focus = x.color0
-theme.tasklist_fg_focus = x.color4
-theme.tasklist_bg_normal = x.color0
-theme.tasklist_fg_normal = x.color15
-theme.tasklist_bg_minimize = x.color0
+theme.tasklist_bg_focus = X.color0
+theme.tasklist_fg_focus = X.color4
+theme.tasklist_bg_normal = X.color0
+theme.tasklist_fg_normal = X.color15
+theme.tasklist_bg_minimize = X.color0
 theme.tasklist_fg_minimize = theme.fg_minimize
-theme.tasklist_bg_urgent = x.color0
-theme.tasklist_fg_urgent = x.color3
+theme.tasklist_bg_urgent = X.color0
+theme.tasklist_fg_urgent = X.color3
 theme.tasklist_spacing = dpi(5)
 theme.tasklist_align = "center"
 
 -- Sidebar
 -- (Sidebar items can be customized in sidebar.lua)
-theme.sidebar_bg = x.color0
-theme.sidebar_fg = x.color7
+theme.sidebar_bg = X.color0
+theme.sidebar_fg = X.color7
 theme.sidebar_opacity = 1
 -- theme.sidebar_position = "left" -- left or right
 theme.sidebar_width = dpi(300)
@@ -173,8 +173,8 @@ theme.sidebar_border_radius = 0
 -- theme.sidebar_border_radius = theme.border_radius
 
 -- Exit screen
-theme.exit_screen_bg = x.color0 .. "CC"
-theme.exit_screen_fg = x.color7
+theme.exit_screen_bg = X.color0 .. "CC"
+theme.exit_screen_fg = X.color7
 theme.exit_screen_font = "sans 20"
 theme.exit_screen_icon_size = dpi(180)
 
@@ -260,24 +260,24 @@ theme.taglist_text_urgent   = {"","","","","","","","","
 -- theme.taglist_text_urgent   = {"","","","","","","","","",""}
 -- theme.taglist_text_urgent   = {"","","","","","","","","",""}
 
-theme.taglist_text_color_empty    = { x.color8, x.color8, x.color8, x.color8, x.color8, x.color8, x.color8, x.color8, x.color8, x.color8 }
-theme.taglist_text_color_occupied  = { x.color1, x.color2, x.color3, x.color4, x.color5, x.color6, x.color1, x.color2, x.color3, x.color4 }
-theme.taglist_text_color_focused  = { x.color1, x.color2, x.color3, x.color4, x.color5, x.color6, x.color1, x.color2, x.color3, x.color4 }
-theme.taglist_text_color_urgent   = { x.color9, x.color10, x.color11, x.color12, x.color13, x.color14, x.color9, x.color10, x.color11, x.color12 }
+theme.taglist_text_color_empty    = { X.color8, X.color8, X.color8, X.color8, X.color8, X.color8, X.color8, X.color8, X.color8, X.color8 }
+theme.taglist_text_color_occupied  = { X.color1, X.color2, X.color3, X.color4, X.color5, X.color6, X.color1, X.color2, X.color3, X.color4 }
+theme.taglist_text_color_focused  = { X.color1, X.color2, X.color3, X.color4, X.color5, X.color6, X.color1, X.color2, X.color3, X.color4 }
+theme.taglist_text_color_urgent   = { X.color9, X.color10, X.color11, X.color12, X.color13, X.color14, X.color9, X.color10, X.color11, X.color12 }
 
 -- Prompt
-theme.prompt_fg = x.color12
+theme.prompt_fg = X.color12
 
 -- Text Taglist (default)
 theme.taglist_font = "monospace bold 9"
-theme.taglist_bg_focus = x.background
-theme.taglist_fg_focus = x.color12
-theme.taglist_bg_occupied = x.background
-theme.taglist_fg_occupied = x.color8
-theme.taglist_bg_empty = x.background
-theme.taglist_fg_empty = x.background
-theme.taglist_bg_urgent = x.background
-theme.taglist_fg_urgent = x.color3
+theme.taglist_bg_focus = X.background
+theme.taglist_fg_focus = X.color12
+theme.taglist_bg_occupied = X.background
+theme.taglist_fg_occupied = X.color8
+theme.taglist_bg_empty = X.background
+theme.taglist_fg_empty = X.background
+theme.taglist_bg_urgent = X.background
+theme.taglist_fg_urgent = X.color3
 theme.taglist_disable_icon = true
 theme.taglist_spacing = dpi(0)
 -- Generate taglist squares:
@@ -293,12 +293,12 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 theme.menu_submenu_icon = icon_path.."submenu.png"
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(180)
-theme.menu_bg_normal = x.color0
-theme.menu_fg_normal= x.color7
-theme.menu_bg_focus = x.color8 .. "55"
-theme.menu_fg_focus= x.color7
+theme.menu_bg_normal = X.color0
+theme.menu_fg_normal= X.color7
+theme.menu_bg_focus = X.color8 .. "55"
+theme.menu_fg_focus= X.color7
 theme.menu_border_width = dpi(0)
-theme.menu_border_color = x.color0
+theme.menu_border_color = X.color0
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -381,41 +381,41 @@ theme.layout_cornerse = layout_icon_path .. "cornerse.png"
 -- theme.desktop_mode_text_max = "m"
 
 -- Minimal tasklist widget variables
-theme.minimal_tasklist_visible_clients_color = x.color4
+theme.minimal_tasklist_visible_clients_color = X.color4
 theme.minimal_tasklist_visible_clients_text = ""
-theme.minimal_tasklist_hidden_clients_color = x.color7
+theme.minimal_tasklist_hidden_clients_color = X.color7
 theme.minimal_tasklist_hidden_clients_text = ""
 
 -- Mpd song
-theme.mpd_song_title_color = x.color7
-theme.mpd_song_artist_color = x.color7
-theme.mpd_song_paused_color = x.color8
+theme.mpd_song_title_color = X.color7
+theme.mpd_song_artist_color = X.color7
+theme.mpd_song_paused_color = X.color8
 
 -- Volume bar
-theme.volume_bar_active_color = x.color6
-theme.volume_bar_active_background_color = x.color6 .. "33"
-theme.volume_bar_muted_color = x.color8
-theme.volume_bar_muted_background_color = x.color8 .. "33"
+theme.volume_bar_active_color = X.color6
+theme.volume_bar_active_background_color = X.color6 .. "33"
+theme.volume_bar_muted_color = X.color8
+theme.volume_bar_muted_background_color = X.color8 .. "33"
 
 -- Temperature bar
-theme.temperature_bar_active_color = x.color1
-theme.temperature_bar_background_color = x.color1 .. "33"
+theme.temperature_bar_active_color = X.color1
+theme.temperature_bar_background_color = X.color1 .. "33"
 
 -- Battery bar
-theme.battery_bar_active_color = x.color5
-theme.battery_bar_background_color = x.color5 .. "33"
+theme.battery_bar_active_color = X.color5
+theme.battery_bar_background_color = X.color5 .. "33"
 
 -- CPU bar
-theme.cpu_bar_active_color = x.color2
-theme.cpu_bar_background_color = x.color2 .. "33"
+theme.cpu_bar_active_color = X.color2
+theme.cpu_bar_background_color = X.color2 .. "33"
 
 -- RAM bar
-theme.ram_bar_active_color = x.color12
-theme.ram_bar_background_color = x.color12 .. "33"
+theme.ram_bar_active_color = X.color12
+theme.ram_bar_background_color = X.color12 .. "33"
 
 -- Brightness bar
-theme.brightness_bar_active_color = x.color14
-theme.brightness_bar_background_color = x.color14 .. "33"
+theme.brightness_bar_active_color = X.color14
+theme.brightness_bar_background_color = X.color14 .. "33"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(

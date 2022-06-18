@@ -2,9 +2,9 @@
 local beautiful = require("beautiful")
 local xrdb = beautiful.xresources.get_current_theme()
 -- Make dpi function global
-dpi = beautiful.xresources.apply_dpi
+Dpi = beautiful.xresources.apply_dpi
 -- Make xresources colors global
-x = {
+X = {
     --           xrdb variable
     background = xrdb.background,
     foreground = xrdb.foreground,

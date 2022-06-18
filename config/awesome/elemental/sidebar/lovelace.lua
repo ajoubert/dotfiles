@@ -8,9 +8,9 @@ local apps = require("apps")
 local helpers = require("helpers")
 
 -- Some commonly used variables
-local playerctl_button_size = dpi(48)
-local icon_size = dpi(36)
-local progress_bar_width = dpi(215)
+local playerctl_button_size = Dpi(48)
+local icon_size = Dpi(36)
+local progress_bar_width = Dpi(215)
 -- local progress_bar_margins = dpi(9)
 
 -- Helper function that changes the appearance of progress bars and their icons
@@ -33,7 +33,7 @@ local function format_progress_bar(bar, icon)
         {
             icon,
             bar,
-            spacing = dpi(10),
+            spacing = Dpi(10),
             layout = wibox.layout.fixed.horizontal
         },
         expand = "none",
@@ -170,7 +170,7 @@ local playerctl_buttons = wibox.widget {
         playerctl_prev_icon,
         playerctl_toggle_icon,
         playerctl_next_icon,
-        spacing = dpi(10),
+        spacing = Dpi(10),
         layout  = wibox.layout.fixed.horizontal
     },
     expand = "none",
@@ -204,8 +204,8 @@ mpd_artist.font = "sans 11"
 
 -- Set forced height in order to limit the widgets to one line.
 -- Might need to be adjusted depending on the font.
-mpd_title.forced_height = dpi(24)
-mpd_artist.forced_height = dpi(18)
+mpd_title.forced_height = Dpi(24)
+mpd_artist.forced_height = Dpi(18)
 
 mpd_song:buttons(gears.table.join(
     awful.button({ }, 1, function ()
@@ -213,7 +213,7 @@ mpd_song:buttons(gears.table.join(
     end),
     awful.button({ }, 3, function ()
         -- Spawn music terminal
-        awful.spawn(user.music_client)
+        awful.spawn(User.music_client)
     end),
     awful.button({ }, 4, function ()
         awful.spawn.with_shell("mpc -q prev")
@@ -243,10 +243,10 @@ local disk = wibox.widget{
 
 disk:buttons(gears.table.join(
     awful.button({ }, 1, function ()
-        awful.spawn(user.file_manager, {floating = true})
+        awful.spawn(User.file_manager, {floating = true})
     end),
     awful.button({ }, 3, function ()
-        awful.spawn(user.file_manager .. " /data", {floating = true})
+        awful.spawn(User.file_manager .. " /data", {floating = true})
     end)
 ))
 
@@ -305,7 +305,7 @@ sidebar.bg = beautiful.sidebar_bg or beautiful.wibar_bg or "#111111"
 sidebar.fg = beautiful.sidebar_fg or beautiful.wibar_fg or "#FFFFFF"
 sidebar.opacity = beautiful.sidebar_opacity or 1
 sidebar.height = screen.primary.geometry.height
-sidebar.width = beautiful.sidebar_width or dpi(300)
+sidebar.width = beautiful.sidebar_width or Dpi(300)
 sidebar.y = beautiful.sidebar_y or 0
 local radius = beautiful.sidebar_border_radius or 0
 if beautiful.sidebar_position == "right" then
@@ -337,13 +337,13 @@ sidebar:buttons(gears.table.join(
 ))
 
 -- Hide sidebar when mouse leaves
-if user.sidebar.hide_on_mouse_leave then
+if User.sidebar.hide_on_mouse_leave then
     sidebar:connect_signal("mouse::leave", function ()
         sidebar.visible = false
     end)
 end
 -- Activate sidebar by moving the mouse at the edge of the screen
-if user.sidebar.show_on_mouse_screen_edge then
+if User.sidebar.show_on_mouse_screen_edge then
     local sidebar_activator = wibox({y = sidebar.y, width = 1, visible = true, ontop = false, opacity = 0, below = true, screen = screen.primary})
     sidebar_activator.height = sidebar.height
     sidebar_activator:connect_signal("mouse::enter", function ()
@@ -384,8 +384,8 @@ sidebar:setup {
             -- Put some margins at the left and right edge so that
             -- it looks better with extremely long titles/artists
             mpd_song,
-            left = dpi(10),
-            right = dpi(10),
+            left = Dpi(10),
+            right = Dpi(10),
             widget = wibox.container.margin
         },
         helpers.vertical_pad(40),
@@ -405,12 +405,12 @@ sidebar:setup {
             {
                 search,
                 exit,
-                spacing = dpi(50),
+                spacing = Dpi(50),
                 layout = wibox.layout.fixed.horizontal
             },
-            left = dpi(20),
-            right = dpi(20),
-            bottom = dpi(20),
+            left = Dpi(20),
+            right = Dpi(20),
+            bottom = Dpi(20),
             widget = wibox.container.margin
         },
         nil,

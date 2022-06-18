@@ -20,7 +20,7 @@ local create_button = function (symbol, color, bg_color, hover_color)
 
     local section = wibox.widget {
         widget,
-        forced_width = dpi(70),
+        forced_width = Dpi(70),
         bg = bg_color,
         widget = wibox.container.background
     }
@@ -38,7 +38,7 @@ local create_button = function (symbol, color, bg_color, hover_color)
     return section
 end
 
-local exit = create_button("", x.color6, x.color8.."C0",x.color8.."E0")
+local exit = create_button("", X.color6, X.color8.."C0",X.color8.."E0")
 exit:buttons(gears.table.join(
     awful.button({ }, 1, function ()
         exit_screen_show()
@@ -46,9 +46,9 @@ exit:buttons(gears.table.join(
 ))
 
 local volume_symbol = ""
-local volume_muted_color = x.color8
-local volume_unmuted_color = x.color5
-local volume = create_button(volume_symbol, volume_unmuted_color, x.color8.."30", x.color8.."50")
+local volume_muted_color = X.color8
+local volume_unmuted_color = X.color5
+local volume = create_button(volume_symbol, volume_unmuted_color, X.color8.."30", X.color8.."50")
 
 volume:buttons(gears.table.join(
     -- Left click - Mute / Unmute
@@ -76,9 +76,9 @@ awesome.connect_signal("evil::volume", function(_, muted)
 end)
 
 local microphone_symbol = ""
-local microphone_muted_color = x.color8
-local microphone_unmuted_color = x.color3
-local microphone = create_button(microphone_symbol, microphone_unmuted_color, x.color8.."60", x.color8.."80")
+local microphone_muted_color = X.color8
+local microphone_unmuted_color = X.color3
+local microphone = create_button(microphone_symbol, microphone_unmuted_color, X.color8.."60", X.color8.."80")
 
 microphone:buttons(gears.table.join(
     awful.button({ }, 1, function ()
@@ -95,7 +95,7 @@ awesome.connect_signal("evil::microphone", function(muted)
     end
 end)
 
-local music = create_button("", x.color4, x.color8.."90", x.color8.."B0")
+local music = create_button("", X.color4, X.color8.."90", X.color8.."B0")
 
 music:buttons(gears.table.join(
     awful.button({ }, 1, apps.music),
@@ -109,7 +109,7 @@ music:buttons(gears.table.join(
     end)
 ))
 
-local sandwich = create_button("", x.color1, x.color8.."30", x.color8.."50")
+local sandwich = create_button("", X.color1, X.color8.."30", X.color8.."50")
 sandwich:buttons(gears.table.join(
     awful.button({ }, 1, function ()
         app_drawer_show()
@@ -123,42 +123,42 @@ sandwich:buttons(gears.table.join(
 local tag_colors_empty = { "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", }
 
 local tag_colors_urgent = {
-    x.background,
-    x.background,
-    x.background,
-    x.background,
-    x.background,
-    x.background,
-    x.background,
-    x.background,
-    x.background,
-    x.background
+    X.background,
+    X.background,
+    X.background,
+    X.background,
+    X.background,
+    X.background,
+    X.background,
+    X.background,
+    X.background,
+    X.background
 }
 
 local tag_colors_focused = {
-    x.color1,
-    x.color5,
-    x.color4,
-    x.color6,
-    x.color2,
-    x.color3,
-    x.color1,
-    x.color5,
-    x.color4,
-    x.color6,
+    X.color1,
+    X.color5,
+    X.color4,
+    X.color6,
+    X.color2,
+    X.color3,
+    X.color1,
+    X.color5,
+    X.color4,
+    X.color6,
 }
 
 local tag_colors_occupied = {
-    x.color1.."55",
-    x.color5.."55",
-    x.color4.."55",
-    x.color6.."55",
-    x.color2.."55",
-    x.color3.."55",
-    x.color1.."55",
-    x.color5.."55",
-    x.color4.."55",
-    x.color6.."55",
+    X.color1.."55",
+    X.color5.."55",
+    X.color4.."55",
+    X.color6.."55",
+    X.color2.."55",
+    X.color3.."55",
+    X.color1.."55",
+    X.color5.."55",
+    X.color4.."55",
+    X.color6.."55",
 }
 
 -- Helper function that updates a taglist item
@@ -199,7 +199,7 @@ awful.screen.connect_for_each_screen(function(s)
         buttons  = keys.tasklist_buttons,
         style    = {
             font = beautiful.tasklist_font,
-            bg = x.color0,
+            bg = X.color0,
         },
         layout   = {
             -- spacing = dpi(10),
@@ -213,14 +213,14 @@ awful.screen.connect_for_each_screen(function(s)
                     align  = "center",
                     widget = wibox.widget.textbox,
                 },
-                forced_width = dpi(220),
-                left = dpi(15),
-                right = dpi(15),
+                forced_width = Dpi(220),
+                left = Dpi(15),
+                right = Dpi(15),
                 -- Add margins to top and bottom in order to force the
                 -- text to be on a single line, if needed. Might need
                 -- to adjust them according to font size.
-                top  = dpi(4),
-                bottom = dpi(4),
+                top  = Dpi(4),
+                bottom = Dpi(4),
                 widget = wibox.container.margin
             },
             -- shape = helpers.rrect(dpi(8)),
@@ -237,8 +237,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox.resize = true
-    s.mylayoutbox.forced_width  = beautiful.wibar_height - dpi(5)
-    s.mylayoutbox.forced_height = beautiful.wibar_height - dpi(5)
+    s.mylayoutbox.forced_width  = beautiful.wibar_height - Dpi(5)
+    s.mylayoutbox.forced_height = beautiful.wibar_height - Dpi(5)
     s.mylayoutbox:buttons(gears.table.join(
     awful.button({ }, 1, function () awful.layout.inc( 1) end),
     awful.button({ }, 3, function () awful.layout.inc(-1) end),
@@ -258,7 +258,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- s.mywibox.bg = x.foreground
     -- s.mywibox.bg = x.background.."88"
     -- s.mywibox.bg = x.background
-    s.mywibox.bg = x.color0
+    s.mywibox.bg = X.color0
 
     -- Bar placement
     awful.placement.maximize_horizontally(s.mywibox)
@@ -281,7 +281,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 
     -- Create the top bar
-    s.mytopwibox = awful.wibar({screen = s, visible = true, ontop = false, type = "dock", position = "top", height = dpi(5)})
+    s.mytopwibox = awful.wibar({screen = s, visible = true, ontop = false, type = "dock", position = "top", height = Dpi(5)})
     -- Bar placement
     awful.placement.maximize_horizontally(s.mytopwibox)
     s.mytopwibox.bg = "#00000000"
@@ -296,7 +296,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a wibox that will only show the tray
     -- Hidden by default. Can be toggled with a keybind.
     s.traybox = wibox({visible = false, ontop = true, type = "normal"})
-    s.traybox.width = dpi(120)
+    s.traybox.width = Dpi(120)
     s.traybox.height = beautiful.wibar_height
     awful.placement.bottom_left(s.traybox, {honor_workarea = true, margins = beautiful.screen_margin * 2})
     s.traybox.bg = "#00000000"

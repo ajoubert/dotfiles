@@ -28,8 +28,8 @@ local lock_text_icon = ""
 -- local exit_text_icon = ""
 -- local lock_text_icon = ""
 
-local button_bg = x.color0
-local button_size = dpi(120)
+local button_bg = X.color0
+local button_size = Dpi(120)
 
 
 -- Commands
@@ -72,9 +72,9 @@ local create_button = function(symbol, hover_color, text, command)
         },
         forced_height = button_size,
         forced_width = button_size,
-        border_width = dpi(8),
+        border_width = Dpi(8),
         border_color = button_bg,
-        shape = helpers.rrect(dpi(20)),
+        shape = helpers.rrect(Dpi(20)),
         bg = button_bg,
         widget = wibox.container.background
     }
@@ -92,7 +92,7 @@ local create_button = function(symbol, hover_color, text, command)
         button.border_color = hover_color
     end)
     button:connect_signal("mouse::leave", function ()
-        icon.markup = helpers.colorize_text(icon.text, x.foreground)
+        icon.markup = helpers.colorize_text(icon.text, X.foreground)
         button.border_color = button_bg
     end)
 
@@ -103,11 +103,11 @@ local create_button = function(symbol, hover_color, text, command)
 end
 
 -- Create the buttons
-local poweroff = create_button(poweroff_text_icon, x.color1, "Poweroff", poweroff_command)
-local reboot = create_button(reboot_text_icon, x.color2, "Reboot", reboot_command)
-local suspend = create_button(suspend_text_icon, x.color3, "Suspend", suspend_command)
-local exit = create_button(exit_text_icon, x.color4, "Exit", exit_command)
-local lock = create_button(lock_text_icon, x.color5, "Lock", lock_command)
+local poweroff = create_button(poweroff_text_icon, X.color1, "Poweroff", poweroff_command)
+local reboot = create_button(reboot_text_icon, X.color2, "Reboot", reboot_command)
+local suspend = create_button(suspend_text_icon, X.color3, "Suspend", suspend_command)
+local exit = create_button(exit_text_icon, X.color4, "Exit", exit_command)
+local lock = create_button(lock_text_icon, X.color5, "Lock", lock_command)
 
 -- Create the exit screen wibox
 exit_screen = wibox({visible = false, ontop = true, type = "dock"})
@@ -180,7 +180,7 @@ exit_screen:setup {
             suspend,
             exit,
             lock,
-            spacing = dpi(50),
+            spacing = Dpi(50),
             layout = wibox.layout.fixed.horizontal
         },
         expand = "none",

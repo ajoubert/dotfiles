@@ -16,12 +16,12 @@ local rainbow_piece = function(color)
 end
 
 local rainbow_stripe = wibox.widget {
-    rainbow_piece(x.color1),
-    rainbow_piece(x.color5),
-    rainbow_piece(x.color4),
-    rainbow_piece(x.color6),
-    rainbow_piece(x.color2),
-    rainbow_piece(x.color3),
+    rainbow_piece(X.color1),
+    rainbow_piece(X.color5),
+    rainbow_piece(X.color4),
+    rainbow_piece(X.color6),
+    rainbow_piece(X.color2),
+    rainbow_piece(X.color3),
     layout = wibox.layout.flex.horizontal
 }
 
@@ -31,7 +31,7 @@ local notification_bg = beautiful.notification_bg
 beautiful.notification_bg = "#00000000"
 
 local default_icon = ""
-local default_color = x.foreground
+local default_color = X.foreground
 
 -- Custom text icons according to the notification's app_name
 -- plus whether the title should be visible or not
@@ -101,12 +101,12 @@ naughty.connect_signal("request::display", function(n)
                     },
                     widget = wibox.container.place
                 },
-                bg = x.color0,
-                forced_height = dpi(35),
+                bg = X.color0,
+                forced_height = Dpi(35),
                 widget = wibox.container.background
             },
             strategy = "min",
-            width = dpi(60),
+            width = Dpi(60),
             widget = wibox.container.constraint,
         },
         style = {
@@ -139,7 +139,7 @@ naughty.connect_signal("request::display", function(n)
                                     widget  = wibox.container.margin,
                                 },
                                 -- bg = x.background.."88",
-                                bg = x.color0,
+                                bg = X.color0,
                                 -- bg = x.background.."88",
                                 -- bg = "red",
                                 -- bg = notification_bg.."88",
@@ -147,7 +147,7 @@ naughty.connect_signal("request::display", function(n)
                             },
                             {
                                 rainbow_stripe,
-                                forced_height = dpi(4),
+                                forced_height = Dpi(4),
                                 -- shape = gears.shape.rounded_bar,
                                 widget = wibox.container.background
                             },
@@ -174,7 +174,7 @@ naughty.connect_signal("request::display", function(n)
                             },
                             {
                                 rainbow_stripe,
-                                forced_height = dpi(4),
+                                forced_height = Dpi(4),
                                 visible = n.actions and #n.actions > 0,
                                 widget = wibox.container.background
                             },
@@ -186,12 +186,12 @@ naughty.connect_signal("request::display", function(n)
                         widget = naughty.container.background,
                     },
                     strategy = "min",
-                    width    = dpi(160),
+                    width    = Dpi(160),
                     widget   = wibox.container.constraint,
                 },
                 strategy = "max",
-                width    = beautiful.notification_max_width or dpi(350),
-                height   = beautiful.notification_max_height or dpi(200),
+                width    = beautiful.notification_max_width or Dpi(350),
+                height   = beautiful.notification_max_height or Dpi(200),
                 widget   = wibox.container.constraint,
             },
             -- Anti-aliasing container

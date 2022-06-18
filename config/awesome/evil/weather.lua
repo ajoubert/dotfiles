@@ -7,9 +7,9 @@ local awful = require("awful")
 local helpers = require("helpers")
 
 -- Configuration
-local key = user.openweathermap_key
-local city_id = user.openweathermap_city_id
-local units = user.weather_units
+local key = User.openweathermap_key
+local city_id = User.openweathermap_city_id
+local units = User.weather_units
 -- Don't update too often, because your requests might get blocked for 24 hours
 local update_interval = 1200
 local temp_file = "/tmp/awesomewm-evil-weather-"..city_id.."-"..units

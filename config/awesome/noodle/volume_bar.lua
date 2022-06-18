@@ -11,12 +11,12 @@ local muted_background_color = beautiful.volume_bar_muted_background_color or "#
 local volume_bar = wibox.widget{
     max_value     = 100,
     value         = 50,
-    forced_height = dpi(10),
+    forced_height = Dpi(10),
     margins       = {
-        top = dpi(8),
-        bottom = dpi(8),
+        top = Dpi(8),
+        bottom = Dpi(8),
     },
-    forced_width  = dpi(200),
+    forced_width  = Dpi(200),
     shape         = gears.shape.rounded_bar,
     bar_shape     = gears.shape.rounded_bar,
     color         = active_color,

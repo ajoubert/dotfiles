@@ -35,9 +35,9 @@ local app_config = {
 }
 
 local urgency_color = {
-    ['low'] = x.color2,
-    ['normal'] = x.color4,
-    ['critical'] = x.color11,
+    ['low'] = X.color2,
+    ['normal'] = X.color4,
+    ['critical'] = X.color11,
 }
 
 -- Template
@@ -71,7 +71,7 @@ naughty.connect_signal("request::display", function(n)
     local actions = wibox.widget {
         notification = n,
         base_layout = wibox.widget {
-            spacing = dpi(3),
+            spacing = Dpi(3),
             layout = wibox.layout.flex.horizontal
         },
         widget_template = {
@@ -82,15 +82,15 @@ naughty.connect_signal("request::display", function(n)
                         font = beautiful.notification_font,
                         widget = wibox.widget.textbox
                     },
-                    left = dpi(6),
-                    right = dpi(6),
+                    left = Dpi(6),
+                    right = Dpi(6),
                     widget = wibox.container.margin
                 },
                 widget = wibox.container.place
             },
-            bg = x.color8.."32",
-            forced_height = dpi(25),
-            forced_width = dpi(70),
+            bg = X.color8.."32",
+            forced_height = Dpi(25),
+            forced_width = Dpi(70),
             widget = wibox.container.background
         },
         style = {
@@ -118,8 +118,8 @@ naughty.connect_signal("request::display", function(n)
                             valign = "center",
                             widget = custom_notification_icon,
                         },
-                        forced_width = dpi(50),
-                        bg = x.background,
+                        forced_width = Dpi(50),
+                        bg = X.background,
                         widget  = wibox.container.background,
                     },
                     {
@@ -138,10 +138,10 @@ naughty.connect_signal("request::display", function(n)
                                 widget = naughty.widget.message,
                             },
                             {
-                                helpers.vertical_pad(dpi(10)),
+                                helpers.vertical_pad(Dpi(10)),
                                 {
                                     actions,
-                                    shape = helpers.rrect(dpi(4)),
+                                    shape = helpers.rrect(Dpi(4)),
                                     widget = wibox.container.background,
                                 },
                                 visible = n.actions and #n.actions > 0,
@@ -155,13 +155,13 @@ naughty.connect_signal("request::display", function(n)
                     layout  = wibox.layout.fixed.horizontal,
                 },
                 strategy = "max",
-                width    = beautiful.notification_max_width or dpi(350),
-                height   = beautiful.notification_max_height or dpi(180),
+                width    = beautiful.notification_max_width or Dpi(350),
+                height   = beautiful.notification_max_height or Dpi(180),
                 widget   = wibox.container.constraint,
             },
             -- Anti-aliasing container
             shape = helpers.rrect(beautiful.notification_border_radius),
-            bg = x.color0,
+            bg = X.color0,
             widget = wibox.container.background
         }
     }

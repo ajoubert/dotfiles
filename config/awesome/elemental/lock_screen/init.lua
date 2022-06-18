@@ -20,7 +20,7 @@ lock_screen.init = function ()
             -- lua-pam was NOT installed.
             -- Authenticate with user.lock_screen_custom_password
             lock_screen.authenticate = function (password)
-                return password == user.lock_screen_custom_password
+                return password == User.lock_screen_custom_password
             end
         end
 

@@ -6,9 +6,9 @@ local naughty = require("naughty")
 local icons = require("icons")
 
 local weather_temperature_symbol
-if user.weather_units == "metric" then
+if User.weather_units == "metric" then
     weather_temperature_symbol = "°C"
-elseif user.weather_units == "imperial" then
+elseif User.weather_units == "imperial" then
     weather_temperature_symbol = "°F"
 end
 

@@ -7,14 +7,14 @@ local notifications = require("notifications")
 local apps = {}
 
 apps.terminal = function()
-  awful.spawn(user.terminal, { switchtotag = true })
+  awful.spawn(User.terminal, { switchtotag = true })
 end
 
 apps.browser = function ()
-    awful.spawn(user.browser, { switchtotag = true })
+    awful.spawn(User.browser, { switchtotag = true })
 end
 apps.file_manager = function ()
-    awful.spawn(user.file_manager, { floating = true })
+    awful.spawn(User.file_manager, { floating = true })
 end
 apps.telegram = function ()
     helpers.run_or_raise({class = 'TelegramDesktop'}, false, "telegram", { switchtotag = true })
@@ -30,10 +30,10 @@ apps.discord = function ()
     helpers.run_or_raise({class = 'discord'}, false, "discord")
 end
 apps.weechat = function ()
-    helpers.run_or_raise({instance = 'weechat'}, true, user.terminal.." --class weechat -e weechat")
+    helpers.run_or_raise({instance = 'weechat'}, true, User.terminal.." --class weechat -e weechat")
 end
 apps.mail = function ()
-    helpers.run_or_raise({instance = 'email'}, false, user.email_client, {switchtotag = true})
+    helpers.run_or_raise({instance = 'email'}, false, User.email_client, {switchtotag = true})
 end
 apps.gimp = function ()
     helpers.run_or_raise({class = 'Gimp'}, false, "gimp")
@@ -57,11 +57,11 @@ apps.volume = function ()
     helpers.run_or_raise({class = 'Pavucontrol'}, true, "pavucontrol")
 end
 apps.torrent = function ()
-    helpers.run_or_raise({instance = 'torrent'}, true, user.terminal.." --class torrent -e transmission-remote-cli")
+    helpers.run_or_raise({instance = 'torrent'}, true, User.terminal.." --class torrent -e transmission-remote-cli")
 end
 
 apps.editor = function ()
-    helpers.run_or_raise({instance = 'editor'}, false, user.editor, { switchtotag = true })
+    helpers.run_or_raise({instance = 'editor'}, false, User.editor, { switchtotag = true })
 end
 
 -- Toggle compositor
@@ -97,11 +97,11 @@ apps.org = function ()
 end
 
 apps.music = function ()
-    helpers.scratchpad({instance = "music"}, user.music_client)
+    helpers.scratchpad({instance = "music"}, User.music_client)
 end
 
 apps.process_monitor = function ()
-    helpers.run_or_raise({instance = 'htop'}, false, user.terminal.." --class htop -e htop", { switchtotag = true })
+    helpers.run_or_raise({instance = 'htop'}, false, User.terminal.." --class htop -e htop", { switchtotag = true })
 end
 
 apps.process_monitor_gui = function ()
@@ -109,17 +109,17 @@ apps.process_monitor_gui = function ()
 end
 
 apps.temperature_monitor = function ()
-    helpers.run_or_raise({class = 'sensors'}, false, user.terminal.." --class sensors -e watch sensors", { switchtotag = true, tag = mouse.screen.tags[5] })
+    helpers.run_or_raise({class = 'sensors'}, false, User.terminal.." --class sensors -e watch sensors", { switchtotag = true, tag = mouse.screen.tags[5] })
 end
 
 apps.battery_monitor = function ()
-    helpers.run_or_raise({class = 'battop'}, false, user.terminal.." --class battop -e battop", { switchtotag = true, tag = mouse.screen.tags[5] })
+    helpers.run_or_raise({class = 'battop'}, false, User.terminal.." --class battop -e battop", { switchtotag = true, tag = mouse.screen.tags[5] })
 end
 
 apps.markdown_input = function ()
     helpers.scratchpad(
         { instance = "markdown_input" },
-        user.terminal.." --class markdown_input -e nvim -c 'startinsert' /tmp/scratchpad.md",
+        User.terminal.." --class markdown_input -e nvim -c 'startinsert' /tmp/scratchpad.md",
         nil)
 end
 
@@ -135,10 +135,10 @@ function apps.screenshot(action, delay)
     return function()
         -- Read-only actions
         if action == "browse" then
-            awful.spawn.with_shell("cd "..user.dirs.screenshots.." && sxiv $(ls -t)")
+            awful.spawn.with_shell("cd "..User.dirs.screenshots.." && sxiv $(ls -t)")
             return
         elseif action == "gimp" then
-            awful.spawn.with_shell("cd "..user.dirs.screenshots.." && gimp $(ls -t | head -n1)")
+            awful.spawn.with_shell("cd "..User.dirs.screenshots.." && gimp $(ls -t | head -n1)")
             naughty.notification({ message = "Opening last screenshot with GIMP", icon = icon, app_name = screenshot_notification_app_name})
             return
         end
@@ -146,7 +146,7 @@ function apps.screenshot(action, delay)
         -- Screenshot capturing actions
         local cmd
         local timestamp = os.date("%Y.%m.%d-%H.%M.%S")
-        local filename = user.dirs.screenshots.."/"..timestamp..".screenshot.png"
+        local filename = User.dirs.screenshots.."/"..timestamp..".screenshot.png"
         local maim_args = "-u -b 3 -m 5"
         local icon = icons.image.screenshot
 
@@ -163,7 +163,7 @@ function apps.screenshot(action, delay)
         local screenshot_edit = naughty.action { name = "Edit" }
         local screenshot_delete = naughty.action { name = "Delete" }
         screenshot_open:connect_signal('invoked', function()
-            awful.spawn.with_shell("cd "..user.dirs.screenshots.." && sxiv $(ls -t)")
+            awful.spawn.with_shell("cd "..User.dirs.screenshots.." && sxiv $(ls -t)")
         end)
         screenshot_copy:connect_signal('invoked', function()
             awful.spawn.with_shell("xclip -selection clipboard -t image/png "..filename.." &>/dev/null")

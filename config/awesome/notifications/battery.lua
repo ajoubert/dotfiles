@@ -25,12 +25,12 @@ awesome.connect_signal("evil::battery", function(battery)
     end
     if not charger_plugged then
         icon = icons.image.battery
-        if battery <= user.battery_threshold_critical and not battery_critical_already_notified then
+        if battery <= User.battery_threshold_critical and not battery_critical_already_notified then
             battery_critical_already_notified = true
             message = "CRITICAL"
             -- message = helpers.colorize_text("CRITICAL", x.color9)
             timeout = 0
-        elseif battery <= user.battery_threshold_low and not battery_low_already_notified then
+        elseif battery <= User.battery_threshold_low and not battery_low_already_notified then
             battery_low_already_notified = true
             message = "Low"
             -- message = helpers.colorize_text("Low", x.color11)

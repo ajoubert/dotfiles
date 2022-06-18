@@ -11,11 +11,11 @@ local decorations = {}
 
 function decorations.enable_active_window()
     client.connect_signal("focus", function(c)
-        c.border_color = x.color12
+        c.border_color = X.color12
         c.border_width = 3 
     end)
     client.connect_signal("unfocus", function(c)
-        c.border_color = x.color0
+        c.border_color = X.color0
         c.border_width = 3 
     end)
 end

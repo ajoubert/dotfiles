@@ -29,32 +29,32 @@ end
 
 local tag_colors_empty = { "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000" }
 
-local tag_colors_urgent = { x.foreground, x.foreground, x.foreground, x.foreground, x.foreground, x.foreground, x.foreground, x.foreground, x.foreground, x.foreground }
+local tag_colors_urgent = { X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground }
 
 local tag_colors_focused = {
-    x.color1,
-    x.color5,
-    x.color4,
-    x.color6,
-    x.color2,
-    x.color3,
-    x.color1,
-    x.color5,
-    x.color4,
-    x.color6,
+    X.color1,
+    X.color5,
+    X.color4,
+    X.color6,
+    X.color2,
+    X.color3,
+    X.color1,
+    X.color5,
+    X.color4,
+    X.color6,
 }
 
 local tag_colors_occupied = {
-    x.color1.."45",
-    x.color5.."45",
-    x.color4.."45",
-    x.color6.."45",
-    x.color2.."45",
-    x.color3.."45",
-    x.color1.."45",
-    x.color5.."45",
-    x.color4.."45",
-    x.color6.."45",
+    X.color1.."45",
+    X.color5.."45",
+    X.color4.."45",
+    X.color6.."45",
+    X.color2.."45",
+    X.color3.."45",
+    X.color1.."45",
+    X.color5.."45",
+    X.color4.."45",
+    X.color6.."45",
 }
 
 -- Helper function that updates a taglist item
@@ -103,7 +103,7 @@ awful.screen.connect_for_each_screen(function(s)
         ontop = false,
         type = "dock",
         position = "top",
-        height = dpi(10),
+        height = Dpi(10),
         -- position = "left",
         -- width = dpi(6),
         -- bg = "#00000000",
@@ -178,7 +178,7 @@ awful.screen.connect_for_each_screen(function(s)
         dock_placement(s.dock)
 
         -- Adjust activator width every time the dock wibox width changes
-        s.dock_activator.width = s.dock.width + dpi(250)
+        s.dock_activator.width = s.dock.width + Dpi(250)
         -- And recenter
         awful.placement.bottom(s.dock_activator)
     end
@@ -203,7 +203,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a system tray widget
     s.systray = wibox.widget.systray()
     -- Create the tray box
-    s.traybox = wibox({ screen = s, width = dpi(150), height = beautiful.wibar_height, bg = "#00000000", visible = false, ontop = true})
+    s.traybox = wibox({ screen = s, width = Dpi(150), height = beautiful.wibar_height, bg = "#00000000", visible = false, ontop = true})
     s.traybox:setup {
         {
             {
@@ -212,7 +212,7 @@ awful.screen.connect_for_each_screen(function(s)
                 expand = "none",
                 layout = wibox.layout.align.horizontal,
             },
-            margins = dpi(10),
+            margins = Dpi(10),
             widget = wibox.container.margin
         },
         bg = beautiful.bg_systray,

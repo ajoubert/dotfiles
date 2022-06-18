@@ -30,7 +30,7 @@ awful.screen.connect_for_each_screen(function(s)
             create_callback = function(self, tag, index, _)
                 self.align = "center"
                 self.valign = "center"
-                self.forced_width = dpi(25)
+                self.forced_width = Dpi(25)
                 self.font = beautiful.taglist_text_font
 
                 update_taglist(self, tag, index)
@@ -48,7 +48,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a wibox that will only show the tray
     -- Hidden by default. Can be toggled with a keybind.
     s.traybox = wibox({visible = false, ontop = true, shape = helpers.rrect(beautiful.border_radius), type = "dock"})
-    s.traybox.width = dpi(120)
+    s.traybox.width = Dpi(120)
     s.traybox.height = beautiful.wibar_height - beautiful.screen_margin * 4
     s.traybox.x = s.geometry.width - beautiful.screen_margin * 2 - s.traybox.width
     s.traybox.y = s.geometry.height - s.traybox.height - beautiful.screen_margin * 2
@@ -56,8 +56,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.traybox.bg = beautiful.bg_systray
     s.traybox:setup {
         s.systray,
-        left = dpi(6),
-        right = dpi(6),
+        left = Dpi(6),
+        right = Dpi(6),
         widget = wibox.container.margin
     }
     s.traybox:buttons(gears.table.join(
@@ -81,7 +81,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a window control widget
     local close_button = wibox.widget.textbox()
     close_button.font = "Typicons 11"
-    close_button.markup = helpers.colorize_text("", x.color1)
+    close_button.markup = helpers.colorize_text("", X.color1)
     close_button:buttons(gears.table.join(
         awful.button({ }, 1, function ()
             if client.focus then
@@ -98,7 +98,7 @@ awful.screen.connect_for_each_screen(function(s)
         end)
     ))
     maximize_button.font = "Typicons 11"
-    maximize_button.markup = helpers.colorize_text("", x.color5)
+    maximize_button.markup = helpers.colorize_text("", X.color5)
     local minimize_button = wibox.widget.textbox()
     minimize_button:buttons(gears.table.join(
         awful.button({ }, 1, function ()
@@ -108,17 +108,17 @@ awful.screen.connect_for_each_screen(function(s)
         end)
     ))
     minimize_button.font = "Typicons 11"
-    minimize_button.markup = helpers.colorize_text("", x.color6)
+    minimize_button.markup = helpers.colorize_text("", X.color6)
 
     local window_buttons = wibox.widget {
         minimize_button,
         maximize_button,
         close_button,
         { -- Padding
-            spacing = dpi(6),
+            spacing = Dpi(6),
             layout = wibox.layout.fixed.horizontal
         },
-        spacing = dpi(12),
+        spacing = Dpi(12),
         layout = wibox.layout.fixed.horizontal
     }
     window_buttons:buttons(gears.table.join(
@@ -143,7 +143,7 @@ awful.screen.connect_for_each_screen(function(s)
                 layout = wibox.layout.fixed.horizontal
             },
             text_weather,
-            spacing = dpi(12),
+            spacing = Dpi(12),
             layout = wibox.layout.fixed.horizontal
         },
         s.mytaglist,

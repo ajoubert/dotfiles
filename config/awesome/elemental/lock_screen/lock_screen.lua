@@ -14,8 +14,8 @@ local lock_screen_symbol = ""
 local lock_screen_fail_symbol = ""
 local lock_animation_icon = wibox.widget {
     -- Set forced size to prevent flickering when the icon rotates
-    forced_height = dpi(80),
-    forced_width = dpi(80),
+    forced_height = Dpi(80),
+    forced_width = Dpi(80),
     font = "icomoon 40",
     align = "center",
     valign = "center",
@@ -40,7 +40,7 @@ for s in screen do
     if s == screen.primary then
         s.mylockscreen = lock_screen_box
     else
-        s.mylockscreen = helpers.screen_mask(s, beautiful.lock_screen_bg or beautiful.exit_screen_bg or x.background)
+        s.mylockscreen = helpers.screen_mask(s, beautiful.lock_screen_bg or beautiful.exit_screen_bg or X.background)
     end
 end
 
@@ -59,10 +59,10 @@ local day_of_the_week = wibox.widget {
     -- font = "A-15-BIT 70",
     -- font = "Kill The Noise 90",
     -- Set forced width in order to keep it from getting cut off
-    forced_width = dpi(1000),
+    forced_width = Dpi(1000),
     align = "center",
     valign = "center",
-    widget = wibox.widget.textclock(helpers.colorize_text("%A", x.color3))
+    widget = wibox.widget.textclock(helpers.colorize_text("%A", X.color3))
 }
 
 local month = wibox.widget {
@@ -73,7 +73,7 @@ local month = wibox.widget {
 }
 
 local function update_month()
-    month.markup = helpers.colorize_text(month.text:upper(), x.foreground.."25")
+    month.markup = helpers.colorize_text(month.text:upper(), X.foreground.."25")
 end
 
 update_month()
@@ -87,7 +87,7 @@ local fancy_date = wibox.widget {
     month,
     day_of_the_week,
     -- Set forced width in order to keep it from getting cut off
-    forced_width = dpi(1000),
+    forced_width = Dpi(1000),
     layout = wibox.layout.stack
 }
 
@@ -100,7 +100,7 @@ local time = {
             font = "sans 16",
             widget = wibox.widget.textclock("%M")
         },
-        spacing = dpi(2),
+        spacing = Dpi(2),
         layout = wibox.layout.fixed.horizontal
 }
 
@@ -109,15 +109,15 @@ local lock_animation_widget_rotate = wibox.container.rotate()
 
 local arc = function()
     return function(cr, width, height)
-        gears.shape.arc(cr, width, height, dpi(5), 0, math.pi/2, true, true)
+        gears.shape.arc(cr, width, height, Dpi(5), 0, math.pi/2, true, true)
     end
 end
 
 local lock_animation_arc = wibox.widget {
     shape = arc(),
     bg = "#00000000",
-    forced_width = dpi(100),
-    forced_height = dpi(100),
+    forced_width = Dpi(100),
+    forced_height = Dpi(100),
     widget = wibox.container.background
 }
 
@@ -134,7 +134,7 @@ local lock_animation_widget = {
 local characters_entered = 0
 local function reset()
     characters_entered = 0;
-    lock_animation_icon.markup = helpers.colorize_text(lock_screen_symbol, x.color7)
+    lock_animation_icon.markup = helpers.colorize_text(lock_screen_symbol, X.color7)
     lock_animation_widget_rotate.direction = "north"
     lock_animation_arc.bg = "#00000000"
 end
@@ -148,12 +148,12 @@ end
 
 local animation_colors = {
     -- Rainbow sequence =)
-    x.color1,
-    x.color5,
-    x.color4,
-    x.color6,
-    x.color2,
-    x.color3,
+    X.color1,
+    X.color5,
+    X.color4,
+    X.color6,
+    X.color2,
+    X.color3,
 }
 
 local animation_directions = {"north", "west", "south", "east"}
@@ -169,7 +169,7 @@ local function key_animation(char_inserted)
         if characters_entered == 0 then
             reset()
         else
-            color = x.color7 .. "55"
+            color = X.color7 .. "55"
         end
     end
 
@@ -252,37 +252,37 @@ lock_screen_box:setup {
                         {
                             -- Small circle
                             {
-                                forced_height = dpi(5),
-                                forced_width = dpi(5),
+                                forced_height = Dpi(5),
+                                forced_width = Dpi(5),
                                 shape = gears.shape.circle,
-                                bg = x.color3,
+                                bg = X.color3,
                                 widget = wibox.container.background
                             },
                             time,
                             -- Small circle
                             {
-                                forced_height = dpi(5),
-                                forced_width = dpi(5),
+                                forced_height = Dpi(5),
+                                forced_width = Dpi(5),
                                 shape = gears.shape.circle,
-                                bg = x.color3,
+                                bg = X.color3,
                                 widget = wibox.container.background
                             },
-                            spacing = dpi(4),
+                            spacing = Dpi(4),
                             layout = wibox.layout.fixed.horizontal
                         },
                         expand = "none",
                         layout = wibox.layout.align.horizontal
                     },
-                    spacing = dpi(20),
+                    spacing = Dpi(20),
                     -- spacing = dpi(10),
                     layout = wibox.layout.fixed.vertical
                 },
                 lock_animation_widget,
-                spacing = dpi(40),
+                spacing = Dpi(40),
                 layout = wibox.layout.fixed.vertical
 
             },
-            bottom = dpi(60),
+            bottom = Dpi(60),
             widget = wibox.container.margin
         },
         expand = "none",

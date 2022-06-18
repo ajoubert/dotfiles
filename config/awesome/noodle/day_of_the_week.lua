@@ -10,14 +10,14 @@ dummy_textclock.visible = false
 
 local dotw_initials = {"M", "T", "W", "T", "F", "S", "S"}
 local dotw_colors = {
-    x.color9,
-    x.color9,
-    x.color9,
-    x.color9,
-    x.color9,
+    X.color9,
+    X.color9,
+    X.color9,
+    X.color9,
+    X.color9,
     -- Different color for weekends ^_^
-    x.color13,
-    x.color13,
+    X.color13,
+    X.color13,
 }
 
 local dotw_textboxes = {}
@@ -32,8 +32,8 @@ local create_dotw_container = function (text, color)
 
     local container = wibox.widget {
         text,
-        forced_height = dpi(25),
-        forced_width = dpi(25),
+        forced_height = Dpi(25),
+        forced_width = Dpi(25),
         bg = color,
         shape = gears.shape.circle,
         -- shape = gears.shape.rounded_rect, 
@@ -59,7 +59,7 @@ local day_of_the_week = wibox.widget {
         dotw_containers[5],
         dotw_containers[6],
         dotw_containers[7],
-        spacing = dpi(4),
+        spacing = Dpi(4),
         layout = wibox.layout.fixed.horizontal
     },
     expand = "none",

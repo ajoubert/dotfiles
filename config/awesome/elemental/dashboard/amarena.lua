@@ -10,8 +10,8 @@ local apps = require("config/apps")
 local keygrabber = require("awful.keygrabber")
 
 -- Appearance
-local box_radius = beautiful.dashboard_box_border_radius or dpi(12)
-local box_gap = dpi(6)
+local box_radius = beautiful.dashboard_box_border_radius or Dpi(12)
+local box_gap = Dpi(6)
 
 -- Get screen geometry
 local screen_width = awful.screen.focused().geometry.width
@@ -91,12 +91,12 @@ end
 -- User widget
 local user_picture_container = wibox.container.background()
 -- user_picture_container.shape = gears.shape.circle
-user_picture_container.shape = helpers.prrect(dpi(40), true, true, false, true)
-user_picture_container.forced_height = dpi(140)
-user_picture_container.forced_width = dpi(140)
+user_picture_container.shape = helpers.prrect(Dpi(40), true, true, false, true)
+user_picture_container.forced_height = Dpi(140)
+user_picture_container.forced_width = Dpi(140)
 local user_picture = wibox.widget {
     {
-        wibox.widget.imagebox(user.profile_picture),
+        wibox.widget.imagebox(User.profile_picture),
         widget = user_picture_container
     },
     shape = helpers.rrect(box_radius / 2),
@@ -112,7 +112,7 @@ local host_text = wibox.widget.textbox()
 awful.spawn.easy_async_with_shell("hostname", function(out)
     -- Remove trailing whitespaces
     out = out:gsub('^%s*(.-)%s*$', '%1')
-    host_text.markup = helpers.colorize_text("@"..out, x.color8)
+    host_text.markup = helpers.colorize_text("@"..out, X.color8)
 end)
 -- host_text.markup = "<span foreground='" .. x.color8 .."'>" .. minutes.text .. "</span>"
 host_text.font = "monospace 16"
@@ -120,13 +120,13 @@ host_text.align = "center"
 host_text.valign = "center"
 local user_widget = wibox.widget {
     user_picture,
-    helpers.vertical_pad(dpi(24)),
+    helpers.vertical_pad(Dpi(24)),
     user_text,
-    helpers.vertical_pad(dpi(4)),
+    helpers.vertical_pad(Dpi(4)),
     host_text,
     layout = wibox.layout.fixed.vertical
 }
-local user_box = create_boxed_widget(user_widget, dpi(300), dpi(340), x.background)
+local user_box = create_boxed_widget(user_widget, Dpi(300), Dpi(340), X.background)
 
 -- Calendar
 local calendar = require("noodle.calendar")
@@ -137,7 +137,7 @@ dashboard:connect_signal("property::visible", function ()
     end
 end)
 
-local calendar_box = create_boxed_widget(calendar, dpi(300), dpi(400), x.background)
+local calendar_box = create_boxed_widget(calendar, Dpi(300), Dpi(400), X.background)
 -- local calendar_box = create_boxed_widget(calendar, 380, 540, x.color0)
 
 local disk_arc = wibox.widget {
@@ -146,12 +146,12 @@ local disk_arc = wibox.widget {
     max_value = 100,
     value = 50,
     border_width = 0,
-    thickness = dpi(8),
-    forced_width = dpi(90),
-    forced_height = dpi(90),
+    thickness = Dpi(8),
+    forced_width = Dpi(90),
+    forced_height = Dpi(90),
     rounded_edge = true,
-    bg = x.color8.."55",
-    colors = { x.color13 },
+    bg = X.color8.."55",
+    colors = { X.color13 },
     widget = wibox.container.arcchart
 }
 
@@ -169,21 +169,21 @@ local disk_hover_text = wibox.widget {
         font = "sans medium 10",
         widget = wibox.widget.textbox("free")
     },
-    spacing = dpi(2),
+    spacing = Dpi(2),
     visible = false,
     layout = wibox.layout.fixed.vertical
 }
 
 awesome.connect_signal("evil::disk", function(used, total)
     disk_arc.value = used * 100 / total
-    disk_hover_text_value.markup = helpers.colorize_text(tostring(total - used).."G", x.color4)
+    disk_hover_text_value.markup = helpers.colorize_text(tostring(total - used).."G", X.color4)
 end)
 
 local disk_icon = wibox. widget {
     align = "center",
     valign = "center",
     font = "icomoon 23",
-    markup = helpers.colorize_text("", x.color4),
+    markup = helpers.colorize_text("", X.color4),
     widget = wibox.widget.textbox()
 }
 
@@ -200,7 +200,7 @@ local disk = wibox.widget {
     layout = wibox.layout.stack
 }
 
-local disk_box = create_boxed_widget(disk, dpi(150), dpi(150), x.background)
+local disk_box = create_boxed_widget(disk, Dpi(150), Dpi(150), X.background)
 
 disk_box:connect_signal("mouse::enter", function ()
     disk_icon.visible = false
@@ -224,11 +224,11 @@ local function create_bookmark(name, path, color, hover_color)
     -- Buttons
     bookmark:buttons(gears.table.join(
         awful.button({ }, 1, function ()
-            awful.spawn.with_shell(user.file_manager.." "..path)
+            awful.spawn.with_shell(User.file_manager.." "..path)
             dashboard_hide()
         end),
         awful.button({ }, 3, function ()
-            awful.spawn.with_shell(user.terminal.." -e 'ranger' "..path)
+            awful.spawn.with_shell(User.terminal.." -e 'ranger' "..path)
             dashboard_hide()
         end)
     ))
@@ -247,17 +247,17 @@ local function create_bookmark(name, path, color, hover_color)
 end
 
 local bookmarks = wibox.widget {
-    create_bookmark("home", os.getenv("HOME"), x.color1, x.color9),
-    create_bookmark("downloads", user.dirs.downloads, x.color2, x.color10),
-    create_bookmark("music", user.dirs.music, x.color6, x.color14),
-    create_bookmark("pictures", user.dirs.pictures, x.color4, x.color12),
-    create_bookmark("wallpapers", user.dirs.wallpapers, x.color5, x.color13),
-    create_bookmark("screenshots", user.dirs.screenshots, x.color3, x.color11),
-    spacing = dpi(10),
+    create_bookmark("home", os.getenv("HOME"), X.color1, X.color9),
+    create_bookmark("downloads", User.dirs.downloads, X.color2, X.color10),
+    create_bookmark("music", User.dirs.music, X.color6, X.color14),
+    create_bookmark("pictures", User.dirs.pictures, X.color4, X.color12),
+    create_bookmark("wallpapers", User.dirs.wallpapers, X.color5, X.color13),
+    create_bookmark("screenshots", User.dirs.screenshots, X.color3, X.color11),
+    spacing = Dpi(10),
     layout = wibox.layout.fixed.vertical
 }
 
-local bookmarks_box = create_boxed_widget(bookmarks, dpi(200), dpi(300), x.background)
+local bookmarks_box = create_boxed_widget(bookmarks, Dpi(200), Dpi(300), X.background)
 
 -- Corona
 local corona_cases = wibox.widget.textbox()
@@ -267,7 +267,7 @@ local corona = wibox.widget {
         align = "center",
         valign = "center",
         font = "Sans bold 20",
-        markup = helpers.colorize_text("Pandemic", x.color2),
+        markup = helpers.colorize_text("Pandemic", X.color2),
         widget = wibox.widget.textbox()
     },
     {
@@ -275,7 +275,7 @@ local corona = wibox.widget {
             align = "center",
             valign = "center",
             font = "icomoon 20",
-            markup = helpers.colorize_text("", x.color3),
+            markup = helpers.colorize_text("", X.color3),
             widget = wibox.widget.textbox()
         },
         {
@@ -284,7 +284,7 @@ local corona = wibox.widget {
             font = "sans medium 14",
             widget = corona_cases
         },
-        spacing = dpi(6),
+        spacing = Dpi(6),
         layout = wibox.layout.fixed.horizontal
     },
     {
@@ -292,7 +292,7 @@ local corona = wibox.widget {
             align = "center",
             valign = "center",
             font = "icomoon 20",
-            markup = helpers.colorize_text("", x.color1),
+            markup = helpers.colorize_text("", X.color1),
             widget = wibox.widget.textbox()
         },
         {
@@ -301,10 +301,10 @@ local corona = wibox.widget {
             font = "sans medium 14",
             widget = corona_deaths
         },
-        spacing = dpi(6),
+        spacing = Dpi(6),
         layout = wibox.layout.fixed.horizontal
     },
-    spacing = dpi(20),
+    spacing = Dpi(20),
     layout = wibox.layout.fixed.vertical
 }
 awesome.connect_signal("evil::coronavirus", function(cases_total, cases_today, deaths_total, deaths_today)
@@ -312,12 +312,12 @@ awesome.connect_signal("evil::coronavirus", function(cases_total, cases_today, d
     corona_deaths.markup = deaths_total.." <i>(+"..deaths_today..")</i>"
 end)
 
-local corona_box = create_boxed_widget(corona, dpi(200), dpi(180), x.background)
+local corona_box = create_boxed_widget(corona, Dpi(200), Dpi(180), X.background)
 
 corona_box:buttons(gears.table.join(
     -- Left click - Go to a more detailed website
     awful.button({ }, 1, function ()
-        awful.spawn.with_shell(user.browser.." https://www.worldometers.info/coronavirus/")
+        awful.spawn.with_shell(User.browser.." https://www.worldometers.info/coronavirus/")
         dashboard_hide()
     end)
 ))
@@ -337,7 +337,7 @@ local update_fortune = function()
     awful.spawn.easy_async_with_shell(fortune_command, function(out)
         -- Remove trailing whitespaces
         out = out:gsub('^%s*(.-)%s*$', '%1')
-        fortune.markup = "<i>"..helpers.colorize_text(out, x.color4).."</i>"
+        fortune.markup = "<i>"..helpers.colorize_text(out, X.color4).."</i>"
     end)
 end
 
@@ -360,7 +360,7 @@ local fortune_widget = wibox.widget {
     widget = wibox.container.margin
 }
 
-local fortune_box = create_boxed_widget(fortune_widget, dpi(300), dpi(140), x.background)
+local fortune_box = create_boxed_widget(fortune_widget, Dpi(300), Dpi(140), X.background)
 fortune_box:buttons(gears.table.join(
     -- Left click - New fortune
     awful.button({ }, 1, update_fortune)
@@ -372,8 +372,8 @@ local petal_font = "Sans Bold 11"
 local function create_url_petal(text, bg_color, hover_color, url, tl, tr, br, bl)
     local petal_container = wibox.widget {
         bg = bg_color,
-        forced_height = dpi(65),
-        forced_width = dpi(65),
+        forced_height = Dpi(65),
+        forced_width = Dpi(65),
         shape = helpers.prrect(99, tl, tr, br, bl),
         widget = wibox.container.background()
     } 
@@ -390,18 +390,18 @@ local function create_url_petal(text, bg_color, hover_color, url, tl, tr, br, bl
         },
         -- Put the petal container inside a rounded container. Why?
         -- Because I want the unrounded petal corner to not be pointy!
-        shape = helpers.rrect(dpi(4)),
+        shape = helpers.rrect(Dpi(4)),
         widget = wibox.container.background()
     }
 
     petal:buttons(
         gears.table.join(
             awful.button({ }, 1, function ()
-                awful.spawn(user.browser.." "..url)
+                awful.spawn(User.browser.." "..url)
                 dashboard_hide()
             end),
             awful.button({ }, 3, function ()
-                awful.spawn(user.browser.." -new-window "..url, { switch_to_tags = true })
+                awful.spawn(User.browser.." -new-window "..url, { switch_to_tags = true })
                 dashboard_hide()
             end)
     ))
@@ -417,10 +417,10 @@ local function create_url_petal(text, bg_color, hover_color, url, tl, tr, br, bl
 end
 
 -- Create the containers
-local petal_top_left = create_url_petal("GH", x.color4, x.color12, "https://github.com/elenapan/dotfiles", true, true, false, true)
-local petal_top_right = create_url_petal("YT", x.color1, x.color9, "https://youtube.com/", true, true, true, false)
-local petal_bottom_right = create_url_petal("4C", x.color2, x.color10, "https://4chan.org/",false, true, true, true)
-local petal_bottom_left = create_url_petal("RD", x.color3, x.color11, "https://reddit.com/",true, false, true, true)
+local petal_top_left = create_url_petal("GH", X.color4, X.color12, "https://github.com/elenapan/dotfiles", true, true, false, true)
+local petal_top_right = create_url_petal("YT", X.color1, X.color9, "https://youtube.com/", true, true, true, false)
+local petal_bottom_right = create_url_petal("4C", X.color2, X.color10, "https://4chan.org/",false, true, true, true)
+local petal_bottom_left = create_url_petal("RD", X.color3, X.color11, "https://reddit.com/",true, false, true, true)
 
 -- Add clickable effects on hover
 helpers.add_hover_cursor(petal_top_left, "hand1")
@@ -438,8 +438,8 @@ local url_petals = wibox.widget {
     layout = wibox.layout.grid
 }
 
-local url_petals_box = create_boxed_widget(url_petals, dpi(150), dpi(150), "#00000000")
-local icon_size = dpi(40)
+local url_petals_box = create_boxed_widget(url_petals, Dpi(150), Dpi(150), "#00000000")
+local icon_size = Dpi(40)
 
 -- Uptime
 local uptime_text = wibox.widget.textbox()
@@ -453,7 +453,7 @@ local uptime = wibox.widget {
         align = "center",
         valign = "center",
         font = "icomoon 20",
-        markup = helpers.colorize_text("", x.color3),
+        markup = helpers.colorize_text("", X.color3),
         widget = wibox.widget.textbox()
     },
     {
@@ -462,11 +462,11 @@ local uptime = wibox.widget {
         font = "sans medium 11",
         widget = uptime_text
     },
-    spacing = dpi(10),
+    spacing = Dpi(10),
     layout = wibox.layout.fixed.horizontal
 }
 
-local uptime_box = create_boxed_widget(uptime, dpi(300), dpi(80), x.background)
+local uptime_box = create_boxed_widget(uptime, Dpi(300), Dpi(80), X.background)
 
 uptime_box:buttons(gears.table.join(
     awful.button({ }, 1, function ()
@@ -486,13 +486,13 @@ local notification_state = wibox.widget {
 }
 local function update_notification_state_icon()
     if naughty.suspended then
-        notification_state.markup = helpers.colorize_text(notification_state.text, x.color8)
+        notification_state.markup = helpers.colorize_text(notification_state.text, X.color8)
     else
-        notification_state.markup = helpers.colorize_text(notification_state.text, x.color2)
+        notification_state.markup = helpers.colorize_text(notification_state.text, X.color2)
     end
 end
 update_notification_state_icon()
-local notification_state_box = create_boxed_widget(notification_state, dpi(150), dpi(78), x.background)
+local notification_state_box = create_boxed_widget(notification_state, Dpi(150), Dpi(78), X.background)
 notification_state_box:buttons(gears.table.join(
     -- Left click - Toggle notification state
     awful.button({ }, 1, function ()
@@ -507,10 +507,10 @@ local screenshot = wibox.widget {
     align = "center",
     valign = "center",
     font = "icomoon 25",
-    markup = helpers.colorize_text("", x.color3),
+    markup = helpers.colorize_text("", X.color3),
     widget = wibox.widget.textbox()
 }
-local screenshot_box = create_boxed_widget(screenshot, dpi(150), dpi(78), x.background)
+local screenshot_box = create_boxed_widget(screenshot, Dpi(150), Dpi(78), X.background)
 screenshot_box:buttons(gears.table.join(
     -- Left click - Take screenshot
     awful.button({ }, 1, function ()

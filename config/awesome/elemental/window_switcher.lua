@@ -11,9 +11,9 @@ local class_icons = icons.text.by_class
 -- TODO ability to switch to specific minimized clients without using the mouse:
 -- Might need to ditch the "easy" tasklist approach for something manual
 
-local window_switcher_margin = dpi(10)
-local item_height = dpi(50)
-local item_width = dpi(500)
+local window_switcher_margin = Dpi(10)
+local item_height = Dpi(50)
+local item_width = Dpi(500)
 
 local window_switcher_hide
 local get_num_clients
@@ -33,7 +33,7 @@ awful.screen.connect_for_each_screen(function(s)
         style    = {
             font = beautiful.tasklist_font,
             -- font = "sans 10 medium",
-            bg = x.color0,
+            bg = X.color0,
         },
         layout   = {
             layout  = wibox.layout.fixed.vertical
@@ -50,7 +50,7 @@ awful.screen.connect_for_each_screen(function(s)
                 {
                     id     = 'text_icon',
                     font   = 'icomoon 25',
-                    forced_width = dpi(50),
+                    forced_width = Dpi(50),
                     align  = "center",
                     valign = "center",
                     widget = wibox.widget.textbox,
@@ -61,13 +61,13 @@ awful.screen.connect_for_each_screen(function(s)
                         align  = "center",
                         widget = wibox.widget.textbox,
                     },
-                    left = dpi(6),
-                    right = dpi(14),
+                    left = Dpi(6),
+                    right = Dpi(14),
                     -- Add margins to top and bottom in order to force the
                     -- text to be on a single line, if needed. Might need
                     -- to adjust them according to font size.
-                    top  = dpi(14),
-                    bottom = dpi(14),
+                    top  = Dpi(14),
+                    bottom = Dpi(14),
                     widget = wibox.container.margin
                 },
                 layout  = wibox.layout.fixed.horizontal
@@ -88,7 +88,7 @@ awful.screen.connect_for_each_screen(function(s)
         ontop = true,
         screen = s,
         bg = "#00000000",
-        fg = x.foreground,
+        fg = X.foreground,
         widget = {
             {
                 s.window_switcher_tasklist,
@@ -96,7 +96,7 @@ awful.screen.connect_for_each_screen(function(s)
                 margins = window_switcher_margin,
                 widget = wibox.container.margin
             },
-            bg = x.color0,
+            bg = X.color0,
             shape = helpers.rrect(beautiful.border_radius),
             widget = wibox.container.background
         }

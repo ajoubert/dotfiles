@@ -28,7 +28,7 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "Tab", helpers.show_window_switcher, {description = "window switcher", group = "focus"}),
 
     -- Spawn terminal
-    awful.key({ superkey }, "Return", helpers.spawn(user.terminal), {description = "open a terminal", group = "launcher"}),
+    awful.key({ superkey }, "Return", helpers.spawn(User.terminal), {description = "open a terminal", group = "launcher"}),
 
     -- Run program
     awful.key({ superkey }, " ", helpers.show_rofi, {description = "rofi launcher", group = "launcher"}),
@@ -48,8 +48,7 @@ keys.globalkeys = gears.table.join(
     awful.key({ ctrlkey }, "space", helpers.dismiss_all_notifs, {description = "dismiss notification", group = "awesome"}),
 
     -- Help screen
-    --awful.key({ superkey }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
-    awful.key({ superkey }, "/", helpers.show_focus),
+    awful.key({ superkey }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
 
     -- Toggle tray visibility
     awful.key({ superkey }, "=", function() tray_toggle() end, {description = "toggle tray visibility", group = "awesome"}),

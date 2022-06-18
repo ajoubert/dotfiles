@@ -44,10 +44,10 @@ keys.globalkeys = gears.table.join(
 
 keys.clientkeys = gears.table.join(
     -- Relative move client
-    awful.key({ superkey, shiftkey, ctrlkey }, "j", function(c) c:relative_move(0,  dpi(20), 0, 0) end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "k", function(c) c:relative_move(0, dpi(-20), 0, 0) end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "h", function(c) c:relative_move(dpi(-20), 0, 0, 0) end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "l", function(c) c:relative_move(dpi( 20), 0, 0, 0) end),
+    awful.key({ superkey, shiftkey, ctrlkey }, "j", function(c) c:relative_move(0,  Dpi(20), 0, 0) end),
+    awful.key({ superkey, shiftkey, ctrlkey }, "k", function(c) c:relative_move(0, Dpi(-20), 0, 0) end),
+    awful.key({ superkey, shiftkey, ctrlkey }, "h", function(c) c:relative_move(Dpi(-20), 0, 0, 0) end),
+    awful.key({ superkey, shiftkey, ctrlkey }, "l", function(c) c:relative_move(Dpi( 20), 0, 0, 0) end),
 
     -- Toggle floating
     awful.key({ superkey, ctrlkey }, "space", helpers.toggle_floating_layout, {description = "toggle floating", group = "client"}),
