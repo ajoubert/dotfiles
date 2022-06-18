@@ -15,7 +15,29 @@ lsp_installer.on_server_ready(function(server)
     if server.name == "sumneko_lua" then
       opts.settings = {
         Lua = {
-          diagnostics = { globals = {'vim'} }
+          runtime = {
+            version = 'Lua 5.3',
+          },
+          workspace = {
+            checkThirdParty = false,
+          },
+          library = {
+            ['/usr/share/nvim/runtime/lua'] = true,
+            ['/usr/share/nvim/runtime/lua/lsp'] = true,
+            ['/usr/share/awesome/lib'] = true
+          },
+          diagnostics = {
+            enable = true;
+            globals = {
+              -- Neovim config
+              'vim',
+
+              -- AwesomeWM config
+              "awesome",
+              "client",
+              "root"
+            };
+          }
         }
       }
     end
