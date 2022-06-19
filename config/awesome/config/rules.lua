@@ -55,8 +55,10 @@ awful.rules.rules = {
             instance = {
                 "Alacritty",
                 "discord",
-                "obsidian",
+                "KeePassXC",
                 "looking-glass-client",
+                "obsidian",
+                "qjackctl",
             },
             class = {
                 "firefox",
@@ -78,9 +80,9 @@ awful.rules.rules = {
         properties = { floating = true, width = screen_width * 0.55, height = screen_height * 0.65 }
     },
 
-    -- Pavucontrol
+    -- Pavucontrol & qjackctl
     {
-        rule_any = { class = { "Pavucontrol" } },
+        rule_any = { class = { "Pavucontrol", "qjackctl" } },
         properties = {
             floating = true,
             width = screen_width * 0.45,
