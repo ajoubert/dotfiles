@@ -122,10 +122,14 @@ end)
 -- Autorun
 --autorun = false
 awesome.connect_signal('startup',
-    function(args)
-        awful.spawn('bash -c "~/.local/scripts/randomBgAndVideo.sh"')
+    function(_)
+        awful.spawn('bash -c "killall xwinwrap; ~/.local/scripts/randomBgAndVideo.sh"')
         awful.spawn('bash -c "~/.local/scripts/backlight -b 0.9"')
-        awful.spawn('bash -c "unclutter -idle 2"')
+        awful.spawn('bash -c "killall discover-overlay; discover-overlay"')
+        awful.spawn('bash -c "killall unclutter; unclutter -idle 2"')
+        awful.spawn('bash -c "keepassxc"')
+        awful.spawn('bash -c "killall picom; picom"')
+        awful.spawn('bash -c "killall obsidian; obsidian;"')
         awful.spawn('bash -c "xset r rate 200 60"')
         awful.spawn('bash -c "xset s off"')
         awful.spawn('bash -c "xset -dpms"')

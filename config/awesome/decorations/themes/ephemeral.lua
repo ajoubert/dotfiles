@@ -11,7 +11,7 @@ local decorations = require("decorations")
 -- Disable this if using `picom` to round your corners
 -- decorations.enable_rounding()
 
-decorations.enable_active_window()
+--decorations.enable_active_window()
 
 -- Button configuration
 local gen_button_size = Dpi(8)
