@@ -133,6 +133,9 @@ Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
+" Copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 " Theme stuff, added here because it depends on vim-color-solarized plugin
