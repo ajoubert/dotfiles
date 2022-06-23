@@ -19,6 +19,9 @@ sudo pacman -S --noconfirm --needed \
   pulseaudio-alsa \
   pulseaudio-bluetooth \
   pulseaudio-jack \
+  python-pynvim \
+  rofi \
+  rofi-pass \
   ripgrep \
   unzip \
   xorg \
@@ -41,5 +44,12 @@ yay -S --noconfirm \
   rcm \
   shantz-xwinwrap-bzr \
   ;
+
+popd > /dev/null;
+
+pushd ~/.dotfiles > /dev/null;
+git submodule init;
+git submodule update;
+rcup;
 
 popd > /dev/null;
