@@ -10,6 +10,7 @@ sudo pacman -S --noconfirm --needed \
   git \
   keepassxc \
   obsidian \
+  neovim \
   signal-desktop \
   tmux \
   picom \
@@ -18,9 +19,11 @@ sudo pacman -S --noconfirm --needed \
   pulseaudio-alsa \
   pulseaudio-bluetooth \
   pulseaudio-jack \
+  ripgrep \
   unzip \
   xorg \
   xorg-xinit \
+  yarn \
   ;
 
 git clone https://aur.archlinux.org/yay.git
@@ -33,7 +36,7 @@ popd > /dev/null;
 
 sudo rm -Rf yay;
 
-yay -S --noconfirm \ 
+yay -S --noconfirm \
   awesome-git \
   rcm \
   shantz-xwinwrap-bzr \
