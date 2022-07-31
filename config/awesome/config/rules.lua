@@ -56,13 +56,13 @@ awful.rules.rules = {
                 "Alacritty",
                 "discord",
                 "KeePassXC",
-                "looking-glass-client",
                 "obsidian",
                 "qjackctl",
             },
             class = {
                 "firefox",
                 "Chromium",
+                "looking-glass-client",
                 "Signal",
             },
             type = {

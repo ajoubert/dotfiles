@@ -1,5 +1,6 @@
 #!/bin/bash
-DIRECTORY="$HOME/.wallpapers/static"
+#DIRECTORY="$HOME/.wallpapers/static"
+DIRECTORY="$HOME/.local/share/wallpapers"
 
 if [ -d "$DIRECTORY" ] && [[ ! $* == *--rand* ]]; then
     feh --recursive --no-fehbg --randomize --bg-fill $DIRECTORY;

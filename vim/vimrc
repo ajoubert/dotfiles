@@ -5,7 +5,7 @@ endif
 source $VIM_CONFIG/config/shared/config.vim
 source $VIM_CONFIG/config/shared/shortcuts_noplugin.vim
 source $VIM_CONFIG/config/shared/startup.vim
-source $VIM_CONFIG/config/shared/pain.vim
+"source $VIM_CONFIG/config/shared/pain.vim
 
 if !filereadable(expand("~/.vim/autoload/plug.vim")) 
   finish 

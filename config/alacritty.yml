@@ -102,7 +102,7 @@
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -857,4 +857,4 @@ import:
 font:
     normal:
       family: 'SF Mono Powerline'
-    size: 11
+    size: 10 

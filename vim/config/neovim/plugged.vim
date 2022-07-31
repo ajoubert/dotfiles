@@ -42,6 +42,11 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTreeIgnore=['^node_modules$']
+if isdirectory(expand(".git"))
+  let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
+else
+  let g:NERDTreeBookmarksFile=expand("$HOME/.local/.NERDTreeBookmarks")
+endif
 
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()

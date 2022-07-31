@@ -12,12 +12,22 @@ export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] && export PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
+[ -d "/opt/flutter/bin" ] && export PATH="$PATH:/opt/flutter/bin"
 
 export LYNX_CFG_PATH="$HOME/.config/lynx"
 export LYNX_CFG="$LYNX_CFG_PATH/lynx.cfg"
 export LYNX_LSS="$LYNX_CFG_PATH/lynx.lss"
 
 export LANG=en_US.UTF-8
+
+# Bash history
+export HISTSIZE=500
+export HISTFILESIZE=500
+export HISTFILE=/tmp/.hist
+export HISTTIMEFORMAT='%F %T '
+
+# Nvidia driver path
+export __GL_SHADER_DISK_CACHE_PATH="$HOME/.cache/nv"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
