@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-dir="$(dirname "$0")"
-## TODO: find how to actually execute this
-## ln -s ~/.dotfiles/config/firefox/browser ~/.mozilla/firefox/<whatever>-default/chrome
-## Afterwards, copy ~/.dotfiles/config/firefox/extensions/treestyletab.css in the treestyletab extension configuration 
