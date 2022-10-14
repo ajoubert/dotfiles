@@ -46,7 +46,8 @@ function set_dockercontext_context() {
     if [[ "$DOCKERCONTEXT_CONTEXT" == "" ]] || [[ "$HISTORY" == *"docker context use"* ]];
     then
       DOCKERCONTEXT_CONTEXT=""
-      docker_remote_context=$(docker context ls --format '{{if .Current}}{{if ne .Name "default"}}{{.Name}}{{end}}{{end}}' 2>/dev/null)
+      docker_remote_context="$(timeout 0.5s bash -c '~/.local/scripts/docker_get_remote_context.sh')"
+      ##docker_remote_context=$(docker context ls --format '{{if .Current}}{{if ne .Name "default"}}{{.Name}}{{end}}{{end}}' 2>/dev/null)
       [[ $? -ne 0 ]] && return
       docker_remote_context=$(echo $docker_remote_context | tr -d '\n')
     fi

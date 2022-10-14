@@ -50,7 +50,8 @@ fi
 # fi
 
 # npm - node
-export NPM_PACKAGES="$HOME/.npm-packages"
+[ -d "$HOME/.npm-packages" ] && export NPM_PACKAGES="$HOME/.npm-packages"
+[ -d "$HOME/.local/share/npm-packages" ] && export NPM_PACKAGES="$HOME/.local/share/npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 ## unsetting manpath to inherit from it via the manpath command
