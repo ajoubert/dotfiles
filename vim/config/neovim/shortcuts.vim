@@ -81,7 +81,9 @@ noremap gr :lua vim.lsp.buf.references()<CR>
 " Code
 let g:leader_map.c = {
   \   'name': '+code',
+  \   'a': 'code-action',
   \   't': 'toggle-comment',
+  \   'h': 'hover',
   \   'u': 'toggle-undo-tree',
   \   'x': 'execute',
   \   'r': 'rename',
@@ -98,7 +100,9 @@ let g:leader_map.c = {
   \   }
   \ }
 noremap <leader>cx :!%:p<CR>
-map <leader>ct <Plug>NERDCommenterToggle
+map <leader>ca :lua vim.lsp.buf.code_action()<CR>
+map <leader>ct <Plug>NeRDCommenterToggle
+map <leader>ch :lua vim.lsp.buf.hover()<CR>
 map <leader>cu :UndotreeToggle<CR>
 map <leader>cr :lua vim.lsp.buf.rename()<CR>
 map <leader>cdc :call vimspector#Continue()<CR>
