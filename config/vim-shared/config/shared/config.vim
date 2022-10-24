@@ -97,8 +97,8 @@ set laststatus=0
 
 " Download and installs the plugin manager
 if $PLATFORM != 'mac'
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  if empty(glob("$VIM_CONFIG/autoload/plug.vim"))
+    silent !curl -fLo $VIM_CONFIG/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall
   endif

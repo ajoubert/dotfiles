@@ -73,7 +73,7 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "Print", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh'), {description = "Toggle bluetooth device", group = "hardware"}),
 
     -- Control virtual machine
-    awful.key({ superkey, shiftkey }, "d", helpers.spawn("/home/sloth/.VFIOinput/input_attach.sh"), {description = "attach keyboard+mouse to virtual machine", group = "hardware"}),
+    awful.key({ superkey, shiftkey }, "d", helpers.spawn("/home/sloth/.local/share/VFIOinput/input_attach.sh"), {description = "attach keyboard+mouse to virtual machine", group = "hardware"}),
 
     -- Remote control android phone
     awful.key({ superkey, shiftkey }, "p", helpers.spawn('bash -c $HOME/.local/scripts/openphone.sh'), {description = "remote control android phone", group = "hardware"}),

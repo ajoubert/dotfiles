@@ -12,9 +12,9 @@ source $SHELLCONFIG/colors.sh
 source $SHELLCONFIG/exports.sh
 source $SHELLCONFIG/aliases.sh
 
-if [[ -f "$HOME/.bash_private" ]];
+if [[ -f "$SHELLCONFIG/private" ]];
 then
-  source ~/.bash_private
+  source $SHELLCONFIG/private
 fi
 
 ## IMPORTANT: must be the last config file to load because of preexec

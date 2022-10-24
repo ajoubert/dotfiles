@@ -1,1 +1,2 @@
 execute_on_song_change = "~/.config/ncmpcpp/cover_obs.sh"
+lyrics_directory = "~/.local/share/ncmpcpp/lyrics"
