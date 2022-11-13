@@ -130,7 +130,7 @@ awesome.connect_signal('startup',
         awful.spawn('bash -c "keepassxc"')
         awful.spawn('bash -c "killall picom; picom"')
         awful.spawn('bash -c "killall obsidian; obsidian;"')
-        awful.spawn('bash -c "xset r rate 200 35"')
+        awful.spawn('bash -c "xset r rate 200 60"')
         awful.spawn('bash -c "xset s off"')
         awful.spawn('bash -c "xset -dpms"')
         awful.spawn('bash -c "xset s noblank"')
