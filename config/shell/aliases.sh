@@ -25,6 +25,11 @@ alias music='tmux switch-client -t music'
 onlinux &&  alias ls='ls -h --color=auto'
 onmac &&  alias ls='ls -G'
 
+if [ -x "$(command -v bat)" ]; then
+  alias cat='bat'
+fi
+
+
 ## Regular typos
 alias sl=ls
 
