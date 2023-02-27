@@ -89,7 +89,8 @@ let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/wiki/', 'path_html': '~/.
 
 " Development plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'

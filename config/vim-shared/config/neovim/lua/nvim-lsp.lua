@@ -1,72 +1,87 @@
 vim.o.completeopt = "menuone,noselect"
 
-local lsp_installer = require("nvim-lsp-installer")
-local nvim_lsp = require'lspconfig'
-
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-    if server.name == "sumneko_lua" then
-      opts.settings = {
-        Lua = {
-          runtime = {
-            version = 'Lua 5.3',
-          },
-          workspace = {
-            checkThirdParty = false,
-          },
-          library = {
-            ['/usr/share/nvim/runtime/lua'] = true,
-            ['/usr/share/nvim/runtime/lua/lsp'] = true,
-            ['/usr/share/awesome/lib'] = true
-          },
-          diagnostics = {
-            enable = true;
-            globals = {
-              -- Neovim config
-              'vim',
-
-              -- AwesomeWM config
-              "awesome",
-              "client",
-              "root"
-            };
-          }
-        }
-      }
-    end
-
-    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-    -- before passing it onwards to lspconfig.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
-
-lsp_installer.settings({
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
+-- local lsp_installer = require("nvim-lsp-installer")
+-- lsp_installer.setup {}
+require("mason").setup()
+local mason_lspconfig = require("mason-lspconfig");
+mason_lspconfig.setup({
+    ensure_installed = {
+      "ansiblels",
+      "bashls",
+      "clangd",
+      "cmake",
+      "cssls",
+      "dockerls",
+      "docker_compose_language_service",
+      "gopls",
+      "html",
+      "jsonls",
+      "lua_ls",
+      "pyright",
+      "rust_analyzer",
+      "tsserver",
+      "vimls",
+      "yamlls",
+      "zls"
     }
 })
 
-local pid = vim.fn.getpid()
--- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-local omnisharp_bin = "/home/sloth/.local/share/nvim/lsp_servers_manual/omnisharp/run"
+local lspconfig = require("lspconfig")
 
-nvim_lsp.omnisharp.setup{
-    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
-    root_dir = nvim_lsp.util.root_pattern("*.csproj","*.sln");
-    ...
+mason_lspconfig.setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {}
+    end,
+    -- Next, you can provide a dedicated handler for specific servers.
+    -- For example, a handler override for the `rust_analyzer`:
+    -- ["rust_analyzer"] = function ()
+        -- require("rust-tools").setup {}
+    -- end
+    ["lua_ls"] = function()
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'Lua 5.3',
+            },
+            workspace = {
+              checkThirdParty = false,
+            },
+            library = {
+              ['/usr/share/nvim/runtime/lua'] = true,
+              ['/usr/share/nvim/runtime/lua/lsp'] = true,
+              ['/usr/share/awesome/lib'] = true
+            },
+            diagnostics = {
+              enable = true;
+              globals = {
+                -- Neovim config
+                'vim',
+
+                -- AwesomeWM config
+                "awesome",
+                "client",
+                "root"
+              };
+            }
+          }
+        }
+      })
+    end
 }
+
+-- local pid = vim.fn.getpid()
+-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+-- local omnisharp_bin = "/home/sloth/.local/share/nvim/lsp_servers_manual/omnisharp/run"
+
+-- lspconfig.omnisharp.setup{
+--     cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+--     root_dir = lspconfig.util.root_pattern("*.csproj","*.sln");
+--     ...
+-- }
 
 require'compe'.setup {
   enabled = true;
