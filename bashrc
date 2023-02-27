@@ -7,15 +7,15 @@
 
 SHELLCONFIG="$HOME/.config/shell"
 
+if [[ -f "$SHELLCONFIG/private.sh" ]];
+then
+  source $SHELLCONFIG/private.sh
+fi
+
 source $SHELLCONFIG/init.sh
 source $SHELLCONFIG/colors.sh
 source $SHELLCONFIG/exports.sh
 source $SHELLCONFIG/aliases.sh
-
-if [[ -f "$SHELLCONFIG/private" ]];
-then
-  source $SHELLCONFIG/private
-fi
 
 ## IMPORTANT: must be the last config file to load because of preexec
 source $SHELLCONFIG/prompt.sh
