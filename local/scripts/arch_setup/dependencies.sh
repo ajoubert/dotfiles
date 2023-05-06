@@ -9,6 +9,7 @@ sudo pacman -S --noconfirm --needed \
   firefox-developer-edition \
   git \
   keepassxc \
+  lxappearance-gtk3 \
   obsidian \
   neovim \
   signal-desktop \
