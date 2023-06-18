@@ -32,6 +32,7 @@ theme.bg_focus      = X.color8
 theme.bg_urgent     = X.color8
 theme.bg_minimize   = X.color8
 theme.bg_systray    = X.background
+theme.systray_icon_spacing = dpi(20)
 
 theme.fg_normal     = X.color8
 theme.fg_focus      = X.color4

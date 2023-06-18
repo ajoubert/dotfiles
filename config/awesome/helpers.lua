@@ -239,8 +239,8 @@ local prompt_font = beautiful.prompt_font or "sans bold 8"
 function helpers.prompt(action, textbox, prompt, callback)
     if action == "run" then
         awful.prompt.run {
-            prompt       = prompt,
-            -- prompt       = "<b>Run: </b>",
+            -- prompt       = prompt,
+            prompt       = "<b>Run: </b>",
             textbox      = textbox,
             font = prompt_font,
             done_callback = callback,
@@ -250,8 +250,8 @@ function helpers.prompt(action, textbox, prompt, callback)
         }
     elseif action == "web_search" then
         awful.prompt.run {
-            prompt       = prompt,
-            -- prompt       = '<b>Web search: </b>',
+            --prompt       = prompt,
+            prompt       = '<b>Web search: </b>',
             textbox      = textbox,
             font = prompt_font,
             history_path = awful.util.get_cache_dir() .. "/history_web",

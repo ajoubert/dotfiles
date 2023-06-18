@@ -50,9 +50,6 @@ keys.globalkeys = gears.table.join(
     -- Help screen
     awful.key({ superkey }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
 
-    -- Toggle tray visibility
-    awful.key({ superkey }, "=", function() Tray_toggle() end, {description = "toggle tray visibility", group = "awesome"}),
-
     -- Toggle sidebar
     awful.key({ superkey }, "grave", function() Sidebar_toggle() end, {description = "toggle sidebar visibility", group = "awesome"}),
 

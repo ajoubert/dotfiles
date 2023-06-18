@@ -27,7 +27,7 @@ User = {
     -- >> Sidebar <<
     sidebar = {
         hide_on_mouse_leave = true,
-        show_on_mouse_screen_edge = false,
+        show_on_mouse_screen_edge = true,
     },
 }
 return User;

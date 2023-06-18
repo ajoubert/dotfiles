@@ -7,7 +7,6 @@ local helpers = require("helpers")
 local keys = require("config/keys")
 local t = require("config/tags")
 
--- {{{ Widgets
 local tag_colors_empty = { "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000", "#00000000" }
 
 local tag_colors_urgent = { X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground, X.foreground }
@@ -95,37 +94,4 @@ awful.screen.connect_for_each_screen(function(s)
     s.taglist_box:setup {
         widget = s.mytaglist,
     }
-
-    -- Create a system tray widget
-    s.systray = wibox.widget.systray()
-    -- Create the tray box
-    s.traybox = wibox({ screen = s, width = Dpi(150), height = beautiful.wibar_height, bg = "#00000000", visible = false, ontop = true})
-    s.traybox:setup {
-        {
-            {
-                nil,
-                s.systray,
-                expand = "none",
-                layout = wibox.layout.align.horizontal,
-            },
-            margins = Dpi(10),
-            widget = wibox.container.margin
-        },
-        bg = beautiful.bg_systray,
-        shape = helpers.rrect(beautiful.border_radius),
-        widget = wibox.container.background
-    }
-    awful.placement.bottom_right(s.traybox, { margins = beautiful.useless_gap * 2 })
-    s.traybox:buttons(gears.table.join(
-        awful.button({ }, 2, function ()
-            s.traybox.visible = false
-        end)
-    ))
 end)
-
-function Tray_toggle()
-    local s = awful.screen.focused()
-    local traywidget = wibox.widget.systray();
-    traywidget.set_screen(s);
-    s.traybox.visible = not s.traybox.visible
-end
