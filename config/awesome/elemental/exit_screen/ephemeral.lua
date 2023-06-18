@@ -96,9 +96,6 @@ local create_button = function(symbol, hover_color, text, command)
         button.border_color = button_bg
     end)
 
-    -- Use helper function to change the cursor on hover
-    helpers.add_hover_cursor(button, "hand1")
-
     return button
 end
 

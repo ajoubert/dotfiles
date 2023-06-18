@@ -2,113 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local apps = require("config/apps")
-
 local helpers = require("helpers")
-
--- Helper function that changes the appearance of progress bars and their icons
-local function format_progress_bar(bar)
-    -- Since we will rotate the bars 90 degrees, width and height are reversed
-    bar.forced_width = Dpi(70)
-    bar.forced_height = Dpi(30)
-    bar.shape = gears.shape.rounded_bar
-    bar.bar_shape = gears.shape.rectangle
-    local w = wibox.widget{
-        bar,
-        direction = 'east',
-        layout = wibox.container.rotate,
-    }
-    return w
-end
-
--- Item configuration
--- ==================
--- Weather widget with text icons
-local weather_widget = require("noodle.text_weather")
-local weather_widget_icon = weather_widget:get_all_children()[1]
--- weather_widget_icon.font = "Typicons 18"
-weather_widget_icon.font = "icomoon 16"
-weather_widget_icon.align = "center"
-weather_widget_icon.valign = "center"
--- So that content does not get cropped
--- weather_widget_icon.forced_width = dpi(50)
-local weather_widget_description = weather_widget:get_all_children()[2]
-weather_widget_description.font = "sans medium 14"
-local weather_widget_temperature = weather_widget:get_all_children()[3]
-weather_widget_temperature.font = "sans medium 14"
-
-local weather = wibox.widget{
-    {
-        nil,
-        weather_widget_description,
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-    },
-    {
-        nil,
-        {
-            weather_widget_icon,
-            weather_widget_temperature,
-            spacing = Dpi(5),
-            layout = wibox.layout.fixed.horizontal
-        },
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-    },
-    spacing = Dpi(5),
-    layout = wibox.layout.fixed.vertical
-    -- nil,
-    -- weather_widget,
-    -- layout = wibox.layout.align.horizontal,
-    -- expand = "none"
-}
-
-local temperature_bar = require("noodle.temperature_bar")
-local temperature = format_progress_bar(temperature_bar)
-temperature:buttons(
-    gears.table.join(
-        awful.button({ }, 1, apps.temperature_monitor)
-))
-
-local cpu_bar = require("noodle.cpu_bar")
-local cpu = format_progress_bar(cpu_bar)
-
-cpu:buttons(
-    gears.table.join(
-        awful.button({ }, 1, apps.process_monitor),
-        awful.button({ }, 3, apps.process_monitor_gui)
-))
-
-local ram_bar = require("noodle.ram_bar")
-local ram = format_progress_bar(ram_bar)
-
-ram:buttons(
-    gears.table.join(
-        awful.button({ }, 1, apps.process_monitor),
-        awful.button({ }, 3, apps.process_monitor_gui)
-))
-
-
-local brightness_bar = require("noodle.brightness_bar")
-local brightness = format_progress_bar(brightness_bar)
-
---brightness:buttons(
---    gears.table.join(
---        -- Left click - Toggle redshift
---        awful.button({ }, 1, apps.night_mode),
---        -- Right click - Reset brightness (Set to max)
---        awful.button({ }, 3, function ()
---            awful.spawn.with_shell("light -S 100")
---        end),
---        -- Scroll up - Increase brightness
---        awful.button({ }, 4, function ()
---            awful.spawn.with_shell("light -A 10")
---        end),
---        -- Scroll down - Decrease brightness
---        awful.button({ }, 5, function ()
---            awful.spawn.with_shell("light -U 10")
---        end)
---))
 
 local hours = wibox.widget.textclock("%H")
 local minutes = wibox.widget.textclock("%M")
@@ -125,7 +19,7 @@ end
 
 local time = {
     {
-        font = "biotif extra bold 44",
+        font = "SF Mono Powerline 44",
         align = "right",
         valign = "top",
         widget = hours
@@ -143,7 +37,8 @@ local time = {
         widget = wibox.layout.align.vertical
     },
     {
-        font = "biotif extra bold 44",
+        --font = "biotif extra bold 44",
+        font = "SF Mono Powerline 44",
         align = "left",
         valign = "top",
         widget = minutes
@@ -161,50 +56,23 @@ local day_of_the_week = wibox.widget {
     layout = wibox.layout.align.horizontal
 }
 
--- Mpd
-local mpd_buttons = require("noodle.mpd_buttons")
-local mpd_song = require("noodle.mpd_song")
-local mpd_widget_children = mpd_song:get_all_children()
-local mpd_title = mpd_widget_children[1]
-local mpd_artist = mpd_widget_children[2]
-mpd_title.font = "sans medium 14"
-mpd_artist.font = "sans medium 10"
-
--- Set forced height in order to limit the widgets to one line.
--- Might need to be adjusted depending on the font.
-mpd_title.forced_height = Dpi(22)
-mpd_artist.forced_height = Dpi(16)
-
-mpd_song:buttons(gears.table.join(
-    awful.button({ }, 1, function ()
-        awful.spawn.with_shell("mpc -q toggle")
-    end),
-    awful.button({ }, 3, apps.music),
-    awful.button({ }, 4, function ()
-        awful.spawn.with_shell("mpc -q prev")
-    end),
-    awful.button({ }, 5, function ()
-        awful.spawn.with_shell("mpc -q next")
-    end)
-))
-
 local search_icon = wibox.widget {
-    font = "icomoon bold 10",
+    font = "SF Mono Powerline 11",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox()
 }
 
 local reset_search_icon = function ()
-    search_icon.markup = helpers.colorize_text("", X.color3)
+    search_icon.markup = helpers.colorize_text("󰍉", X.color3)
 end
 reset_search_icon()
 
 local search_text = wibox.widget {
-    -- markup = helpers.colorize_text("Search", x.color8),
+    markup = helpers.colorize_text("Search", X.color8),
     align = "center",
     valign = "center",
-    font = "sans 9",
+    font = "SF Mono Powerline 9",
     widget = wibox.widget.textbox()
 }
 
@@ -238,11 +106,12 @@ local search = wibox.widget{
 }
 
 local function generate_prompt_icon(icon, color)
-    return "<span font='icomoon 10' foreground='" .. color .."'>" .. icon .. "</span> "
+    -- return "<span font='icomoon 10' foreground='" .. color .."'>" .. icon .. "</span> "
+    return "<span foreground='" .. color .."'>" .. icon .. "</span> "
 end
 
 function sidebar_activate_prompt(action)
-    sidebar_show()
+    Sidebar_show()
     search_icon.visible = false
     local prompt
     if action == "run" then
@@ -273,31 +142,6 @@ search:buttons(gears.table.join(
     end)
 ))
 
-local volume_bar = require("noodle.volume_bar")
-local volume = format_progress_bar(volume_bar)
-
-volume:buttons(gears.table.join(
-    -- Left click - Mute / Unmute
-    awful.button({ }, 1, function ()
-        helpers.volume_control(0)
-    end),
-    -- Right click - Run or raise pavucontrol
-    awful.button({ }, 3, apps.volume),
-    -- Scroll - Increase / Decrease volume
-    awful.button({ }, 4, function () 
-        helpers.volume_control(2)
-    end),
-    awful.button({ }, 5, function () 
-        helpers.volume_control(-2)
-    end)
-))
-
--- Battery
-local cute_battery_face = require("noodle.cute_battery_face")
-cute_battery_face:buttons(gears.table.join(
-    awful.button({ }, 1, apps.battery_monitor)
-))
-
 -- Create tooltip widget
 -- It should change depending on what the user is hovering over
 local adaptive_tooltip = wibox.widget {
@@ -310,7 +154,7 @@ local adaptive_tooltip = wibox.widget {
 local tooltip_counter = 0
 local create_tooltip = function(w)
     local tooltip = wibox.widget {
-        font = "sans medium 10",
+        font = "SF Mono Powerline 10",
         align = "center",
         valign = "center",
         widget = wibox.widget.textbox
@@ -333,49 +177,6 @@ local create_tooltip = function(w)
     return tooltip
 end
 
-local brightness_tooltip = create_tooltip(brightness_bar)
-awesome.connect_signal("evil::brightness", function(value)
-    brightness_tooltip.markup = "Your screen is <span foreground='" .. beautiful.brightness_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span> bright"
-end)
-
-local cpu_tooltip = create_tooltip(cpu_bar)
-awesome.connect_signal("evil::cpu", function(value)
-    cpu_tooltip.markup = "You are using <span foreground='" .. beautiful.cpu_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span> of CPU"
-end)
-
-local ram_tooltip = create_tooltip(ram_bar)
-awesome.connect_signal("evil::ram", function(value, _)
-    ram_tooltip.markup = "You are using <span foreground='" .. beautiful.ram_bar_active_color .."'><b>" .. string.format("%.1f", value / 1000) .. "G</b></span> of memory"
-end)
-
-local volume_tooltip = create_tooltip(volume_bar)
-awesome.connect_signal("evil::volume", function(value, muted)
-    volume_tooltip.markup = "The volume is at <span foreground='" .. beautiful.volume_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span>"
-    if muted then
-        volume_tooltip.markup = volume_tooltip.markup.." and <span foreground='" .. beautiful.volume_bar_active_color .."'><b>muted</b></span>"
-    end
-end)
-
-local temperature_tooltip = create_tooltip(temperature_bar)
-awesome.connect_signal("evil::temperature", function(value)
-    temperature_tooltip.markup = "Your CPU temperature is at <span foreground='" .. beautiful.temperature_bar_active_color .."'><b>" .. tostring(value) .. "°C</b></span>"
-end)
-
-local battery_tooltip = create_tooltip(cute_battery_face)
-awesome.connect_signal("evil::battery", function(value)
-    battery_tooltip.markup = "Your battery is at <span foreground='" .. beautiful.battery_bar_active_color .."'><b>" .. tostring(value) .. "%</b></span>"
-end)
-
--- Add clickable mouse effects on some widgets
-helpers.add_hover_cursor(cpu, "hand1")
-helpers.add_hover_cursor(ram, "hand1")
-helpers.add_hover_cursor(temperature, "hand1")
-helpers.add_hover_cursor(volume, "hand1")
-helpers.add_hover_cursor(brightness, "hand1")
--- helpers.add_hover_cursor(mpd_song, "hand1")
-helpers.add_hover_cursor(search, "xterm")
--- helpers.add_hover_cursor(cute_battery_face, "hand1")
-
 
 -- Create the sidebar
 sidebar = wibox({visible = false, ontop = true, type = "dock", screen = screen.primary})
@@ -396,36 +197,36 @@ end
 sidebar:buttons(gears.table.join(
     -- Middle click - Hide sidebar
     awful.button({ }, 2, function ()
-        sidebar_hide()
+        Sidebar_hide()
     end)
 ))
 
-sidebar_show = function()
+Sidebar_show = function()
     sidebar.screen = awful.screen.focused()
     --awful.placement.maximize_vertically(sidebar, { honor_workarea = true, margins = { top = beautiful.useless_gap * 2 } })
     awful.placement.maximize_vertically(sidebar, { honor_workarea = false })
     sidebar.visible = true
 end
 
-sidebar_hide = function()
+Sidebar_hide = function()
     -- Do not hide it if prompt is active
     if not prompt_is_active() then
         sidebar.visible = false
     end
 end
 
-sidebar_toggle = function()
+Sidebar_toggle = function()
     if sidebar.visible then
-        sidebar_hide()
+        Sidebar_hide()
     else
-        sidebar_show();
+        Sidebar_show();
     end
 end
 
 -- Hide sidebar when mouse leaves
 if User.sidebar.hide_on_mouse_leave then
     sidebar:connect_signal("mouse::leave", function ()
-        sidebar_hide()
+        Sidebar_hide()
     end)
 end
 -- Activate sidebar by moving the mouse at the edge of the screen
@@ -477,47 +278,6 @@ sidebar:setup {
             },
             layout = wibox.layout.fixed.vertical
         },
-       -- { ----------- MIDDLE GROUP -----------
-       --     {
-       --         helpers.vertical_pad(dpi(30)),
-       --         weather,
-       --         helpers.vertical_pad(dpi(30)),
-       --         -- {
-       --         --     {
-       --         --         mpd_buttons,
-       --         --         mpd_song,
-       --         --         spacing = dpi(5),
-       --         --         layout = wibox.layout.fixed.vertical
-       --         --     },
-       --         --     top = dpi(40),
-       --         --     bottom = dpi(60),
-       --         --     left = dpi(20),
-       --         --     right = dpi(20),
-       --         --     widget = wibox.container.margin
-       --         -- },
-       --         {
-       --             nil,
-       --             {
-       --                 volume,
-       --                 cpu,
-       --                 temperature,
-       --                 ram,
-       --                 brightness,
-       --                 spacing = dpi(5),
-       --                 -- layout = wibox.layout.fixed.vertical
-       --                 layout = wibox.layout.fixed.horizontal
-       --             },
-       --             expand = "none",
-       --             layout = wibox.layout.align.horizontal
-       --         },
-       --         helpers.vertical_pad(dpi(25)),
-       --         layout = wibox.layout.fixed.vertical
-       --     },
-       --     --shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
-       --     shape = helpers.prrect(0, false, true, false, false),
-       --     bg = x.color0.."66",
-       --     widget = wibox.container.background
-       -- },
         { ----------- BOTTOM GROUP -----------
             {
                 {

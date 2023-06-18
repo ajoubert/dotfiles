@@ -241,8 +241,6 @@ local function create_bookmark(name, path, color, hover_color)
         bookmark.markup = helpers.colorize_text(name, color)
     end)
 
-    helpers.add_hover_cursor(bookmark, "hand1")
-
     return bookmark
 end
 
@@ -321,7 +319,6 @@ corona_box:buttons(gears.table.join(
         dashboard_hide()
     end)
 ))
-helpers.add_hover_cursor(corona_box, "hand1")
 
 -- Fortune
 local fortune_command = "fortune -n 140 -s"
@@ -365,7 +362,6 @@ fortune_box:buttons(gears.table.join(
     -- Left click - New fortune
     awful.button({ }, 1, update_fortune)
 ))
-helpers.add_hover_cursor(fortune_box, "hand1")
 
 -- URL launcher petals
 local petal_font = "Sans Bold 11"
@@ -422,12 +418,6 @@ local petal_top_right = create_url_petal("YT", X.color1, X.color9, "https://yout
 local petal_bottom_right = create_url_petal("4C", X.color2, X.color10, "https://4chan.org/",false, true, true, true)
 local petal_bottom_left = create_url_petal("RD", X.color3, X.color11, "https://reddit.com/",true, false, true, true)
 
--- Add clickable effects on hover
-helpers.add_hover_cursor(petal_top_left, "hand1")
-helpers.add_hover_cursor(petal_top_right, "hand1")
-helpers.add_hover_cursor(petal_bottom_left, "hand1")
-helpers.add_hover_cursor(petal_bottom_right, "hand1")
-
 local url_petals = wibox.widget {
     petal_top_left,
     petal_top_right,
@@ -476,7 +466,6 @@ uptime_box:buttons(gears.table.join(
         end)
     end)
 ))
-helpers.add_hover_cursor(uptime_box, "hand1")
 
 local notification_state = wibox.widget {
     align = "center",
@@ -501,7 +490,6 @@ notification_state_box:buttons(gears.table.join(
     end)
 ))
 
-helpers.add_hover_cursor(notification_state_box, "hand1")
 
 local screenshot = wibox.widget {
     align = "center",
@@ -523,7 +511,6 @@ screenshot_box:buttons(gears.table.join(
     end)
 ))
 
-helpers.add_hover_cursor(screenshot_box, "hand1")
 
 -- Item placement
 dashboard:setup {

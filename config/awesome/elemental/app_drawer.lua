@@ -43,9 +43,6 @@ local function create_button(symbol, color, hover_color, cmd, key)
         icon.markup = helpers.colorize_text(symbol, color)
     end)
 
-    -- Change cursor on hover
-    helpers.add_hover_cursor(icon, "hand1")
-
     -- Adds mousebinds if cmd is provided
     if cmd then
         icon:buttons(gears.table.join(

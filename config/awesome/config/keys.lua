@@ -54,7 +54,7 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "=", function() Tray_toggle() end, {description = "toggle tray visibility", group = "awesome"}),
 
     -- Toggle sidebar
-    awful.key({ superkey }, "grave", function() sidebar_toggle() end, {description = "toggle sidebar visibility", group = "awesome"}),
+    awful.key({ superkey }, "grave", function() Sidebar_toggle() end, {description = "toggle sidebar visibility", group = "awesome"}),
 
     -- Volume Control with volume keys, on the bluetooth headset
     -- (un)mute volume
