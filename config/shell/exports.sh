@@ -59,13 +59,19 @@ export XAUTHORITY="$HOME/.local/share/xorg/Xauthority"
 export PASSWORD_STORE_DIR="$HOME/.local/share/pass/"
 
 # npm - node
-export NPM_PACKAGES="$HOME/.local/share/npm-global"
-export NPM_CONFIG_PREFIX="$NPM_PACKAGES"
-export NPM_CONFIG_CACHE="$HOME/.cache/npm"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-export NPM_CONFIG_DEVDIR="$HOME/.local/share/node-gyp"
+# Those are now handled via nvm, use `nvm use 18` for instance
+## export NPM_PACKAGES="$HOME/.local/share/npm-global"
+## export NPM_CONFIG_PREFIX="$NPM_PACKAGES"
+## export NPM_CONFIG_CACHE="$HOME/.cache/npm"
+## export NODE_PATH="$NPM_PACKAGES/lib/node_modules"
+## export PATH="$NPM_PACKAGES/bin:$PATH"
+## export NPM_CONFIG_DEVDIR="$HOME/.local/share/node-gyp"
 ## unsetting manpath to inherit from it via the manpath command
+export NVM_DIR="$HOME/.local/share/nvm"
+if [ -r /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
 unset MANPATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
@@ -139,6 +145,7 @@ export CARGO_HOME="$HOME/.local/share/cargo"
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # User dirs stuff
+export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_VIDEOS_DIR="$HOME/videos"
 export XDG_MUSIC_DIR="$HOME/music"
 export XDG_LOG_HOME="$HOME/.cache"
