@@ -49,7 +49,7 @@ awful.screen.connect_for_each_screen(function(s)
                 -- Text icon
                 {
                     id     = 'text_icon',
-                    font   = 'icomoon 25',
+                    font   = 'SF Mono Powerline 25',
                     forced_width = Dpi(50),
                     align  = "center",
                     valign = "center",

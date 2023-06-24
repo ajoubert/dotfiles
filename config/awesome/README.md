@@ -9,5 +9,5 @@ system-aware eventually
 - `ui` : contains the different themes available
 - `decorations` : defines the properties of all windows
 - `elemental` : widgets
-- `evil` : widgets, vicious-api style
+- `evil` : widgets daemons, stuff that runs in the background
 - `noodle` : other widgets?

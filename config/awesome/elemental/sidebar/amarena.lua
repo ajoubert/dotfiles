@@ -4,6 +4,8 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local helpers = require("helpers")
 
+local battery_bar = require("noodle.battery_bar")
+
 local hours = wibox.widget.textclock("%H")
 local minutes = wibox.widget.textclock("%M")
 
@@ -76,6 +78,7 @@ sidebar:buttons(gears.table.join(
         Sidebar_hide()
     end)
 ))
+
 
 Sidebar_show = function()
     sidebar.screen = awful.screen.focused()
@@ -181,10 +184,36 @@ local systraywidget = {
     layout = wibox.layout.align.vertical,
 }
 
+local batteryFullIcon = "󱊣  ";
+local batteryMediumIcon = "󱊢  ";
+local batteryLowIcon = "󱊡  ";
+local batteryChargingFullIcon = "󱊦  ";
+local batteryChargingMediumIcon = "󱊥  ";
+local batteryChargingLowIcon = "󱊤  ";
+local noBattery = " ";
+local currentBatteryIcon = batteryFullIcon;
+local charger_plugged = true;
+
+local textwidget = wibox.widget {
+    {
+        {
+            markup = currentBatteryIcon,
+            widget = wibox.widget.textbox,
+        },
+        battery_bar,
+        layout = wibox.layout.align.horizontal
+    },
+    layout = wibox.layout.align.vertical
+}
+
+local textwidth_width = wibox.container.margin(textwidget, 50, 50, 10, 10);
+
+
 -- Item placement
 sidebar:setup {
     {
         timedatebox,
+        textwidth_width,
         systraywidget,
         layout = wibox.layout.align.vertical,
     },

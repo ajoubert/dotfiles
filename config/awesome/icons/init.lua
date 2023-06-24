@@ -23,12 +23,12 @@ icons.text = {}
 -- TODO Ability to match using rules instead of just class
 icons.text.by_class = {
     -- Terminals
-    ['kitty'] = { symbol = "", color = X.color5 },
-    ['Alacritty'] = { symbol = "", color = X.color5 },
-    ['Termite'] = { symbol = "", color = X.color5 },
-    ['URxvt'] = { symbol = "", color = X.color5 },
-    ['st'] = { symbol = "", color = X.color5 },
-    ['st-256color'] = { symbol = "", color = X.color5 },
+    ['kitty'] = { symbol = "", color = X.color5 },
+    ['Alacritty'] = { symbol = "", color = X.color5 },
+    ['Termite'] = { symbol = "", color = X.color5 },
+    ['URxvt'] = { symbol = "", color = X.color5 },
+    ['st'] = { symbol = "", color = X.color5 },
+    ['st-256color'] = { symbol = "", color = X.color5 },
 
     -- Image viewers
     ['feh'] = { symbol = "", color = X.color1 },
@@ -36,22 +36,22 @@ icons.text.by_class = {
 
     -- General
     ['TelegramDesktop'] = { symbol = "", color = X.color4 },
-    ['Firefox'] = { symbol = "", color = X.color3 },
-    ['firefox'] = { symbol = "", color = X.color3 },
-    ['firefoxdeveloperedition'] = { symbol = "", color = X.color3 },
-    ['Nightly'] = { symbol = "", color = X.color4 },
-    ['Chromium'] = { symbol = "", color = X.color4 },
-    ['Chromium-browser'] = { symbol = "", color = X.color4 },
+    ['Firefox'] = { symbol = "", color = X.color3 },
+    ['firefox'] = { symbol = "", color = X.color3 },
+    ['firefoxdeveloperedition'] = { symbol = "", color = X.color3 },
+    ['Nightly'] = { symbol = "", color = X.color4 },
+    ['Chromium'] = { symbol = "", color = X.color4 },
+    ['Chromium-browser'] = { symbol = "", color = X.color4 },
     ['Steam'] = { symbol = "", color = X.color2 },
     ['Lutris'] = { symbol = "", color = X.color6 },
     ['editor'] = { symbol = "", color = X.color5 },
     ['Emacs'] = { symbol = "", color = X.color2 },
     ['email'] = { symbol = "", color = X.color6 },
     ['music'] = { symbol = "", color = X.color6 },
-    ['mpv'] = { symbol = "", color = X.color6 },
-    ['KeePassXC'] = { symbol = "", color = X.color1 },
+    ['mpv'] = { symbol = "󰕧", color = X.color6 },
+    ['KeePassXC'] = { symbol = "", color = X.color1 },
     ['Gucharmap'] = { symbol = "", color = X.color6 },
-    ['Pavucontrol'] = { symbol = "", color = X.color4 },
+    ['Pavucontrol'] = { symbol = "", color = X.color4 },
     ['htop'] = { symbol = "", color = X.color2 },
     ['Screenruler'] = { symbol = "", color = X.color3 },
     ['Galculator'] = { symbol = "", color = X.color2 },
@@ -61,24 +61,25 @@ icons.text.by_class = {
     ['markdown_input'] = { symbol = "", color = X.color2 },
     ['scratchpad'] = { symbol = "", color = X.color1 },
     ['weechat'] = { symbol = "", color = X.color5 },
-    ['discord'] = { symbol = "", color = X.color5 },
+    ['discord'] = { symbol = "󰙯", color = X.color5 },
     ['6cord'] = { symbol = "", color = X.color3 },
+    ['obsidian'] = { symbol = "", color = X.color5 },
     ['libreoffice-writer'] = { symbol = "", color = X.color4 },
     ['libreoffice-calc'] = { symbol = "", color = X.color2 },
     ['libreoffice-impress'] = { symbol = "", color = X.color1 },
     ['Godot'] = { symbol = "", color = X.color4 },
 
     -- File managers
-    ['Thunar'] = { symbol = "", color = X.color3 },
-    ['Nemo'] = { symbol = "", color = X.color3 },
-    ['files'] = { symbol = "", color = X.color3 },
+    ['Thunar'] = { symbol = "󰀶", color = X.color3 },
+    ['Nemo'] = { symbol = "󰀶", color = X.color3 },
+    ['files'] = { symbol = "󰀶", color = X.color3 },
 
-    ['Gimp'] = { symbol = "", color = X.color4 },
-    ['Inkscape'] = { symbol = "", color = X.color2 },
+    ['Gimp'] = { symbol = "", color = X.color4 },
+    ['Inkscape'] = { symbol = "", color = X.color2 },
     ['Gpick'] = { symbol = "", color = X.color6 },
 
     -- Default
-    ['_'] = { symbol = "", color = X.color7.."99" }
+    ['_'] = { symbol = "", color = X.color7.."99" }
 }
 
 -- Available icons
