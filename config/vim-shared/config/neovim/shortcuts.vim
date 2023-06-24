@@ -87,6 +87,7 @@ let g:leader_map.c = {
   \   'u': 'toggle-undo-tree',
   \   'x': 'execute',
   \   'r': 'rename',
+  \   'p': 'prettier',
   \   'd': {
   \     'name': '+debug',
   \     'c': 'continue/start-debugger',
@@ -105,6 +106,7 @@ map <leader>ct <Plug>NeRDCommenterToggle
 map <leader>ch :lua vim.lsp.buf.hover()<CR>
 map <leader>cu :UndotreeToggle<CR>
 map <leader>cr :lua vim.lsp.buf.rename()<CR>
+nmap <leader>cp <Plug>(Prettier)
 map <leader>cdc :call vimspector#Continue()<CR>
 map <leader>cdx :call vimspector#Stop()<CR>
 map <leader>cdX :call vimspector#Reset()<CR>
