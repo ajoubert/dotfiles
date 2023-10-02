@@ -55,13 +55,13 @@ awful.rules.rules = {
             instance = {
                 "Alacritty",
                 "discord",
-                "KeePassXC",
                 "obsidian",
                 "qjackctl",
             },
             class = {
-                "firefox",
+                "Blueman-manager",
                 "Chromium",
+                "firefox",
                 "looking-glass-client",
                 "Signal",
             },
@@ -98,11 +98,15 @@ awful.rules.rules = {
         rule_any = {
             class = {
                 "Nemo",
-                "Thunar"
+                -- "Thunar"
             },
         },
         except_any = { type = { "dialog" } },
-        properties = { floating = true, width = screen_width * 0.45, height = screen_height * 0.55}
+        properties = { floating = true, width = screen_width * 0.65, height = screen_height * 0.55},
+        callback = function (c)
+            decorations.hide(c)
+            awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
+        end
     },
 
     -- Keepass
@@ -111,6 +115,7 @@ awful.rules.rules = {
         except_any = { name = { "KeePassXC-Browser Confirm Access" }, type = { "dialog" } },
         properties = { floating = true, width = screen_width * 0.7, height = screen_height * 0.75},
         callback = function (c)
+            decorations.hide(c)
             awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
         end
     },

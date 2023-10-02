@@ -8,17 +8,23 @@ local helpers = require("helpers")
 
 -- Appearance
 -- icomoon symbols
-local icon_font = "icomoon bold 45"
-local poweroff_text_icon = ""
-local reboot_text_icon = ""
-local suspend_text_icon = ""
-local exit_text_icon = ""
+-- local icon_font = "icomoon bold 45"
+-- local poweroff_text_icon = ""
+-- local reboot_text_icon = ""
+-- local suspend_text_icon = ""
+-- local exit_text_icon = ""
+local icon_font = "SF Mono Powerline 45"
+local poweroff_text_icon = "󰐥"
+local reboot_text_icon = "󰜉"
+local suspend_text_icon = "⏾"
+local exit_text_icon = "󰩈"
+local lock_text_icon = ""
 -- local exit_text_icon = ""
 -- local poweroff_text_icon = ""
 -- local reboot_text_icon = ""
 -- local suspend_text_icon = ""
 -- local exit_text_icon = ""
-local lock_text_icon = ""
+-- local lock_text_icon = ""
 
 -- Typicons symbols
 -- local icon_font = "Typicons 90"
@@ -29,7 +35,7 @@ local lock_text_icon = ""
 -- local lock_text_icon = ""
 
 local button_bg = X.color0
-local button_size = Dpi(120)
+local button_size = Dpi(130)
 
 
 -- Commands

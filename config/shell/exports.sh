@@ -12,6 +12,7 @@ export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] && export PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
+[ -d "$HOME/.nix-profile/bin" ] && export PATH="$PATH:$HOME/.nix-profile/bin"
 [ -d "/opt/flutter/bin" ] && export PATH="$PATH:/opt/flutter/bin"
 
 # GTK config
@@ -152,6 +153,9 @@ export XDG_LOG_HOME="$HOME/.cache"
 
 ## Docker
 export DOCKER_CONFIG="$HOME/.config/docker"
+
+# GPG for signed git commits 
+export GPG_TTY=$(tty)
 
 ## Kubectl-kubecolor config
 # Backup original "kubectl" command path. Supports subsequent imports of the file.

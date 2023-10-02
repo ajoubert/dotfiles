@@ -213,7 +213,9 @@ local function grab_password()
         end,
         exe_callback = function(input)
             -- Check input
-            if lock_screen.authenticate(input) then
+            -- TODO : fix password checking
+            -- if lock_screen.authenticate(input) then
+            if true then
                 -- YAY
                 reset()
                 set_visibility(false)

@@ -1,26 +1,35 @@
 #!/bin/bash
 
 # Regular updates
-sudo pacman -Syu;
+#sudo pacman -Syu;
  
-# AUR updates (intentionally decoupled from pacman)
+# AUR updates
 yay -Syu;
  
 # NPM updates
-npm -g update;
+if [ -x "$(command -v npm)" ];
+then
+  npm -g update;
+fi
 
 # GO packages
 ## Removed due to the change of behaviour with go modules (see [27643](https://github.com/golang/go/issues/27643))
 ## TODO: investigate another way to manage go global tooling
 
 # Ruby packages
-gem update
+if [ -x "$(command -v gem)" ];
+then
+  gem update
+fi
  
 # VIM plugins updates
-/usr/bin/nvim +PlugUpgrade +PlugUpdate +qa
+if [ -x "$(command -v /usr/bin/nvim)" ];
+then
+  /usr/bin/nvim +PlugUpgrade +PlugUpdate +qa
+fi
  
 # TMUX plugins updates
-~/.tmux/plugins/tpm/bin/update_plugins all
+~/.config/tmux/plugins/tpm/bin/update_plugins all
 
 ## Gnucash quotes
 if [ -f "$GNUCASH_FILE" ]; then
@@ -44,9 +53,9 @@ fi
 ## fi
 
 ## a0 upgrade
-if [ "$(ls -A /mnt/a0/boot)" ]; then
-  sudo arch-chroot /mnt/a0 pacman -Syu --noconfirm
-else
-  echo "a0 not present, skipping";
-fi
+## if [ "$(ls -A /mnt/a0/boot)" ]; then
+##   sudo arch-chroot /mnt/a0 pacman -Syu --noconfirm
+## else
+##   echo "a0 not present, skipping";
+## fi
 

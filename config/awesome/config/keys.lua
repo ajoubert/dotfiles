@@ -50,6 +50,9 @@ keys.globalkeys = gears.table.join(
     -- Help screen
     awful.key({ superkey }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
 
+    -- Toggle topbar
+    awful.key({ superkey, shiftkey }, "t", function() TopBar_toggle() end, {description = "toggle topbar visibility", group = "awesome"}),
+
     -- Toggle sidebar
     awful.key({ superkey }, "grave", function() Sidebar_toggle() end, {description = "toggle sidebar visibility", group = "awesome"}),
 
@@ -64,6 +67,10 @@ keys.globalkeys = gears.table.join(
     awful.key({}, "XF86AudioPause", helpers.spawn('bash -c $HOME/.local/scripts/mpc_pause.sh')),
     awful.key({}, "XF86AudioNext", helpers.spawn('bash -c $HOME/.local/scripts/mpc_next.sh')),
     awful.key({}, "XF86AudioPrev", helpers.spawn('bash -c $HOME/.local/scripts/mpc_prev.sh')),
+
+    -- Background control
+    awful.key({ superkey }, "b", helpers.spawn('bash -c $HOME/.local/scripts/randomBackground.sh'), {description = "changes wallpaper", group = "wm"}),
+
 
     -- Bluetooth control
     awful.key({ superkey }, "XF86AudioMute", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh')),
@@ -80,7 +87,10 @@ keys.globalkeys = gears.table.join(
     -- Tiling
     awful.key({ superkey }, "s", helpers.set_tiled_layout, {description = "set tiled layout", group = "tag"}),
     -- Set floating layout
-    awful.key({ superkey, shiftkey }, "s", helpers.set_floating_layout, {description = "set floating layout", group = "tag"})
+    awful.key({ superkey, shiftkey }, "s", helpers.set_floating_layout, {description = "set floating layout", group = "tag"}),
+
+    awful.key({ superkey }, "Left", function() awful.tag.viewprev(awful.screen.focused()); client.focus = awful.screen.focused().clients[1] end),
+    awful.key({ superkey }, "Right", function() awful.tag.viewnext(awful.screen.focused()); client.focus = awful.screen.focused().clients[1] end)
 )
 
 keys.clientkeys = gears.table.join(
@@ -103,6 +113,7 @@ keys.clientkeys = gears.table.join(
 
     -- Maximize
     awful.key({ superkey }, "m", function (c) c.maximized = not c.maximized end, {description = "toggle maximize", group = "client"})
+
 )
 
 -- Bind all key numbers to tags.

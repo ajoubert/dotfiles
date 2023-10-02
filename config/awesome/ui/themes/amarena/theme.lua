@@ -1,23 +1,13 @@
-local awful = require("awful")
-local wibox = require("wibox")
 local gears = require("gears")
 local theme_name = "amarena"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
 local layout_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/layout/"
 local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/titlebar/"
 local taglist_icon_path = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/taglist/"
 local tip = titlebar_icon_path --alias to save time/space
-local xrdb = xresources.get_current_theme()
--- local theme = dofile(themes_path.."default/theme.lua")
 local theme = {}
-
--- Set theme wallpaper.
--- It won't change anything if you are using feh to set the wallpaper like I do.
-theme.wallpaper = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/wallpaper.jpg"
 
 -- Set the theme font. This is the font that will be used by default in menus, bars, titlebars etc.
 -- theme.font          = "sans 11"
@@ -40,10 +30,10 @@ theme.fg_urgent     = X.color9
 theme.fg_minimize   = X.color8
 
 -- Gaps
-theme.useless_gap   = dpi(5)
+theme.useless_gap   = dpi(0)
 -- This could be used to manually determine how far away from the
 -- screen edge the bars / notifications should be.
-theme.screen_margin = dpi(5)
+theme.screen_margin = dpi(0)
 
 -- Borders
 theme.border_width  = dpi(0)

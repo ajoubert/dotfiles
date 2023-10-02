@@ -11,7 +11,8 @@ User = {
 
     -- >> User profile <<
     profile_picture = os.getenv("HOME").."/.config/awesome/config/profile.png",
-
+    battery_threshold_critical = 15,
+    battery_threshold_low = 30,
     -- Directories with fallback values
     dirs = {
         downloads = os.getenv("XDG_DOWNLOAD_DIR") or "~/downloads",

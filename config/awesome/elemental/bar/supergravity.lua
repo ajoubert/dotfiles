@@ -80,7 +80,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the taglist wibox
     s.taglist_box = awful.wibar({
         screen = s,
-        visible = true,
+        visible = false,
         ontop = false,
         type = "dock",
         position = "top",
@@ -95,3 +95,24 @@ awful.screen.connect_for_each_screen(function(s)
         widget = s.mytaglist,
     }
 end)
+
+TopBar_show = function()
+    awful.screen.connect_for_each_screen(function(screen)
+        screen.taglist_box.visible = true;
+    end)
+end
+
+TopBar_hide = function()
+    awful.screen.connect_for_each_screen(function(screen)
+        screen.taglist_box.visible = false;
+    end)
+end
+
+TopBar_toggle = function()
+    if awful.screen.focused().taglist_box.visible then
+        TopBar_hide()
+    else
+        TopBar_show();
+    end
+end
+

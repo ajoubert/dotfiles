@@ -13,12 +13,11 @@ end
 apps.browser = function ()
     awful.spawn(User.browser, { switchtotag = true })
 end
+
 apps.file_manager = function ()
     awful.spawn(User.file_manager, { floating = true })
 end
-apps.telegram = function ()
-    helpers.run_or_raise({class = 'TelegramDesktop'}, false, "telegram", { switchtotag = true })
-end
+
 apps.discord = function ()
     -- Run or raise Discord running in the browser, spawned with Chromium browser's app mode
     -- >> Ubuntu / Debian

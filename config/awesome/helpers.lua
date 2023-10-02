@@ -688,4 +688,9 @@ function helpers.tag_click(tag)
     client.focus = awful.screen.focused().clients[1]
 end
 
+function helpers.switch_theme(themeName)
+    local theme_dir = os.getenv("HOME") .. "/.config/awesome/ui/themes/" .. themeName .. "/"
+    beautiful.init(theme_dir .. "theme.lua")
+end
+
 return helpers
