@@ -61,6 +61,7 @@ awful.rules.rules = {
             class = {
                 "Blueman-manager",
                 "Chromium",
+                "Evolution",
                 "firefox",
                 "looking-glass-client",
                 "Signal",
