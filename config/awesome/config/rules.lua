@@ -55,6 +55,7 @@ awful.rules.rules = {
             instance = {
                 "Alacritty",
                 "discord",
+                "Godot_Engine",
                 "obsidian",
                 "qjackctl",
             },
@@ -63,6 +64,7 @@ awful.rules.rules = {
                 "Chromium",
                 "Evolution",
                 "firefox",
+                "Godot_Engine",
                 "looking-glass-client",
                 "Signal",
             },
