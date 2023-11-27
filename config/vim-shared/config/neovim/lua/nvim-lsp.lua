@@ -70,6 +70,16 @@ mason_lspconfig.setup_handlers {
           }
         }
       })
+    end,
+    ["yamlls"] = function()
+      lspconfig.yamlls.setup({
+        settings = {
+          yaml = {
+            -- Fix mapKeyOrder warning
+            keyOrdering = false,
+          }
+        }
+      })
     end
 }
 
