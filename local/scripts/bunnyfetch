@@ -29,7 +29,8 @@ k=
 k=
 kernel="$(uname -r | cut -d '-' -f1)"
 
-r=
+#r=
+r=
 resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
 
 #sh=
