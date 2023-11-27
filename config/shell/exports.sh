@@ -18,6 +18,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # GTK config
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 
+export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
+
 export LYNX_CFG_PATH="$HOME/.config/lynx"
 export LYNX_CFG="$LYNX_CFG_PATH/lynx.cfg"
 export LYNX_LSS="$LYNX_CFG_PATH/lynx.lss"
@@ -63,7 +65,7 @@ export PASSWORD_STORE_DIR="$HOME/.local/share/pass/"
 # Those are now handled via nvm, use `nvm use 18` for instance
 ## export NPM_PACKAGES="$HOME/.local/share/npm-global"
 ## export NPM_CONFIG_PREFIX="$NPM_PACKAGES"
-## export NPM_CONFIG_CACHE="$HOME/.cache/npm"
+export NPM_CONFIG_CACHE="$HOME/.cache/npm"
 ## export NODE_PATH="$NPM_PACKAGES/lib/node_modules"
 ## export PATH="$NPM_PACKAGES/bin:$PATH"
 ## export NPM_CONFIG_DEVDIR="$HOME/.local/share/node-gyp"
@@ -100,7 +102,6 @@ export AWS_SHARED_CREDENTIALS_FILE="$HOME/.config/aws/credentials"
 export ANSIBLE_CONFIG="$HOME/.config/ansible/ansible.cfg"
 export ANSIBLE_DATA="$HOME/.ansible"
 export ANSIBLE_BECOME_PLUGINS="$ANSIBLE_DATA/plugins/become:/usr/share/ansible/plugins/become"
-export ANSIBLE_COLLECTIONS_PATHS="$ANSIBLE_DATA/collections:/usr/share/ansible/collections"
 export ANSIBLE_COLLECTIONS_PATH="$ANSIBLE_DATA/collections:/usr/share/ansible/collections"
 export ANSIBLE_ACTION_PLUGINS="$ANSIBLE_DATA/plugins/action:/usr/share/ansible/plugins/action"
 export ANSIBLE_CACHE_PLUGINS="$ANSIBLE_DATA/plugins/cache:/usr/share/ansible/plugins/cache"

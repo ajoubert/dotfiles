@@ -18,6 +18,7 @@ alias wiki="cd $HOME/.local/share/vimwiki/wiki/; clear;";
 alias workspace="cd $HOME/workspace/; clear;";
 alias getkey="keepassxc-cli clip $HOME/documents/iprt/keepass.kdbx localPwd"
 alias keepassxc="QT_AUTO_SCREEN_SCALE_FACTOR=0 keepassxc"
+alias pkgs="$HOME/.local/scripts/editpkgs.sh"
 # Unfortunately, haven't managed to both start and immediatly switch to
 # given tmux session in one command...
 alias startmusic='~/.config/ncmpcpp/cover_obs.sh; tmux new-session -d -s $$ "tmux source-file ~/.config/ncmpcpp/tsession";'
