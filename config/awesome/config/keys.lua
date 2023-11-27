@@ -1,188 +1,258 @@
+-- local naughty = require("naughty")
 local awful = require("awful")
-local hotkeys_popup = require("awful.hotkeys_popup")
-local gears = require("gears")
-local decorations = require("decorations")
 local helpers = require("helpers")
+local hotkeys_popup = require("awful.hotkeys_popup")
+local naughty = require("naughty")
+require("scripts")
 
-local keys = {}
+local mod = "Mod4"
+-- local alt = "Mod1"
+local ctrl = "Control"
+local shift = "Shift"
 
--- Mod keys
-local superkey = "Mod4"
-local ctrlkey = "Control"
-local shiftkey = "Shift"
+awful.keyboard.append_global_keybindings({
 
--- {{{ Key bindings
-keys.globalkeys = gears.table.join(
+		    -- Dismiss notifications and elements that connect to the dismiss signal
+    awful.key({ ctrl }, "space", function() naughty.destroy_all_notifications() end, {description = "dismiss notification", group = "awesome"}),
 
-    -- Focus client by direction (hjkl keys)
-    awful.key({ superkey }, "j", helpers.focus_direction("down"), {description = "focus down", group = "focus"}),
-    awful.key({ superkey }, "k", helpers.focus_direction("up"), {description = "focus up", group = "focus"}),
-    awful.key({ superkey }, "h", helpers.focus_direction("left"), {description = "focus left", group = "focus"}),
-    awful.key({ superkey }, "l", helpers.focus_direction("right"), {description = "focus right", group = "focus"}),
-
-    -- Change screen focus
-    awful.key({ superkey }, "[", helpers.focus_screen_by_direction("left"), {description = "focus left screen", group = "focus"}),
-    awful.key({ superkey }, "]", helpers.focus_screen_by_direction("right"), {description = "focus right screen", group = "focus"}),
-
-    -- Window switcher
-    awful.key({ superkey }, "Tab", helpers.show_window_switcher, {description = "window switcher", group = "focus"}),
-
-    -- Spawn terminal
-    awful.key({ superkey }, "Return", helpers.spawn(User.terminal), {description = "open a terminal", group = "launcher"}),
-
-    -- Run program
-    awful.key({ superkey }, " ", helpers.show_rofi, {description = "rofi launcher", group = "launcher"}),
-
-    -- Rofi-password
-    awful.key({ superkey }, "p", helpers.spawn("rofi-pass"), {description = "rofi pass", group = "launcher"}),
-
-    -- Reload Awesome
-    awful.key({ superkey, shiftkey }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
-
-    -- Quit Awesome
-    -- Logout, Shutdown, Restart, Suspend, Lock
-    awful.key({ superkey }, "Escape", helpers.show_exit_screens, {description = "quit awesome", group = "awesome"}),
-    awful.key({}, "XF86PowerOff", helpers.show_exit_screens),
-
-    -- Dismiss notifications and elements that connect to the dismiss signal
-    awful.key({ ctrlkey }, "space", helpers.dismiss_all_notifs, {description = "dismiss notification", group = "awesome"}),
-
-    -- Help screen
-    awful.key({ superkey }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
-
-    -- Toggle topbar
-    awful.key({ superkey, shiftkey }, "t", function() TopBar_toggle() end, {description = "toggle topbar visibility", group = "awesome"}),
-
-    -- Toggle sidebar
-    awful.key({ superkey }, "grave", function() Sidebar_toggle() end, {description = "toggle sidebar visibility", group = "awesome"}),
-
-    -- Volume Control with volume keys, on the bluetooth headset
-    -- (un)mute volume
-    awful.key({}, "XF86AudioMute", helpers.volume_control(0)),
-    -- Lower volume
-    awful.key({}, "XF86AudioLowerVolume", helpers.volume_control(-5)),
-    -- Raise volume
-    awful.key({}, "XF86AudioRaiseVolume", helpers.volume_control(5)),
-    awful.key({}, "XF86AudioPlay", helpers.spawn('bash -c $HOME/.local/scripts/mpc_play.sh')),
-    awful.key({}, "XF86AudioPause", helpers.spawn('bash -c $HOME/.local/scripts/mpc_pause.sh')),
-    awful.key({}, "XF86AudioNext", helpers.spawn('bash -c $HOME/.local/scripts/mpc_next.sh')),
-    awful.key({}, "XF86AudioPrev", helpers.spawn('bash -c $HOME/.local/scripts/mpc_prev.sh')),
 
     -- Background control
-    awful.key({ superkey }, "b", helpers.spawn('bash -c $HOME/.local/scripts/randomBackground.sh'), {description = "changes wallpaper", group = "wm"}),
+	awful.key({ mod }, "b", function() awful.spawn.with_shell("~/.local/scripts/randomBackground.sh") end, {description = "changes wallpaper", group = "wm"}),
+
+	-- launch programms --
+
+	awful.key({ mod }, "Return", function() awful.spawn("alacritty") end),
+	awful.key({ mod }, "e", function() awful.spawn("thunar") end),
+	awful.key({ mod }, "a", function() awful.spawn("ayugram-desktop" or "telegram-desktop") end),
+	awful.key({}, "Print", function() awful.spawn("flameshot gui") end),
+
+	-- some scripts --
+
+	awful.key({ mod }, "d", function() awful.spawn.with_shell("~/.local/scripts/monitorhotplug.sh", false) end),
+	awful.key({ mod, ctrl }, "p", function() awful.spawn.with_shell("~/.local/scripts/colorpicker", false) end),
+	awful.key({ mod, ctrl }, "q", function() awful.spawn.with_shell("~/.local/scripts/qr_codes", false) end),
 
 
-    -- Bluetooth control
-    awful.key({ superkey }, "XF86AudioMute", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh')),
-    awful.key({ superkey }, "Print", helpers.spawn('bash -c $HOME/.local/scripts/bluetoothctl_toggle.sh'), {description = "Toggle bluetooth device", group = "hardware"}),
+	-- Help screen
+    awful.key({ mod, shift }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
 
-    -- Control virtual machine
-    awful.key({ superkey, shiftkey }, "d", helpers.spawn("/home/sloth/.local/share/VFIOinput/input_attach.sh"), {description = "attach keyboard+mouse to virtual machine", group = "hardware"}),
+	-- playerctl --
 
-    -- Remote control android phone
-    awful.key({ superkey, shiftkey }, "p", helpers.spawn('bash -c $HOME/.local/scripts/openphone.sh'), {description = "remote control android phone", group = "hardware"}),
+	awful.key({}, "XF86AudioPlay", function()
+		awful.spawn.with_shell("playerctl play-pause")
+	end),
+	awful.key({}, "XF86AudioPrev", function()
+		awful.spawn.with_shell("playerctl previous")
+	end),
+	awful.key({}, "XF86AudioNext", function()
+		awful.spawn.with_shell("playerctl next")
+	end),
 
-    -- LAYOUTS
+	-- volume up/down/mute --
 
-    -- Tiling
-    awful.key({ superkey }, "s", helpers.set_tiled_layout, {description = "set tiled layout", group = "tag"}),
-    -- Set floating layout
-    awful.key({ superkey, shiftkey }, "s", helpers.set_floating_layout, {description = "set floating layout", group = "tag"}),
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.spawn.with_shell("amixer sset Master 2%+")
+		updateVolumeSignals()
+		awesome.emit_signal("summon::osd")
+	end),
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.spawn.with_shell("amixer sset Master 2%-")
+		updateVolumeSignals()
+		awesome.emit_signal("summon::osd")
+	end),
+	awful.key({}, "XF86AudioMute", function()
+		awful.spawn.with_shell("amixer sset Master toggle")
+		updateVolumeSignals()
+		awesome.emit_signal("summon::osd")
+	end),
 
-    awful.key({ superkey }, "Left", function() awful.tag.viewprev(awful.screen.focused()); client.focus = awful.screen.focused().clients[1] end),
-    awful.key({ superkey }, "Right", function() awful.tag.viewnext(awful.screen.focused()); client.focus = awful.screen.focused().clients[1] end)
-)
+	-- brightness up/down --
 
-keys.clientkeys = gears.table.join(
-    -- Toggle titlebars (for focused client only)
-    awful.key({ superkey }, "t", decorations.cycle, {description = "toggle titlebar", group = "client"}),
+	awful.key({}, "XF86MonBrightnessUp", function()
+		awful.spawn.with_shell("brightnessctl s 5%+")
+		update_value_of_bright()
+		awesome.emit_signal("summon::osd")
+  end),
+	awful.key({}, "XF86MonBrightnessDown", function()
+		awful.spawn.with_shell("brightnessctl s 5%-")
+		update_value_of_bright()
+		awesome.emit_signal("summon::osd")
+	end),
 
-    -- Toggle fullscreen
-    awful.key({ superkey }, "f", helpers.toggle_fullscreen, {description = "toggle fullscreen", group = "client"}),
+	-- binds to widgets --
 
-    -- Move client to screen.
-    awful.key({ superkey, shiftkey }, "[", function() helpers.move_to_screen("left") end, {description = "move to left screen", group = "client"}),
-    awful.key({ superkey, shiftkey }, "]", function() helpers.move_to_screen("right") end, {description = "move to right screen", group = "client"}),
+	awful.key({ mod, ctrl }, "b", function() awesome.emit_signal("summon::books") end),
+	awful.key({ mod, ctrl }, "c", function() awesome.emit_signal("summon::clipboard") end),
+	awful.key({ mod }, " ", function() awesome.emit_signal("summon::launcher") end),
+	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end),
+	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end),
+	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end),
+	awful.key({ mod }, "n", function() awesome.emit_signal("notif_center::open") end),
+	awful.key({ mod }, "c", function() awesome.emit_signal("time::calendar") end),
+	awful.key({ mod }, "p", function() awesome.emit_signal("profile::control") end),
+	awful.key({ mod, shift }, "b", function() awesome.emit_signal("hide::bar") end),
+	awful.key({ mod }, "t", function() awesome.emit_signal("show::tray") end),
 
-    -- Center client
-    awful.key({ superkey }, "c", helpers.center_with_doubletap, {description = "center client", group = "client"}),
+	-- switching a focus client -- 
+
+	awful.key({ mod }, "l", function () awful.client.focus.byidx(1) end),
+	awful.key({ mod }, "h", function () awful.client.focus.byidx(-1) end),
+
+	-- Close client
+	awful.key({ mod }, "w", function()
+		if client.focus then
+			client.focus:kill()
+		end ;
+		awful.client.focus.bydirection("left")
+	end, {description = "close", group = "client"}),
+
+	-- focus to tag --
+	awful.key {
+		modifiers = { mod },
+		keygroup = "numrow",
+		on_press = function (index)
+		local screen = awful.screen.focused()
+		local tag = screen.tags[index]
+		if tag then
+			tag:view_only()
+		end
+	end},
+
+	-- Toggle focus on tag --
+	awful.key {
+		modifiers = { mod, ctrl },
+		keygroup = "numrow",
+		on_press = function (index)
+		local screen = awful.screen.focused()
+		local tag = screen.tags[index]
+		if tag then
+			awful.tag.viewtoggle(tag)
+		end
+	end},
+
+	-- move focused client to tag --
+	awful.key {
+		modifiers = { mod, shift },
+		keygroup = "numrow",
+		on_press = function (index)
+		if client.focus then
+			local tag = client.focus.screen.tags[index]
+			if tag then
+				client.focus:move_to_tag(tag)
+			end
+		end
+	end},
+
+	-- restart wm --
+
+	awful.key({ mod, shift }, "r", awesome.restart),
+
+	-- resize client --
+
+   awful.key({ mod, ctrl }, "k", function(c)
+		helpers.client.resize_client(client.focus, "up")
+	end),
+	awful.key({ mod, ctrl }, "j", function(c)
+		helpers.client.resize_client(client.focus, "down")
+	end),
+	awful.key({ mod, ctrl }, "h", function(c)
+		helpers.client.resize_client(client.focus, "left")
+	end),
+	awful.key({ mod, ctrl }, "l", function(c)
+		helpers.client.resize_client(client.focus, "right")
+	end),
+
+	-- change padding tag on fly --
+
+	awful.key({ mod, shift }, "=", function()
+		helpers.client.resize_padding(5)
+	end),
+	awful.key({ mod, shift }, "-", function()
+		helpers.client.resize_padding(-5)
+	end),
+
+	-- change useless gap on fly --
+
+	awful.key({ mod }, "=", function()
+		helpers.client.resize_gaps(5)
+	end),
+	awful.key({ mod }, "-", function()
+		helpers.client.resize_gaps(-5)
+	end),
+
+})
 
 
-    -- Close client
-    awful.key({ superkey }, "w", function(c) c:kill(); awful.client.focus.bydirection("left") end, {description = "close", group = "client"}),
+-- mouse binds --
 
-    -- Maximize
-    awful.key({ superkey }, "m", function (c) c.maximized = not c.maximized end, {description = "toggle maximize", group = "client"})
+client.connect_signal("request::default_mousebindings", function()
+	awful.mouse.append_client_mousebindings({
+		awful.button({ }, 1, function (c)
+			c:activate { context = "mouse_click" }
+		end),
+		awful.button({ mod }, 1, function (c)
+			c:activate { context = "mouse_click", action = "mouse_move"  }
+		end),
+		awful.button({ mod }, 3, function (c)
+			c:activate { context = "mouse_click", action = "mouse_resize" }
+		end),
+	})
+end)
 
-)
+-- client binds --
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 10 do
-    local viewDescription = {description = "view tag #"..i, group = "tag"};
-    local toggleDescription = {description = "toggle tag #"..i, group = "tag"};
-    local moveDescription = {description = "move focused client to tag #"..i, group = "tag"};
+client.connect_signal("request::default_keybindings", function()
 
-    if(i ~= 2) then
-        viewDescription = {};
-        toggleDescription = {};
-        moveDescription = {};
-    end
+	awful.keyboard.append_client_keybindings({
+		awful.key({ mod }, "f",
+			function (c)
+				c.fullscreen = not c.fullscreen
+				c:raise()
+			end),
+		awful.key({ mod }, "q", function (c) c:kill() end),
+		awful.key({ mod }, "s", awful.client.floating.toggle),
 
-    keys.globalkeys = gears.table.join(keys.globalkeys,
-        -- View tag only.
-        awful.key({ superkey }, "#" .. i + 9, helpers.switch_tag(i), viewDescription),
+		awful.key({ mod, shift }, "n", function (c)
+				c.minimized = true
+		end),
 
-        -- Toggle tag display.
-        awful.key({ superkey, ctrlkey }, "#" .. i + 9, helpers.toggle_tag(i), toggleDescription),
+		awful.key({ mod, shift}, "m", function (c)
+			c.maximized = not c.maximized
+			c:raise()
+		end),
 
-        -- Move client to tag.
-        awful.key({ superkey, shiftkey }, "#" .. i + 9, helpers.move_to_tag(i), moveDescription)
-    )
-end
+		-- Move or swap by direction --
 
--- Mouse buttons on the client (whole window, not just titlebar)
-keys.clientbuttons = gears.table.join(
-    awful.button({}, 1, function (c) client.focus = c end),
-    awful.button({ superkey }, 1, awful.mouse.client.move),
-    awful.button({ superkey }, 3, function(c)
-        client.focus = c
-        awful.mouse.client.resize(c)
-    end)
-)
+		awful.key({ mod, shift }, "k", function(c)
+			helpers.client.move_client(c, "up")
+		end),
+		awful.key({ mod, shift }, "j", function(c)
+			helpers.client.move_client(c, "down")
+		end),
+		awful.key({ mod, shift }, "h", function(c)
+			helpers.client.move_client(c, "left")
+		end),
+		awful.key({ mod, shift }, "l", function(c)
+			helpers.client.move_client(c, "right")
+		end),
 
--- Mouse buttons on the tasklist
--- Use 'Any' modifier so that the same buttons can be used in the floating
--- tasklist displayed by the window switcher while the modkey is pressed
-keys.tasklist_buttons = gears.table.join(
-    awful.button({ 'Any' }, 1, helpers.focus_or_minimize),
-    awful.button({ 'Any' }, 4, function(c) c.focus.byidx(-1) end),
-    awful.button({ 'Any' }, 5, function(c) c.focus.byidx(1) end)
-)
+		--- Relative move  floating client --
 
--- Mouse buttons on a tag of the taglist widget
-keys.taglist_buttons = gears.table.join(
-     awful.button({}, 1, helpers.tag_click),
-     awful.button({}, 3, helpers.move_if_focused),
-     awful.button({ superkey }, 3, helpers.toggle_if_focused),
-     awful.button({}, 4, function(t) awful.tag.viewprev(t.screen) end),
-     awful.button({}, 5, function(t) awful.tag.viewnext(t.screen) end)
-)
+		awful.key({ mod, shift, ctrl }, "j", function(c)
+			c:relative_move(0, 20, 0, 0)
+		end),
+		awful.key({ mod, shift, ctrl }, "k", function(c)
+			c:relative_move(0, -20, 0, 0)
+		end),
+		awful.key({ mod, shift, ctrl }, "h", function(c)
+			c:relative_move(-20, 0, 0, 0)
+		end),
+		awful.key({ mod, shift, ctrl }, "l", function(c)
+			c:relative_move(20, 0, 0, 0)
+		end),
 
--- Mouse buttons on the primary titlebar of the window
-keys.titlebar_buttons = gears.table.join(
-    -- Left button - move
-    awful.button({}, 1, helpers.move_under_pointer),
-    -- Middle button - toggle floating
-    awful.button({}, 2, helpers.toggle_floating_under_pointer),
-    -- Right button - resize
-    awful.button({}, 3, helpers.resize_under_pointer),
-    -- Side button up - close
-    awful.button({}, 9, helpers.close_under_pointer)
-)
--- }}}
+	})
 
-root.keys(keys.globalkeys)
+end)
 
-return keys
+
