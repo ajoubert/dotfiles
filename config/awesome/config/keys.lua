@@ -15,6 +15,9 @@ awful.keyboard.append_global_keybindings({
 		    -- Dismiss notifications and elements that connect to the dismiss signal
     awful.key({ ctrl }, "space", function() naughty.destroy_all_notifications() end, {description = "dismiss notification", group = "awesome"}),
 
+		awful.key({ mod, shift }, "p", function ()
+			helpers.tag.unminimize_tag_clients()
+		end),
 
     -- Background control
 	awful.key({ mod }, "b", function() awful.spawn.with_shell("~/.local/scripts/randomBackground.sh") end, {description = "changes wallpaper", group = "wm"}),
@@ -216,7 +219,7 @@ client.connect_signal("request::default_keybindings", function()
 				c.minimized = true
 		end),
 
-		awful.key({ mod, shift}, "m", function (c)
+		awful.key({ mod, shift }, "m", function (c)
 			c.maximized = not c.maximized
 			c:raise()
 		end),
