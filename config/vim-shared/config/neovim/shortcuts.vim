@@ -78,6 +78,36 @@ noremap gD :lua vim.lsp.buf.declaration()<CR>
 noremap gi :lua vim.lsp.buf.implementation()<CR>
 noremap gr :lua vim.lsp.buf.references()<CR>
 
+noremap <leader>tc :ChatGPT<CR>
+noremap <leader>te :ChatGPTEditWithInstruction<CR>
+noremap <leader>tg :ChatGPTRun grammar_correction<CR>
+noremap <leader>tt :ChatGPTRun translate<CR>
+noremap <leader>tk :ChatGPTRun keywords<CR>
+noremap <leader>td :ChatGPTRun docstring<CR>
+noremap <leader>ta :ChatGPTRun add_tests<CR>
+noremap <leader>to :ChatGPTRun optimize_code<CR>
+noremap <leader>ts :ChatGPTRun summarize<CR>
+noremap <leader>tf :ChatGPTRun fix_bugs<CR>
+noremap <leader>tx :ChatGPTRun explain_code<CR>
+noremap <leader>tr :ChatGPTRun roxygen_edit<CR>
+noremap <leader>tl :ChatGPTRun code_readability_analysis<CR>
+let g:leader_map.t = {
+  \ 'name': '+ChatGPT',
+  \ 'c': "ChatGPT",
+  \ 'e': "Edit with instruction",
+  \ 'g': "Grammar Correction",
+  \ 't': "Translate",
+  \ 'k': "Keywords",
+  \ 'd': "Docstring",
+  \ 'a': "Add Tests",
+  \ 'o': "Optimize Code",
+  \ 's': "Summarize",
+  \ 'f': "Fix Bugs",
+  \ 'x': "Explain Code",
+  \ 'r': "Roxygen Edit",
+  \ 'l': "Code Readability Analysis"
+  \ }
+
 " Code
 let g:leader_map.c = {
   \   'name': '+code',

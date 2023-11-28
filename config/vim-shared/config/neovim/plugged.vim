@@ -189,6 +189,12 @@ Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
+" ChatGPT and its dependencies
+" Plug 'nvim-lua/plenary.nvim' " Already installed for telescope
+" Plug 'nvim-telescope/telescope.nvim' " Already installed for telescope
+Plug 'MunifTanjim/nui.nvim'
+Plug 'jackMort/ChatGPT.nvim'
+
 " Diagnostics
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
