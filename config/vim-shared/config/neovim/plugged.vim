@@ -100,7 +100,7 @@ Plug 'elkowar/yuck.vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
+  \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
