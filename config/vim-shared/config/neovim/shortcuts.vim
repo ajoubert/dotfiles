@@ -77,6 +77,7 @@ noremap gd :lua vim.lsp.buf.definition()<CR>
 noremap gD :lua vim.lsp.buf.declaration()<CR>
 noremap gi :lua vim.lsp.buf.implementation()<CR>
 noremap gr :lua vim.lsp.buf.references()<CR>
+nnoremap g v gv
 
 noremap <leader>tc :ChatGPT<CR>
 noremap <leader>te :ChatGPTEditWithInstruction<CR>
