@@ -1,5 +1,6 @@
 
-CONDA_SYMBOL="🅒 "
+#CONDA_SYMBOL="🅒 "
+CONDA_SYMBOL="󱔎 "
 CONDA_COLOR="blue"
 CONDA_VERBOSE="true"
 
@@ -7,8 +8,6 @@ function reset_conda_variable() {
   PROMPT_CONDA=""
   COMPENSATION_CONDA=0
 }
-
-CONDA_SYMBOL="🅒 "
 
 function set_conda() {
   reset_conda_variable;

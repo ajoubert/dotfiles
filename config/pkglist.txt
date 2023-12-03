@@ -16,12 +16,14 @@ awesome-git
 aws-cli
 base
 base-devel
+bash-completion
 bc
 bind
 blueman
 bluez-utils
 brightnessctl
 composer
+conda-bash-completion
 cowfortune
 dhcpcd
 dialog
@@ -60,6 +62,7 @@ lvm2
 lxappearance-gtk3
 lynx
 man-db
+miniconda3
 mpv
 mtpfs
 mullvad-vpn
