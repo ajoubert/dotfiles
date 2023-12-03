@@ -115,6 +115,7 @@ rofi-pass
 rsync
 rust
 scrcpy
+scrot
 seahorse
 shotgun
 sidequest-bin
