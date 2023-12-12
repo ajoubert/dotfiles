@@ -32,6 +32,7 @@ docker
 docker-compose
 evolution
 evolution-decsync
+evolution-on
 evtest
 feh
 ffmpegthumbnailer
@@ -43,6 +44,8 @@ gnome-themes-extra
 gnucash
 godot
 gpick
+gruvbox-dark-gtk
+gruvbox-dark-icons-gtk
 gucharmap
 heimdall
 htop
@@ -123,6 +126,9 @@ signal-desktop
 slop
 sshfs
 sudo
+suru-plus-aspromauros-git
+suru-plus-dark-git
+suru-plus-git
 syncthing
 t2fand
 thunar
@@ -193,10 +199,10 @@ xf86-video-amdgpu
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
+xorg-font-util
 xorg-fonts-100dpi
 xorg-fonts-75dpi
 xorg-fonts-encodings
-xorg-font-util
 xorg-iceauth
 xorg-mkfontscale
 xorg-server
