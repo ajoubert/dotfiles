@@ -85,8 +85,10 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 
 " Markdown and note taking
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown' }
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/wiki/', 'path_html': '~/.local/share/vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
+" Temporarily disabled, currently using different wiki solution and causing
+" conflict with copilot in readme files
+" Plug 'vimwiki/vimwiki'
+" let g:vimwiki_list = [{'path': '~/.local/share/vimwiki/wiki/', 'path_html': '~/.local/share/vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
 
 
 " Development plugins
@@ -201,6 +203,7 @@ Plug 'folke/trouble.nvim'
 
 " Copilot
 Plug 'github/copilot.vim'
+let g:copilot_filetypes = {'markdown': v:true}
 
 call plug#end()
 
