@@ -14,7 +14,7 @@ theme.wall = ""
 
 theme.notification_wifi_icon = "~/.config/awesome/theme/icons/wifi.svg"
 theme.battery_icon = "~/.config/awesome/theme/icons/battery.svg"
-theme.profile_image = "~/.config/awesome/theme/icons/profile_img.jpg"
+theme.profile_image = "~/.config/awesome/theme/icons/profile_img.png"
 theme.notification_icon = "~/.config/awesome/theme/icons/bell.svg"
 theme.notification_icon_error = "~/.config/awesome/theme/icons/alert.svg"
 theme.notification_icon_scrensht = "~/.config/awesome/theme/icons/camera.svg"
