@@ -55,6 +55,7 @@ jdk-openjdk
 keepassxc
 libgepub
 libopenraw
+libreoffice-still
 linux
 linux-firmware
 linux-t2
@@ -80,7 +81,9 @@ ntfs-3g
 nvidia
 nvidia-settings
 nvm
+obs-cmd
 obsidian
+obs-studio-git
 openssh
 otf-aurulent-nerd
 otf-codenewroman-nerd
@@ -199,10 +202,10 @@ xf86-video-amdgpu
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
-xorg-font-util
 xorg-fonts-100dpi
 xorg-fonts-75dpi
 xorg-fonts-encodings
+xorg-font-util
 xorg-iceauth
 xorg-mkfontscale
 xorg-server

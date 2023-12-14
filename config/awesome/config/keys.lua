@@ -16,6 +16,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({ ctrl }, "space", function() naughty.destroy_all_notifications() end, {description = "dismiss notification", group = "awesome"}),
     awful.key({ mod, shift }, "s", function() awful.spawn.with_shell("~/.local/scripts/screenshot_fullscreen.sh") end, {description = "Take a screenshot", group = "awesome"}),
     awful.key({ mod }, "s", function() awful.spawn.with_shell("~/.local/scripts/screenshot_selection.sh") end, {description = "Take a screenshot of an area", group = "awesome"}),
+    awful.key({ mod }, "r", function() awful.spawn.with_shell("~/.local/scripts/record_screen.sh") end, {description = "Toggle screen recording", group = "awesome"}),
 
 		awful.key({ mod, shift }, "p", function ()
 			helpers.tag.unminimize_tag_clients()
