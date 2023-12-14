@@ -15,6 +15,8 @@ export PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.nix-profile/bin" ] && export PATH="$PATH:$HOME/.nix-profile/bin"
 [ -d "/opt/flutter/bin" ] && export PATH="$PATH:/opt/flutter/bin"
 
+export RCRC="$HOME/.config/rcm/rcrc"
+
 # GTK config
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 
