@@ -16,7 +16,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({ ctrl }, "space", function() naughty.destroy_all_notifications() end, {description = "dismiss notification", group = "awesome"}),
     awful.key({ mod, shift }, "s", function() awful.spawn.with_shell("~/.local/scripts/screenshot_fullscreen.sh") end, {description = "Take a screenshot", group = "awesome"}),
     awful.key({ mod }, "s", function() awful.spawn.with_shell("~/.local/scripts/screenshot_selection.sh") end, {description = "Take a screenshot of an area", group = "awesome"}),
-    awful.key({ mod }, "r", function() awful.spawn.with_shell("~/.local/scripts/record_screen.sh") end, {description = "Toggle screen recording", group = "awesome"}),
+    awful.key({ mod, ctrl }, "r", function() awful.spawn.with_shell("~/.local/scripts/record_screen.sh") end, {description = "Toggle screen recording", group = "awesome"}),
 
 		awful.key({ mod, shift }, "p", function ()
 			helpers.tag.unminimize_tag_clients()
@@ -27,7 +27,8 @@ awful.keyboard.append_global_keybindings({
 
 	-- launch programms --
 
-	awful.key({ mod }, "Return", function() awful.spawn("alacritty") end),
+	awful.key({ mod }, "Return", function() awful.spawn("alacritty -e sh -c 'tmux attach || tmux new-session'") end),
+	awful.key({ mod, shift }, "Return", function() awful.spawn("alacritty") end),
 	awful.key({ mod }, "e", function() awful.spawn("thunar") end),
 	awful.key({ mod }, "a", function() awful.spawn("ayugram-desktop" or "telegram-desktop") end),
 	awful.key({}, "Print", function() awful.spawn("flameshot gui") end),
@@ -216,7 +217,7 @@ client.connect_signal("request::default_keybindings", function()
 				c:raise()
 			end),
 		awful.key({ mod }, "q", function (c) c:kill() end),
-		awful.key({ mod, shift }, "f", awful.client.floating.toggle),
+		awful.key({ mod, shift }, "f", awful.client.floating.toggle, {description = "Toggle floating for current window", group = "awesome"}),
 
 		awful.key({ mod, shift }, "n", function (c)
 				c.minimized = true
