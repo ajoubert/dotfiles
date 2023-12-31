@@ -37,6 +37,7 @@ awful.keyboard.append_global_keybindings({
 
 	awful.key({ mod }, "d", function() awful.spawn.with_shell("~/.local/scripts/monitorhotplug.sh", false) end),
 	awful.key({ mod, ctrl }, "p", function() awful.spawn.with_shell("~/.local/scripts/colorpicker", false) end),
+	awful.key({ mod, ctrl }, "o", function() awful.spawn.with_shell("~/.local/scripts/openphone.sh", false) end),
 	awful.key({ mod, ctrl }, "q", function() awful.spawn.with_shell("~/.local/scripts/qr_codes", false) end),
 
 

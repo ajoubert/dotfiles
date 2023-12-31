@@ -96,6 +96,7 @@ otf-hermit-nerd
 otf-opendyslexic-nerd
 otf-overpass-nerd
 otf-sfmono-patched
+p7zip
 papirus-icon-theme
 pavucontrol
 php
