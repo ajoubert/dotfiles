@@ -23,6 +23,8 @@ bind
 blueman
 bluez-utils
 brightnessctl
+ca-certificates
+ca-certificates-mozilla
 composer
 conda-bash-completion
 cowfortune
@@ -68,10 +70,13 @@ lxappearance-gtk3
 lynx
 man-db
 miniconda3
+mpc
+mpd
 mpv
 mtpfs
 mullvad-vpn
 mupdf
+ncmpcpp
 neovim
 net-tools
 networkmanager
