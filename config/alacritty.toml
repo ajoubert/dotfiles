@@ -1,0 +1,236 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#4c4c4c"
+blue = "#8a98ac"
+cyan = "#8aacab"
+green = "#8aac8b"
+magenta = "#ac8aac"
+red = "#ac8a8c"
+white = "#e7e7e7"
+yellow = "#aca98a"
+
+[colors.normal]
+black = "#4c4c4c"
+blue = "#a5b4cb"
+cyan = "#9ec3c4"
+green = "#9ec49f"
+magenta = "#c49ec4"
+red = "#c49ea0"
+white = "#f0f0f0"
+yellow = "#c4c19e"
+
+[colors.primary]
+background = "#191919"
+foreground = "#f0f0f0"
+
+[cursor]
+style = "Beam"
+unfocused_hollow = false
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 12.5
+
+[font.bold]
+family = "JetBrainsMono NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono NF"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono NF"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "PasteSelection"
+key = "Insert"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+mods = "None"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+mods = "None"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+mods = "None"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "None"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "None"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Shift"
+
+# [schemes.everblush.bright]
+# black = "#2d3437"
+# blue = "#71baf2"
+# cyan = "#67cbe7"
+# green = "#96d988"
+# magenta = "#ce89df"
+# red = "#ef7e7e"
+# white = "#bdc3c2"
+# yellow = "#f4d67a"
+# 
+# [schemes.everblush.cursor]
+# cursor = "#dadada"
+# text = "#dadada"
+# 
+# [schemes.everblush.normal]
+# black = "#232a2d"
+# blue = "#67b0e8"
+# cyan = "#6cbfbf"
+# green = "#8ccf7e"
+# magenta = "#c47fd5"
+# red = "#e57474"
+# white = "#b3b9b8"
+# yellow = "#e5c76b"
+# 
+# [schemes.everblush.primary]
+# background = "#141b1e"
+# foreground = "#c4c4c4"
+# 
+# [schemes.gruvbox.bright]
+# black = "#928374"
+# blue = "#7daea3"
+# cyan = "#89b482"
+# green = "#a9b665"
+# magenta = "#d3869b"
+# red = "#ea6962"
+# white = "#d4be98"
+# yellow = "#d8a657"
+# 
+# [schemes.gruvbox.normal]
+# black = "#928374"
+# blue = "#7daea3"
+# cyan = "#89b482"
+# green = "#a9b665"
+# magenta = "#d3869b"
+# red = "#ea6962"
+# white = "#d4be98"
+# yellow = "#d8a657"
+# 
+# [schemes.gruvbox.primary]
+# background = "#3c3836"
+# foreground = "#d4be98"
+# 
+# [schemes.mountain.bright]
+# black = "#4c4c4c"
+# blue = "#8a98ac"
+# cyan = "#8aacab"
+# green = "#8aac8b"
+# magenta = "#ac8aac"
+# red = "#ac8a8c"
+# white = "#e7e7e7"
+# yellow = "#aca98a"
+# 
+# [schemes.mountain.normal]
+# black = "#4c4c4c"
+# blue = "#a5b4cb"
+# cyan = "#9ec3c4"
+# green = "#9ec49f"
+# magenta = "#c49ec4"
+# red = "#c49ea0"
+# white = "#f0f0f0"
+# yellow = "#c4c19e"
+# 
+# [schemes.mountain.primary]
+# background = "#191919"
+# foreground = "#f0f0f0"
+
+[scrolling]
+history = 5000
+
+[shell]
+program = "/bin/bash"
+
+[window]
+decorations = "full"
+dynamic_padding = true
+opacity = 1
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 0
+y = 0
