@@ -11,6 +11,7 @@ apple-bcm-firmware
 apple-t2-audio-config
 arandr
 arc-gtk-theme
+aria2
 autorandr
 awesome-git
 aws-cli
@@ -70,6 +71,7 @@ lxappearance-gtk3
 lynx
 man-db
 miniconda3
+motrix
 mpc
 mpd
 mpv
