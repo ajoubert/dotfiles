@@ -38,6 +38,7 @@ evolution
 evolution-decsync
 evolution-on
 evtest
+fd
 feh
 ffmpegthumbnailer
 firefox-developer-edition
@@ -46,10 +47,12 @@ git
 gnome-keyring
 gnome-themes-extra
 gnucash
+gnu-free-fonts
 godot
 gpick
 gruvbox-dark-gtk
 gruvbox-dark-icons-gtk
+gruvbox-plus-icon-theme-git
 gucharmap
 heimdall
 htop
@@ -86,12 +89,14 @@ nix
 nodejs
 npm
 ntfs-3g
+nushell
 nvidia
 nvidia-settings
 nvm
 obs-cmd
 obsidian
 obs-studio-git
+ollama
 openssh
 otf-aurulent-nerd
 otf-codenewroman-nerd
@@ -137,6 +142,7 @@ sidequest-bin
 signal-desktop
 slop
 sshfs
+steam
 sudo
 suru-plus-aspromauros-git
 suru-plus-dark-git
@@ -174,6 +180,7 @@ ttf-iosevka-nerd
 ttf-iosevkaterm-nerd
 ttf-jetbrains-mono-nerd
 ttf-lekton-nerd
+ttf-liberation
 ttf-liberation-mono-nerd
 ttf-lilex-nerd
 ttf-meslo-nerd
