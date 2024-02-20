@@ -153,7 +153,9 @@ local daylist = { day1, day2, day3, day4, day5, day6 }
 
 local widget = wibox.widget {
 	widget = wibox.container.background,
+	id = "weather_container",
 	bg = beautiful.background_alt,
+	visible = false,
 	{
 		widget = wibox.container.margin,
 		margins = 10,
@@ -274,6 +276,7 @@ local widget = wibox.widget {
 
 awesome.connect_signal("connect::weather", function(out)
 	widget:get_children_by_id('weathericon')[1].text = out.image
+	widget:get_children_by_id('weather_container')[1].visible = true
 	widget:get_children_by_id('desc')[1].markup = helpers.ui.colorizeText(string.lower(out.desc), beautiful.foreground)
 	widget:get_children_by_id('temp')[1].markup = helpers.ui.colorizeText(out.temp .. "°C", beautiful.foreground)
 	-- widget:get_children_by_id('feels')[1].markup = "Feels like " .. out.feelsLike .. "°C"

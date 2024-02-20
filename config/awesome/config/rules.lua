@@ -49,6 +49,25 @@ ruled.client.append_rule {
 	properties = { fullscreen = true}
 }
 
+ruled.client.append_rule {
+	rule_any = { class = { "Komorebi" } },
+	properties = {
+		fullscreen = true,
+		focusable = false,
+		skip_decoration = true,
+		border_width = 0,
+		below = true,
+		skip_taskbar = true,
+		ontop = false,
+	},
+	callback = function(c)
+		if not c.name:match("Desktop") then
+			c.fullscreen = false;
+			c.focusable = true;
+		end
+	end
+}
+
 client.connect_signal("mouse::enter", function(c)
     c:activate { context = "mouse_enter", raise = false }
 end)

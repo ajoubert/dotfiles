@@ -12,37 +12,38 @@ local shift = "Shift"
 
 awful.keyboard.append_global_keybindings({
 
-		    -- Dismiss notifications and elements that connect to the dismiss signal
-    awful.key({ ctrl }, "space", function() naughty.destroy_all_notifications() end, {description = "dismiss notification", group = "awesome"}),
-    awful.key({ mod, shift }, "s", function() awful.spawn.with_shell("~/.local/scripts/screenshot_fullscreen.sh") end, {description = "Take a screenshot", group = "awesome"}),
-    awful.key({ mod }, "s", function() awful.spawn.with_shell("~/.local/scripts/screenshot_selection.sh") end, {description = "Take a screenshot of an area", group = "awesome"}),
-    awful.key({ mod, ctrl }, "r", function() awful.spawn.with_shell("~/.local/scripts/record_screen.sh") end, {description = "Toggle screen recording", group = "awesome"}),
+  -- Dismiss notifications and elements that connect to the dismiss signal
 
-		awful.key({ mod, shift }, "p", function ()
-			helpers.tag.unminimize_tag_clients()
-		end),
+	awful.key({ ctrl }, "space", function() naughty.destroy_all_notifications() end, {description = "dismiss notification", group = "awesome"}),
+	awful.key({ mod, ctrl }, "r", function() awful.spawn.with_shell("~/.local/scripts/record_screen.sh") end, {description = "record screen", group = "tool"}),
 
-    -- Background control
-	awful.key({ mod }, "b", function() awful.spawn.with_shell("~/.local/scripts/randomBackground.sh") end, {description = "changes wallpaper", group = "wm"}),
+	awful.key({ mod, shift }, "p", function ()
+		helpers.tag.unminimize_tag_clients()
+	end, {description = "restore minimized", group = "tag"}),
+
+	-- Background control
+
+	awful.key({ mod }, "b", function() awful.spawn.with_shell("~/.local/scripts/randomBackground.sh") end, {description = "changes wallpaper", group = "tag"}),
 
 	-- launch programms --
 
-	awful.key({ mod }, "Return", function() awful.spawn("alacritty -e sh -c 'tmux attach || tmux new-session'") end),
-	awful.key({ mod, shift }, "Return", function() awful.spawn("alacritty") end),
-	awful.key({ mod }, "e", function() awful.spawn("thunar") end),
+	awful.key({ mod }, "Return", function() awful.spawn("alacritty -e sh -c 'tmux attach || tmux new-session'") end, {description = "open terminal", group = "launch"}),
+	awful.key({ mod, shift }, "Return", function() awful.spawn("alacritty") end, {description = "open terminal without tmux", group = "launch"}),
+	awful.key({ mod, ctrl }, "o", function() awful.spawn.with_shell("~/.local/scripts/openphone.sh", false) end, {description = "phone", group = "launch"}),
+	awful.key({ mod }, "e", function() awful.spawn("thunar") end, {description = "file manager", group = "launch"}),
 	awful.key({ mod }, "a", function() awful.spawn("ayugram-desktop" or "telegram-desktop") end),
-	awful.key({}, "Print", function() awful.spawn("flameshot gui") end),
 
-	-- some scripts --
+	-- tools --
 
-	awful.key({ mod }, "d", function() awful.spawn.with_shell("~/.local/scripts/monitorhotplug.sh", false) end),
-	awful.key({ mod, ctrl }, "p", function() awful.spawn.with_shell("~/.local/scripts/colorpicker", false) end),
-	awful.key({ mod, ctrl }, "o", function() awful.spawn.with_shell("~/.local/scripts/openphone.sh", false) end),
-	awful.key({ mod, ctrl }, "q", function() awful.spawn.with_shell("~/.local/scripts/qr_codes", false) end),
+	awful.key({}, "Print", function() awful.spawn("flameshot gui") end, {description = "screenshot", group = "tool"}),
+	awful.key({ mod }, "d", function() awful.spawn.with_shell("~/.local/scripts/monitorhotplug.sh", false) end, {description = "monitor hotplug", group = "tool"}),
+	awful.key({ mod, ctrl }, "p", function() awful.spawn.with_shell("~/.local/scripts/colorpicker", false) end, {description = "colorpicker", group = "tool"}),
+	awful.key({ mod, ctrl }, "q", function() awful.spawn.with_shell("~/.local/scripts/qr_codes", false) end, {description = "qr codes", group = "tool"}),
 
 
 	-- Help screen
-    awful.key({ mod, shift }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
+
+  awful.key({ mod, shift }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
 
 	-- playerctl --
 
@@ -89,24 +90,25 @@ awful.keyboard.append_global_keybindings({
 
 	-- binds to widgets --
 
-	awful.key({ mod, ctrl }, "b", function() awesome.emit_signal("summon::books") end),
-	awful.key({ mod, ctrl }, "c", function() awesome.emit_signal("summon::clipboard") end),
-	awful.key({ mod }, " ", function() awesome.emit_signal("summon::launcher") end),
-	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end),
-	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end),
-	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end),
-	awful.key({ mod }, "n", function() awesome.emit_signal("notif_center::open") end),
-	awful.key({ mod }, "c", function() awesome.emit_signal("time::calendar") end),
-	awful.key({ mod }, "p", function() awesome.emit_signal("profile::control") end),
-	awful.key({ mod, shift }, "b", function() awesome.emit_signal("hide::bar") end),
-	awful.key({ mod }, "t", function() awesome.emit_signal("show::tray") end),
+	awful.key({ mod, ctrl }, "b", function() awesome.emit_signal("summon::books") end, {description = "books", group = "tag"}),
+	awful.key({ mod, ctrl }, "c", function() awesome.emit_signal("summon::clipboard") end, {description = "clipboard", group = "tag"}),
+	awful.key({ mod }, " ", function() awesome.emit_signal("summon::launcher") end, {description = "launcher", group = "launch"}),
+	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end, {description = "powermenu", group = "tag"}),
+	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end, {description = "dnd", group = "tag"}),
+	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end, {description = "wifi popup", group = "tag"}),
+	awful.key({ mod }, "n", function() awesome.emit_signal("notif_center::open") end, {description = "notification center", group = "tag"}),
+	awful.key({ mod }, "c", function() awesome.emit_signal("time::calendar") end, {description = "calendar", group = "tag"}),
+	awful.key({ mod }, "p", function() awesome.emit_signal("profile::control") end, {description = "profile control", group = "tag"}),
+	awful.key({ mod, shift }, "b", function() awesome.emit_signal("hide::bar") end, {description = "hide bar", group = "tag"}),
+	awful.key({ mod }, "t", function() awesome.emit_signal("show::tray") end, {description = "show tray", group = "tag"}),
 
 	-- switching a focus client -- 
 
-	awful.key({ mod }, "l", function () awful.client.focus.byidx(1) end),
-	awful.key({ mod }, "h", function () awful.client.focus.byidx(-1) end),
+	awful.key({ mod }, "l", function () awful.client.focus.byidx(1) end, {description = "focus next", group = "client"}),
+	awful.key({ mod }, "h", function () awful.client.focus.byidx(-1) end, {description = "focus previous", group = "client"}),
 
 	-- Close client
+
 	awful.key({ mod }, "w", function()
 		if client.focus then
 			client.focus:kill()
@@ -115,6 +117,7 @@ awful.keyboard.append_global_keybindings({
 	end, {description = "close", group = "client"}),
 
 	-- focus to tag --
+
 	awful.key {
 		modifiers = { mod },
 		keygroup = "numrow",
@@ -127,6 +130,7 @@ awful.keyboard.append_global_keybindings({
 	end},
 
 	-- Toggle focus on tag --
+
 	awful.key {
 		modifiers = { mod, ctrl },
 		keygroup = "numrow",
@@ -139,6 +143,7 @@ awful.keyboard.append_global_keybindings({
 	end},
 
 	-- move focused client to tag --
+
 	awful.key {
 		modifiers = { mod, shift },
 		keygroup = "numrow",
@@ -153,40 +158,40 @@ awful.keyboard.append_global_keybindings({
 
 	-- restart wm --
 
-	awful.key({ mod, shift }, "r", awesome.restart),
+	awful.key({ mod, shift }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
 
 	-- resize client --
 
-   awful.key({ mod, ctrl }, "k", function(c)
+   awful.key({ mod, ctrl }, "k", function()
 		helpers.client.resize_client(client.focus, "up")
-	end),
-	awful.key({ mod, ctrl }, "j", function(c)
+	end, {description = "resize up", group = "client"}),
+	awful.key({ mod, ctrl }, "j", function()
 		helpers.client.resize_client(client.focus, "down")
-	end),
-	awful.key({ mod, ctrl }, "h", function(c)
+	end, {description = "resize down", group = "client"}),
+	awful.key({ mod, ctrl }, "h", function()
 		helpers.client.resize_client(client.focus, "left")
-	end),
-	awful.key({ mod, ctrl }, "l", function(c)
+	end, {description = "resize left", group = "client"}),
+	awful.key({ mod, ctrl }, "l", function()
 		helpers.client.resize_client(client.focus, "right")
-	end),
+	end, {description = "resize right", group = "client"}),
 
 	-- change padding tag on fly --
 
 	awful.key({ mod, shift }, "=", function()
 		helpers.client.resize_padding(5)
-	end),
+	end, {description = "increase padding", group = "tag"}),
 	awful.key({ mod, shift }, "-", function()
 		helpers.client.resize_padding(-5)
-	end),
+	end, {description = "decrease padding", group = "tag"}),
 
 	-- change useless gap on fly --
 
 	awful.key({ mod }, "=", function()
 		helpers.client.resize_gaps(5)
-	end),
+	end, {description = "increase gaps", group = "tag"}),
 	awful.key({ mod }, "-", function()
 		helpers.client.resize_gaps(-5)
-	end),
+	end, {description = "decrease gaps", group = "tag"}),
 
 })
 
@@ -215,52 +220,51 @@ end)
 client.connect_signal("request::default_keybindings", function()
 
 	awful.keyboard.append_client_keybindings({
-		awful.key({ mod }, "f",
-			function (c)
-				c.fullscreen = not c.fullscreen
-				c:raise()
-			end),
-		awful.key({ mod }, "q", function (c) c:kill() end),
-		awful.key({ mod, shift }, "f", awful.client.floating.toggle, {description = "Toggle floating for current window", group = "awesome"}),
+		awful.key({ mod }, "f", function (c)
+			c.fullscreen = not c.fullscreen
+			c:raise()
+		end, {description = "fullscreen", group = "client"}),
+
+		awful.key({ mod, shift }, "f", awful.client.floating.toggle, {description = "floating", group = "client"}),
 
 		awful.key({ mod, shift }, "n", function (c)
 				c.minimized = true
-		end),
+		end, {description = "minimize", group = "client"}),
 
 		awful.key({ mod, shift }, "m", function (c)
 			c.maximized = not c.maximized
 			c:raise()
-		end),
+		end, {description = "maximize", group = "client"}),
 
 		-- Move or swap by direction --
 
 		awful.key({ mod, shift }, "k", function(c)
 			helpers.client.move_client(c, "up")
-		end),
+		end, {description = "move up", group = "client"}),
 		awful.key({ mod, shift }, "j", function(c)
 			helpers.client.move_client(c, "down")
-		end),
+		end, {description = "move down", group = "client"}),
 		awful.key({ mod, shift }, "h", function(c)
 			helpers.client.move_client(c, "left")
-		end),
+		end, {description = "move left", group = "client"}),
 		awful.key({ mod, shift }, "l", function(c)
 			helpers.client.move_client(c, "right")
-		end),
+		end, {description = "move right", group = "client"}),
 
 		--- Relative move  floating client --
 
 		awful.key({ mod, shift, ctrl }, "j", function(c)
 			c:relative_move(0, 20, 0, 0)
-		end),
+		end, {description = "move down", group = "floating controls"}),
 		awful.key({ mod, shift, ctrl }, "k", function(c)
 			c:relative_move(0, -20, 0, 0)
-		end),
+		end, {description = "move up", group = "floating controls"}),
 		awful.key({ mod, shift, ctrl }, "h", function(c)
 			c:relative_move(-20, 0, 0, 0)
-		end),
+		end, {description = "move left", group = "floating controls"}),
 		awful.key({ mod, shift, ctrl }, "l", function(c)
 			c:relative_move(20, 0, 0, 0)
-		end),
+		end, {description = "move right", group = "floating controls"}),
 
 	})
 

@@ -31,6 +31,10 @@ local show_hourly_forecast = true
 local show_daily_forecast = true
 local units = "metric"
 
+-- Openweathermap changed its API and now requires a paid subscription to
+-- get the current weather
+-- This script either needs to be update to use the free one, or requires
+-- a paid API key
 local url = (
     "https://api.openweathermap.org/data/2.5/onecall"
     .. "?lat="

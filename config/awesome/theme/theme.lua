@@ -1,4 +1,4 @@
--- local gears = require("gears")
+local gears = require("gears")
 -- local theme_assets = require("beautiful.theme_assets")
 -- local xresources = require("beautiful.xresources")
 -- local rnotification = require("ruled.notification")
@@ -48,6 +48,25 @@ theme.titlebar_bg_focus = theme.background_alt
 theme.titlebar_fg_focus = theme.foreground
 theme.titlebar_bg_urgent = theme.background_alt
 theme.titlebar_fg_urgent = theme.foreground
+
+-- hotkeys --
+
+theme.hotkeys_bg = theme.background
+theme.hotkeys_fg = theme.foreground
+theme.hotkeys_label_fg = theme.foreground
+theme.hotkeys_label_bg = theme.background_alt
+theme.hotkeys_font= "JetBrainsMono NF 10"
+theme.hotkeys_description_font = "JetBrainsMono NF 12"
+theme.hotkeys_modifiers_fg = theme.accent
+theme.hotkeys_modifiers_bg = theme.background_alt
+theme.hotkeys_group_margin = 24
+theme.hotkeys_shape = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, 10)
+end
+theme.hotkeys_border_width = 2
+theme.hotkeys_border_color = theme.accent
+
+
 
 -- borders --
 
