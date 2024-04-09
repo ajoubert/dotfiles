@@ -4,7 +4,8 @@
 # terminal
 if ! pgrep -x "obs" > /dev/null
 then
-    nohup obs >/dev/null 2>&1 &
+    nohup flatpak run com.obsproject.Studio >/dev/null 2>&1 &
+    #nohup obs >/dev/null 2>&1 &
     # Wait a moment for obs to load
     sleep 3
 fi
