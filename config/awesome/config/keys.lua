@@ -6,7 +6,7 @@ local naughty = require("naughty")
 require("scripts")
 
 local mod = "Mod4"
--- local alt = "Mod1"
+local alt = "Mod1"
 local ctrl = "Control"
 local shift = "Shift"
 
@@ -101,6 +101,12 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod }, "p", function() awesome.emit_signal("profile::control") end, {description = "profile control", group = "tag"}),
 	awful.key({ mod, shift }, "b", function() awesome.emit_signal("hide::bar") end, {description = "hide bar", group = "tag"}),
 	awful.key({ mod }, "t", function() awesome.emit_signal("show::tray") end, {description = "show tray", group = "tag"}),
+
+  -- Non-awesomewm shortcuts, just to show in help screen
+
+  awful.key({ mod }, "`", function()
+    -- [[ configured in settings of keepassxc itself ]]
+  end, {description = "KeepassXC autotype", group = "launch"}),
 
 	-- switching a focus client -- 
 
