@@ -11,6 +11,7 @@ apple-bcm-firmware
 apple-t2-audio-config
 arandr
 arc-gtk-theme
+arch-install-scripts
 aria2
 autorandr
 awesome-git
@@ -34,6 +35,7 @@ dialog
 discord
 docker
 docker-compose
+dosfstools
 evolution
 evolution-decsync
 evolution-on
@@ -44,6 +46,7 @@ ffmpegthumbnailer
 firefox-developer-edition
 flameshot
 flashfocus-git
+flatpak
 git
 gnome-keyring
 gnome-themes-extra
@@ -51,6 +54,7 @@ gnucash
 gnu-free-fonts
 godot
 gpick
+gptfdisk
 gruvbox-dark-gtk
 gruvbox-dark-icons-gtk
 gruvbox-plus-icon-theme-git
@@ -98,7 +102,6 @@ nvidia-settings
 nvm
 obs-cmd
 obsidian
-obs-studio-git
 ollama
 openssh
 otf-aurulent-nerd
@@ -155,7 +158,7 @@ t2fand
 thunar
 tig
 tmux
-tor-browser
+tor-browser-bin
 touchbard
 ttf-3270-nerd
 ttf-agave-nerd
@@ -266,5 +269,7 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+yarn
 yay
+yt-dlp
 zbar
