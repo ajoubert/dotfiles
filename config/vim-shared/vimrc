@@ -13,10 +13,12 @@ endif
 
 
 if has('nvim')
-  source $VIM_CONFIG/config/neovim/plugged.vim
-  source $VIM_CONFIG/config/neovim/shortcuts.vim
+  "source $VIM_CONFIG/config/neovim/plugged.vim
+  "source $VIM_CONFIG/config/neovim/shortcuts.vim
+  luafile $VIM_CONFIG/config/neovim/lua/nvim-lazy.lua
+  luafile $VIM_CONFIG/config/neovim/lua/nvim-shortcuts.lua
   luafile $VIM_CONFIG/config/neovim/lua/nvim-lsp.lua
-  luafile $VIM_CONFIG/config/neovim/lua/nvim-treesitter.lua
+  "luafile $VIM_CONFIG/config/neovim/lua/nvim-treesitter.lua
 else
   source $VIM_CONFIG/config/vim/plugged.vim
   source $VIM_CONFIG/config/vim/shortcuts.vim

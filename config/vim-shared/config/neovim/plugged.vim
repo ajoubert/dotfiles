@@ -180,7 +180,8 @@ cabbrev %s OverCommandLine<cr>%s
 cabbrev '<,'>s OverCommandLine<cr>'<,'>s
 
 " For better leaderkey integration
-Plug 'liuchengxu/vim-which-key'
+"Plug 'liuchengxu/vim-which-key'
+Plug 'folke/which-key.nvim'
 
 " Telescope and its dependencies
 Plug 'nvim-lua/plenary.nvim'

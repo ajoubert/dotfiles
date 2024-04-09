@@ -40,12 +40,12 @@ vnoremap <leader>pg "ay:call agriculture#trim_and_escape_register_a()<CR>:GFiles
 nnoremap <leader>po :Telescope find_files<CR>
 
 " Automatically show suggestions after a delay
-nnoremap <silent> <leader> :WhichKey '\'<CR>
-vnoremap <silent> <leader> :WhichKeyVisual '\'<CR>
-nnoremap <silent> <Space> :WhichKey '<Space>'<CR>
-vnoremap <silent> <Space> :WhichKeyVisual '<Space>'<CR>
-nnoremap <silent> g :WhichKey 'g'<CR>
-vnoremap <silent> g :WhichKeyVisual 'g'<CR>
+" nnoremap <silent> <leader> :WhichKey '\'<CR>
+" vnoremap <silent> <leader> :WhichKeyVisual '\'<CR>
+" nnoremap <silent> <Space> :WhichKey '<Space>'<CR>
+" vnoremap <silent> <Space> :WhichKeyVisual '<Space>'<CR>
+" nnoremap <silent> g :WhichKey 'g'<CR>
+" vnoremap <silent> g :WhichKeyVisual 'g'<CR>
 
 
 " Git - fugitive
@@ -176,6 +176,6 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-call which_key#register('\', "g:leader_map")
-call which_key#register(' ', "g:space_map")
-call which_key#register('g', "g:g_map")
+" call which_key#register('\', "g:leader_map")
+" call which_key#register(' ', "g:space_map")
+" call which_key#register('g', "g:g_map")
