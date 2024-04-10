@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Check if the ansible identities script is executable
-if [ ! -x "ssh-add-ansible-identities.sh" ]; then
-    echo "ssh-add-ansible-identities.sh is not available"
+# Check if ssh-add-ansible-identities.sh binary is available on current
+# shell
+if ! which ssh-add-ansible-identities.sh > /dev/null &>/dev/null; then
+    echo "ssh-add-ansible-identities.sh is not available on current shell"
     exit 1
 fi
 
