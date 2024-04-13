@@ -21,6 +21,10 @@ add_entry() {
 
 loop_entries() {
   local entries=$(echo "$KP_PASSWORD" | keepassxc-cli ls --quiet -R "$KEEPASSXC_DATABASE_PATH" | grep -E "id_ansible_")
+  if [ -z "$entries" ]; then
+    echo "No entries found, is password correct?"
+    exit 1
+  fi
   for entry in $entries; do
     add_entry "$entry"
   done
