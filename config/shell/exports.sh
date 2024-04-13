@@ -58,7 +58,8 @@ then
   export VIM_CONFIG="$HOME/.config/vim-shared/"
 fi
 
-export XAUTHORITY="$HOME/.local/share/xorg/Xauthority"
+# Only use if not using a display manager (startx)
+# export XAUTHORITY="$HOME/.local/share/xorg/Xauthority"
 
 # Pass
 export PASSWORD_STORE_DIR="$HOME/.local/share/pass/"

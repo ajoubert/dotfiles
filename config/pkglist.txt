@@ -131,6 +131,8 @@ python-pynvim
 python-setuptools
 qbittorrent
 qflipper-git
+qt5-graphicaleffects
+qt5-quickcontrols
 qt6-tools
 rcm
 redshift
@@ -142,6 +144,7 @@ rsync
 rust
 scrcpy
 scrot
+sddm
 seahorse
 shotgun
 sidequest-bin

@@ -1,5 +1,6 @@
 export LIBVIRT_DEFAULT_URI="qemu:///system"
-export XAUTHORITY="$HOME/.local/share/xorg/Xauthority"
+# Only use if not using a display manager
+# export XAUTHORITY="$HOME/.local/share/xorg/Xauthority"
 if [ "$TERM" != "screen-256color" ]; then
     setterm -blength 0
 fi

@@ -8,7 +8,8 @@ export EXTERNAL_MONITOR="DP-2.1"
 export INTERNAL_MONITOR="DP-4"
 # Inform udev of the display and xauthority file location
 export DISPLAY=":-0"
-export XAUTHORITY="/home/sloth/.local/share/xorg/Xauthority"
+# Only use if not using a display manager
+# export XAUTHORITY="/home/sloth/.local/share/xorg/Xauthority"
 
 # Check if the external monitor is connected
 if xrandr | grep "$EXTERNAL_MONITOR connected"; then
