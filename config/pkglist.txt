@@ -24,6 +24,7 @@ bc
 bind
 blueman
 bluez-utils
+bridge-utils
 brightnessctl
 ca-certificates
 ca-certificates-mozilla
@@ -33,9 +34,11 @@ cowfortune
 dhcpcd
 dialog
 discord
+dnsmasq
 docker
 docker-compose
 dosfstools
+ebtables
 evolution
 evolution-decsync
 evolution-on
@@ -70,8 +73,11 @@ komorebi-bin
 libgepub
 libopenraw
 libreoffice-still
+libvirt
 linux
 linux-firmware
+linux-neptune-65
+linux-neptune-65-headers
 linux-t2
 linux-t2-headers
 lsof
@@ -81,7 +87,7 @@ lxappearance-gtk3
 lynx
 man-db
 miniconda3
-motrix
+motrix-bin
 mpc
 mpd
 mpv
@@ -93,7 +99,6 @@ neovim
 net-tools
 networkmanager
 nix
-nodejs
 npm
 ntfs-3g
 nushell
@@ -130,6 +135,7 @@ python-pip
 python-pynvim
 python-setuptools
 qbittorrent
+qemu
 qflipper-git
 qt5-graphicaleffects
 qt5-quickcontrols
@@ -220,6 +226,8 @@ upower
 usbip
 usbutils
 vdhcoapp-bin
+virt-manager
+virt-manager
 wget
 wireguard-tools
 wpa_supplicant
