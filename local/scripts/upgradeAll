@@ -25,7 +25,7 @@ fi
 # VIM plugins updates
 if [ -x "$(command -v /usr/bin/nvim)" ];
 then
-  /usr/bin/nvim +PlugUpgrade +PlugUpdate +qa
+  /usr/bin/nvim --headless "+Lazy! sync" "+Lazy! update" +qa
 fi
  
 # TMUX plugins updates
