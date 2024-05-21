@@ -28,6 +28,8 @@ let g:leader_map['b'] = {
       \ '9' :  'buffer-9'        ,
       \ 'd' :  'delete-buffer'   ,
       \ 'k' :  'kill-buffer'     ,
+      \ 'n' :  'next-buffer'     ,
+      \ 'p' :  'previous-buffer' ,
       \ }
 noremap <leader>b1 :b1<CR>
 noremap <leader>b2 :b2<CR>
@@ -40,6 +42,8 @@ noremap <leader>b8 :b8<CR>
 noremap <leader>b9 :b9<CR>
 noremap <leader>bd :bd<CR>
 noremap <leader>bk :bw<CR>
+noremap <leader>bn :bn<CR>
+noremap <leader>bp :bp<CR>
 
 " === Allow to save with sudo even after having opened the file ===
 cnoremap w!! w !sudo tee > /dev/null %
@@ -51,7 +55,7 @@ let g:leader_map['w'] = {
       \ 'd' :  'delete-window'                    ,
       \ '-' :  'split-window-below'               ,
       \ '|' :  'split-window-right'               ,
-      \ 'o' :  ['only', 'close-all-windows-except-current'] ,
+      \ 'o' :  'close-all-windows-except-current' ,
       \ 'h' :  'window-left'                      ,
       \ 'j' :  'window-below'                     ,
       \ 'l' :  'window-right'                     ,
@@ -86,7 +90,9 @@ let g:leader_map[' '] = {
       \ '8': 'tab-8'    ,
       \ '9': 'tab-9'    ,
       \ 'c': 'close-current-tab',
-      \ 'n': 'new-tab',
+      \ 'o': 'new-tab',
+      \ 'p': 'previous-tab',
+      \ 'n': 'next-tab',
       \ }
 map <leader><space>1 :tabn 1<CR>
 map <leader><space>2 :tabn 2<CR>
@@ -98,7 +104,11 @@ map <leader><space>7 :tabn 7<CR>
 map <leader><space>8 :tabn 8<CR>
 map <leader><space>9 :tabn 9<CR>
 map <leader><space>c :tabclose<CR>
-map <leader><space>n :tabnew<CR>
+map <leader><space>p :tabprevious<CR>
+map <leader><space>n :tabnext<CR>
+" Open current buffer in new tab
+map <leader><space>o :tabedit %<CR>
 
 " Stop highlighting search
-nnoremap <CR> :noh<CR><CR>
+" nnoremap <CR> :noh<CR><CR>
+nmap <BS> :noh<CR>

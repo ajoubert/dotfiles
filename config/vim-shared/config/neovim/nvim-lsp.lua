@@ -86,6 +86,13 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
+lspkind.init({
+  symbol_map = {
+    Copilot = "",
+  },
+})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 
@@ -97,6 +104,7 @@ cmp.setup({
   },
   sources = {
     {name = 'path'},
+    {name = "copilot", keyword_length = 0},
     {name = 'nvim_lsp', keyword_length = 1},
     {name = 'buffer', keyword_length = 3},
     {name = 'luasnip', keyword_length = 2},
@@ -106,22 +114,14 @@ cmp.setup({
   },
   formatting = {
     fields = {'menu', 'abbr', 'kind'},
-    format = function(entry, item)
-      local menu_icon = {
-        nvim_lsp = 'λ',
-        luasnip = '⋗',
-        buffer = 'Ω',
-        path = '🖫',
-      }
-
-      item.menu = menu_icon[entry.source.name]
-      return item
-    end,
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      show_labelDetails = true,
+    }),
   },
   mapping = {
-    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
-    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
-
     ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
     ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
 
@@ -169,5 +169,3 @@ cmp.setup({
     end, {'i', 's'}),
   },
 })
-
-require("chatgpt").setup()
