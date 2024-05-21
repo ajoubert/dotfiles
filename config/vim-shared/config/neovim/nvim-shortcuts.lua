@@ -46,7 +46,7 @@ local maps_nvim = {
   ["<leader>p"] = { name = "+project" },
   ["<leader>pf"] = { "<cmd>Telescope live_grep<cr>", "Search in project" },
   ["<leader>pF"] = { "<cmd>Neotree reveal_force_cwd<cr>", "Reveal in Neotree" },
-  ["<leader>po"] = { "<cmd>Telescope find_files<cr>", "Open file" },
+  ["<leader>po"] = { "<cmd>Telescope find_files find_command=rg,--ignore,--follow,--files prompt_prefix=🔍<cr>", "Find File" },
   ["<leader>pg"] = { "<cmd>Telescope git_files<cr>", "Git files" },
   ["<leader>pt"] = { "<cmd>Neotree toggle<cr>", "Toggle tree"},
 
