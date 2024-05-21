@@ -6,7 +6,8 @@ local gears = require("gears")
 local theme = {}
 
 theme.font = "JetBrainsMono NF 11"
-theme.useless_gap = 5
+-- theme.useless_gap = 5
+theme.useless_gap = 0
 
 theme.wall = ""
 
@@ -70,7 +71,8 @@ theme.hotkeys_border_color = theme.accent
 
 -- borders --
 
-theme.border_width = 2
+-- theme.border_width = 2
+theme.border_width = 0
 theme.border_color_normal = theme.background_urgent
 theme.border_color_active = theme.accent
 
