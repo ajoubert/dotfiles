@@ -1,15 +1,16 @@
 local awful = require("awful")
 local wibox = require("wibox")
-local gears = require("gears")
 local helpers = require("helpers")
 local beautiful = require("beautiful")
 local pampath = require("gears").filesystem.get_configuration_dir() .. "liblua_pam.so"
+
+local authenticate
 
 screen.connect_signal("request::desktop_decoration", function(s)
 
 -- Authentication
 
-awful.spawn.easy_async_with_shell("stat "..pampath.." >/dev/null 2>&1", function (_, _, _, exitcode)
+awful.spawn.easy_async_with_shell("stat "..pampath.." >/dev/null 2>&1", function (_, _, _)
 		local pam = require("liblua_pam")
 		authenticate = function(password)
 			return pam.auth_current_user(password)
@@ -197,6 +198,10 @@ local function grabpassword()
 			end
 		end,
 		exe_callback = function(input)
+      if not authenticate then
+        reset()
+        main.visible = false
+      end
 			if authenticate == nil then
 				reset()
 				main.visible = false
@@ -218,7 +223,7 @@ end
 
 -- Lock
 
-function lockscreen()
+function Lockscreen()
 	main.visible = true
 	grabpassword()
 end

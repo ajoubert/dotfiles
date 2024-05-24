@@ -1,11 +1,9 @@
-local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local vars = require("ui.vars")
 require("scripts.init")
-local rubato = require("modules.rubato")
 
 screen.connect_signal("request::desktop_decoration", function(s)
 
@@ -67,7 +65,7 @@ local tasklist = awful.widget.tasklist {
 		id = "background_role",
 		widget = wibox.container.background,
 		forced_height = 24,
-		create_callback = function(self, c, index, objects)
+		create_callback = function(self, c)
 			local tooltip = awful.tooltip({
 				objects = { self },
 				timer_function = function()
@@ -95,28 +93,6 @@ mykeyboard.widget.text = string.upper(mykeyboard.widget.text)
 mykeyboard.widget:connect_signal("widget::redraw_needed",
 	function(wid) wid.text = string.upper(wid.text)
 end)
-
-local keyboard = wibox.widget {
-	widget = wibox.container.background,
-	bg = beautiful.background_alt,
-	{
-		widget = wibox.container.margin,
-		margins = {top = 6, bottom = 6},
-		{
-			layout = wibox.layout.fixed.vertical,
-			spacing = 8,
-			{
-				widget = wibox.container.place,
-				halign = "center",
-				{
-					widget = wibox.container.margin,
-					margins = { left = -5, right = -5 },
-					mykeyboard,
-  				}
-			}
-		}
-	}
-}
 
 -- tray --
 
@@ -230,18 +206,11 @@ local taglist = awful.widget.taglist {
 		forced_width  = 20,
 		widget = wibox.container.background,
 		create_callback = function (self, tag)
-			self.animate = rubato.timed {
-				duration = 0.3,
-				easing = rubato.easing.linear,
-				subscribed = function (h)
-					self:get_children_by_id("background_role")[1].forced_height = h
-				end
-			}
 			self.update = function ()
 				if tag.selected then
-					self.animate.target = 28
+          self:get_children_by_id("background_role")[1].forced_height = 28
 				elseif #tag:clients() > 0 then
-					self.animate.target = 18
+          self:get_children_by_id("background_role")[1].forced_height = 18
 				end
 			end
 			self.update()
@@ -366,7 +335,7 @@ dnd_button:buttons {
 }
 -- bar --
 
-bar = awful.wibar {
+Bar = awful.wibar {
 	screen = s,
 	position = "left",
 	height = s.geometry.height + beautiful.border_width * 2,
@@ -434,6 +403,6 @@ bar = awful.wibar {
 end)
 
 awesome.connect_signal("hide::bar", function()
-	bar.visible = not bar.visible
+	Bar.visible = not Bar.visible
 end)
 

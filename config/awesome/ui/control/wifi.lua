@@ -100,7 +100,7 @@ local wifi_status = nil
 local function refresh()
 	wifi_widget_container:reset()
 	active_widget_container:reset()
-	_G.update_wifi_status()
+	_G.Update_wifi_status()
 end
 
 local function send_notification(stdout, stderr, ssid)
@@ -211,7 +211,7 @@ local function get_wifi()
 	})
 end
 
-function update_wifi_status()
+function Update_wifi_status()
 	awful.spawn.easy_async_with_shell("nmcli g | sed 1d | awk '{print $4}'", function(stdout)
 		if stdout:match("enabled") then
 			wifi_status = true
@@ -225,7 +225,7 @@ function update_wifi_status()
 		end
 	end)
 end
-update_wifi_status()
+Update_wifi_status()
 
 local function wifi_toggle()
 	if wifi_status then

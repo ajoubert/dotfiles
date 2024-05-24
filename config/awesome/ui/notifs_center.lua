@@ -24,7 +24,7 @@ local notifs_clear = wibox.widget {
 }
 
 notifs_clear:buttons(gears.table.join(awful.button({}, 1, function()
-	_G.notif_center_reset_notifs_container()
+	_G.Notif_center_reset_notifs_container()
 	notifs_count = 0
 	awesome.emit_signal("notifs::count", notifs_count)
 end)))
@@ -63,13 +63,13 @@ local notifs_container = wibox.widget {
 
 local remove_notifs_empty = true
 
-notif_center_reset_notifs_container = function()
+Notif_center_reset_notifs_container = function()
 	notifs_container:reset(notifs_container)
 	notifs_container:insert(1, notifs_empty)
 	remove_notifs_empty = true
 end
 
-notif_center_remove_notif = function(box)
+Notif_center_remove_notif = function(box)
 	notifs_container:remove_widgets(box)
 
 	if #notifs_container.children == 0 then
@@ -79,92 +79,92 @@ notif_center_remove_notif = function(box)
 	end
 end
 
-local create_notif = function(icon, n, width)
-local time = os.date "%H:%M:%S"
+local create_notif = function(icon, n)
+  local time = os.date "%H:%M:%S"
 
-local icon_widget = wibox.widget {
-	widget = wibox.container.constraint,
-	{
-		widget = wibox.container.margin,
-		margins = 20,
-		{
-			widget = wibox.widget.imagebox,
-			image = icon,
-			clip_shape = gears.shape.circle,
-			halign = "center",
-			valign = "center",
-		},
-	},
-}
+  local icon_widget = wibox.widget {
+    widget = wibox.container.constraint,
+    {
+      widget = wibox.container.margin,
+      margins = 20,
+      {
+        widget = wibox.widget.imagebox,
+        image = icon,
+        clip_shape = gears.shape.circle,
+        halign = "center",
+        valign = "center",
+      },
+    },
+  }
 
-local title_widget = wibox.widget {
-	widget = wibox.container.scroll.horizontal,
-	step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
-	speed = 50,
-	forced_width = 200,
-	{
-		widget = wibox.widget.textbox,
-		text = n.title,
-		align = "left",
-		forced_width = 200,
-	},
-}
+  local title_widget = wibox.widget {
+    widget = wibox.container.scroll.horizontal,
+    step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
+    speed = 50,
+    forced_width = 200,
+    {
+      widget = wibox.widget.textbox,
+      text = n.title,
+      align = "left",
+      forced_width = 200,
+    },
+  }
 
-local time_widget = wibox.widget {
-	widget = wibox.container.margin,
-	margins = { right = 4 },
-	{
-		widget = wibox.widget.textbox,
-		text = time,
-		align = "right",
-		valign = "bottom",
-	},
-}
+  local time_widget = wibox.widget {
+    widget = wibox.container.margin,
+    margins = { right = 4 },
+    {
+      widget = wibox.widget.textbox,
+      text = time,
+      align = "right",
+      valign = "bottom",
+    },
+  }
 
-local text_notif = wibox.widget {
-	markup = n.message,
-	align = "left",
-	forced_width = 165,
-	widget = wibox.widget.textbox,
-}
-
-
-local box = wibox.widget {
-	widget = wibox.container.background,
-	forced_height = 120,
-	bg = beautiful.background_alt,
-	{
-		layout = wibox.layout.align.horizontal,
-		icon_widget,
-		{
-			widget = wibox.container.margin,
-			margins = 10,
-			{
-				layout = wibox.layout.align.vertical,
-				{
-					layout = wibox.layout.fixed.vertical,
-					spacing = 10,
-					{
-						layout = wibox.layout.align.horizontal,
-						title_widget,
-						nil,
-						time_widget,
-					},
-					text_notif,
-				}
-			}
-		}
-	}
-}
+  local text_notif = wibox.widget {
+    markup = n.message,
+    align = "left",
+    forced_width = 165,
+    widget = wibox.widget.textbox,
+  }
 
 
-box:buttons(gears.table.join(awful.button({}, 1, function()
-	_G.notif_center_remove_notif(box)
-	notifs_count = notifs_count - 1
-	awesome.emit_signal("notifs::count", notifs_count)
-end)))
+  local box = wibox.widget {
+    widget = wibox.container.background,
+    forced_height = 120,
+    bg = beautiful.background_alt,
+    {
+      layout = wibox.layout.align.horizontal,
+      icon_widget,
+      {
+        widget = wibox.container.margin,
+        margins = 10,
+        {
+          layout = wibox.layout.align.vertical,
+          {
+            layout = wibox.layout.fixed.vertical,
+            spacing = 10,
+            {
+              layout = wibox.layout.align.horizontal,
+              title_widget,
+              nil,
+              time_widget,
+            },
+            text_notif,
+          }
+        }
+      }
+    }
+  }
 
-return box
+
+  box:buttons(gears.table.join(awful.button({}, 1, function()
+    _G.Notif_center_remove_notif(box)
+    notifs_count = notifs_count - 1
+    awesome.emit_signal("notifs::count", notifs_count)
+  end)))
+
+  return box
 end
 
 notifs_container:buttons(gears.table.join(
@@ -198,7 +198,7 @@ naughty.connect_signal("request::display", function(n)
 		appicon = beautiful.notification_icon
 	end
 
-	notifs_container:insert(1, create_notif(appicon, n, width))
+	notifs_container:insert(1, create_notif(appicon, n))
 	notifs_count = notifs_count + 1
 	awesome.emit_signal("notifs::count", notifs_count)
 end)

@@ -3,10 +3,9 @@ local awful = require("awful")
 local helpers = require("helpers")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local naughty = require("naughty")
-require("scripts")
 
 local mod = "Mod4"
-local alt = "Mod1"
+-- local alt = "Mod1"
 local ctrl = "Control"
 local shift = "Shift"
 
@@ -61,17 +60,17 @@ awful.keyboard.append_global_keybindings({
 
 	awful.key({}, "XF86AudioRaiseVolume", function()
 		awful.spawn.with_shell("amixer sset Master 2%+")
-		updateVolumeSignals()
+		UpdateVolumeSignals()
 		awesome.emit_signal("summon::osd")
 	end),
 	awful.key({}, "XF86AudioLowerVolume", function()
 		awful.spawn.with_shell("amixer sset Master 2%-")
-		updateVolumeSignals()
+		UpdateVolumeSignals()
 		awesome.emit_signal("summon::osd")
 	end),
 	awful.key({}, "XF86AudioMute", function()
 		awful.spawn.with_shell("amixer sset Master toggle")
-		updateVolumeSignals()
+		UpdateVolumeSignals()
 		awesome.emit_signal("summon::osd")
 	end),
 
@@ -79,12 +78,12 @@ awful.keyboard.append_global_keybindings({
 
 	awful.key({}, "XF86MonBrightnessUp", function()
 		awful.spawn.with_shell("brightnessctl s 5%+")
-		update_value_of_bright()
+		Update_value_of_bright()
 		awesome.emit_signal("summon::osd")
   end),
 	awful.key({}, "XF86MonBrightnessDown", function()
 		awful.spawn.with_shell("brightnessctl s 5%-")
-		update_value_of_bright()
+		Update_value_of_bright()
 		awesome.emit_signal("summon::osd")
 	end),
 

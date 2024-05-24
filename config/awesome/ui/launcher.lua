@@ -4,6 +4,12 @@ local Gio = require("lgi").Gio
 local beautiful = require("beautiful")
 local dir = "~/.disk/Books/'10 класс'/"
 
+local index_entry, index_start = 1, 1
+local filtered = {}
+local regfiltered = {}
+local unfiltered = {}
+
+
 local prompt = wibox.widget.textbox()
 
 local entries_container = wibox.widget {
