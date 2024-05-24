@@ -187,4 +187,14 @@ require("gruvbox").setup({
 
 require("chatgpt").setup()
 
+local lspconfig = require('lspconfig')
+
+lspconfig.gdscript.setup{
+  filetypes = { "gd", "gdscript", "gdscript3" },
+  flags = {
+    debounce_text_changes = 150,
+  },
+  root_dir = lspconfig.util.root_pattern("project.godot", ".git"),
+}
+
 vim.cmd("colorscheme gruvbox")
