@@ -1,0 +1,23 @@
+#!/bin/sh
+
+function connect {
+  TARGET_URL=$1
+  echo "Connecting to $TARGET_URL..."
+  sshfs $TARGET_URL:/media/sloth/storage1/a/ /mnt/remotes/ams/ -o allow_other
+}
+
+if ! ping -c 1 ams-direct &> /dev/null; then
+  connect "ams-direct" 
+  exit 0;
+fi
+
+if ! ping -c 1 ams &> /dev/null; then
+  echo "ams not reachable, attempting to forward"
+  ansible-playbook $ANSIBLE_DATA/inventory/playbooks/ovh/serv-0/activate_forwarding.yml;
+  if [ $? -ne 0 ]; then
+    echo "Ansible playbook failed to fix the issue. Exiting."
+    exit 1
+  fi
+fi
+
+connect "ams"

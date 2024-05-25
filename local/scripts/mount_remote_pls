@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if ! ping -c 1 pls &> /dev/null; then
+  echo "'pls' server is not reachable. Running Ansible playbook..."
+  ansible-playbook $ANSIBLE_DATA/inventory/playbooks/ovh/serv-0/activate_forwarding.yml;
+  if [ $? -ne 0 ]; then
+    echo "Ansible playbook failed to fix the issue. Exiting."
+    exit 1
+  fi
+fi
+
+sshfs pls:/mnt/a /mnt/remotes/pls/ -o allow_other

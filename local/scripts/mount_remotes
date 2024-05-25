@@ -3,5 +3,5 @@
 srcfolder="$(dirname "$0")";
 
 $srcfolder/mount_remote_ams.sh
+$srcfolder/mount_remote_pls.sh
 $srcfolder/mount_remote_ctb.sh
-
