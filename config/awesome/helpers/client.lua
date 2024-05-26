@@ -111,4 +111,24 @@ _client.resize_padding = function(amt)
 	awful.layout.arrange(awful.screen.focused())
 end
 
+-- Client rules for focus border
+
+client.connect_signal(
+  "focus",
+  function(c)
+    if #awful.screen.focused().clients > 1 then
+      c.border_width = beautiful.border_width
+    else
+      c.border_width = 0
+    end
+  end
+)
+
+client.connect_signal(
+  "unfocus",
+  function(c)
+    c.border_width = 0
+  end
+)
+
 return _client

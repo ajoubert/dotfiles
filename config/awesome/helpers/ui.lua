@@ -1,10 +1,9 @@
-local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 
 local _ui = {}
 
-function _ui.rounded_rect(radius, height, width)
+function _ui.rounded_rect(radius, _, _)
 	return function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, radius)
 	end
