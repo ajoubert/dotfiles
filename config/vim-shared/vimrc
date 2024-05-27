@@ -13,6 +13,7 @@ endif
 
 
 if has('nvim')
+  luafile $VIM_CONFIG/config/neovim/nvim-config.lua
   luafile $VIM_CONFIG/config/neovim/nvim-lazy.lua
   luafile $VIM_CONFIG/config/neovim/nvim-shortcuts.lua
   luafile $VIM_CONFIG/config/neovim/nvim-lsp.lua
