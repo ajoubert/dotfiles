@@ -83,16 +83,18 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # java stuff
 ## Older version might be used for compatibility of some adb tools...
-[ -d "/opt/android-sdk/tools/bin" ] && export PATH="$PATH:/opt/android-sdk/tools/bin"
-[ -d "/opt/android-sdk/cmdline-tools/latest/bin" ] && export PATH="$PATH:/opt/android-sdk/cmdline-tools/latest/bin"
 export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 export SDKMANAGER_OPTS=""
 export ANDROID_SDK_HOME="$HOME/.local/share/android"
 export ANDROID_SDK_ROOT="/opt/android-sdk"
-export ANDROID_SDK="/opt/android-sdk"
-export ANDROID_HOME="/opt/android-sdk"
+export ANDROID_SDK="$ANDROID_SDK_ROOT"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+[ -d "$ANDROID_SDK/tools/bin" ] && export PATH="$PATH:$ANDROID_SDK/tools/bin"
+[ -d "$ANDROID_SDK/cmdline-tools/latest/bin" ] && export PATH="$PATH:$ANDROID_SDK/cmdline-tools/latest/bin"
+[ -d "$ANDROID_SDK/platform-tools" ] && export PATH="$PATH:$ANDROID_SDK/platform-tools"
 
 ## Prevents ~/.nv/ComputeCache by disabling JIT caching
 export CUDA_CACHE_DISABLE=1
