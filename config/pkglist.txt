@@ -1,9 +1,11 @@
 acpi
-adwaita-qt5
-adwaita-qt6
+adwaita-qt5-git
+adwaita-qt6-git
 alacritty
 alltray
 alsa-utils
+android-sdk-build-tools
+android-sdk-cmdline-tools-latest
 android-sdk-platform-tools
 ansible
 apache
@@ -76,8 +78,6 @@ libreoffice-still
 libvirt
 linux
 linux-firmware
-linux-neptune-65
-linux-neptune-65-headers
 linux-t2
 linux-t2-headers
 lsof
@@ -123,7 +123,7 @@ p7zip
 papirus-icon-theme
 pavucontrol
 php
-picom-allusive
+picom
 playerctl
 polkit-gnome
 poppler-glib
@@ -168,7 +168,6 @@ thunar
 tig
 tmux
 tor-browser-bin
-touchbard
 ttf-3270-nerd
 ttf-agave-nerd
 ttf-anonymouspro-nerd
