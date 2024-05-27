@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#$HOME/.config/awesome/other/picom/launch.sh --opacity &
+$HOME/.config/awesome/other/picom/launch.sh --opacity &
 $HOME/.local/scripts/backlight -b 0.9 &
 killall unclutter; unclutter -idle 2 &
 killall komorebi; #komorebi &
