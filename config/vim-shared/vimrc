@@ -16,7 +16,6 @@ if has('nvim')
   luafile $VIM_CONFIG/config/neovim/nvim-config.lua
   luafile $VIM_CONFIG/config/neovim/nvim-lazy.lua
   luafile $VIM_CONFIG/config/neovim/nvim-shortcuts.lua
-  luafile $VIM_CONFIG/config/neovim/nvim-lsp.lua
 else
   source $VIM_CONFIG/config/vim/plugged.vim
   source $VIM_CONFIG/config/vim/shortcuts.vim

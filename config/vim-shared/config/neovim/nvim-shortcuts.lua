@@ -74,5 +74,4 @@ for k, v in pairs(leader_map_vim) do
   maps_nvim["<leader>"..k] = v
 end
 
--- print(vim.inspect(maps_nvim))
 wk.register(maps_nvim)
