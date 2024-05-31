@@ -1,0 +1,7 @@
+# export SKIP_HOSTNAME=true
+export SHELL_INIT_CMD=my-command
+export OPENAI_API_KEY=my-key
+export ERLANG_COOKIE="cookie"
+export DEFAULT_GPG_KEY="gpg-key"
+export KEEPASSXC_DATABASE_PATH="path"
+export RPC_SECRET="secret"
