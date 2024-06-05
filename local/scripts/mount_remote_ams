@@ -6,7 +6,7 @@ function connect {
   sshfs $TARGET_URL:/media/sloth/storage1/a/ /mnt/remotes/ams/ -o allow_other
 }
 
-if ! ping -c 1 ams-direct &> /dev/null; then
+if ping -c 1 ams-direct &> /dev/null; then
   connect "ams-direct" 
   exit 0;
 fi
