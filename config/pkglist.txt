@@ -71,6 +71,7 @@ inxi
 java-runtime-common
 jdk-openjdk
 keepassxc
+kid3-qt
 komorebi-bin
 libgepub
 libopenraw
