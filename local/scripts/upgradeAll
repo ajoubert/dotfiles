@@ -2,6 +2,11 @@
 
 # Regular updates
 #sudo pacman -Syu;
+
+# Asks for password for ansible-related scripts
+echo -n "Enter KeePassXC database password: "
+read -s KP_PASSWORD
+echo
  
 # AUR updates
 yay -Syu;
@@ -38,7 +43,7 @@ fi
 
 
 ## Remote servers update
-upgradeOverAnsible.sh
+upgradeOverAnsible.sh $KP_PASSWORD
 
 # SDK manager update
 if [ -x "$(command -v sdkmanager)" ];

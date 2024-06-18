@@ -5,9 +5,14 @@ if [ -z "$KEEPASSXC_DATABASE_PATH" ]; then
     exit 1
 fi
 
-echo -n "Enter KeePassXC database password: "
-read -s KP_PASSWORD
-echo
+# Checks if password of database is passed as $1
+if [ -z "$1" ]; then
+  echo -n "Enter KeePassXC database password: "
+  read -s KP_PASSWORD
+  echo
+else
+  KP_PASSWORD="$1"
+fi
 
 add_entry() {
     local entry_name="$1"
