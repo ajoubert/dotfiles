@@ -1,0 +1,17 @@
+Section "Device"
+    Identifier "AMD Graphics"
+    Driver "amdgpu"
+    Option "TearFree" "true"
+EndSection
+
+Section "Monitor"
+    Identifier "eDP-1"
+    # Monitor-specific configuration goes here
+EndSection
+
+Section "Screen"
+    Identifier "Screen0"
+    Device "AMD Graphics"
+    Monitor "eDP-1"
+EndSection
+

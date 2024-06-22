@@ -1,0 +1,9 @@
+Section "Device"
+    Identifier "Nvidia Card"
+    Driver "nvidia"
+    Option "AccelMethod" "sna"
+    Option "DRI" "true"
+    Option "TearFree" "true"
+    Option "TripleBuffer" "true"
+    # You can add more options here if needed
+EndSection
