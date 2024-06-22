@@ -92,7 +92,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod, ctrl }, "b", function() awesome.emit_signal("summon::books") end, {description = "books", group = "tag"}),
 	awful.key({ mod, ctrl }, "c", function() awesome.emit_signal("summon::clipboard") end, {description = "clipboard", group = "tag"}),
 	awful.key({ mod }, " ", function() awesome.emit_signal("summon::launcher") end, {description = "launcher", group = "launch"}),
-	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end, {description = "powermenu", group = "tag"}),
+	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end, {description = "powermenu", group = "launch"}),
 	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end, {description = "dnd", group = "tag"}),
 	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end, {description = "wifi popup", group = "tag"}),
 	awful.key({ mod }, "n", function() awesome.emit_signal("notif_center::open") end, {description = "notification center", group = "tag"}),
