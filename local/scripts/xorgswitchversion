@@ -1,0 +1,24 @@
+#!/bin/sh
+
+## Switches symlink
+
+# Prints usage information
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <version>"
+    exit 1
+fi
+
+configpath=/etc/X11/xorg.conf.versioned/v${1}
+
+# Checks if the version exists
+
+if [ ! -d $configpath ]; then
+    echo "Version $1 does not exist"
+    echo "Available versions:"
+    ls -1 /etc/X11/xorg.conf.versioned
+    exit 1
+fi
+
+sudo rm /etc/X11/xorg.conf.d;
+sudo ln -s $configpath /etc/X11/xorg.conf.d;

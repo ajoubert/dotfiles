@@ -1,0 +1,3 @@
+# The vendor ID can be found in the output of lsusb, it's the first part of
+# 'ID xxxx:xxxx'
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="VENDOR_ID", TEST=="power/wakeup", ATTR{power/wakeup}="enabled"

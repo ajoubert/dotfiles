@@ -1,0 +1,1 @@
+ACTION=="change", SUBSYSTEM=="drm", RUN+="<PATH-TO>/scripts/monitorhotplug.sh"

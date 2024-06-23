@@ -8,6 +8,9 @@ function open {
   thunar $1 >/dev/null &>/dev/null &
 }
 
+## Allows to use sudo with aliases
+alias sudo='sudo '
+
 ## Quick directory change
 alias dotfiles="cd $HOME/.dotfiles/; clear;"
 alias cdtomcat="cd /usr/share/tomcat9/"
