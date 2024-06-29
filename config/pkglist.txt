@@ -15,6 +15,7 @@ apple-t2-audio-config
 arandr
 arc-gtk-theme
 arch-install-scripts
+arch-mact2/t2fand
 aria2
 autorandr
 awesome-git
@@ -69,6 +70,7 @@ gucharmap
 hdparm
 heimdall
 htop
+immersed
 inxi
 java-runtime-common
 jdk-openjdk
@@ -167,7 +169,6 @@ suru-plus-aspromauros-git
 suru-plus-dark-git
 suru-plus-git
 syncthing
-t2fand
 thunar
 tig
 tmux
@@ -221,6 +222,7 @@ ttf-ubuntu-mono-nerd
 ttf-ubuntu-nerd
 ttf-victor-mono-nerd
 tumbler
+ufw
 unclutter
 unityhub
 unrar
