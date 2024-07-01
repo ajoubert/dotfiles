@@ -14,7 +14,7 @@ if grep -q closed /proc/acpi/button/lid/LID0/state; then
     $FOLDER/monitorhotplug.sh >> $LOGFILE &>>$LOGFILE
   else
     echo "Laptop is on battery, suspending" >> $LOGFILE
-    systemctl suspend
+    ## systemctl suspend
   fi
 else
     echo "Lid opened, calling monitor update" >> $LOGFILE
