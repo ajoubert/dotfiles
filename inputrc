@@ -1,6 +1,6 @@
 $include /etc/inputrc
 ## Allow case-insensitive tab completion
-set completion-ignore-case On
+set completion-ignore-case on
 
 ## Allows to cycle between suggestions on tab completion
 set colored-stats on
@@ -16,3 +16,8 @@ set menu-complete-display-prefix on
 "\e[A":history-search-backward
 ### arrow down
 "\e[B":history-search-forward
+
+set completion-query-items -1
+TAB: menu-complete
+
+#set page-completions off
