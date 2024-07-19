@@ -14,6 +14,10 @@ else
   KP_PASSWORD="$1"
 fi
 
+if [ "$2" == "--dry-run" ]; then
+  DRY_RUN=true
+fi
+
 add_entry() {
     local entry_name="$1"
     local password=$(echo "$KP_PASSWORD" | keepassxc-cli show -s "$KEEPASSXC_DATABASE_PATH" "$entry_name" --quiet --attributes Password)
@@ -30,6 +34,12 @@ loop_entries() {
     echo "No entries found, is password correct?"
     exit 1
   fi
+
+  if [ "$DRY_RUN" == "true" ]; then
+    echo "Dry-run mode enabled, password valid, exiting"
+    return
+  fi
+
   for entry in $entries; do
     add_entry "$entry"
   done
