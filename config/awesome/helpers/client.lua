@@ -2,6 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local capi = { client = client, mouse = mouse }
+local naughty = require("naughty")
 
 local _client = {}
 
@@ -78,7 +79,7 @@ function _client.move_client(c, direction)
 			awful.client.swap.byidx(1, c)
 		end
 	else
-		awful.client.swap.bydirection(direction, c, nil)
+		awful.client.swap.global_bydirection(direction, c, nil)
 	end
 end
 
@@ -109,6 +110,35 @@ _client.resize_padding = function(amt)
 		bottom = b + amt,
 	}
 	awful.layout.arrange(awful.screen.focused())
+end
+
+_client.move_to_next_screen = function()
+  local c = client.focus
+  if c then
+    local s = c.screen.index + 1
+    if s > screen.count() then
+      s = 1
+    end
+    c:move_to_screen(s)
+  end
+end
+
+_client.move_to_previous_screen = function()
+  local c = client.focus
+  if c then
+    local s = c.screen.index - 1
+    if s < 1 then
+      s = 1
+    end
+    c:move_to_screen(s)
+  end
+end
+
+_client.focus_direction = function(direction)
+  local c = client.focus;
+	if not c then return end
+
+  awful.client.focus.global_bydirection(direction, c)
 end
 
 -- Client rules for focus border

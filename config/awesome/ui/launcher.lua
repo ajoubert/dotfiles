@@ -218,6 +218,8 @@ local function open(mode)
 		main:get_children_by_id("mode_icon")[1].text = mode_icon[mode]
 	end
 
+  launcher.screen = awful.screen.focused()
+
 	global_mode = mode
 	-- Reset index and page
 	index_start, index_entry = 1, 1

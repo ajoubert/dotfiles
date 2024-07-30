@@ -1,5 +1,5 @@
 require("ui.osd")
-require("ui.bar")
+require("ui.bar.bar")
 require("ui.notifs")
 require("ui.notifs_center")
 require("ui.calendar")

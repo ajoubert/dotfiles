@@ -3,6 +3,8 @@ local awful = require("awful")
 local helpers = require("helpers")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local naughty = require("naughty")
+local _client = require("helpers.client")
+local _screen = require("helpers.screen")
 
 local mod = "Mod4"
 -- local alt = "Mod1"
@@ -39,6 +41,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod, ctrl }, "p", function() awful.spawn.with_shell("~/.local/scripts/colorpicker", false) end, {description = "colorpicker", group = "tool"}),
 	awful.key({ mod, ctrl }, "q", function() awful.spawn.with_shell("~/.local/scripts/qr_codes", false) end, {description = "qr codes", group = "tool"}),
 
+  -- screen control
+
+  awful.key({ mod }, "[", function() _screen.focus_previous_screen_no_roll() end, {description = "focus previous screen", group="awesome"}),
+  awful.key({ mod }, "]", function() _screen.focus_next_screen_no_roll() end, {description = "focus next screen", group="awesome"}),
 
 	-- Help screen
 
@@ -91,7 +97,7 @@ awful.keyboard.append_global_keybindings({
 
 	awful.key({ mod, ctrl }, "b", function() awesome.emit_signal("summon::books") end, {description = "books", group = "tag"}),
 	awful.key({ mod, ctrl }, "c", function() awesome.emit_signal("summon::clipboard") end, {description = "clipboard", group = "tag"}),
-	awful.key({ mod }, " ", function() awesome.emit_signal("summon::launcher") end, {description = "launcher", group = "launch"}),
+	awful.key({ mod }, "space", function() awesome.emit_signal("summon::launcher") end, {description = "launcher", group = "launch"}),
 	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end, {description = "powermenu", group = "launch"}),
 	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end, {description = "dnd", group = "tag"}),
 	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end, {description = "wifi popup", group = "tag"}),
@@ -109,8 +115,15 @@ awful.keyboard.append_global_keybindings({
 
 	-- switching a focus client -- 
 
-	awful.key({ mod }, "l", function () awful.client.focus.byidx(1) end, {description = "focus next", group = "client"}),
-	awful.key({ mod }, "h", function () awful.client.focus.byidx(-1) end, {description = "focus previous", group = "client"}),
+	awful.key({ mod }, "h", function () helpers.client.focus_direction("left") end, {description = "focus left", group = "client"}),
+	awful.key({ mod }, "j", function () helpers.client.focus_direction("down") end, {description = "focus down", group = "client"}),
+	awful.key({ mod }, "k", function () helpers.client.focus_direction("up") end, {description = "focus up", group = "client"}),
+	awful.key({ mod }, "l", function () helpers.client.focus_direction("right") end, {description = "focus right", group = "client"}),
+
+  -- switch client to next screen
+  awful.key({ mod, shift }, "]", function() _client.move_to_next_screen() end, {description = "Move to next screen", group = "client"}),
+
+  awful.key({ mod, shift }, "[", function() _client.move_to_previous_screen() end, {description = "Move to previous screen", group = "client"}),
 
 	-- Close client
 
@@ -127,12 +140,13 @@ awful.keyboard.append_global_keybindings({
 		modifiers = { mod },
 		keygroup = "numrow",
 		on_press = function (index)
-		local screen = awful.screen.focused()
-		local tag = screen.tags[index]
-		if tag then
-			tag:view_only()
-		end
-	end},
+      local screen = awful.screen.focused()
+      local tag = screen.tags[index]
+      if tag then
+        tag:view_only()
+      end
+    end
+  },
 
 	-- Toggle focus on tag --
 
