@@ -17,6 +17,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export RCRC="$HOME/.config/rcm/rcrc"
 
+bind 'set show-all-if-ambiguous on'
+export SHOW_ALL=1
+export PAGE_COMPLETION=no
+
 # GTK config
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 
