@@ -1,4 +1,7 @@
 #!/bin/bash
+# To easily install from the terminal on live disk:
+# curl -sL https://raw.githubusercontent.com/ajoubert/dotfiles/main/local/scripts/install_linux -o /tmp/script.sh && bash /tmp/script.sh
+
 
 validate_disk() {
     if lsblk | grep -q "^$1"; then
@@ -18,14 +21,36 @@ check_if_mounted() {
 
 read -p "Enter the hostname to use: " hostname
 
-read -sp "Enter the root password: " root_password
-echo
+
+while true; do
+  read -sp "Enter the root password: " password
+  echo
+  read -sp "Confirm the root password: " password_confirm
+  echo
+  if [ "$password" == "$password_confirm" ]; then
+    break
+  else
+    echo "Passwords do not match. Please try again."
+  fi
+done
+root_password=$password
 
 read -p "Enter the name of a non-root user to create: " user_name
 
-read -sp "Enter the password for the non-root user: " user_password
-echo
+while true; do
+  read -sp "Enter the non-root password: " password
+  echo
+  read -sp "Confirm the root password: " password_confirm
+  echo
+  if [ "$password" == "$password_confirm" ]; then
+    break
+  else
+    echo "Passwords do not match. Please try again."
+  fi
+done
+user_password=$password
 
+lsblk
 read -p "Enter the disk (e.g., sda): " disk
 
 validate_disk $disk
