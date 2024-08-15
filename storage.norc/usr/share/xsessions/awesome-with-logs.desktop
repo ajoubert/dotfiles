@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=awesome+logs
+Comment=Highly configurable framework window manager
+TryExec=awesome
+Exec=<PATH-TO>start_awesome_with_logs
+Type=Application

@@ -197,9 +197,9 @@ local fetch = wibox.widget {
 	layout = wibox.layout.flex.vertical,
 	forced_width = 322,
 	spacing = 10,
-	create_fetch_comp("", io.popen([[distro | grep "Name:" | awk '{sub(/^Name: /, ""); print}' | awk '{print $1 " " $2}']]):read("*all")),
+	-- create_fetch_comp("", io.popen([[distro | grep "Name:" | awk '{sub(/^Name: /, ""); print}' | awk '{print $1 " " $2}']]):read("*all")),
 	create_fetch_comp("", io.popen([[uname -r]]):read("*all")),
-	create_fetch_comp("", io.popen([[xbps-query -l | wc -l]]):read("*all")),
+	-- create_fetch_comp("", io.popen([[xbps-query -l | wc -l]]):read("*all")),
 	create_fetch_comp("", "Awesome WM"),
 }
 

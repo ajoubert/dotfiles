@@ -1,0 +1,2 @@
+#!/bin/bash
+exec awesome > /tmp/awesome.log 2>&1

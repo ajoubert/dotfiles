@@ -2,7 +2,6 @@ local wibox = require("wibox")
 local awful = require("awful")
 local Gio = require("lgi").Gio
 local beautiful = require("beautiful")
-local dir = "~/.disk/Books/'10 класс'/"
 
 local index_entry, index_start = 1, 1
 local filtered = {}
@@ -90,8 +89,7 @@ local global_mode = nil
 local function gen(mode)
 
 	local list = {
-		["books"] = io.popen("ls -A " .. dir):lines(),
-		["clipboard"] = io.popen("greenclip print"):lines()
+		-- ["clipboard"] = io.popen("greenclip print"):lines()
 	}
 	local entries = {}
 	if mode == nil then
@@ -105,7 +103,6 @@ local function gen(mode)
 		for entry in list[global_mode] do
 			local open_command = {
 				["clipboard"] = "echo " .. "'" .. entry .. "'" .. " | xclip -r -sel clipboard",
-				["books"] = "cd " .. dir .. " && zathura " .. entry,
 			}
 			local appinfo = open_command[mode]
 			if entry:match("[%w+%p+]") then

@@ -1,7 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-require("ui.lock")
+-- require("ui.lock")
 
 local index_element = 1
 
@@ -9,7 +9,8 @@ local elements = {
 	{"poweroff", command = "loginctl poweroff", icon = ""},
 	{"exit", command = "awesome-client 'awesome.quit()'", icon = ""},
 	{"reboot", command = "loginctl reboot", icon = ""},
-	{"suspend", command = "awesome-client 'Lockscreen()'", icon = ""},
+	{"exit", command = "awesome-client 'awesome.quit()'", icon = ""},
+	-- {"suspend", command = "awesome-client 'Lockscreen()'", icon = ""},
 }
 
 local elements_container = wibox.widget {

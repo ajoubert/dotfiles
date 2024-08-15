@@ -5,7 +5,9 @@ FILE="$HOME/.config/pkglist.txt"
 
 # Check if the file exists
 if [ -f "$FILE" ]; then
-  yay -S --needed $(comm -12 <(yay -Slq | sort) <(sort $HOME/.config/pkglist.txt))
+  # If filtering is needed, but it filters groups...
+  # yay -S --needed $(comm -12 <(yay -Slq | sort) <(sort $FILE))
+  yay -S --needed $(awk '/^[^#]/ {print $1}' $FILE)
 else
   echo "File not found: $FILE"
 fi

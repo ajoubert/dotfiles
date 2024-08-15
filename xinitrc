@@ -34,4 +34,4 @@ fi
 
 xsetroot -cursor_name left_ptr
 
-exec awesome;
+exec awesome > /tmp/awesome.log 2>&1;
