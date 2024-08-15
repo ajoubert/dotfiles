@@ -1,0 +1,223 @@
+#!/bin/bash
+
+validate_disk() {
+    if lsblk | grep -q "^$1"; then
+        echo "Disk $1 found."
+    else
+        echo "Disk $1 does not exist."
+        exit 1
+    fi
+}
+
+check_if_mounted() {
+    if findmnt -rno SOURCE | grep -q "^/dev/$1"; then
+        echo "Disk /dev/$1 is already mounted. Please unmount the disk and try again."
+        exit 1
+    fi
+}
+
+read -p "Enter the hostname to use: " hostname
+
+read -sp "Enter the root password: " root_password
+echo
+
+read -p "Enter the name of a non-root user to create: " user_name
+
+read -sp "Enter the password for the non-root user: " user_password
+echo
+
+read -p "Enter the disk (e.g., sda): " disk
+
+validate_disk $disk
+
+check_if_mounted $disk
+
+read -p "Are you sure you want to wipe /dev/$disk? This will erase all data on the disk. (yes/no): " confirm
+if [ "$confirm" != "yes" ]; then
+    echo "Operation cancelled."
+    exit 1
+fi
+
+# Wipe the disk with dd
+echo "Wiping the disk..."
+dd if=/dev/zero of=/dev/$disk bs=1M count=100 status=progress
+
+# Create partitions using fdisk
+echo "Creating partitions..."
+
+(
+echo g # Create a new GPT partition table
+
+# Partition 1: 10MB EF02 (BIOS boot partition)
+echo n # Add a new partition
+echo 1 # Partition number 1
+echo   # Default - first sector
+echo +10M # Last sector
+echo t # Change partition type
+echo 4 # Select partition type EF02 (BIOS boot)
+
+# Partition 2: 500MB EF00 (EFI System Partition)
+echo n # Add a new partition
+echo 2 # Partition number 2
+echo   # Default - first sector
+echo +500M # Last sector
+echo t # Change partition type
+echo 2 # Select partition 2
+echo 1 # Set type to EFI (EF00)
+
+# Partition 3: Rest of the disk 8300 (Linux filesystem)
+echo n # Add a new partition
+echo 3 # Partition number 3
+echo   # Default - first sector
+echo   # Default - last sector (rest of the disk)
+echo t # Change partition type
+echo 3 # Select partition 3
+echo 20 # Set type to Linux filesystem (8300)
+
+echo w # Write the changes and exit
+) | fdisk /dev/$disk
+
+# Format partition 2 as FAT32
+echo "Formatting /dev/${disk}2 as FAT32..."
+mkfs.fat -F32 /dev/${disk}2
+
+# Prepare partition 3 for LUKS encryption
+echo "Setting up LUKS encryption on /dev/${disk}3..."
+cryptsetup luksFormat /dev/${disk}3
+
+# Open the encrypted partition
+echo "Opening the LUKS partition..."
+cryptsetup open /dev/${disk}3 cryptroot
+
+# Format the encrypted partition as ext4
+echo "Formatting the encrypted partition as ext4..."
+mkfs.ext4 /dev/mapper/cryptroot
+
+# Mount the encrypted partition at /mnt
+echo "Mounting the encrypted partition at /mnt..."
+mount /dev/mapper/cryptroot /mnt
+
+# Create the /mnt/boot directory
+echo "Creating /mnt/boot directory..."
+mkdir /mnt/boot
+
+# Mount the boot partition at /mnt/boot
+echo "Mounting the boot partition at /mnt/boot..."
+mount /dev/${disk}2 /mnt/boot
+
+# Run pacstrap to install the base system
+echo "Running pacstrap to install the base system and additional packages..."
+pacstrap /mnt base base-devel linux linux-firmware vim neovim git networkmanager
+
+# Generate the fstab file
+echo "Generating fstab..."
+genfstab -U /mnt >> /mnt/etc/fstab
+
+# Copy any script or configuration file that needs to run after chroot
+cat << EOF > /mnt/root/after_chroot.sh
+#!/bin/bash
+
+# Set the time zone
+ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+hwclock --systohc
+
+# Uncomment en_US.UTF-8 UTF-8 and other needed locales in /etc/locale.gen, then generate them
+sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+locale-gen
+
+# Set the LANG variable
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+# Set the hostname
+echo "$hostname" > /etc/hostname
+
+# Update mkinitcpio.conf to include encryption hooks
+sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt filesystems fsck)/' /etc/mkinitcpio.conf
+
+# Regenerate the initramfs
+mkinitcpio -P
+
+# Add hosts file entries
+cat << HOSTS > /etc/hosts
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   $hostname.localdomain $hostname
+HOSTS
+
+# Set the root password
+echo "root:$root_password" | chpasswd
+
+# Create the non-root user
+useradd -m -G wheel -s /bin/bash $user_name
+echo "$user_name:$user_password" | chpasswd
+
+# Install systemd-boot
+bootctl install
+
+# Create the systemd-boot loader entry
+cat << BOOTENTRY > /boot/loader/entries/arch.conf
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options cryptdevice=UUID=$(blkid -s UUID -o value /dev/${disk}3):cryptroot root=/dev/mapper/cryptroot rw nvidia-drm.modeset=1
+BOOTENTRY
+
+# Set default boot entry
+cat << LOADERCONF > /boot/loader/loader.conf
+default arch.conf
+timeout 5
+console-mode max
+editor no
+LOADERCONF
+
+# Pulls dotfiles
+sudo -u $user_name bash << 'EOFUSER'
+cd ~
+git clone https://github.com/ajoubert/dotfiles .dotfiles/
+EOFUSER
+
+
+/home/$user_name/.dotfiles/local/scripts/install_yay.sh
+
+
+sudo -u $user_name bash << 'EOFUSER'
+cd ~
+./.dotfiles/install_packages.sh
+mkdir ~/.config/rcm
+ln -s ~/.dotfiles/config/rcm/rcrc ~/.config/rcm/
+rcup
+
+EOFUSER
+
+cp /home/$user_name/.dotfiles/storage.norc/etc/pacman.conf /etc
+cp /home/$user_name/.dotfiles/storage.norc/etc/sddm.conf /etc
+
+cp /home/$user_name/.dotfiles/storage.norc/etc/modprobe.d/nobeep.conf /etc/modprobe.d/
+cp /home/$user_name/.dotfiles/storage.norc/etc/systemd/logind.conf /etc/systemd/
+cp -r /home/$user_name/.dotfiles/storage.norc/etc/X11/xorg.conf.versioned /etc/X11/
+ln -s /etc/X11/xorg.conf.versioned/v2 /etc/X11/xorg.conf.d
+
+cp -r /home/$user_name/.dotfiles/storage.norc/usr/share/sddm/themes/chili /usr/share/sddm/themes
+cp /home/$user_name/.dotfiles/storage.norc/usr/share/xsessions/awesome-with-logs.desktop /usr/share/xsessions/
+
+cp /home/$user_name/.dotfiles/etc/acpi/events/lid /etc/acpi/events/lid
+sed -i 's|action=.*|action=/home/$user_name/.local/scripts/lid.sh|' /etc/acpi/events/lid
+
+cp /home/$user_name/.dotfiles/etc/udev/rules.d/95-monitor-hotplug.rules
+sed -i 's|RUN+=.*|RUN+=/home/$user_name/.local/scripts/monitorhotplug.sh|' /etc/udev/rules.d/95-monitor-hotplug.rules
+
+# Enable required services
+systemctl enable NetworkManager.service
+
+EOF
+
+# Make the script executable
+chmod +x /mnt/root/after_chroot.sh
+
+# Chroot into the new system and run the script
+arch-chroot /mnt /root/after_chroot.sh
+rm /root/after_chroot
+
+echo "Base system installation and configuration complete."
+
+# vim: set filetype=sh :
