@@ -32,7 +32,7 @@ return {
           "pyright",
           "rust_analyzer",
           "tailwindcss",
-          "tsserver",
+          "ts_ls",
           "vimls",
           "yamlls",
           "zls"
@@ -74,8 +74,8 @@ return {
           }
         })
       end,
-      ["tsserver"] = function()
-        lspconfig.tsserver.setup {
+      ["ts_ls"] = function()
+        lspconfig.ts_ls.setup {
           init_options = {
             plugins = {
               {
