@@ -1,5 +1,6 @@
 acpi
 acpid
+act
 adwaita-qt5-git
 adwaita-qt6-git
 alacritty
@@ -14,6 +15,7 @@ arandr
 arc-gtk-theme
 arch-install-scripts
 aria2
+audacity
 autorandr
 awesome-git
 aws-cli
@@ -23,16 +25,20 @@ bash-completion
 bat
 bc
 bind
+blender
 blueman
 bluez-utils
 bridge-utils
 brightnessctl
+brother-hl2030
 ca-certificates
 ca-certificates-mozilla
 chili-sddm-theme
 composer
 conda-bash-completion
 cowfortune
+cups
+cups-pdf
 dhcpcd
 dialog
 discord
@@ -52,6 +58,7 @@ firefox-developer-edition
 flameshot
 flashfocus-git
 flatpak
+gimp
 git
 gnome-keyring
 gnome-themes-extra
@@ -76,8 +83,10 @@ jdk-openjdk
 keepassxc
 kid3-qt
 komorebi-bin
+krita
 libgepub
 libopenraw
+libpurple-signald
 libreoffice-still
 libvirt
 linux
@@ -110,7 +119,7 @@ nvidia-utils
 nvm
 obs-cmd
 obsidian
-ollama
+ollama-cuda
 openssh
 otf-aurulent-nerd
 otf-codenewroman-nerd
@@ -127,6 +136,8 @@ papirus-icon-theme
 pavucontrol
 php
 picom
+pidgin
+pidgin-otr
 plasma
 playerctl
 polkit-gnome
@@ -135,6 +146,9 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-jack
+purple-discord-git
+purple-facebook-git
+purple-gowhatsapp
 python-pip
 python-pynvim
 python-setuptools
@@ -172,6 +186,7 @@ thunar
 tig
 tmux
 tor-browser-bin
+transmission-qt
 ttf-3270-nerd
 ttf-agave-nerd
 ttf-anonymouspro-nerd
@@ -234,6 +249,7 @@ vi
 vim
 virt-manager
 virt-manager
+wacomtablet
 wget
 wireguard-tools
 wpa_supplicant
