@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Function to find the tablet pen
+find_tablet_pen() {
+    xinput list | grep -i "tablet monitor pen pen" | grep -o 'id=[0-9]*' | grep -o '[0-9]*'
+}
+
+# Function to list available screens
+list_screens() {
+    xrandr --listmonitors | awk '{print $4}' | grep -v '^$'
+}
+
+# Check if the tablet pen is connected
+tablet_pen_id=$(find_tablet_pen)
+
+if [ -z "$tablet_pen_id" ]; then
+    echo "Tablet pen not connected."
+    exit 1
+else
+    echo "Tablet pen is connected with id=$tablet_pen_id."
+fi
+
+# List available screens
+echo "Available screens:"
+screens=($(list_screens))
+for i in "${!screens[@]}"; do
+    echo "$((i+1)). ${screens[$i]}"
+done
+
+# Prompt user to select a screen
+read -p "Enter the number of the screen to map the tablet pen to: " screen_choice
+
+# Validate input
+if [[ "$screen_choice" -ge 1 && "$screen_choice" -le "${#screens[@]}" ]]; then
+    selected_screen=${screens[$((screen_choice-1))]}
+    echo "Mapping tablet pen to screen: $selected_screen"
+    xinput map-to-output "$tablet_pen_id" "$selected_screen"
+else
+    echo "Invalid selection. Exiting."
+    exit 1
+fi
