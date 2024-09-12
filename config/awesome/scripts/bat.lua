@@ -5,7 +5,7 @@ local bat_script = [[
 	sh -c "cat /sys/class/power_supply/BAT*/capacity"
 ]]
 local bat_script_1 = [[
-	sh -c "cut -d '=' -f2 /sys/class/power_supply/BAT*/uevent | head -n 3 | tail -n 1"
+	sh -c "cut -d '=' -f2 /sys/class/power_supply/BAT*/uevent | head -n 4 | tail -n 1"
 ]]
 
 awful.widget.watch(bat_script, update_interval, function(widget, stdout)
