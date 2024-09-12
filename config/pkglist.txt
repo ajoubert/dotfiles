@@ -1,3 +1,4 @@
+
 acpi
 acpid
 act
@@ -119,7 +120,7 @@ nvidia-utils
 nvm
 obs-cmd
 obsidian
-ollama-cuda
+ollama
 openssh
 otf-aurulent-nerd
 otf-codenewroman-nerd
@@ -137,6 +138,8 @@ pavucontrol
 php
 picom
 pidgin
+pidgin-gpg-git
+pidgin-libnotify-notify-osd
 pidgin-otr
 plasma
 playerctl
@@ -147,13 +150,12 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-jack
 purple-discord-git
-purple-facebook-git
 purple-gowhatsapp
 python-pip
 python-pynvim
 python-setuptools
 qbittorrent
-qemu
+qemu-base
 qflipper-git
 qt5-graphicaleffects
 qt5-quickcontrols
