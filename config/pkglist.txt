@@ -135,6 +135,7 @@ otf-sfmono-patched
 p7zip
 papirus-icon-theme
 pavucontrol
+perl-finance-quote
 php
 picom
 pidgin
