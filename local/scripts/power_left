@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Check if upower is installed
+if ! command -v upower &> /dev/null; then
+  exit 0
+fi
+
+# Check the battery state (charging, discharging, fully-charged)
+battery_state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "state" | awk '{print $2}')
+
+# If the battery is charging or fully charged, output nothing
+if [[ "$battery_state" == "charging" || "$battery_state" == "fully-charged" ]]; then
+  exit 0
+fi
+
+# Get battery information from upower (time to empty)
+battery_info=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "time to empty" | awk '{print $4, $5}')
+
+# Extract hours or minutes based on upower output
+if [[ "$battery_info" == *"hours"* ]]; then
+  hours=$(echo $battery_info | awk '{print $1}')
+  # Convert the fractional part of hours into minutes
+  minutes=$(echo "$hours" | awk '{print ($1 - int($1)) * 60}' | bc)
+  hours=$(echo "$hours" | awk '{print int($1)}')
+elif [[ "$battery_info" == *"minutes"* ]]; then
+  minutes=$(echo $battery_info | awk '{print $1}')
+  hours=0
+fi
+
+# Display time remaining
+if [[ "$hours" -eq 0 ]]; then
+  echo "${minutes}m"
+else
+  echo "${hours}h ${minutes}m"
+fi
+

@@ -1,5 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
+local gears = require("gears")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local vars = require("ui.vars")
@@ -186,6 +187,12 @@ _screen_dependant_widgets.init = function(s)
     }
   }
   -- battery --
+  -- Function to get battery time left
+  local function update_battery_time(widget)
+      awful.spawn.easy_async_with_shell("/home/sloth/.local/scripts/power_left", function(out)
+          widget:set_text(out)
+      end)
+  end
 
   result.bat = wibox.widget {
     widget = wibox.container.background,
@@ -211,9 +218,43 @@ _screen_dependant_widgets.init = function(s)
           id = "icon",
           valign = "center"
         }
+      },
+      {
+        widget = wibox.container.place,
+        {
+          widget = wibox.container.margin, -- Add margin to adjust vertical position
+          top = 30,
+          bottom = 2,
+          {
+            widget = wibox.container.background,
+            fg = "#000000", -- Set the font color to black
+            {
+              widget = wibox.widget.textbox,
+              id = "time_remaining",
+              align = "center",
+              valign = "center",
+              font = "Sans 12"
+            }
+          }
+        }
       }
     }
   }
+
+  -- Timer to update the battery time left every minute
+  gears.timer {
+      timeout = 60,
+      autostart = true,
+      callback = function()
+          local time_remaining = result.bat:get_children_by_id("time_remaining")[1]
+          update_battery_time(time_remaining)
+      end
+  }
+
+  local time_remaining = result.bat:get_children_by_id("time_remaining")[1]
+  update_battery_time(time_remaining)
+
+
 
   awesome.connect_signal("bat::value", function(value)
     result.bat:get_children_by_id("progressbar")[1].value = value
