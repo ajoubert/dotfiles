@@ -1,8 +1,8 @@
 local awful = require("awful")
 local gears = require("gears")
+local _screen = require("helpers.screen")
 local beautiful = require("beautiful")
 local capi = { client = client, mouse = mouse }
-local naughty = require("naughty")
 
 local _client = {}
 
@@ -136,7 +136,10 @@ end
 
 _client.focus_direction = function(direction)
   local c = client.focus;
-	if not c then return end
+	if not c then
+    _screen.focus_direction(direction)
+    return
+  end
 
   awful.client.focus.global_bydirection(direction, c)
 end
