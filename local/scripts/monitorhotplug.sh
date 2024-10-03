@@ -1,13 +1,17 @@
 #!/bin/bash
 
 LOGFILE="/tmp/monitorhotpluglogs"
-echo "---------------------------" >> $LOGFILE
+echo "---------------------------" > $LOGFILE
 
 # Inform udev of the display and xauthority file location
 export DISPLAY=":-0"
 
 # Checks if XAUTHROTY is set, if not set it
 XAUTHORITY_FILE=$(ls /tmp/xauth_* | head -n 1)
+
+# Check if the laptop lid is closed
+LID_STATE=$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')
+echo "Lid state: $LID_STATE" >> $LOGFILE
 
 # If the XAUTHORITY file is found, export it
 if [ -n "$XAUTHORITY_FILE" ]; then
@@ -18,13 +22,11 @@ else
     exit 1
 fi
 
-INTERNAL_DISPLAY=$(xrandr | grep " connected" | grep -Eo "^eDP[0-9\-]*")
-EXTERNAL_DISPLAYS=($(xrandr | grep " connected" | grep -E -v "^$INTERNAL_DISPLAY" | grep -Eo "^[a-zA-Z0-9\.\-]*"))
+CONNECTED_DISPLAYS=($(xrandr | grep " connected" | grep -Eo "^[a-zA-Z0-9\.\-]*"))
 DISCONNECTED_DISPLAYS=($(xrandr | grep " disconnected" | grep -Eo "^[a-zA-Z0-9\.\-]*"))
 
-echo "Internal display: $INTERNAL_DISPLAY" >> $LOGFILE
-echo "External displays: ${EXTERNAL_DISPLAYS[@]}" >> $LOGFILE
-echo "External displays: ${DISCONNECTED_DISPLAYS[@]}" >> $LOGFILE
+echo "Connected displays: ${CONNECTED_DISPLAYS[@]}" >> $LOGFILE
+echo "Disconnected displays: ${DISCONNECTED_DISPLAYS[@]}" >> $LOGFILE
 
 # Turn off all disconnected displays
 for EDISPLAY in "${DISCONNECTED_DISPLAYS[@]}"; do
@@ -32,38 +34,40 @@ for EDISPLAY in "${DISCONNECTED_DISPLAYS[@]}"; do
     echo "Turned off disconnected display: $EDISPLAY" >> $LOGFILE
 done
 
+# Preset configurations for specific setups
+function apply_preset {
+  case "$1" in
+    "DP-4 DP-2.2 DP-2.3")
+      echo "Applying preset for DP-4, DP-2.2, DP-2.3" >> $LOGFILE
+      /usr/bin/xrandr --output DP-2.3 --auto --primary
+      /usr/bin/xrandr --output DP-2.2 --auto --right-of DP-2.3
+      /usr/bin/xrandr --output DP-4 --off
+      ;;
+    "DP-4 DP-2.2 DP-2.3 DP-2.1")
+      echo "Applying preset for DP-4, DP-2.2, DP-2.3, DP-2.1" >> $LOGFILE
+      /usr/bin/xrandr --output DP-4 --off
+      /usr/bin/xrandr --output DP-2.3 --auto --primary --left-of DP-2.2
+      /usr/bin/xrandr --output DP-2.2 --auto
+      /usr/bin/xrandr --output DP-2.1 --auto --pos 960x1080 --rotate inverted
+      ;;
+    *)
+      echo "No preset matched, setting everything to auto" >> $LOGFILE
+      PREV_DISPLAY=${CONNECTED_DISPLAYS[0]}
+      /usr/bin/xrandr --output "$PREV_DISPLAY" --auto --primary
+     
+      for EDISPLAY in "${CONNECTED_DISPLAYS[@]:1}"; do
+          /usr/bin/xrandr --output "$EDISPLAY" --auto --right-of "$PREV_DISPLAY"
+          PREV_DISPLAY=$EDISPLAY
+      done
+      ;;
+  esac
+}
 
-# Check if the laptop lid is closed
-LID_STATE=$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')
-echo "Lid state: $LID_STATE" >> $LOGFILE
-
-if [ "$LID_STATE" == "closed" ]; then
-    # If the lid is closed, turn off the internal display
-  /usr/bin/xrandr --output "$INTERNAL_DISPLAY" --off
-  echo "Internal display turned off because lid is closed" >> $LOGFILE
- 
-  # Arrange external displays next to each other
-  PREV_DISPLAY=${EXTERNAL_DISPLAYS[0]}
-  /usr/bin/xrandr --output "$PREV_DISPLAY" --auto --primary
- 
-  for EDISPLAY in "${EXTERNAL_DISPLAYS[@]:1}"; do
-      /usr/bin/xrandr --output "$EDISPLAY" --auto --right-of "$PREV_DISPLAY"
-      PREV_DISPLAY=$EDISPLAY
-  done
- 
-  echo "Configured external displays next to each other" >> $LOGFILE
-else
-    # If the lid is open, configure the internal and external displays next to each other
-    /usr/bin/xrandr --output "$INTERNAL_DISPLAY" --auto --primary
-
-    PREV_DISPLAY=$INTERNAL_DISPLAY
-    for EDISPLAY in "${EXTERNAL_DISPLAYS[@]}"; do
-      echo "Attempting to configure $EDISPLAY" >> $LOGFILE
-      /usr/bin/xrandr --output $EDISPLAY --auto --right-of $PREV_DISPLAY
-      PREV_DISPLAY=$EDISPLAY
-    done
-    echo "Configured displays: $INTERNAL_DISPLAY (primary) and external displays next to it" >> $LOGFILE
-fi
+# Check for specific display combinations and apply the corresponding preset
+CONNECTED_DISPLAY_STRING="${CONNECTED_DISPLAYS[@]}"
+echo "Connected display as a string:" >> $LOGFILE
+echo "$CONNECTED_DISPLAY_STRING" >> $LOGFILE
+apply_preset "$CONNECTED_DISPLAY_STRING"
 
 # Log the final xrandr configuration
 /usr/bin/xrandr >> $LOGFILE 2>&1
