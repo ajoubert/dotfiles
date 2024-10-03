@@ -157,7 +157,7 @@ python-pynvim
 python-setuptools
 qbittorrent
 qemu-base
-qflipper-git
+qflipper-bin
 qt5-graphicaleffects
 qt5-quickcontrols
 qt6-tools
