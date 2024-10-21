@@ -37,7 +37,7 @@ awful.keyboard.append_global_keybindings({
 	-- tools --
 
 	awful.key({}, "Print", function() awful.spawn("flameshot gui") end, {description = "screenshot", group = "tool"}),
-	awful.key({ mod }, "d", function() awful.spawn.with_shell("~/.local/scripts/monitorhotplug.sh", false) end, {description = "monitor hotplug", group = "tool"}),
+	awful.key({ mod }, "d", function() awful.spawn.with_shell("~/.local/scripts/monitorhotplug", false) end, {description = "monitor hotplug", group = "tool"}),
 	awful.key({ mod, ctrl }, "p", function() awful.spawn.with_shell("~/.local/scripts/colorpicker", false) end, {description = "colorpicker", group = "tool"}),
 	awful.key({ mod, ctrl }, "q", function() awful.spawn.with_shell("~/.local/scripts/qr_codes", false) end, {description = "qr codes", group = "tool"}),
 

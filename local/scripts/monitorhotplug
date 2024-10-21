@@ -39,16 +39,18 @@ function apply_preset {
   case "$1" in
     "DP-4 DP-2.2 DP-2.3")
       echo "Applying preset for DP-4, DP-2.2, DP-2.3" >> $LOGFILE
-      /usr/bin/xrandr --output DP-2.3 --auto --primary
-      /usr/bin/xrandr --output DP-2.2 --auto --right-of DP-2.3
-      /usr/bin/xrandr --output DP-4 --off
+      /usr/bin/xrandr \
+        --output DP-2.3 --auto --primary \
+        --output DP-2.2 --auto --right-of DP-2.3 \
+        --output DP-4 --off
       ;;
-    "DP-4 DP-2.2 DP-2.3 DP-2.1")
+    "DP-4 DP-2.1 DP-2.2 DP-2.3")
       echo "Applying preset for DP-4, DP-2.2, DP-2.3, DP-2.1" >> $LOGFILE
-      /usr/bin/xrandr --output DP-4 --off
-      /usr/bin/xrandr --output DP-2.3 --auto --primary --left-of DP-2.2
-      /usr/bin/xrandr --output DP-2.2 --auto
-      /usr/bin/xrandr --output DP-2.1 --auto --pos 960x1080 --rotate inverted
+      /usr/bin/xrandr \
+        --output DP-4 --off \
+        --output DP-2.3 --auto --primary --left-of DP-2.2 --rate 60 \
+        --output DP-2.2 --auto --rate 60 \
+        --output DP-2.1 --auto --pos 960x1080 --rotate inverted --rate 60
       ;;
     *)
       echo "No preset matched, setting everything to auto" >> $LOGFILE
