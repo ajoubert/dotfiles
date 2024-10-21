@@ -79,7 +79,17 @@ function _client.move_client(c, direction)
 			awful.client.swap.byidx(1, c)
 		end
 	else
-		awful.client.swap.global_bydirection(direction, c, nil)
+    local target_client = awful.client.focus.global_bydirection(direction, c)
+    if target_client and target_client.screen == c.screen then
+      awful.client.swap.global_bydirection(direction, c, nil)
+    else
+      -- No client in that direction on that screen, move to next screen
+      local adj_screen = awful.screen.focus_bydirection(direction, c.screen)
+      if adj_screen and adj_screen ~= c.screen then
+        c:move_to_screen(adj_screen)
+        c:emit_signal("request::activate", "mouse_click", {raise = true})
+      end
+    end
 	end
 end
 
