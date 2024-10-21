@@ -48,6 +48,7 @@ docker
 docker-compose
 dosfstools
 ebtables
+espanso-x11-bin
 evolution
 evolution-decsync
 evolution-on
@@ -63,8 +64,8 @@ gimp
 git
 gnome-keyring
 gnome-themes-extra
-gnucash
 gnu-free-fonts
+gnucash
 godot
 gpick
 gptfdisk
@@ -73,6 +74,7 @@ gruvbox-dark-icons-gtk
 gruvbox-plus-icon-theme-git
 gst-libav
 gucharmap
+gum
 hdparm
 heimdall
 htop
@@ -262,10 +264,10 @@ xf86-video-intel
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
+xorg-font-util
 xorg-fonts-100dpi
 xorg-fonts-75dpi
 xorg-fonts-encodings
-xorg-font-util
 xorg-iceauth
 xorg-mkfontscale
 xorg-server
