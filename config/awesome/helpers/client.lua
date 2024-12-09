@@ -154,11 +154,16 @@ _client.focus_direction = function(direction)
   awful.client.focus.global_bydirection(direction, c)
 end
 
+_client.cycle_focus = function()
+  awful.client.focus.byidx(1)
+end
+
 -- Client rules for focus border
 
 client.connect_signal(
   "focus",
   function(c)
+    c:raise()
     if #awful.screen.focused().clients > 1 then
       c.border_width = beautiful.border_width
     else

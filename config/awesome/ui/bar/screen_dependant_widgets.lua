@@ -26,7 +26,8 @@ _screen_dependant_widgets.init = function(s)
         margins = { bottom = 8, top = 8 },
         {
           widget = wibox.widget.textbox,
-          text = "",
+          -- text = "",
+          text = "󰍜",
           halign = "center"
         }
       }
@@ -288,11 +289,11 @@ _screen_dependant_widgets.init = function(s)
     fg = beautiful.foregraund,
     {
       widget = wibox.container.margin,
-      margins = { top = 8, bottom = 8 },
+      margins = { top = 8, bottom = 8, right = 1 },
       {
         widget = wibox.widget.textbox,
         id = "icon",
-        text = "",
+        text = "",
         halign = "center",
       }
     }
@@ -301,10 +302,10 @@ _screen_dependant_widgets.init = function(s)
   awesome.connect_signal("signal::dnd", function()
     vars.dnd = not vars.dnd
     if not vars.dnd then
-      result.dnd_button:get_children_by_id("icon")[1].text = ""
+      result.dnd_button:get_children_by_id("icon")[1].text = ""
       naughty.suspend()
     else
-      result.dnd_button:get_children_by_id("icon")[1].text = ""
+      result.dnd_button:get_children_by_id("icon")[1].text = ""
       naughty.resume()
     end
   end)

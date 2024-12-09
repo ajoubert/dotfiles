@@ -17,13 +17,12 @@ _tray.init = function()
       layout = wibox.layout.fixed.vertical,
       {
         widget = wibox.container.margin,
-        margins = 2,
+        margins = {top= 2, bottom= 2, right= 2, left=10},
         {
           widget = wibox.widget.textbox,
           id = "button",
-          text = "",
+          text = "",
           font = beautiful.font.. " 16",
-          halign = "center",
         }
       },
       {
@@ -46,10 +45,10 @@ _tray.init = function()
 
   awesome.connect_signal("show::tray", function()
     if not _tray.tray:get_children_by_id("tray")[1].visible then
-        _tray.tray:get_children_by_id("button")[1].text = ""
+        _tray.tray:get_children_by_id("button")[1].text = ""
         _tray.tray:get_children_by_id("tray")[1].visible = true
       else
-        _tray.tray:get_children_by_id("button")[1].text = ""
+        _tray.tray:get_children_by_id("button")[1].text = ""
         _tray.tray:get_children_by_id("tray")[1].visible = false
     end
   end)

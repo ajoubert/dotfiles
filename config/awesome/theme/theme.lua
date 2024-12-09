@@ -1,40 +1,19 @@
 local gears = require("gears")
--- local theme_assets = require("beautiful.theme_assets")
--- local xresources = require("beautiful.xresources")
--- local rnotification = require("ruled.notification")
 
 local theme = {}
+local chosen_theme = require("theme.themes.gruvbox.dark")
+theme = chosen_theme.hydrate_theme(theme)
 
 theme.font = "JetBrainsMono NF 11"
--- theme.useless_gap = 5
-theme.useless_gap = 0
-
-theme.wall = ""
+theme.useless_gap = 0 -- Previously 5
 
 -- icons --
-
 theme.notification_wifi_icon = "~/.config/awesome/theme/icons/wifi.svg"
 theme.battery_icon = "~/.config/awesome/theme/icons/battery.svg"
 theme.profile_image = "~/.config/awesome/theme/icons/profile_img.png"
 theme.notification_icon = "~/.config/awesome/theme/icons/bell.svg"
 theme.notification_icon_error = "~/.config/awesome/theme/icons/alert.svg"
 theme.notification_icon_scrensht = "~/.config/awesome/theme/icons/camera.svg"
-
--- colors --
-
-theme.background = "#191919"
-theme.background_alt = "#292929"
-theme.background_urgent = "#393939"
-theme.background_urgent1 = "#4c4c4c"
-theme.foreground = "#f0f0f0"
-
-theme.green = "#9ec49f"
-theme.yellow = "#c4c19e"
-theme.blue = "#a5b4cb"
-theme.red = "#c49ea0"
-theme.orange = "#ceb188"
-theme.violet = "#c49ec4"
-theme.accent = theme.red
 
 -- tray --
 
@@ -66,8 +45,6 @@ theme.hotkeys_shape = function(cr, width, height)
 end
 theme.hotkeys_border_width = 2
 theme.hotkeys_border_color = theme.accent
-
-
 
 -- borders --
 

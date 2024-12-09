@@ -7,7 +7,7 @@ local _client = require("helpers.client")
 local _screen = require("helpers.screen")
 
 local mod = "Mod4"
--- local alt = "Mod1"
+local alt = "Mod1"
 local ctrl = "Control"
 local shift = "Shift"
 
@@ -49,6 +49,16 @@ awful.keyboard.append_global_keybindings({
 	-- Help screen
 
   awful.key({ mod, shift }, "/", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end, {description="show help", group="awesome"}),
+
+  -- Mouse movements
+  awful.key({ alt }, "h", function() awful.spawn("xdotool mousemove_relative -- -15 0") end, {description="Move mouse left", group="mouse"}),
+  awful.key({ alt }, "j", function() awful.spawn("xdotool mousemove_relative -- 0 15") end, {description="Move mouse down", group="mouse"}),
+  awful.key({ alt }, "k", function() awful.spawn("xdotool mousemove_relative -- 0 -15") end, {description="Move mouse up", group="mouse"}),
+  awful.key({ alt }, "l", function() awful.spawn("xdotool mousemove_relative -- 15 0") end, {description="Move mouse right", group="mouse"}),
+  awful.key({ alt }, "Return", function() awful.spawn("xdotool click 1") end, {description="Left click mouse", group="mouse"}),
+  awful.key({ alt, shift }, "Return", function() awful.spawn("xdotool click 3") end, {description="Right click mouse", group="mouse"}),
+  awful.key({ alt, shift }, "k", function() awful.spawn("xdotool click 4") end, {description="Scroll mouse up", group="mouse"}),
+  awful.key({ alt, shift }, "j", function() awful.spawn("xdotool click 5") end, {description="Scroll mouse down", group="mouse"}),
 
 	-- playerctl --
 
@@ -99,7 +109,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod, ctrl }, "c", function() awesome.emit_signal("summon::clipboard") end, {description = "clipboard", group = "tag"}),
 	awful.key({ mod }, "space", function() awesome.emit_signal("summon::launcher") end, {description = "launcher", group = "launch"}),
 	awful.key({ mod }, "x", function() awesome.emit_signal("summon::powermenu") end, {description = "powermenu", group = "launch"}),
-	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end, {description = "dnd", group = "tag"}),
+	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end, {description = "Toggle do not disturb", group = "tag"}),
 	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end, {description = "wifi popup", group = "tag"}),
 	awful.key({ mod }, "n", function() awesome.emit_signal("notif_center::open") end, {description = "notification center", group = "tag"}),
 	awful.key({ mod }, "c", function() awesome.emit_signal("time::calendar") end, {description = "calendar", group = "tag"}),
@@ -119,6 +129,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod }, "j", function () helpers.client.focus_direction("down") end, {description = "focus down", group = "client"}),
 	awful.key({ mod }, "k", function () helpers.client.focus_direction("up") end, {description = "focus up", group = "client"}),
 	awful.key({ mod }, "l", function () helpers.client.focus_direction("right") end, {description = "focus right", group = "client"}),
+  awful.key({ mod }, "Tab", function() helpers.client.cycle_focus() end, {description = "focus next client in screen", group = "client"}),
 
   -- switch client to next screen
   awful.key({ mod, shift }, "]", function() _client.move_to_next_screen() end, {description = "Move to next screen", group = "client"}),

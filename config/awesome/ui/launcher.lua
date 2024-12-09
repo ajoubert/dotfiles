@@ -34,12 +34,11 @@ local main = wibox.widget {
 				bg = beautiful.background_alt,
 				{
 					widget = wibox.container.margin,
-					margins = 6,
+					margins = {top=6, right=6, bottom=6, left=10},
 					{
 						widget = wibox.widget.textbox,
-						valign = "center",
 						id = "mode_icon",
-						font = beautiful.font .. " 14",
+						font = beautiful.font .. " 12",
 					}
 				}
 			},
@@ -210,7 +209,7 @@ local function open(mode)
 	}
 
 	if mode == nil then
-		main:get_children_by_id("mode_icon")[1].text = ""
+		main:get_children_by_id("mode_icon")[1].text = " "
 	else
 		main:get_children_by_id("mode_icon")[1].text = mode_icon[mode]
 	end

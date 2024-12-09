@@ -6,10 +6,10 @@ local beautiful = require("beautiful")
 local index_element = 1
 
 local elements = {
-	{"poweroff", command = "loginctl poweroff", icon = ""},
-	{"exit", command = "awesome-client 'awesome.quit()'", icon = ""},
-	{"reboot", command = "loginctl reboot", icon = ""},
-	{"exit", command = "awesome-client 'awesome.quit()'", icon = ""},
+	{"poweroff", command = "loginctl poweroff", icon = "󰐥"},
+	{"sleep", command = "systemctl suspend", icon = "󰤄"},
+	{"reboot", command = "loginctl reboot", icon = "󰑙"},
+	{"exit", command = "awesome-client 'awesome.quit()'", icon = "󰩈"},
 	-- {"suspend", command = "awesome-client 'Lockscreen()'", icon = ""},
 }
 
