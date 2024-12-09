@@ -1,29 +1,33 @@
-[colors]
-draw_bold_text_with_bright_colors = true
+# [colors]
+# draw_bold_text_with_bright_colors = true
+# 
+# [colors.bright]
+# black = "#4c4c4c"
+# blue = "#8a98ac"
+# cyan = "#8aacab"
+# green = "#8aac8b"
+# magenta = "#ac8aac"
+# red = "#ac8a8c"
+# white = "#e7e7e7"
+# yellow = "#aca98a"
+# 
+# [colors.normal]
+# black = "#4c4c4c"
+# blue = "#a5b4cb"
+# cyan = "#9ec3c4"
+# green = "#9ec49f"
+# magenta = "#c49ec4"
+# red = "#c49ea0"
+# white = "#f0f0f0"
+# yellow = "#c4c19e"
+# 
+# [colors.primary]
+# background = "#191919"
+# foreground = "#f0f0f0"
 
-[colors.bright]
-black = "#4c4c4c"
-blue = "#8a98ac"
-cyan = "#8aacab"
-green = "#8aac8b"
-magenta = "#ac8aac"
-red = "#ac8a8c"
-white = "#e7e7e7"
-yellow = "#aca98a"
-
-[colors.normal]
-black = "#4c4c4c"
-blue = "#a5b4cb"
-cyan = "#9ec3c4"
-green = "#9ec49f"
-magenta = "#c49ec4"
-red = "#c49ea0"
-white = "#f0f0f0"
-yellow = "#c4c19e"
-
-[colors.primary]
-background = "#191919"
-foreground = "#f0f0f0"
+general.import = [
+  "~/.config/alacritty/themes/gruvbox-dark.toml"
+]
 
 [cursor]
 style = "Beam"
@@ -218,8 +222,8 @@ mods = "Shift"
 [scrolling]
 history = 5000
 
-[shell]
-program = "/bin/bash"
+[terminal]
+shell = "/bin/bash"
 
 [window]
 decorations = "full"
