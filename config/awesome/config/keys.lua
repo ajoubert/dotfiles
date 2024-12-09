@@ -5,6 +5,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local naughty = require("naughty")
 local _client = require("helpers.client")
 local _screen = require("helpers.screen")
+local vars = require("ui.vars")
 
 local mod = "Mod4"
 local alt = "Mod1"
@@ -112,8 +113,14 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod }, "m", function() awesome.emit_signal("signal::dnd") end, {description = "Toggle do not disturb", group = "tag"}),
 	awful.key({ mod, ctrl }, "w", function() awesome.emit_signal("summon::wifi_popup") end, {description = "wifi popup", group = "tag"}),
 	awful.key({ mod }, "n", function() awesome.emit_signal("notif_center::open") end, {description = "notification center", group = "tag"}),
-	awful.key({ mod }, "c", function() awesome.emit_signal("time::calendar") end, {description = "calendar", group = "tag"}),
-	awful.key({ mod }, "p", function() awesome.emit_signal("profile::control") end, {description = "profile control", group = "tag"}),
+	awful.key({ mod }, "c", function()
+    vars.time_default = not vars.time_default
+    awesome.emit_signal("time::calendar")
+  end, {description = "calendar", group = "tag"}),
+	awful.key({ mod }, "p", function()
+    vars.profile_default = not vars.profile_default
+    awesome.emit_signal("profile::control")
+  end, {description = "profile control", group = "tag"}),
 	awful.key({ mod, shift }, "b", function() awesome.emit_signal("hide::bar") end, {description = "hide bar", group = "tag"}),
 	awful.key({ mod }, "t", function() awesome.emit_signal("show::tray") end, {description = "show tray", group = "tag"}),
 

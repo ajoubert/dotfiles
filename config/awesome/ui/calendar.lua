@@ -3,6 +3,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
+local vars = require("ui.vars")
 
 -- calendar --
 
@@ -146,7 +147,7 @@ local calendar_widget = awful.popup {
 
 -- summon functions --
 
-awesome.connect_signal("summon::calendar_widget", function()
+awesome.connect_signal("time::calendar", function()
 	calendar:set_date(os.date("*t"))
 	calendar_widget.visible = not calendar_widget.visible
 end)
@@ -155,6 +156,7 @@ end)
 
 client.connect_signal("button::press", function()
 	if calendar_widget.visible == true then
+    vars.time_default = not vars.time_default
 		awesome.emit_signal("time::calendar")
 	end
 end)
@@ -162,6 +164,7 @@ end)
 awful.mouse.append_global_mousebinding(
 	awful.button({ }, 1, function()
 		if calendar_widget.visible == true then
+      vars.time_default = not vars.time_default
 			awesome.emit_signal("time::calendar")
 		end
 	end)

@@ -21,9 +21,12 @@ _screen_dependant_widgets.init = function(s)
       widget = wibox.container.background,
       id = "profile",
       bg = beautiful.background_alt,
+      shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 8)
+      end,
       {
         widget = wibox.container.margin,
-        margins = { bottom = 8, top = 8 },
+        margins = { bottom = 8, top = 8, right = 4 },
         {
           widget = wibox.widget.textbox,
           -- text = "",
@@ -35,18 +38,16 @@ _screen_dependant_widgets.init = function(s)
   }
 
   awesome.connect_signal("profile::control", function()
-    vars.profile_default = not vars.profile_default
     if not vars.profile_default then
       result.profile:get_children_by_id("profile")[1]:set_bg(beautiful.background_alt)
-      awesome.emit_signal("summon::control")
     else
       result.profile:get_children_by_id("profile")[1]:set_bg(beautiful.background_urgent)
-      awesome.emit_signal("summon::control")
     end
   end)
 
   result.profile:buttons {
     awful.button({}, 1, function()
+      vars.profile_default = not vars.profile_default
       awesome.emit_signal("profile::control")
     end)
   }
@@ -55,6 +56,11 @@ _screen_dependant_widgets.init = function(s)
 
   result.tasklist = awful.widget.tasklist {
     screen = s,
+    style   = {
+        shape = function(cr, width, height)
+          gears.shape.rounded_rect(cr, width, height, 4)
+        end
+    },
     filter = awful.widget.tasklist.filter.currenttags,
     buttons = {
       awful.button({ }, 1, function (c)
@@ -71,7 +77,7 @@ _screen_dependant_widgets.init = function(s)
     widget_template = {
       id = "background_role",
       widget = wibox.container.background,
-      forced_height = 24,
+      forced_height = 36,
       create_callback = function(self, c)
         local tooltip = awful.tooltip({
           objects = { self },
@@ -108,6 +114,9 @@ _screen_dependant_widgets.init = function(s)
     layout = wibox.layout.fixed.vertical,
     {
       widget = wibox.container.background,
+      shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 8)
+      end,
       id = "clock",
       bg = beautiful.background_alt, {
         widget = wibox.container.margin,
@@ -127,19 +136,17 @@ _screen_dependant_widgets.init = function(s)
   }
 
   awesome.connect_signal("time::calendar", function()
-    vars.time_default = not vars.time_default
     if not vars.time_default then
       result.time:get_children_by_id("clock")[1]:set_bg(beautiful.background_alt)
-      awesome.emit_signal("summon::calendar_widget")
     else
       result.time:get_children_by_id("clock")[1]:set_bg(beautiful.background_urgent)
-      awesome.emit_signal("summon::calendar_widget")
     end
   end)
 
   result.time:buttons {
     awful.button({}, 1, function()
       awesome.emit_signal("time::calendar")
+      vars.time_default = not vars.time_default
     end)
   }
 
@@ -148,6 +155,11 @@ _screen_dependant_widgets.init = function(s)
   result.taglist = awful.widget.taglist {
     screen = s,
     filter = awful.widget.taglist.filter.noempty,
+    style   = {
+        shape = function(cr, width, height)
+          gears.shape.rounded_rect(cr, width, height, 4)
+        end
+    },
     buttons = {
       awful.button({ }, 1, function(t) t:view_only() end),
       awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
@@ -160,7 +172,7 @@ _screen_dependant_widgets.init = function(s)
     widget_template = {
       id = "background_role",
       forced_height = 20,
-      forced_width  = 20,
+      forced_width = 20,
       widget = wibox.container.background,
       create_callback = function (self, tag)
         self.update = function ()
@@ -180,6 +192,9 @@ _screen_dependant_widgets.init = function(s)
 
   result.taglist_widget = wibox.widget {
     widget = wibox.container.background,
+    shape = function(cr, width, height)
+      gears.shape.rounded_rect(cr, width, height, 8)
+    end,
     bg = beautiful.background_alt,
     {
       widget = wibox.container.margin,
@@ -198,6 +213,9 @@ _screen_dependant_widgets.init = function(s)
   result.bat = wibox.widget {
     widget = wibox.container.background,
     bg = beautiful.background_alt,
+    shape = function(cr, width, height)
+      gears.shape.rounded_rect(cr, width, height, 8)
+    end,
     {
       layout = wibox.layout.stack,
       {
@@ -287,9 +305,12 @@ _screen_dependant_widgets.init = function(s)
     id = "dnd",
     bg = beautiful.background_alt,
     fg = beautiful.foregraund,
+    shape = function(cr, width, height)
+      gears.shape.rounded_rect(cr, width, height, 8)
+    end,
     {
       widget = wibox.container.margin,
-      margins = { top = 8, bottom = 8, right = 1 },
+      margins = { top = 8, bottom = 8, right = 4 },
       {
         widget = wibox.widget.textbox,
         id = "icon",

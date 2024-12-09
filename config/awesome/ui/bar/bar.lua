@@ -80,6 +80,7 @@ local initialize_widget_bar = function(s)
     height = s.geometry.height + beautiful.border_width * 2,
     width = 56,
     bg = beautiful.background,
+    opacity = 0.7,
     border_width = beautiful.border_width,
     border_color = beautiful.border_color_normal,
     margins = {

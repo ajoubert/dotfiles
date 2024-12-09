@@ -1,4 +1,5 @@
 local awful = require("awful")
+local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
@@ -12,6 +13,9 @@ _tray.init = function()
 
   _tray.tray= wibox.widget {
     widget = wibox.container.background,
+    shape = function(cr, width, height)
+      gears.shape.rounded_rect(cr, width, height, 8)
+    end,
     bg = beautiful.background_alt,
     {
       layout = wibox.layout.fixed.vertical,
