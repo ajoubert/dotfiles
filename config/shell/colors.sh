@@ -630,4 +630,3 @@ export COLOR_NONE="\[\e[0m\]"
 export COLOR_PRIMARY=$solb2
 export COLOR_BACKGROUND=$solb02
 export COLOR_ACCENT=$solc
-

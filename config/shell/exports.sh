@@ -34,6 +34,7 @@ export LANG=en_US.UTF-8
 
 # Tmux
 export TMUX_PLUGIN_MANAGER_PATH="$HOME/.config/tmux/plugins"
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
 
 export GNUPGHOME="$HOME/.local/share/gnupg"
 
