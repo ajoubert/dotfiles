@@ -61,8 +61,14 @@ return {
 
         ['<C-Space>'] = cmp.mapping.complete(),
 
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<C-y>'] = cmp.mapping.confirm({select = true}),
+        ['<Esc>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.abort()
+          else
+            fallback()
+          end
+        end),
+        ['<Tab>'] = cmp.mapping.confirm({select = true}),
       },
     })
   end

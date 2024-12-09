@@ -1,7 +1,8 @@
 return {
   plugin = {
     {"dracula/vim", as = "dracula" },
-    "ellisonleao/gruvbox.nvim"
+    "ellisonleao/gruvbox.nvim",
+    { "catppuccin/nvim", name = "catppuccin" }
   },
   postsetup = function()
     vim.o.background = "dark"
