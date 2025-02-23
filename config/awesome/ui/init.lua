@@ -8,3 +8,5 @@ require("ui.control")
 -- require("ui.lock")
 require("ui.powermenu")
 require("ui.launcher")
+
+awesome.emit_signal("widgets::load_all_data")

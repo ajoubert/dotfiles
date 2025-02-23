@@ -8,7 +8,14 @@ command -v ssh-agent >/dev/null && eval $(ssh-agent)
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/.local/scripts:$PATH"
+
+# Add all subdirectories of ~/.local/scripts to PATH
+while IFS= read -r -d '' dir; do
+    if [ -d "$dir" ]; then
+        export PATH="$PATH:$dir"
+    fi
+done < <(find ~/.local/scripts -type d -print0)
+# export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] && export PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
@@ -58,10 +65,11 @@ fi
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
-if [[ -f "$HOME/.config/vim-shared/vimrc" ]];
-then
-  export VIM_CONFIG="$HOME/.config/vim-shared/"
-fi
+#if [[ -f "$HOME/.config/vim-shared/vimrc" ]];
+#then
+  #export VIM_CONFIG="$HOME/.config/vim-shared/"
+#fi
+export VIM_CONFIG=""
 
 # Only use if not using a display manager (startx)
 # export XAUTHORITY="$HOME/.local/share/xorg/Xauthority"
@@ -90,16 +98,22 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 ## Older version might be used for compatibility of some adb tools...
 export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
-export SDKMANAGER_OPTS=""
+unset ANDROID_HOME
+unset ANDROID_SDK_ROOT
+# export SDKMANAGER_OPTS=""
 export ANDROID_SDK_HOME="$HOME/.local/share/android"
-export ANDROID_SDK_ROOT="/opt/android-sdk"
+export ANDROID_AVD_HOME="$HOME/.local/share/android"
+export ANDROID_SDK_ROOT="$HOME/.local/share/android"
 export ANDROID_SDK="$ANDROID_SDK_ROOT"
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 [ -d "$ANDROID_SDK/tools/bin" ] && export PATH="$PATH:$ANDROID_SDK/tools/bin"
 [ -d "$ANDROID_SDK/cmdline-tools/latest/bin" ] && export PATH="$PATH:$ANDROID_SDK/cmdline-tools/latest/bin"
+[ -d "$ANDROID_SDK/cmdline-tools/bin" ] && echo "ERROR : cmdline-tools content should be placed in subfolder 'latest' (<root>/cmdline-tools/latest/bin)"
 [ -d "$ANDROID_SDK/platform-tools" ] && export PATH="$PATH:$ANDROID_SDK/platform-tools"
+[ -d "$ANDROID_SDK/platform-tools" ] && export PATH="$ANDROID_SDK/platform-tools:$PATH"
+[ -d "$ANDROID_SDK/emulator" ] && export PATH="$ANDROID_SDK/emulator:$PATH"
 
 ## Prevents ~/.nv/ComputeCache by disabling JIT caching
 export CUDA_CACHE_DISABLE=1

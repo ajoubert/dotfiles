@@ -36,6 +36,10 @@ if [ -x "$(command -v bat)" ]; then
   alias cat='bat'
 fi
 
+if [ ! -x "$(command -v sdkmanager)" ]; then
+  alias sdkmanager='echo "sdkmanager not installed. You can install it from https://developer.android.com/studio#command-line-tools-only"'
+fi
+
 
 ## Regular typos
 alias sl=ls

@@ -1,12 +1,21 @@
 {
-  "Lua.diagnostics.globals": [
-    "awesome",
-    "client",
-    "screen",
-    "mouse",
-    "root",
-    "tag",
-    "button",
-    "key"
-  ]
+    "diagnostics": {
+        "enable": true,
+        "globals": [
+            "awesome",
+            "awful",
+            "client",
+            "screen",
+            "tag",
+            "update_timer"
+        ]
+    },
+    "workspace": {
+        "library": [
+            "/usr/share/awesome/lib/"
+        ],
+        "maxPreload": 2000,
+        "preloadFileSize": 1000
+    },
+    "telemetry.enable": false
 }

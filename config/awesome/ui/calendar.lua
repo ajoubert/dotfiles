@@ -35,17 +35,20 @@ local function create_calendar_button(icon)
 	local widget = wibox.widget {
 	widget = wibox.container.background,
 	bg = beautiful.background_alt,
-		{
-		widget = wibox.widget.textbox,
-		text = icon,
-		font = beautiful.font .. " 20",
+  shape = function(cr, width, height)
+    gears.shape.rectangle(cr, width, height)
+  end,
+	{
+    widget = wibox.widget.textbox,
+    text = icon,
+    font = beautiful.font .. " 20",
 	}
 }
 return widget
 end
 
-local button_next = create_calendar_button("")
-local button_back = create_calendar_button("")
+local button_next = create_calendar_button("  ")
+local button_back = create_calendar_button("  ")
 
 local function decorate_cell(widget, flag, date)
 	local cur_date = os.date("*t")
@@ -86,11 +89,11 @@ return ret
 end
 
 local calendar = wibox.widget {
-   date = os.date("*t"),
-	font = beautiful.font,
-	spacing = 10,
-   fn_embed = decorate_cell,
-   widget = wibox.widget.calendar.month
+  date = os.date("*t"),
+  font = beautiful.font,
+  spacing = 10,
+  fn_embed = decorate_cell,
+  widget = wibox.widget.calendar.month
 }
 
 local function change_mounth(number)
@@ -120,7 +123,7 @@ local main = wibox.widget {
 	bg = beautiful.background,
 	{
 		widget = wibox.container.margin,
-		margins = 10,
+		margins = { left = 25, right = 0, top = 10, bottom = 10 },
 		{
 			layout = wibox.layout.fixed.vertical,
 			fill_space = true,

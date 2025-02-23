@@ -331,20 +331,21 @@ _screen_dependant_widgets.init = function(s)
     end
   end)
 
-  awesome.connect_signal("notif_center::open", function()
+  awesome.connect_signal("summon::notif_center", function()
     vars.notif_center_default = not vars.notif_center_default
     if not vars.notif_center_default then
       result.dnd_button:get_children_by_id("dnd")[1]:set_bg(beautiful.background_alt)
-      awesome.emit_signal("summon::notif_center")
+      -- awesome.emit_signal("summon::notif_center")
     else
       result.dnd_button:get_children_by_id("dnd")[1]:set_bg(beautiful.background_urgent)
-      awesome.emit_signal("summon::notif_center")
+      -- awesome.emit_signal("summon::notif_center")
     end
   end)
 
   result.dnd_button:buttons {
     awful.button({}, 1, function()
-      awesome.emit_signal("notif_center::open")
+      -- awesome.emit_signal("notif_center::open")
+      awesome.emit_signal("summon::notif_center")
     end),
     awful.button({}, 3, function()
       awesome.emit_signal("signal::dnd")

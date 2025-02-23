@@ -41,6 +41,10 @@ function UpdateVolumeSignals()
 	update_value_of_capture_muted()
 end
 
+awesome.connect_signal("widgets::load_all_data", function()
+  UpdateVolumeSignals()
+end)
+
 gears.timer {
 	call_now = true,
 	autostart = true,

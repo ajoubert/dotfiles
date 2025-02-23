@@ -1,15 +1,15 @@
 local awful = require("awful")
+local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local vars = require("ui.vars")
-local naughty = require("naughty")
 require("scripts.init")
 
 local control = nil
 
 local function create_control_popup(screen)
   -- arccharts --
-  local create_arcchart_widget = function(widget, signal, bg, fg, thickness, text, icon)
+  local create_arcchart_widget = function(widget, signal, bg, fg, thickness, text, icon, margin)
     widget = wibox.widget {
       widget = wibox.container.background,
       bg = beautiful.background_alt,
@@ -33,12 +33,16 @@ local function create_control_popup(screen)
               colors = {fg}
             },
             {
-              widget = wibox.widget.textbox,
-              id = "icon",
-              font = beautiful.font .." 20",
-              text = icon,
-              halign = "center",
-              valign = "center",
+              margins = margin,
+              widget  = wibox.container.margin,
+              {
+                widget = wibox.widget.textbox,
+                id = "icon",
+                font = beautiful.font .." 20",
+                text = icon,
+                halign = "center",
+                valign = "center",
+              }
             },
           },
           {
@@ -73,9 +77,12 @@ local function create_control_popup(screen)
   local resourses = wibox.widget {
     layout = wibox.layout.fixed.horizontal,
     spacing = 10,
-    create_arcchart_widget(cpu, "signal::cpu", beautiful.background_urgent, beautiful.red, 15, "CPU:", ""),
-    create_arcchart_widget(ram, "signal::ram", beautiful.background_urgent, beautiful.yellow, 15, "RAM:", ""),
-    create_arcchart_widget(disk, "disk::value", beautiful.background_urgent, beautiful.blue, 15, "DISK:", ""),
+    create_arcchart_widget(cpu, "signal::cpu", beautiful.background_urgent, beautiful.red, 15, "CPU:", "󰍛",
+      {top = 0, right = 3, bottom = 0, left = 0}),
+    create_arcchart_widget(ram, "signal::ram", beautiful.background_urgent, beautiful.yellow, 15, "RAM:", "",
+      {top = 0, right = 10, bottom = 0, left = 0}),
+    create_arcchart_widget(disk, "disk::value", beautiful.background_urgent, beautiful.blue, 15, "DISK:", "",
+      {top = 0, right = 0, bottom = 0, left = 0}),
   }
 
   -- progressbars --
@@ -139,7 +146,7 @@ local function create_control_popup(screen)
     volume:get_children_by_id("icon")[1].text = icon
   end)
 
-  local bright = create_progressbar_widget(beautiful.violet, 370, "")
+  local bright = create_progressbar_widget(beautiful.violet, 370, " ")
 
   bright:buttons  {
     awful.button({}, 4, function()
@@ -234,7 +241,7 @@ local function create_control_popup(screen)
           profile_image,
           profile_name,
         },
-        fetch,
+        -- fetch,
         line,
       }
     },
@@ -286,6 +293,9 @@ local function create_control_popup(screen)
     widget = wibox.container.background,
     forced_width = 236,
     forced_height = 80,
+    shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 15)
+    end,
     bg = beautiful.background_alt,
     {
       layout = wibox.layout.fixed.horizontal,
@@ -298,6 +308,9 @@ local function create_control_popup(screen)
           align = "center",
           {
             widget = wibox.container.background,
+            shape = function(cr, width, height)
+                gears.shape.rounded_rect(cr, width, height, 15)
+            end,
             id = "icon_container",
             bg = bg,
             fg = fg,
@@ -333,10 +346,10 @@ local function create_control_popup(screen)
       },
       {
         widget = wibox.widget.textbox,
-        text = "",
+        text = " ",
         forced_width = 80,
         halign = "right",
-        font = beautiful.font .. " 24",
+        font = beautiful.font .. " 12",
         visible = arroy_visible,
         buttons = {
           awful.button({ }, 1, function() awesome.emit_signal("summon::wifi_popup") end),
@@ -358,7 +371,7 @@ local function create_control_popup(screen)
     end
   end
 
-  local wifi = create_toggle_widget(beautiful.accent, beautiful.background, "", "Wifi", "On", true)
+  local wifi = create_toggle_widget(beautiful.accent, beautiful.background, "  ", "Wifi", "On", true)
 
   awesome.connect_signal("wifi::value", function(value)
     if value == "disabled" then
@@ -387,7 +400,7 @@ local function create_control_popup(screen)
     end)
   }
 
-  local micro = create_toggle_widget(beautiful.accent, beautiful.background, "", "Microphone", "On", false)
+  local micro = create_toggle_widget(beautiful.accent, beautiful.background, " 󰍬 ", "Microphone", "On", false)
 
   awesome.connect_signal("capture_muted::value", function(value)
     if value == "off" then
@@ -404,7 +417,7 @@ local function create_control_popup(screen)
     end),
   }
 
-  local float = create_toggle_widget(beautiful.accent, beautiful.background, "", "Floating", "On", false)
+  local float = create_toggle_widget(beautiful.accent, beautiful.background, "  ", "Floating", "On", false)
   toggle_change("off", float)
 
   -- float:get_children_by_id("icon_container")[1]:buttons {
@@ -425,7 +438,7 @@ local function create_control_popup(screen)
   --   end),
   -- }
 
-  local opacity = create_toggle_widget(beautiful.accent, beautiful.background, "", "Opacity", "On", false)
+  local opacity = create_toggle_widget(beautiful.accent, beautiful.background, " 󰗌 ", "Opacity", "On", false)
 
   opacity:get_children_by_id("icon_container")[1]:buttons {
     awful.button({}, 1, function()
@@ -463,7 +476,7 @@ local function create_control_popup(screen)
         layout = wibox.layout.fixed.vertical,
         spacing = 10,
         time,
-        profile,
+        -- profile,
         toggles,
         info,
         resourses,

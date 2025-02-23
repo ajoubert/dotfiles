@@ -1,6 +1,6 @@
 local awful = require("awful")
 
-local icon = ""
+local icon = "󰃟"
 
 function Update_value_of_bright()
 	awful.spawn.easy_async_with_shell("brightnessctl i | grep Current | awk '{print $4}' | tr -d '()%'", function (stdout)
@@ -11,3 +11,8 @@ function Update_value_of_bright()
 end
 
 Update_value_of_bright()
+
+
+awesome.connect_signal("widgets::load_all_data", function()
+  Update_value_of_bright()
+end)
